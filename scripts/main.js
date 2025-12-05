@@ -84,9 +84,10 @@ async function loadSampleEvents() {
     ];
 }
 
-// Load sample events on page load
+// Load sample events on page load and make sure it completes before other scripts
 if (typeof window !== 'undefined') {
-    loadSampleEvents();
+    // Make this globally available as a promise
+    window.eventsLoadedPromise = loadSampleEvents();
 }
 
 // Utility Functions

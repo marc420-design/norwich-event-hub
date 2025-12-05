@@ -120,28 +120,40 @@ function submitEventToLocalStorage(eventData) {
 
 function getEventsFromLocalStorage(filters = {}) {
     try {
+        // First check if we have events in localStorage
         const stored = localStorage.getItem('norwichEvents');
-        if (!stored) return [];
-        
-        let events = JSON.parse(stored);
-        
+        let events = [];
+
+        if (stored) {
+            events = JSON.parse(stored);
+        } else if (window.eventsData && window.eventsData.length > 0) {
+            // If not in localStorage but we have loaded events from JSON, use those
+            events = window.eventsData;
+            // Save to localStorage for future use
+            localStorage.setItem('norwichEvents', JSON.stringify(events));
+        } else {
+            // No data available
+            return [];
+        }
+
         // Apply filters
         if (filters.category && filters.category !== 'all') {
             events = events.filter(e => e.category === filters.category);
         }
-        
+
         if (filters.status) {
             events = events.filter(e => e.status === filters.status);
         }
-        
+
         if (filters.date) {
             events = events.filter(e => e.date === filters.date);
         }
-        
+
         return events;
     } catch (error) {
         console.error('Local storage read error:', error);
-        return [];
+        // Fallback to window.eventsData if available
+        return window.eventsData || [];
     }
 }
 

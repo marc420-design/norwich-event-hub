@@ -13,7 +13,12 @@ document.addEventListener('DOMContentLoaded', async function() {
 async function loadFeaturedEvents() {
     const featuredContainer = document.getElementById('featuredEvents');
     if (!featuredContainer) return;
-    
+
+    // Wait for events to load first
+    if (window.eventsLoadedPromise) {
+        await window.eventsLoadedPromise;
+    }
+
     try {
         // Try to load from API
         let events = [];

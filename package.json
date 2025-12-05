@@ -1,0 +1,23 @@
+{
+  "name": "norwich-event-hub",
+  "version": "1.0.0",
+  "description": "Norwich Event Hub - Independent city-wide digital platform for events in Norwich",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'Static site - ready for Cloudflare Pages deployment'",
+    "deploy": "echo 'Deploy to Cloudflare Pages: wrangler pages publish .'"
+  },
+  "keywords": [
+    "norwich",
+    "events",
+    "nightlife",
+    "culture",
+    "community"
+  ],
+  "author": "Norwich Event Hub",
+  "license": "MIT",
+  "devDependencies": {},
+  "dependencies": {}
+}
+

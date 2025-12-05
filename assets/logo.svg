@@ -1,0 +1,18 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle -->
+  <circle cx="100" cy="100" r="95" fill="#000000" stroke="#3AB8FF" stroke-width="4"/>
+  
+  <!-- Norwich Text -->
+  <text x="100" y="80" font-family="Bebas Neue, sans-serif" font-size="36" font-weight="bold" fill="#3AB8FF" text-anchor="middle" letter-spacing="2">NORWICH</text>
+  
+  <!-- Event Hub Text -->
+  <text x="100" y="110" font-family="Bebas Neue, sans-serif" font-size="24" fill="#D6A72B" text-anchor="middle" letter-spacing="1">EVENT</text>
+  <text x="100" y="135" font-family="Bebas Neue, sans-serif" font-size="24" fill="#D6A72B" text-anchor="middle" letter-spacing="1">HUB</text>
+  
+  <!-- Decorative Elements -->
+  <circle cx="100" cy="50" r="3" fill="#3AB8FF"/>
+  <circle cx="100" cy="150" r="3" fill="#3AB8FF"/>
+  <circle cx="50" cy="100" r="3" fill="#D6A72B"/>
+  <circle cx="150" cy="100" r="3" fill="#D6A72B"/>
+</svg>
+

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Submit your event to Norwich Event Hub - Share your event with thousands of Norwich residents and visitors.">
+    <title>Submit Your Event - Norwich Event Hub</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/form.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="logo">
+                    <img src="assets/logo-image.jpg" alt="Norwich Event Hub" class="logo-image" />
+                    <span class="logo-text">NORWICH</span>
+                    <span class="logo-subtext">EVENT HUB</span>
+                </a>
+            </div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="today.html">What's On Today</a></li>
+                <li><a href="directory.html">2026 Directory</a></li>
+                <li><a href="submit.html" class="active">Submit Event</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Submit Your Event</h1>
+            <p>Share your event with thousands of Norwich residents and visitors</p>
+        </div>
+    </section>
+
+    <!-- Submission Form -->
+    <section class="submit-section">
+        <div class="container">
+            <div class="form-container">
+                <form id="eventSubmissionForm" class="event-form">
+                    <div class="form-group">
+                        <label for="eventName">Event Name *</label>
+                        <input type="text" id="eventName" name="eventName" required placeholder="e.g., Norwich Music Festival">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="eventDate">Date *</label>
+                            <input type="date" id="eventDate" name="eventDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="eventTime">Time *</label>
+                            <input type="time" id="eventTime" name="eventTime" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="eventLocation">Location *</label>
+                        <input type="text" id="eventLocation" name="eventLocation" required placeholder="e.g., The Forum, Millennium Plain">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="eventCategory">Category *</label>
+                        <select id="eventCategory" name="eventCategory" required>
+                            <option value="">Select a category</option>
+                            <option value="nightlife">Nightlife</option>
+                            <option value="culture">Culture</option>
+                            <option value="community">Community</option>
+                            <option value="markets">Markets</option>
+                            <option value="gigs">Gigs</option>
+                            <option value="theatre">Theatre</option>
+                            <option value="sports">Sports</option>
+                            <option value="free">Free Events</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="eventDescription">Description / Lineup *</label>
+                        <textarea id="eventDescription" name="eventDescription" rows="5" required placeholder="Describe your event, include lineup, performers, or key details..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ticketLink">Ticket Link</label>
+                        <input type="url" id="ticketLink" name="ticketLink" placeholder="https://example.com/tickets">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="eventFlyer">Event Flyer / Image</label>
+                        <input type="file" id="eventFlyer" name="eventFlyer" accept="image/*">
+                        <small>Upload a flyer or promotional image (JPG, PNG, max 5MB)</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="promoterName">Your Name *</label>
+                        <input type="text" id="promoterName" name="promoterName" required placeholder="Your full name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="promoterEmail">Your Email *</label>
+                        <input type="email" id="promoterEmail" name="promoterEmail" required placeholder="your.email@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="promoterPhone">Phone Number</label>
+                        <input type="tel" id="promoterPhone" name="promoterPhone" placeholder="Optional contact number">
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <label>
+                            <input type="checkbox" name="terms" required>
+                            I agree to the terms and conditions and confirm this event is legitimate *
+                        </label>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Submit Event</button>
+                        <button type="reset" class="btn btn-secondary">Clear Form</button>
+                    </div>
+
+                    <div id="formMessage" class="form-message"></div>
+                </form>
+
+                <div class="form-info">
+                    <h3>Submission Guidelines</h3>
+                    <ul>
+                        <li>All events must be happening in Norwich</li>
+                        <li>Events will be reviewed before publication</li>
+                        <li>You'll receive a confirmation email once your event is approved</li>
+                        <li>For urgent submissions, email <a href="mailto:submit@norwicheventshub.com">submit@norwicheventshub.com</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Norwich Event Hub</h3>
+                    <p>Your independent guide to everything happening in Norwich</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="today.html">What's On Today</a></li>
+                        <li><a href="directory.html">2026 Directory</a></li>
+                        <li><a href="submit.html">Submit Event</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:info@norwicheventshub.com">info@norwicheventshub.com</a></li>
+                        <li><a href="mailto:submit@norwicheventshub.com">submit@norwicheventshub.com</a></li>
+                        <li><a href="mailto:press@norwicheventshub.com">press@norwicheventshub.com</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Instagram">Instagram</a>
+                        <a href="#" aria-label="Facebook">Facebook</a>
+                        <a href="#" aria-label="Twitter">Twitter</a>
+                        <a href="#" aria-label="TikTok">TikTok</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Norwich Event Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/api.js"></script>
+    <script src="scripts/submit.js"></script>
+</body>
+</html>
+

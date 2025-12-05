@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Norwich Event Hub - Your complete guide to events, nightlife, culture, and community happenings in Norwich through 2026 and beyond.">
+    <meta name="keywords" content="Norwich events, what's on Norwich, Norwich nightlife, Norwich culture, Norwich events 2026">
+    <title>Norwich Event Hub - Discover What's On in Norwich</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="alternate icon" href="assets/favicon.svg">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://norwicheventshub.com/">
+    <meta property="og:title" content="Norwich Event Hub - Discover What's On in Norwich">
+    <meta property="og:description" content="Your complete guide to events, nightlife, culture, and community happenings in Norwich through 2026 and beyond.">
+    <meta property="og:image" content="https://norwicheventshub.com/assets/logo-image.jpg">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://norwicheventshub.com/">
+    <meta name="twitter:title" content="Norwich Event Hub - Discover What's On in Norwich">
+    <meta name="twitter:description" content="Your complete guide to events, nightlife, culture, and community happenings in Norwich through 2026 and beyond.">
+    <meta name="twitter:image" content="https://norwicheventshub.com/assets/logo-image.jpg">
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#3AB8FF">
+    
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="logo">
+                    <img src="assets/logo-image.jpg" alt="Norwich Event Hub" class="logo-image" />
+                    <span class="logo-text">NORWICH</span>
+                    <span class="logo-subtext">EVENT HUB</span>
+                </a>
+            </div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="today.html">What's On Today</a></li>
+                <li><a href="directory.html">2026 Directory</a></li>
+                <li><a href="submit.html">Submit Event</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background">
+            <div class="skyline"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">NORWICH EVENT HUB</h1>
+                <p class="hero-subtitle">Your complete guide to events, nightlife, culture, and community happenings in Norwich</p>
+                <div class="hero-cta">
+                    <a href="today.html" class="btn btn-primary">What's On Today</a>
+                    <a href="directory.html" class="btn btn-secondary">Browse 2026 Directory</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Events -->
+    <section class="featured-events">
+        <div class="container">
+            <h2 class="section-title">Featured This Week</h2>
+            <div class="events-grid" id="featuredEvents">
+                <!-- Events will be loaded dynamically -->
+                <div class="event-card placeholder">
+                    <div class="event-image"></div>
+                    <div class="event-content">
+                        <span class="event-date">Loading events...</span>
+                        <h3 class="event-title">Events coming soon</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Venues -->
+    <section class="featured-venues">
+        <div class="container">
+            <h2 class="section-title">Featured Venues</h2>
+            <div class="venues-grid" id="featuredVenues">
+                <div class="venue-card">
+                    <div class="venue-image venue-image-forum"></div>
+                    <div class="venue-content">
+                        <h3>The Forum</h3>
+                        <p>Norwich's premier cultural venue</p>
+                        <a href="directory.html?venue=forum" class="venue-link">View Events →</a>
+                    </div>
+                </div>
+                <div class="venue-card">
+                    <div class="venue-image venue-image-market"></div>
+                    <div class="venue-content">
+                        <h3>Norwich Market</h3>
+                        <p>Historic market with regular events</p>
+                        <a href="directory.html?venue=market" class="venue-link">View Events →</a>
+                    </div>
+                </div>
+                <div class="venue-card">
+                    <div class="venue-image venue-image-arts"></div>
+                    <div class="venue-content">
+                        <h3>Norwich Arts Centre</h3>
+                        <p>Live music and performance venue</p>
+                        <a href="directory.html?venue=arts" class="venue-link">View Events →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="categories">
+        <div class="container">
+            <h2 class="section-title">Explore by Category</h2>
+            <div class="categories-grid">
+                <a href="directory.html?category=nightlife" class="category-card">
+                    <div class="category-icon">🌙</div>
+                    <h3>Nightlife</h3>
+                </a>
+                <a href="directory.html?category=culture" class="category-card">
+                    <div class="category-icon">🎭</div>
+                    <h3>Culture</h3>
+                </a>
+                <a href="directory.html?category=community" class="category-card">
+                    <div class="category-icon">🤝</div>
+                    <h3>Community</h3>
+                </a>
+                <a href="directory.html?category=markets" class="category-card">
+                    <div class="category-icon">🛒</div>
+                    <h3>Markets</h3>
+                </a>
+                <a href="directory.html?category=gigs" class="category-card">
+                    <div class="category-icon">🎸</div>
+                    <h3>Gigs</h3>
+                </a>
+                <a href="directory.html?category=theatre" class="category-card">
+                    <div class="category-icon">🎪</div>
+                    <h3>Theatre</h3>
+                </a>
+                <a href="directory.html?category=sports" class="category-card">
+                    <div class="category-icon">⚽</div>
+                    <h3>Sports</h3>
+                </a>
+                <a href="directory.html?category=free" class="category-card">
+                    <div class="category-icon">🆓</div>
+                    <h3>Free Events</h3>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Have an Event to Share?</h2>
+                <p>Submit your event to reach thousands of Norwich residents and visitors</p>
+                <a href="submit.html" class="btn btn-primary">Submit Your Event</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Norwich Event Hub</h3>
+                    <p>Your independent guide to everything happening in Norwich</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="today.html">What's On Today</a></li>
+                        <li><a href="directory.html">2026 Directory</a></li>
+                        <li><a href="submit.html">Submit Event</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:info@norwicheventshub.com">info@norwicheventshub.com</a></li>
+                        <li><a href="mailto:submit@norwicheventshub.com">submit@norwicheventshub.com</a></li>
+                        <li><a href="mailto:press@norwicheventshub.com">press@norwicheventshub.com</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Instagram">Instagram</a>
+                        <a href="#" aria-label="Facebook">Facebook</a>
+                        <a href="#" aria-label="Twitter">Twitter</a>
+                        <a href="#" aria-label="TikTok">TikTok</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Norwich Event Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/api.js"></script>
+    <script src="scripts/analytics.js"></script>
+    <script src="scripts/home.js"></script>
+</body>
+</html>
+

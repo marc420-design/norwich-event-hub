@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="What's on today in Norwich - Discover events happening today in Norwich.">
+    <title>What's On Today - Norwich Event Hub</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="logo">
+                    <img src="assets/logo-image.jpg" alt="Norwich Event Hub" class="logo-image" />
+                    <span class="logo-text">NORWICH</span>
+                    <span class="logo-subtext">EVENT HUB</span>
+                </a>
+            </div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="today.html" class="active">What's On Today</a></li>
+                <li><a href="directory.html">2026 Directory</a></li>
+                <li><a href="submit.html">Submit Event</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>What's On Today</h1>
+            <p id="todayDate"></p>
+        </div>
+    </section>
+
+    <!-- Events List -->
+    <section class="events-section">
+        <div class="container">
+            <div class="events-filters">
+                <button class="filter-btn active" data-filter="all">All Events</button>
+                <button class="filter-btn" data-filter="nightlife">Nightlife</button>
+                <button class="filter-btn" data-filter="culture">Culture</button>
+                <button class="filter-btn" data-filter="community">Community</button>
+                <button class="filter-btn" data-filter="free">Free Events</button>
+            </div>
+            <div class="events-list" id="todayEvents">
+                <!-- Events will be loaded dynamically -->
+                <div class="event-card placeholder">
+                    <div class="event-image"></div>
+                    <div class="event-content">
+                        <span class="event-date">No events found for today</span>
+                        <h3 class="event-title">Check back soon or submit your event!</h3>
+                        <a href="submit.html" class="event-link">Submit an Event →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Norwich Event Hub</h3>
+                    <p>Your independent guide to everything happening in Norwich</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="today.html">What's On Today</a></li>
+                        <li><a href="directory.html">2026 Directory</a></li>
+                        <li><a href="submit.html">Submit Event</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:info@norwicheventshub.com">info@norwicheventshub.com</a></li>
+                        <li><a href="mailto:submit@norwicheventshub.com">submit@norwicheventshub.com</a></li>
+                        <li><a href="mailto:press@norwicheventshub.com">press@norwicheventshub.com</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Instagram">Instagram</a>
+                        <a href="#" aria-label="Facebook">Facebook</a>
+                        <a href="#" aria-label="Twitter">Twitter</a>
+                        <a href="#" aria-label="TikTok">TikTok</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Norwich Event Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/api.js"></script>
+    <script src="scripts/today.js"></script>
+</body>
+</html>
+

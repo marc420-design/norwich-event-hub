@@ -1,0 +1,127 @@
+// Directory Page JavaScript
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Check for category filter in URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const categoryParam = urlParams.get('category');
+    
+    if (categoryParam) {
+        document.getElementById('categoryFilter').value = categoryParam;
+    }
+    
+    // Load all events
+    loadDirectoryEvents();
+    
+    // Filter event listeners
+    document.getElementById('categoryFilter').addEventListener('change', applyFilters);
+    document.getElementById('monthFilter').addEventListener('change', applyFilters);
+    document.getElementById('searchFilter').addEventListener('input', applyFilters);
+});
+
+async function loadDirectoryEvents() {
+    const eventsContainer = document.getElementById('directoryEvents');
+    if (!eventsContainer) return;
+    
+    eventsContainer.innerHTML = '<div class="event-card placeholder"><div class="event-content"><span class="event-date">Loading...</span></div></div>';
+    
+    try {
+        let allEvents = [];
+        
+        // Try to load from API
+        if (typeof getEventsFromAPI !== 'undefined') {
+            allEvents = await getEventsFromAPI({ status: 'approved' });
+        } else {
+            // Fallback to sample data
+            allEvents = eventsData;
+        }
+        
+        eventsContainer.innerHTML = '';
+        
+        if (allEvents.length === 0) {
+            eventsContainer.innerHTML = `
+                <div class="event-card placeholder">
+                    <div class="event-image"></div>
+                    <div class="event-content">
+                        <span class="event-date">No events found</span>
+                        <h3 class="event-title">Events directory coming soon</h3>
+                        <a href="submit.html" class="event-link">Submit an Event →</a>
+                    </div>
+                </div>
+            `;
+            return;
+        }
+        
+        // Sort events by date
+        const sortedEvents = [...allEvents].sort((a, b) => new Date(a.date) - new Date(b.date));
+        
+        // Update global eventsData for filtering
+        window.eventsData = sortedEvents;
+        
+        sortedEvents.forEach(event => {
+            const card = createEventCard(event);
+            eventsContainer.appendChild(card);
+        });
+        
+        applyFilters();
+    } catch (error) {
+        console.error('Error loading directory events:', error);
+        eventsContainer.innerHTML = `
+            <div class="event-card placeholder">
+                <div class="event-image"></div>
+                <div class="event-content">
+                    <span class="event-date">Error loading events</span>
+                    <h3 class="event-title">Please try again later</h3>
+                </div>
+            </div>
+        `;
+    }
+}
+
+function applyFilters() {
+    const categoryFilter = document.getElementById('categoryFilter').value;
+    const monthFilter = document.getElementById('monthFilter').value;
+    const searchFilter = document.getElementById('searchFilter').value.toLowerCase();
+    const eventsContainer = document.getElementById('directoryEvents');
+    const noResults = document.getElementById('noResults');
+    
+    const cards = eventsContainer.querySelectorAll('.event-card');
+    let visibleCount = 0;
+    
+    cards.forEach(card => {
+        const event = eventsData.find(e => e.id === parseInt(card.dataset.eventId || '0'));
+        if (!event) {
+            card.style.display = 'none';
+            return;
+        }
+        
+        // Category filter
+        const categoryMatch = categoryFilter === 'all' || event.category === categoryFilter;
+        
+        // Month filter
+        const eventMonth = event.date.split('-')[1];
+        const monthMatch = monthFilter === 'all' || eventMonth === monthFilter;
+        
+        // Search filter
+        const searchMatch = !searchFilter || 
+            event.name.toLowerCase().includes(searchFilter) ||
+            event.description.toLowerCase().includes(searchFilter) ||
+            event.location.toLowerCase().includes(searchFilter);
+        
+        if (categoryMatch && monthMatch && searchMatch) {
+            card.style.display = 'block';
+            visibleCount++;
+        } else {
+            card.style.display = 'none';
+        }
+    });
+    
+    // Show/hide no results message
+    if (visibleCount === 0) {
+        noResults.style.display = 'block';
+    } else {
+        noResults.style.display = 'none';
+    }
+}
+
+// createEventCard is already defined in main.js and includes eventId
+

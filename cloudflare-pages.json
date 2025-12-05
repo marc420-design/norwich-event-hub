@@ -1,0 +1,52 @@
+{
+  "name": "norwich-event-hub",
+  "production": {
+    "branch": "main",
+    "build_command": "",
+    "output_directory": "/",
+    "root_directory": "/"
+  },
+  "preview": {
+    "branch": "develop",
+    "build_command": "",
+    "output_directory": "/",
+    "root_directory": "/"
+  },
+  "environment_variables": {
+    "GOOGLE_APPS_SCRIPT_URL": "",
+    "GOOGLE_SHEETS_API_KEY": "",
+    "GOOGLE_SHEET_ID": ""
+  },
+  "headers": [
+    {
+      "source": "/*",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/events",
+      "destination": "/directory.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/submit",
+      "destination": "/submit.html",
+      "statusCode": 301
+    }
+  ]
+}
+

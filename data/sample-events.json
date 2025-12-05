@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-12-05T18:35:17.430849",
+  "lastUpdated": "2025-12-05T19:30:49.371308",
   "events": [
     {
       "id": 101,
@@ -384,8 +384,188 @@
       "ticketLink": null,
       "image": null,
       "status": "approved"
+    },
+    {
+      "id": 108,
+      "name": "New Year's Eve at Revolución de Cuba Norwich",
+      "date": "2026-12-31",
+      "time": "20:00",
+      "location": "Revolucion De Cuba Norwich",
+      "category": "nightlife",
+      "description": "Bring in Año Nuevo the Cuban way - with live music, rum cocktails, samba vibes, and Latin heat all night long for 2026.",
+      "ticketLink": "https://www.skiddle.com/whats-on/Norwich/Revolucion-De-Cuba-Norwich/New-Years-Eve-at-Revolucin-de-Cuba-Norwich/41472569/",
+      "image": null,
+      "status": "approved"
+    },
+    {
+      "id": 109,
+      "name": "The Style Councillors",
+      "date": "2026-05-08",
+      "time": "19:00",
+      "location": "The Adrian Flux Waterfront",
+      "category": "gigs",
+      "description": "'Our Favourite Shop' 40th Anniversary Tour.",
+      "ticketLink": "https://www.skiddle.com/whats-on/Norwich/The-Adrian-Flux-Waterfront/The-Style-Councillors/41099618/",
+      "image": null,
+      "status": "pending"
+    },
+    {
+      "id": 110,
+      "name": "Tyketto",
+      "date": "2026-04-14",
+      "time": "19:30",
+      "location": "The Adrian Flux Waterfront",
+      "category": "gigs",
+      "description": "Tyketto performs live at The Adrian Flux Waterfront in Norwich.",
+      "ticketLink": "https://www.skiddle.com/whats-on/Norwich/The-Adrian-Flux-Waterfront/Tyketto/41619746/",
+      "image": null,
+      "status": "approved"
+    },
+    {
+      "id": 111,
+      "name": "The Gerry Cinna-Man Experience",
+      "date": "2026-04-03",
+      "time": "19:00",
+      "location": "The Brickmakers",
+      "category": "gigs",
+      "description": "The Gerry Cinna-Man Experience comes back to The Brickmakers in Norwich for what will be an absolute BELTER of a night.",
+      "ticketLink": "https://www.skiddle.com/whats-on/Norwich/The-Brickmakers/The-Gerry-Cinna-Man-Experience/41572948/",
+      "image": null,
+      "status": "approved"
+    },
+    {
+      "id": 112,
+      "name": "Clearwater Creedence Revival + Ten Years After",
+      "date": "2026-04-16",
+      "time": "19:00",
+      "location": "The Adrian Flux Waterfront",
+      "category": "gigs",
+      "description": "Clearwater Creedence Revival and Ten Years After perform as part of the Fortunate Son Tour.",
+      "ticketLink": "https://www.skiddle.com/whats-on/Norwich/The-Adrian-Flux-Waterfront/Clearwater-Creedence-Revival--Ten-Years-After/41438123/",
+      "image": null,
+      "status": "approved"
+    },
+    {
+      "id": 113,
+      "name": "Country Club - Country Music Festival - Norwich",
+      "date": "2026-03-21",
+      "time": "18:00",
+      "location": "Epic Studios",
+      "category": "community",
+      "description": "The UK's first ever country music day party is riding back to Norwich for the ultimate hoedown in March 2026!",
+      "ticketLink": "https://www.skiddle.com/whats-on/Norwich/Epic-Studios/Country-Club---Country-Music-Festival---Norwich/41499183/",
+      "image": null,
+      "status": "approved"
+    },
+    {
+      "id": 114,
+      "name": "Country Club - Outdoor Country Music Festival - Norwich",
+      "date": "2026-07-04",
+      "time": "15:00",
+      "location": "Junkyard",
+      "category": "community",
+      "description": "The UK's first ever outdoor country music day party is riding into Norwich for the ultimate hoedown in July 2026!",
+      "ticketLink": "https://www.skiddle.com/whats-on/Norwich/Junkyard/Country-Club---Outdoor-Country-Music-Festival---Norwich/41499201/",
+      "image": null,
+      "status": "approved"
+    },
+    {
+      "id": 115,
+      "name": "Gin & Rum Festival - Norwich - 2026",
+      "date": "2026-07-04",
+      "time": "12:30",
+      "location": "St Andrews Hall Norwich",
+      "category": "community",
+      "description": "The UK's Biggest Touring Gin and Rum Festival Returns to Norwich for ONE Weekend Only.",
+      "ticketLink": "https://www.skiddle.com/whats-on/Norwich/St-Andrews-Hall-Norwich/Gin--Rum-Festival---Norwich---2026/41295144/",
+      "image": null,
+      "status": "approved"
+    },
+    {
+      "id": 116,
+      "name": "DIVORCE",
+      "date": "2025-12-05",
+      "time": "20:00",
+      "location": "Norwich Arts Centre",
+      "category": "gigs",
+      "description": "A rock/pop event featuring the band DIVORCE.",
+      "ticketLink": "https://norwichartscentre.co.uk/event/divorce/",
+      "image": null,
+      "status": "approved"
+    },
+    {
+      "id": 117,
+      "name": "Rock/Pop Concert",
+      "date": "2025-12-05",
+      "time": "20:00",
+      "location": "Norwich Arts Centre",
+      "category": "gigs",
+      "description": "An exciting night of rock and pop music featuring various artists.",
+      "ticketLink": "https://norwichartscentre.co.uk/event/category/music/",
+      "image": null,
+      "status": "approved"
+    },
+    {
+      "id": 118,
+      "name": "Winter Footwear and Coats Collection",
+      "date": "2025-12-06",
+      "time": "10:00",
+      "location": "Norwich Arts Centre",
+      "category": "community",
+      "description": "A collection event for winter footwear and coats.",
+      "ticketLink": "https://norwichartscentre.co.uk/event/winter-footwear-and-coats-collection/",
+      "image": null,
+      "status": "approved"
+    },
+    {
+      "id": 119,
+      "name": "Clutter City Winter Market",
+      "date": "2025-12-06",
+      "time": "11:00",
+      "location": "Norwich Arts Centre",
+      "category": "markets",
+      "description": "A vibrant winter market featuring local artisans and craftspeople, perfect for Christmas shopping.",
+      "ticketLink": "https://norwichartscentre.co.uk/event/clutter-city-winter-market/",
+      "image": null,
+      "status": "approved"
+    },
+    {
+      "id": 120,
+      "name": "Christmas Community Event",
+      "date": "2025-12-06",
+      "time": "11:00",
+      "location": "Norwich Arts Centre",
+      "category": "community",
+      "description": "Join us for a festive celebration filled with community spirit and holiday cheer.",
+      "ticketLink": "https://norwichartscentre.co.uk/event/category/christmas/",
+      "image": null,
+      "status": "approved"
+    },
+    {
+      "id": 121,
+      "name": "BOHO XMAS BINGO",
+      "date": "2025-12-17",
+      "time": "20:30",
+      "location": "Bowling House",
+      "category": "nightlife",
+      "description": "Join us for a festive bingo night filled with fun and prizes.",
+      "ticketLink": "https://www.eventbrite.co.uk/e/boho-xmas-bingo-wed-17th-dec-2025-830pm-show-tickets-1680417456849?aff=ebdssbcitybrowsenightlife",
+      "image": null,
+      "status": "approved"
+    },
+    {
+      "id": 122,
+      "name": "Event",
+      "date": "2025-12-06",
+      "time": "10:00",
+      "location": "Norwich Arts Centre",
+      "category": "culture",
+      "description": "Event at Norwich Arts Centre.",
+      "ticketLink": "https://www.norwichartscentre.co.uk/whats-on/",
+      "image": null,
+      "status": "approved"
     }
   ],
   "aiScraped": true,
-  "realEvents": 7
+  "realEvents": 26
 }

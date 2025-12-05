@@ -1,6 +1,90 @@
 {
-  "lastUpdated": "2025-12-05",
+  "lastUpdated": "2025-12-05T18:35:17.430849",
   "events": [
+    {
+      "id": 101,
+      "name": "4am Kru - Norwich",
+      "date": "2026-02-20",
+      "time": "22:00",
+      "location": "Epic Studios",
+      "category": "nightlife",
+      "description": "4am Kru land in Norwich for an immersive take in live jungle.",
+      "ticketLink": "https://www.skiddle.com/whats-on/Norwich/Epic-Studios/4am-Kru---Norwich/41585204/",
+      "image": null,
+      "status": "approved"
+    },
+    {
+      "id": 102,
+      "name": "New Year's Eve at RevoluciÃ³n de Cuba Norwich",
+      "date": "2025-12-31",
+      "time": "20:00",
+      "location": "Revolucion De Cuba Norwich",
+      "category": "nightlife",
+      "description": "Bring in AÃ±o Nuevo the Cuban way - with live music, rum cocktails, samba vibes, and Latin heat all night long for 2026.",
+      "ticketLink": "https://www.skiddle.com/whats-on/Norwich/Revolucion-De-Cuba-Norwich/New-Years-Eve-at-Revolucin-de-Cuba-Norwich/41472569/",
+      "image": null,
+      "status": "approved"
+    },
+    {
+      "id": 103,
+      "name": "90s Baby Daytime Clubbing - With The Over 30s Club",
+      "date": "2026-01-31",
+      "time": "15:00",
+      "location": "Above Kerry's Norwich",
+      "category": "nightlife",
+      "description": "The ultimate party for grown-ups - club classics, top DJs, and it's all done by 8PM. No kids, no drama.",
+      "ticketLink": "https://www.skiddle.com/whats-on/Norwich/Above-Kerry%27s-Norwich/90s-Baby-Daytime-Clubbing---With-The-Over-30s-Club/41592449/",
+      "image": null,
+      "status": "approved"
+    },
+    {
+      "id": 104,
+      "name": "Raw Material",
+      "date": "2026-03-07",
+      "time": "20:00",
+      "location": "Kudos Bar And Nightclub",
+      "category": "nightlife",
+      "description": "Raw Material return to Norwich in 2026 with a heavyweight TBA.",
+      "ticketLink": "https://www.skiddle.com/whats-on/Norwich/Kudos-Bar-And-Nightclub/Raw-Material/41495013/",
+      "image": null,
+      "status": "approved"
+    },
+    {
+      "id": 105,
+      "name": "The Greatest MUSICALS Daytime Disco - Norwich",
+      "date": "2026-02-07",
+      "time": "13:00",
+      "location": "Be At One, Norwich",
+      "category": "nightlife",
+      "description": "Expect music from Hamilton, Grease, Dirty Dancing, High School Musical, Wicked & Mama Mia to The Greatest Showman, Frozen & Six.",
+      "ticketLink": "https://www.skiddle.com/whats-on/Norwich/Be-At-One/The-Greatest-MUSICALS-Daytime-Disco---Norwich/41364501/",
+      "image": null,
+      "status": "approved"
+    },
+    {
+      "id": 106,
+      "name": "Symphonic Ibiza Orchestra | Earlham Park Concert",
+      "date": "2026-06-12",
+      "time": "17:00",
+      "location": "Earlham Park",
+      "category": "culture",
+      "description": "The Symphonic Ibiza Orchestra comes to Norwich! Prepare for an unforgettable night as a 40-piece orchestra performs the greatest Ibiza dance anthems.",
+      "ticketLink": "https://www.skiddle.com/whats-on/Norwich/Earlham-Park/Symphonic-Ibiza-Orchestra--Earlham-Park-Concert/41445961/",
+      "image": null,
+      "status": "approved"
+    },
+    {
+      "id": 107,
+      "name": "The Specials Ltd. 'Ghost Town' 45th Anniversary",
+      "date": "2026-03-20",
+      "time": "19:00",
+      "location": "The Adrian Flux Waterfront",
+      "category": "gigs",
+      "description": "Celebrating the 45th anniversary of The Specials' classic #1 single 'Ghost Town'.",
+      "ticketLink": "https://www.skiddle.com/whats-on/Norwich/The-Adrian-Flux-Waterfront/The-Specials-Ltd-Ghost-Town-45th-Anniversary/41293774/",
+      "image": null,
+      "status": "approved"
+    },
     {
       "id": 100,
       "name": "New Year's Eve Celebration 2026",
@@ -301,6 +385,7 @@
       "image": null,
       "status": "approved"
     }
-  ]
+  ],
+  "aiScraped": true,
+  "realEvents": 7
 }
-

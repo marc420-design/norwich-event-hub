@@ -1,0 +1,1 @@
+- its not showing on the app need real time data added of the ai intergrated

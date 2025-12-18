@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-12-18T16:28:44.728198",
+  "lastUpdated": "2025-12-18T16:30:15.615001",
   "events": [
     {
       "id": 101,
@@ -778,8 +778,19 @@
       "status": "approved",
       "source": "Manual - User Request",
       "note": "Recurring event - check venue for specific dates"
+    },
+    {
+      "name": "RAW FREQUENCIES: The Launch - Drum & Bass",
+      "date": "2025-09-05",
+      "time": "20:00",
+      "location": "Kudos Bar And Nightclub",
+      "category": "nightlife",
+      "description": "RAW FREQUENCIES launch event at Kudos Norwich. Premium drum & bass night featuring top DJs and sound system.",
+      "ticketLink": "https://happeningnext.com/event/raw-frequencies-the-launch-%C3%A2%C2%80%C2%94-kudos-norwich-eid1p9vgj3vtaa",
+      "status": "approved",
+      "source": "Manual - User Request"
     }
   ],
   "aiScraped": true,
-  "realEvents": 65
+  "realEvents": 66
 }

@@ -5,11 +5,20 @@ window.eventsData = window.eventsData || [];
 // Clear old localStorage
 localStorage.removeItem('norwichEvents');
 
-// Force reload events immediately
+// Force reload events immediately with aggressive cache busting
 async function forceLoadEvents() {
     try {
         console.log('🔄 Loading events from JSON...');
-        const response = await fetch('data/sample-events.json?t=' + Date.now());
+        // Aggressive cache busting with multiple parameters
+        const cacheBuster = Date.now() + Math.random();
+        const response = await fetch('data/sample-events.json?v=' + cacheBuster + '&nocache=' + Date.now(), {
+            cache: 'no-store',
+            headers: {
+                'Cache-Control': 'no-cache, no-store, must-revalidate',
+                'Pragma': 'no-cache',
+                'Expires': '0'
+            }
+        });
 
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);

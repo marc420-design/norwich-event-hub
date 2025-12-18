@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-12-18T16:30:15.615001",
+  "lastUpdated": "2025-12-18T16:37:42.857240",
   "events": [
     {
       "id": 101,
@@ -789,8 +789,39 @@
       "ticketLink": "https://happeningnext.com/event/raw-frequencies-the-launch-%C3%A2%C2%80%C2%94-kudos-norwich-eid1p9vgj3vtaa",
       "status": "approved",
       "source": "Manual - User Request"
+    },
+    {
+      "name": "Fruity Licks - UKG/Bassline/House",
+      "date": "2025-12-20",
+      "time": "21:00",
+      "location": "Qube Norwich",
+      "category": "nightlife",
+      "description": "Underground UKG, Bassline & House event featuring Charlotte Devaney & Fruity Licks residents. Norwich's premier club night for UKG and bassline lovers.",
+      "ticketLink": "https://www.skiddle.com/whats-on/Norwich/Qube/",
+      "status": "approved"
+    },
+    {
+      "name": "Fruity Licks - UKG/Bassline/House",
+      "date": "2026-02-20",
+      "time": "21:00",
+      "location": "Qube Norwich",
+      "category": "nightlife",
+      "description": "Underground UKG, Bassline & House event featuring Charlotte Devaney & Fruity Licks residents. Norwich's premier club night for UKG and bassline lovers.",
+      "ticketLink": "https://www.skiddle.com/whats-on/Norwich/Qube/",
+      "status": "approved"
+    },
+    {
+      "name": "Fruity Licks - UKG/Bassline/House",
+      "date": "2026-03-20",
+      "time": "21:00",
+      "location": "Qube Norwich",
+      "category": "nightlife",
+      "description": "Underground UKG, Bassline & House event featuring Charlotte Devaney & Fruity Licks residents. Norwich's premier club night for UKG and bassline lovers.",
+      "ticketLink": "https://www.skiddle.com/whats-on/Norwich/Qube/",
+      "status": "approved"
     }
   ],
   "aiScraped": true,
-  "realEvents": 66
+  "realEvents": 69,
+  "cacheVersion": 1766075862.85724
 }

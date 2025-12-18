@@ -8,6 +8,10 @@ on:
   # Allow manual trigger
   workflow_dispatch:
 
+# Required permissions for the workflow
+permissions:
+  contents: write  # Allow pushing to the repository
+
 jobs:
   aggregate-events:
     runs-on: ubuntu-latest
@@ -47,12 +51,44 @@ jobs:
           cd automation
           python ai-event-aggregator.py
 
+      - name: Sync data to website
+        run: |
+          cd automation
+          # Find the latest events file (check both naming patterns)
+          LATEST_FILE=$(ls -t ai_events_*.json events_*.json 2>/dev/null | head -1 || echo "")
+
+          if [ -n "$LATEST_FILE" ]; then
+            echo "Found latest file: $LATEST_FILE"
+            # Copy to website data directory (Python script may have already done this)
+            cp "$LATEST_FILE" ../data/sample-events.json 2>/dev/null || echo "Already synced by Python script"
+            echo "✅ Data synced to website"
+          else
+            echo "⚠️ No events file found"
+          fi
+
+      - name: Commit and push updated data
+        run: |
+          git config user.name "AI Event Bot"
+          git config user.email "bot@norwicheventshub.com"
+          git add data/sample-events.json
+
+          # Only commit if there are changes
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "🤖 Update events data from AI scraper [automated]"
+            git push
+            echo "✅ Changes pushed to repository"
+          fi
+
       - name: Upload results artifact
         if: always()
         uses: actions/upload-artifact@v3
         with:
           name: aggregation-results
-          path: automation/ai_events_*.json
+          path: |
+            automation/events_*.json
+            automation/ai_events_*.json
           retention-days: 30
 
       - name: Clean up credentials

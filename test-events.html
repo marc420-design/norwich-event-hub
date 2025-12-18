@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Data Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; }
+        h1 { color: #3AB8FF; }
+        .event { border: 1px solid #ddd; padding: 15px; margin: 10px 0; border-radius: 4px; }
+        .event h3 { margin: 0 0 10px 0; color: #234F32; }
+        .event p { margin: 5px 0; }
+        .date { color: #D6A72B; font-weight: bold; }
+        .category { background: #3AB8FF; color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; }
+        .debug { background: #ffffcc; padding: 15px; margin: 20px 0; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Event Data Test Page</h1>
+
+        <div class="debug" id="debugInfo">
+            <h2>Debug Info</h2>
+            <p>Loading...</p>
+        </div>
+
+        <h2>All Events</h2>
+        <div id="eventsList"></div>
+    </div>
+
+    <script src="scripts/force-reload.js"></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/api.js"></script>
+
+    <script>
+        async function testEvents() {
+            const debugInfo = document.getElementById('debugInfo');
+            const eventsList = document.getElementById('eventsList');
+
+            // Wait for events to load
+            if (window.eventsLoadedPromise) {
+                await window.eventsLoadedPromise;
+            }
+
+            let html = '<h3>Debug Information:</h3>';
+            html += `<p><strong>window.eventsData exists:</strong> ${typeof window.eventsData !== 'undefined'}</p>`;
+            html += `<p><strong>window.eventsData length:</strong> ${window.eventsData ? window.eventsData.length : 'N/A'}</p>`;
+            html += `<p><strong>localStorage has data:</strong> ${!!localStorage.getItem('norwichEvents')}</p>`;
+
+            const stored = localStorage.getItem('norwichEvents');
+            if (stored) {
+                const parsed = JSON.parse(stored);
+                html += `<p><strong>localStorage events count:</strong> ${parsed.length}</p>`;
+            }
+
+            html += `<p><strong>getTodayDateString:</strong> ${typeof getTodayDateString !== 'undefined' ? getTodayDateString() : 'N/A'}</p>`;
+
+            debugInfo.innerHTML = html;
+
+            // Display all events
+            const events = window.eventsData || [];
+            if (events.length === 0) {
+                eventsList.innerHTML = '<p style="color: red;">NO EVENTS LOADED!</p>';
+                return;
+            }
+
+            let eventsHtml = '';
+            events.forEach(event => {
+                eventsHtml += `
+                    <div class="event">
+                        <h3>${event.name}</h3>
+                        <p class="date">📅 ${event.date} at ${event.time || 'Time TBA'}</p>
+                        <p>📍 ${event.location}</p>
+                        <p><span class="category">${event.category}</span></p>
+                        <p>${event.description}</p>
+                        ${event.ticketLink ? `<p><a href="${event.ticketLink}" target="_blank">Get Tickets →</a></p>` : ''}
+                    </div>
+                `;
+            });
+
+            eventsList.innerHTML = eventsHtml;
+        }
+
+        document.addEventListener('DOMContentLoaded', testEvents);
+    </script>
+</body>
+</html>

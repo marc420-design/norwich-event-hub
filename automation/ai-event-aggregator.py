@@ -497,16 +497,85 @@ Example output:
 
     def save_to_json(self):
         """Save events to JSON file as backup"""
+        import shutil
+
         filename = f"ai_events_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
 
+        data = {
+            'timestamp': datetime.now().isoformat(),
+            'total_events': len(self.events),
+            'events': self.events
+        }
+
         with open(filename, 'w', encoding='utf-8') as f:
-            json.dump({
-                'timestamp': datetime.now().isoformat(),
-                'total_events': len(self.events),
-                'events': self.events
-            }, f, indent=2, ensure_ascii=False)
+            json.dump(data, f, indent=2, ensure_ascii=False)
 
         logger.info(f"  💾 Saved events to {filename}")
+
+        # Also sync to website data directory
+        try:
+            website_data_path = '../data/sample-events.json'
+
+            # Load existing events
+            existing_events = []
+            try:
+                with open(website_data_path, 'r', encoding='utf-8') as f:
+                    existing_data = json.load(f)
+                    existing_events = existing_data.get('events', [])
+                    logger.info(f"  📖 Loaded {len(existing_events)} existing events")
+            except FileNotFoundError:
+                logger.info(f"  📝 No existing events file, creating new one")
+
+            # Merge events: combine new scraped events with existing ones
+            # Remove duplicates based on name + date + location
+            def event_key(event):
+                return (
+                    event.get('name', '').lower().strip(),
+                    event.get('date', ''),
+                    event.get('location', '').lower().strip()
+                )
+
+            # Create dict of existing events
+            merged_events_dict = {}
+            for event in existing_events:
+                key = event_key(event)
+                merged_events_dict[key] = event
+
+            # Add/update with new scraped events
+            new_count = 0
+            updated_count = 0
+            for event in self.events:
+                key = event_key(event)
+                if key in merged_events_dict:
+                    # Update existing event with fresh data
+                    merged_events_dict[key] = event
+                    updated_count += 1
+                else:
+                    # Add new event
+                    merged_events_dict[key] = event
+                    new_count += 1
+
+            # Convert back to list
+            merged_events = list(merged_events_dict.values())
+
+            # Sort by date
+            merged_events.sort(key=lambda x: (x.get('date', '9999-99-99'), x.get('time', '00:00')))
+
+            # Transform to website format
+            website_data = {
+                'lastUpdated': datetime.now().isoformat(),
+                'events': merged_events,
+                'aiScraped': True,
+                'realEvents': len(merged_events)
+            }
+
+            with open(website_data_path, 'w', encoding='utf-8') as f:
+                json.dump(website_data, f, indent=2, ensure_ascii=False)
+
+            logger.info(f"  🔄 Synced to website: {len(merged_events)} total events")
+            logger.info(f"     ➕ {new_count} new, ♻️ {updated_count} updated")
+        except Exception as e:
+            logger.warning(f"  ⚠️ Could not sync to website: {e}")
 
     def print_summary(self):
         """Print summary statistics"""

@@ -38,57 +38,15 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Event Data Structure (will be replaced with API/backend later)
-// Load sample events from JSON file or use default
-let eventsData = [];
+// Event Data Structure - Use window.eventsData set by force-reload.js
+// This ensures all scripts share the same data
+window.eventsData = window.eventsData || [];
 
-// Try to load sample events from JSON file
-async function loadSampleEvents() {
-    try {
-        const response = await fetch('data/sample-events.json');
-        if (response.ok) {
-            const data = await response.json();
-            eventsData = data.events || [];
-            return;
-        }
-    } catch (error) {
-        console.log('Could not load sample events, using defaults');
-    }
-    
-    // Fallback default events
-    eventsData = [
-        {
-            id: 1,
-            name: "Norwich Music Festival",
-            date: "2026-06-15",
-            time: "18:00",
-            location: "The Forum, Millennium Plain",
-            category: "gigs",
-            description: "A celebration of local music talent featuring performances from Norwich's best artists.",
-            ticketLink: "https://example.com/tickets",
-            image: null,
-            status: "approved"
-        },
-        {
-            id: 2,
-            name: "Norwich Night Market",
-            date: "2026-07-20",
-            time: "17:00",
-            location: "Norwich Market",
-            category: "markets",
-            description: "Evening market with local vendors, food stalls, and live entertainment.",
-            ticketLink: null,
-            image: null,
-            status: "approved"
-        }
-    ];
-}
+// Alias for compatibility
+let eventsData = window.eventsData;
 
-// Load sample events on page load and make sure it completes before other scripts
-if (typeof window !== 'undefined') {
-    // Make this globally available as a promise
-    window.eventsLoadedPromise = loadSampleEvents();
-}
+// Note: Events are loaded by force-reload.js
+// This script just provides utility functions
 
 // Utility Functions
 function formatDate(dateString) {

@@ -21,19 +21,20 @@ document.addEventListener('DOMContentLoaded', function() {
 async function loadDirectoryEvents() {
     const eventsContainer = document.getElementById('directoryEvents');
     if (!eventsContainer) return;
-    
+
     eventsContainer.innerHTML = '<div class="event-card placeholder"><div class="event-content"><span class="event-date">Loading...</span></div></div>';
-    
+
+    // Wait for events to load first
+    if (window.eventsLoadedPromise) {
+        await window.eventsLoadedPromise;
+    }
+
     try {
         let allEvents = [];
-        
-        // Try to load from API
-        if (typeof getEventsFromAPI !== 'undefined') {
-            allEvents = await getEventsFromAPI({ status: 'approved' });
-        } else {
-            // Fallback to sample data
-            allEvents = eventsData;
-        }
+
+        // Use the loaded events data - Show ALL events
+        allEvents = (window.eventsData || []);
+        console.log(`📊 Loaded ${allEvents.length} events from window.eventsData`);
         
         eventsContainer.innerHTML = '';
         
@@ -88,7 +89,7 @@ function applyFilters() {
     let visibleCount = 0;
     
     cards.forEach(card => {
-        const event = eventsData.find(e => e.id === parseInt(card.dataset.eventId || '0'));
+        const event = (window.eventsData || []).find(e => e.id === parseInt(card.dataset.eventId || '0'));
         if (!event) {
             card.style.display = 'none';
             return;

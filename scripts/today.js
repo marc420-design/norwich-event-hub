@@ -29,20 +29,21 @@ document.addEventListener('DOMContentLoaded', function() {
 async function loadTodayEvents() {
     const eventsContainer = document.getElementById('todayEvents');
     if (!eventsContainer) return;
-    
+
     eventsContainer.innerHTML = '<div class="event-card placeholder"><div class="event-content"><span class="event-date">Loading...</span></div></div>';
-    
+
+    // Wait for events to load first
+    if (window.eventsLoadedPromise) {
+        await window.eventsLoadedPromise;
+    }
+
     try {
         let todayEvents = [];
-        
-        // Try to load from API
-        if (typeof getTodayEvents !== 'undefined') {
-            todayEvents = await getTodayEvents();
-        } else {
-            // Fallback to sample data
-            const today = getTodayDateString();
-            todayEvents = eventsData.filter(event => event.date === today);
-        }
+
+        // Use the loaded events data - Show ALL events for today
+        const today = getTodayDateString();
+        todayEvents = (window.eventsData || []).filter(event => event.date === today);
+        console.log(`📅 Today (${today}): Found ${todayEvents.length} events from ${window.eventsData?.length || 0} total`);
         
         eventsContainer.innerHTML = '';
         

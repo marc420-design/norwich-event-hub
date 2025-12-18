@@ -20,24 +20,17 @@ async function loadFeaturedEvents() {
     }
 
     try {
-        // Try to load from API
-        let events = [];
-        if (typeof getEventsFromAPI !== 'undefined') {
-            events = await getEventsFromAPI({ status: 'approved' });
-            // Get upcoming events (next 6)
-            const today = getTodayDateString();
-            events = events
-                .filter(event => event.date >= today)
-                .sort((a, b) => new Date(a.date) - new Date(b.date))
-                .slice(0, 6);
-        } else {
-            // Fallback to sample data
-            events = eventsData.filter(event => {
-                const eventDate = new Date(event.date);
-                const today = new Date();
-                return eventDate >= today;
-            }).slice(0, 6);
-        }
+        // Use loaded events
+        let events = (window.eventsData || []);
+        const today = getTodayDateString();
+
+        // Get upcoming events (next 6)
+        events = events
+            .filter(event => event.date >= today)
+            .sort((a, b) => new Date(a.date) - new Date(b.date))
+            .slice(0, 6);
+
+        console.log(`🏠 Homepage showing ${events.length} upcoming events from ${window.eventsData?.length || 0} total`);
         
         featuredContainer.innerHTML = '';
         

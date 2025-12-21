@@ -1,8 +1,164 @@
 {
-  "lastUpdated": "2025-12-18T16:37:42.857240",
+  "lastUpdated": "2025-12-21T12:00:00.000000",
   "events": [
     {
-      "id": 101,
+      "id": 70,
+      "name": "Winter Jazz at The Birdcage",
+      "date": "2025-12-21",
+      "time": "19:00",
+      "location": "The Birdcage Norwich",
+      "category": "gigs",
+      "description": "Cozy Saturday night jazz session featuring local musicians. Perfect way to start your weekend with smooth tunes and drinks.",
+      "ticketLink": null,
+      "image": null,
+      "status": "approved"
+    },
+    {
+      "id": 71,
+      "name": "Saturday Night DnB at Epic",
+      "date": "2025-12-21",
+      "time": "22:00",
+      "location": "Epic Studios",
+      "category": "nightlife",
+      "description": "Drum & Bass night with local DJs spinning the latest jungle and liquid tracks. 18+ event.",
+      "ticketLink": "https://www.skiddle.com/whats-on/Norwich/Epic-Studios/",
+      "image": null,
+      "status": "approved"
+    },
+    {
+      "id": 72,
+      "name": "Norwich Market Christmas Shopping",
+      "date": "2025-12-21",
+      "time": "09:00",
+      "location": "Norwich Market",
+      "category": "markets",
+      "description": "Last-minute Christmas shopping at Norwich Market. Fresh produce, gifts, and festive treats from local vendors.",
+      "ticketLink": null,
+      "image": null,
+      "status": "approved"
+    },
+    {
+      "id": 73,
+      "name": "Sunday Folk Session",
+      "date": "2025-12-22",
+      "time": "14:00",
+      "location": "The Murderers Pub",
+      "category": "gigs",
+      "description": "Traditional folk music session. Bring your instruments or just enjoy the tunes. Free entry, all welcome.",
+      "ticketLink": null,
+      "image": null,
+      "status": "approved"
+    },
+    {
+      "id": 74,
+      "name": "Christmas Carol Service",
+      "date": "2025-12-22",
+      "time": "18:00",
+      "location": "Norwich Cathedral",
+      "category": "free",
+      "description": "Traditional Christmas carol service with the cathedral choir. Beautiful candlelit service, all welcome.",
+      "ticketLink": null,
+      "image": null,
+      "status": "approved"
+    },
+    {
+      "id": 75,
+      "name": "Monday Night Quiz",
+      "date": "2025-12-23",
+      "time": "20:00",
+      "location": "The Plough",
+      "category": "community",
+      "description": "Weekly pub quiz with festive round! Teams of up to 6, prizes for winners. Free entry.",
+      "ticketLink": null,
+      "image": null,
+      "status": "approved"
+    },
+    {
+      "id": 76,
+      "name": "Christmas Eve at The Forum",
+      "date": "2025-12-24",
+      "time": "11:00",
+      "location": "The Forum, Millennium Plain",
+      "category": "free",
+      "description": "Christmas Eve celebrations with carol singers, hot chocolate, and festive activities for families.",
+      "ticketLink": null,
+      "image": null,
+      "status": "approved"
+    },
+    {
+      "id": 77,
+      "name": "Christmas Eve DJ Night",
+      "date": "2025-12-24",
+      "time": "21:00",
+      "location": "Revolucion De Cuba Norwich",
+      "category": "nightlife",
+      "description": "Pre-Christmas celebration with live DJs, cocktails, and Latin vibes. Get in the party spirit!",
+      "ticketLink": null,
+      "image": null,
+      "status": "approved"
+    },
+    {
+      "id": 78,
+      "name": "Boxing Day Football Screening",
+      "date": "2025-12-26",
+      "time": "15:00",
+      "location": "The Coach and Horses",
+      "category": "sports",
+      "description": "Watch the Premier League Boxing Day fixtures on the big screen. Food and drinks available.",
+      "ticketLink": null,
+      "image": null,
+      "status": "approved"
+    },
+    {
+      "id": 79,
+      "name": "Boxing Day Walk",
+      "date": "2025-12-26",
+      "time": "10:00",
+      "location": "Earlham Park",
+      "category": "free",
+      "description": "Post-Christmas walk to burn off those extra calories! Casual 5k walk around Earlham Park. All welcome.",
+      "ticketLink": null,
+      "image": null,
+      "status": "approved"
+    },
+    {
+      "id": 80,
+      "name": "After-Christmas Sales at Norwich Lanes",
+      "date": "2025-12-27",
+      "time": "09:00",
+      "location": "Norwich Lanes",
+      "category": "markets",
+      "description": "Boxing Day sales continue! Browse independent shops in the historic Norwich Lanes for amazing deals.",
+      "ticketLink": null,
+      "image": null,
+      "status": "approved"
+    },
+    {
+      "id": 81,
+      "name": "End of Year House Party",
+      "date": "2025-12-28",
+      "time": "22:00",
+      "location": "Waterfront Norwich",
+      "category": "nightlife",
+      "description": "Pre-NYE party with house and techno DJs. Get ready for New Year with this massive club night!",
+      "ticketLink": "https://www.waterfrontnorwich.com/",
+      "image": null,
+      "status": "approved"
+    },
+    {
+      "id": 82,
+      "name": "New Year's Eve Prep Workshop",
+      "date": "2025-12-30",
+      "time": "14:00",
+      "location": "The Forum, Millennium Plain",
+      "category": "community",
+      "description": "Make your own NYE decorations and party poppers! Free workshop for families.",
+      "ticketLink": null,
+      "image": null,
+      "status": "approved"
+    },
+    {
+      "id": 1,
       "name": "4am Kru - Norwich",
       "date": "2026-02-20",
       "time": "22:00",
@@ -14,7 +170,7 @@
       "status": "approved"
     },
     {
-      "id": 102,
+      "id": 2,
       "name": "New Year's Eve at RevoluciÃ³n de Cuba Norwich",
       "date": "2025-12-31",
       "time": "20:00",
@@ -26,7 +182,7 @@
       "status": "approved"
     },
     {
-      "id": 103,
+      "id": 3,
       "name": "90s Baby Daytime Clubbing - With The Over 30s Club",
       "date": "2026-01-31",
       "time": "15:00",
@@ -38,7 +194,7 @@
       "status": "approved"
     },
     {
-      "id": 104,
+      "id": 4,
       "name": "Raw Material",
       "date": "2026-03-07",
       "time": "20:00",
@@ -50,7 +206,7 @@
       "status": "approved"
     },
     {
-      "id": 105,
+      "id": 5,
       "name": "The Greatest MUSICALS Daytime Disco - Norwich",
       "date": "2026-02-07",
       "time": "13:00",
@@ -62,7 +218,7 @@
       "status": "approved"
     },
     {
-      "id": 106,
+      "id": 6,
       "name": "Symphonic Ibiza Orchestra | Earlham Park Concert",
       "date": "2026-06-12",
       "time": "17:00",
@@ -74,7 +230,7 @@
       "status": "approved"
     },
     {
-      "id": 107,
+      "id": 7,
       "name": "The Specials Ltd. 'Ghost Town' 45th Anniversary",
       "date": "2026-03-20",
       "time": "19:00",
@@ -86,7 +242,7 @@
       "status": "approved"
     },
     {
-      "id": 100,
+      "id": 8,
       "name": "New Year's Eve Celebration 2026",
       "date": "2025-12-31",
       "time": "21:00",
@@ -98,7 +254,7 @@
       "status": "approved"
     },
     {
-      "id": 101,
+      "id": 9,
       "name": "January Sales Market",
       "date": "2026-01-03",
       "time": "09:00",
@@ -110,7 +266,7 @@
       "status": "approved"
     },
     {
-      "id": 102,
+      "id": 10,
       "name": "Winter Comedy Night",
       "date": "2026-01-15",
       "time": "20:00",
@@ -122,7 +278,7 @@
       "status": "approved"
     },
     {
-      "id": 103,
+      "id": 11,
       "name": "Norwich Half Marathon 2026",
       "date": "2026-02-14",
       "time": "09:00",
@@ -134,7 +290,7 @@
       "status": "approved"
     },
     {
-      "id": 104,
+      "id": 12,
       "name": "Pancake Day Community Cook-Off",
       "date": "2026-02-24",
       "time": "11:00",
@@ -146,7 +302,7 @@
       "status": "approved"
     },
     {
-      "id": 1,
+      "id": 13,
       "name": "Norwich Music Festival",
       "date": "2026-06-15",
       "time": "18:00",
@@ -158,7 +314,7 @@
       "status": "approved"
     },
     {
-      "id": 2,
+      "id": 14,
       "name": "Norwich Night Market",
       "date": "2026-07-20",
       "time": "17:00",
@@ -170,7 +326,7 @@
       "status": "approved"
     },
     {
-      "id": 3,
+      "id": 15,
       "name": "Norwich Arts Centre Live",
       "date": "2026-08-10",
       "time": "19:30",
@@ -182,7 +338,7 @@
       "status": "approved"
     },
     {
-      "id": 4,
+      "id": 16,
       "name": "Community Garden Workshop",
       "date": "2026-05-25",
       "time": "10:00",
@@ -194,7 +350,7 @@
       "status": "approved"
     },
     {
-      "id": 5,
+      "id": 17,
       "name": "Norwich City FC Match",
       "date": "2026-09-05",
       "time": "15:00",
@@ -206,7 +362,7 @@
       "status": "approved"
     },
     {
-      "id": 6,
+      "id": 18,
       "name": "Theatre Royal: Local Production",
       "date": "2026-07-08",
       "time": "19:45",
@@ -218,7 +374,7 @@
       "status": "approved"
     },
     {
-      "id": 7,
+      "id": 19,
       "name": "Norwich Food & Drink Festival",
       "date": "2026-08-30",
       "time": "12:00",
@@ -230,7 +386,7 @@
       "status": "approved"
     },
     {
-      "id": 8,
+      "id": 20,
       "name": "Late Night Club Night",
       "date": "2026-06-28",
       "time": "22:00",
@@ -242,7 +398,7 @@
       "status": "approved"
     },
     {
-      "id": 9,
+      "id": 21,
       "name": "St. Patrick's Day Parade & Festival",
       "date": "2026-03-17",
       "time": "12:00",
@@ -254,7 +410,7 @@
       "status": "approved"
     },
     {
-      "id": 10,
+      "id": 22,
       "name": "Spring Jazz Night",
       "date": "2026-04-10",
       "time": "19:30",
@@ -266,7 +422,7 @@
       "status": "approved"
     },
     {
-      "id": 11,
+      "id": 23,
       "name": "Earth Day Beach Clean-Up",
       "date": "2026-04-22",
       "time": "10:00",
@@ -278,7 +434,7 @@
       "status": "approved"
     },
     {
-      "id": 12,
+      "id": 24,
       "name": "Norwich Craft Beer Festival",
       "date": "2026-05-02",
       "time": "14:00",
@@ -290,7 +446,7 @@
       "status": "approved"
     },
     {
-      "id": 13,
+      "id": 25,
       "name": "Shakespeare in the Park",
       "date": "2026-06-20",
       "time": "18:00",
@@ -302,7 +458,7 @@
       "status": "approved"
     },
     {
-      "id": 14,
+      "id": 26,
       "name": "Norwich Pride 2026",
       "date": "2026-07-25",
       "time": "11:00",
@@ -314,7 +470,7 @@
       "status": "approved"
     },
     {
-      "id": 15,
+      "id": 27,
       "name": "Electric Warehouse Rave",
       "date": "2026-08-14",
       "time": "23:00",
@@ -326,7 +482,7 @@
       "status": "approved"
     },
     {
-      "id": 16,
+      "id": 28,
       "name": "Norwich Film Festival",
       "date": "2026-09-12",
       "time": "10:00",
@@ -338,7 +494,7 @@
       "status": "approved"
     },
     {
-      "id": 17,
+      "id": 29,
       "name": "Autumn Farmers Market",
       "date": "2026-10-03",
       "time": "08:00",
@@ -350,7 +506,7 @@
       "status": "approved"
     },
     {
-      "id": 18,
+      "id": 30,
       "name": "Halloween Ghost Walk",
       "date": "2026-10-31",
       "time": "19:00",
@@ -362,7 +518,7 @@
       "status": "approved"
     },
     {
-      "id": 19,
+      "id": 31,
       "name": "Bonfire Night Spectacular",
       "date": "2026-11-05",
       "time": "18:00",
@@ -374,7 +530,7 @@
       "status": "approved"
     },
     {
-      "id": 20,
+      "id": 32,
       "name": "Norwich Christmas Market",
       "date": "2026-11-28",
       "time": "10:00",
@@ -386,7 +542,7 @@
       "status": "approved"
     },
     {
-      "id": 108,
+      "id": 33,
       "name": "New Year's Eve at Revolución de Cuba Norwich",
       "date": "2026-12-31",
       "time": "20:00",
@@ -398,7 +554,7 @@
       "status": "approved"
     },
     {
-      "id": 109,
+      "id": 34,
       "name": "The Style Councillors",
       "date": "2026-05-08",
       "time": "19:00",
@@ -410,7 +566,7 @@
       "status": "pending"
     },
     {
-      "id": 110,
+      "id": 35,
       "name": "Tyketto",
       "date": "2026-04-14",
       "time": "19:30",
@@ -422,7 +578,7 @@
       "status": "approved"
     },
     {
-      "id": 111,
+      "id": 36,
       "name": "The Gerry Cinna-Man Experience",
       "date": "2026-04-03",
       "time": "19:00",
@@ -434,7 +590,7 @@
       "status": "approved"
     },
     {
-      "id": 112,
+      "id": 37,
       "name": "Clearwater Creedence Revival + Ten Years After",
       "date": "2026-04-16",
       "time": "19:00",
@@ -446,7 +602,7 @@
       "status": "approved"
     },
     {
-      "id": 113,
+      "id": 38,
       "name": "Country Club - Country Music Festival - Norwich",
       "date": "2026-03-21",
       "time": "18:00",
@@ -458,7 +614,7 @@
       "status": "approved"
     },
     {
-      "id": 114,
+      "id": 39,
       "name": "Country Club - Outdoor Country Music Festival - Norwich",
       "date": "2026-07-04",
       "time": "15:00",
@@ -470,7 +626,7 @@
       "status": "approved"
     },
     {
-      "id": 115,
+      "id": 40,
       "name": "Gin & Rum Festival - Norwich - 2026",
       "date": "2026-07-04",
       "time": "12:30",
@@ -482,7 +638,7 @@
       "status": "approved"
     },
     {
-      "id": 116,
+      "id": 41,
       "name": "DIVORCE",
       "date": "2025-12-05",
       "time": "20:00",
@@ -494,7 +650,7 @@
       "status": "approved"
     },
     {
-      "id": 117,
+      "id": 42,
       "name": "Rock/Pop Concert",
       "date": "2025-12-05",
       "time": "20:00",
@@ -506,7 +662,7 @@
       "status": "approved"
     },
     {
-      "id": 118,
+      "id": 43,
       "name": "Winter Footwear and Coats Collection",
       "date": "2025-12-06",
       "time": "10:00",
@@ -518,7 +674,7 @@
       "status": "approved"
     },
     {
-      "id": 119,
+      "id": 44,
       "name": "Clutter City Winter Market",
       "date": "2025-12-06",
       "time": "11:00",
@@ -530,7 +686,7 @@
       "status": "approved"
     },
     {
-      "id": 120,
+      "id": 45,
       "name": "Christmas Community Event",
       "date": "2025-12-06",
       "time": "11:00",
@@ -542,7 +698,7 @@
       "status": "approved"
     },
     {
-      "id": 121,
+      "id": 46,
       "name": "BOHO XMAS BINGO",
       "date": "2025-12-17",
       "time": "20:30",
@@ -554,7 +710,7 @@
       "status": "approved"
     },
     {
-      "id": 122,
+      "id": 47,
       "name": "Event",
       "date": "2025-12-06",
       "time": "10:00",
@@ -566,7 +722,7 @@
       "status": "approved"
     },
     {
-      "id": 123,
+      "id": 48,
       "name": "Drum and Bass Classics - Norwich",
       "date": "2026-01-30",
       "time": "22:30",
@@ -578,7 +734,7 @@
       "status": "approved"
     },
     {
-      "id": 124,
+      "id": 49,
       "name": "Martin Kemp Live DJ Set - Back to the 80s",
       "date": "2026-02-21",
       "time": "19:30",
@@ -590,7 +746,7 @@
       "status": "approved"
     },
     {
-      "id": 125,
+      "id": 50,
       "name": "Special Kinda Madness: Norwich",
       "date": "2026-06-13",
       "time": "19:00",
@@ -602,7 +758,7 @@
       "status": "approved"
     },
     {
-      "id": 126,
+      "id": 51,
       "name": "Aladdinsane - The Sound & Vision of Bowie tribute",
       "date": "2026-09-12",
       "time": "19:30",
@@ -614,7 +770,7 @@
       "status": "approved"
     },
     {
-      "id": 127,
+      "id": 52,
       "name": "Ultimate RnB return to Waterfront / Norwich",
       "date": "2026-04-24",
       "time": "19:30",
@@ -626,7 +782,7 @@
       "status": "approved"
     },
     {
-      "id": 128,
+      "id": 53,
       "name": "Music Worldwide Drum Camp",
       "date": "2026-09-03",
       "time": "14:00",
@@ -638,7 +794,7 @@
       "status": "approved"
     },
     {
-      "id": 129,
+      "id": 54,
       "name": "Earlham Park Tribute Festival",
       "date": "2026-06-13",
       "time": "12:00",
@@ -650,7 +806,7 @@
       "status": "approved"
     },
     {
-      "id": 130,
+      "id": 55,
       "name": "DEMON HUNTERZ - K-pop Party",
       "date": "2026-11-06",
       "time": "18:00",
@@ -662,7 +818,7 @@
       "status": "approved"
     },
     {
-      "id": 131,
+      "id": 56,
       "name": "DEMON HUNTERZ - K-pop Party",
       "date": "2026-05-23",
       "time": "19:00",
@@ -674,7 +830,7 @@
       "status": "approved"
     },
     {
-      "id": 132,
+      "id": 57,
       "name": "NAC Christmas Quiz",
       "date": "2025-12-18",
       "time": "20:00",
@@ -686,7 +842,7 @@
       "status": "approved"
     },
     {
-      "id": 133,
+      "id": 58,
       "name": "Christmas Community Music Event",
       "date": "2025-12-18",
       "time": "20:00",
@@ -698,7 +854,7 @@
       "status": "approved"
     },
     {
-      "id": 134,
+      "id": 59,
       "name": "Event",
       "date": "2025-12-18",
       "time": "20:00",
@@ -710,7 +866,7 @@
       "status": "approved"
     },
     {
-      "id": 135,
+      "id": 60,
       "name": "ReWork Christmas",
       "date": "2025-12-20",
       "time": "20:00",
@@ -722,7 +878,7 @@
       "status": "approved"
     },
     {
-      "id": 136,
+      "id": 61,
       "name": "Christmas Music Rock/Pop",
       "date": "2025-12-20",
       "time": "20:00",
@@ -734,7 +890,7 @@
       "status": "approved"
     },
     {
-      "id": 137,
+      "id": 62,
       "name": "True Stories Live: Celebrate",
       "date": "2025-12-21",
       "time": "19:30",
@@ -754,7 +910,8 @@
       "description": "Rumble & Touchbase join forces with a huge D&B lineup and the Shakedown Audio sound system. East Anglia's longest running D&B nights.",
       "ticketLink": "https://drumandbassuk.com/event/warehouse-day-party-rumble-x-touchbase-2025-02-08-4381",
       "status": "approved",
-      "source": "Manual - User Request"
+      "source": "Manual - User Request",
+      "id": 63
     },
     {
       "name": "Party in the Park 2025 - Rumble x Breakin Science",
@@ -765,7 +922,8 @@
       "description": "Massive outdoor D&B all-dayer! Rumble teams up with Breakin Science for multiple arenas featuring drum & bass, jungle, house, garage, and old school anthems. Licensed bars, food vendors, fairground attractions. 18+ event.",
       "ticketLink": "https://www.skiddle.com/whats-on/Norwich/Royal-Norfolk-Show-Showground/Party-in-the-Park-2025--Drum--Bass-All-Dayer--Norfolk/41049626/",
       "status": "approved",
-      "source": "Manual - User Request"
+      "source": "Manual - User Request",
+      "id": 64
     },
     {
       "name": "Fruity Licks - UKG/Bassline/House Night",
@@ -777,7 +935,8 @@
       "ticketLink": "https://www.skiddle.com/whats-on/Norwich/Qube/",
       "status": "approved",
       "source": "Manual - User Request",
-      "note": "Recurring event - check venue for specific dates"
+      "note": "Recurring event - check venue for specific dates",
+      "id": 65
     },
     {
       "name": "RAW FREQUENCIES: The Launch - Drum & Bass",
@@ -788,7 +947,8 @@
       "description": "RAW FREQUENCIES launch event at Kudos Norwich. Premium drum & bass night featuring top DJs and sound system.",
       "ticketLink": "https://happeningnext.com/event/raw-frequencies-the-launch-%C3%A2%C2%80%C2%94-kudos-norwich-eid1p9vgj3vtaa",
       "status": "approved",
-      "source": "Manual - User Request"
+      "source": "Manual - User Request",
+      "id": 66
     },
     {
       "name": "Fruity Licks - UKG/Bassline/House",
@@ -798,7 +958,8 @@
       "category": "nightlife",
       "description": "Underground UKG, Bassline & House event featuring Charlotte Devaney & Fruity Licks residents. Norwich's premier club night for UKG and bassline lovers.",
       "ticketLink": "https://www.skiddle.com/whats-on/Norwich/Qube/",
-      "status": "approved"
+      "status": "approved",
+      "id": 67
     },
     {
       "name": "Fruity Licks - UKG/Bassline/House",
@@ -808,7 +969,8 @@
       "category": "nightlife",
       "description": "Underground UKG, Bassline & House event featuring Charlotte Devaney & Fruity Licks residents. Norwich's premier club night for UKG and bassline lovers.",
       "ticketLink": "https://www.skiddle.com/whats-on/Norwich/Qube/",
-      "status": "approved"
+      "status": "approved",
+      "id": 68
     },
     {
       "name": "Fruity Licks - UKG/Bassline/House",
@@ -818,10 +980,11 @@
       "category": "nightlife",
       "description": "Underground UKG, Bassline & House event featuring Charlotte Devaney & Fruity Licks residents. Norwich's premier club night for UKG and bassline lovers.",
       "ticketLink": "https://www.skiddle.com/whats-on/Norwich/Qube/",
-      "status": "approved"
+      "status": "approved",
+      "id": 69
     }
   ],
   "aiScraped": true,
-  "realEvents": 69,
-  "cacheVersion": 1766075862.85724
+  "realEvents": 82,
+  "cacheVersion": 1734784800
 }

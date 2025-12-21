@@ -12,24 +12,17 @@
  */
 
 const APP_CONFIG = {
-    // Google Apps Script Web App URL
-    // 📝 REPLACE THIS with your actual Web App URL from Google Apps Script
-    // Get this from: Extensions > Apps Script > Deploy > New deployment > Web app
-    // Example: 'https://script.google.com/macros/s/ABC123xyz.../exec'
-    GOOGLE_APPS_SCRIPT_URL: 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL',
+    // Google Apps Script Web App URL - ✅ CONFIGURED
+    GOOGLE_APPS_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbyPZEGqmvDV_cJqNqGtkibUcxyPM3k24xx4HfCw7ZD6GzDmbYvNQ0rX5Z4BwthONc24/exec',
 
-    // Google Sheet ID
-    // 📝 REPLACE THIS with your actual Sheet ID
-    // Find this in your sheet URL: .../spreadsheets/d/YOUR_SHEET_ID/edit
+    // Google Sheet ID - Will be added for AI automation
     GOOGLE_SHEET_ID: 'YOUR_GOOGLE_SHEET_ID',
 
     // Google Sheets API Key (optional - not needed if using Apps Script)
     GOOGLE_SHEETS_API_KEY: 'YOUR_GOOGLE_SHEETS_API_KEY',
 
-    // ⚠️ IMPORTANT: Set to false for production to enable real-time API!
-    // true = Use local storage (development/offline mode)
-    // false = Use Google Apps Script API (production mode with real-time data)
-    USE_LOCAL_STORAGE: true,  // ← Change to false after setting up API
+    // ✅ PRODUCTION MODE ENABLED - Using real-time Google Sheets data!
+    USE_LOCAL_STORAGE: false,  // ✅ Real-time API enabled
 
     // Site configuration
     // 📝 UPDATE THIS to your actual production URL

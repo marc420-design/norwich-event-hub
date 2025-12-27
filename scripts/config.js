@@ -21,8 +21,8 @@ const APP_CONFIG = {
     // Google Sheets API Key (optional - not needed if using Apps Script)
     GOOGLE_SHEETS_API_KEY: 'YOUR_GOOGLE_SHEETS_API_KEY',
 
-    // ✅ PRODUCTION MODE ENABLED - Using real-time Google Sheets data!
-    USE_LOCAL_STORAGE: false,  // ✅ Real-time API enabled
+    // 🔧 TEMPORARY: Local mode for testing (switch to false after Google Sheets setup)
+    USE_LOCAL_STORAGE: true,  // Set to false after Google Sheets is configured
 
     // Site configuration
     // 📝 UPDATE THIS to your actual production URL

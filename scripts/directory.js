@@ -89,7 +89,14 @@ function applyFilters() {
     let visibleCount = 0;
     
     cards.forEach(card => {
-        const event = (window.eventsData || []).find(e => e.id === parseInt(card.dataset.eventId || '0'));
+        const eventId = card.dataset.eventId;
+        if (!eventId) {
+            // If card has no eventId, hide it during filtering
+            card.style.display = 'none';
+            return;
+        }
+        
+        const event = (window.eventsData || []).find(e => e.id === parseInt(eventId));
         if (!event) {
             card.style.display = 'none';
             return;

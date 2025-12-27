@@ -73,28 +73,88 @@ function getTodayDateString() {
     return today.toISOString().split('T')[0];
 }
 
+// HTML escape function to prevent XSS
+function escapeHtml(text) {
+    if (!text) return '';
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+// Validate and sanitize URL
+function sanitizeUrl(url) {
+    if (!url) return '';
+    try {
+        const urlObj = new URL(url);
+        // Only allow http and https protocols
+        if (urlObj.protocol === 'http:' || urlObj.protocol === 'https:') {
+            return url;
+        }
+    } catch (e) {
+        // Invalid URL
+    }
+    return '';
+}
+
 function createEventCard(event) {
     const card = document.createElement('div');
     card.className = 'event-card';
-    card.dataset.category = event.category;
+    card.dataset.category = escapeHtml(event.category);
     if (event.id) {
         card.dataset.eventId = event.id;
     }
     
-    const imageStyle = event.image 
-        ? `background-image: url('${event.image}')`
+    // Sanitize image URL
+    const imageUrl = sanitizeUrl(event.image);
+    const imageStyle = imageUrl
+        ? `background-image: url('${imageUrl}')`
         : 'background: linear-gradient(135deg, var(--color-electric-blue), var(--color-forest-green))';
     
-    card.innerHTML = `
-        <div class="event-image" style="${imageStyle}"></div>
-        <div class="event-content">
-            <span class="event-date">${formatDate(event.date)} at ${formatTime(event.time)}</span>
-            <h3 class="event-title">${event.name}</h3>
-            <p class="event-location">📍 ${event.location}</p>
-            <p class="event-description">${event.description}</p>
-            ${event.ticketLink ? `<a href="${event.ticketLink}" target="_blank" class="event-link">Get Tickets →</a>` : ''}
-        </div>
-    `;
+    // Create elements safely to prevent XSS
+    const eventImageDiv = document.createElement('div');
+    eventImageDiv.className = 'event-image';
+    eventImageDiv.style.cssText = imageStyle;
+    
+    const eventContentDiv = document.createElement('div');
+    eventContentDiv.className = 'event-content';
+    
+    const eventDateSpan = document.createElement('span');
+    eventDateSpan.className = 'event-date';
+    eventDateSpan.textContent = `${formatDate(event.date)} at ${formatTime(event.time)}`;
+    
+    const eventTitle = document.createElement('h3');
+    eventTitle.className = 'event-title';
+    eventTitle.textContent = event.name;
+    
+    const eventLocation = document.createElement('p');
+    eventLocation.className = 'event-location';
+    eventLocation.textContent = `📍 ${event.location}`;
+    
+    const eventDescription = document.createElement('p');
+    eventDescription.className = 'event-description';
+    eventDescription.textContent = event.description;
+    
+    eventContentDiv.appendChild(eventDateSpan);
+    eventContentDiv.appendChild(eventTitle);
+    eventContentDiv.appendChild(eventLocation);
+    eventContentDiv.appendChild(eventDescription);
+    
+    // Add ticket link if available
+    if (event.ticketLink) {
+        const ticketUrl = sanitizeUrl(event.ticketLink);
+        if (ticketUrl) {
+            const ticketLink = document.createElement('a');
+            ticketLink.href = ticketUrl;
+            ticketLink.target = '_blank';
+            ticketLink.rel = 'noopener noreferrer'; // Security: prevent window.opener access
+            ticketLink.className = 'event-link';
+            ticketLink.textContent = 'Get Tickets →';
+            eventContentDiv.appendChild(ticketLink);
+        }
+    }
+    
+    card.appendChild(eventImageDiv);
+    card.appendChild(eventContentDiv);
     
     return card;
 }

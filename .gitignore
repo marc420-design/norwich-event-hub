@@ -33,3 +33,27 @@ npm-debug.log*
 *.tmp
 *.temp
 
+# Test and debug files
+*.test.js
+test-*.html
+debug*.html
+quick-test.html
+
+# Large media files
+*.mp4
+*.mov
+*.avi
+*.webm
+*.mkv
+
+# Screenshots
+Screenshot*.png
+*.screenshot.png
+
+# Automated exports
+automation/events_*.json
+
+# Documentation with sensitive data
+URGENT_SECURITY_BREACH.md
+*SECURITY*.md
+

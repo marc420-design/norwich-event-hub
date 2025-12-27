@@ -26,11 +26,11 @@ try:
     import requests
     from bs4 import BeautifulSoup
     import gspread
-    from oauth2client.service_account import ServiceAccountCredentials
+    from google.oauth2.service_account import Credentials
     from dateutil import parser as date_parser
 except ImportError as e:
     print(f"Missing dependency: {e}")
-    print("Install with: pip install anthropic requests beautifulsoup4 gspread oauth2client python-dateutil")
+    print("Install with: pip install anthropic requests beautifulsoup4 gspread google-auth google-auth-oauthlib python-dateutil")
     exit(1)
 
 # Configure logging
@@ -448,10 +448,12 @@ Example output:
             return
 
         try:
-            # Authorize Google Sheets
-            scope = ['https://spreadsheets.google.com/feeds',
-                     'https://www.googleapis.com/auth/drive']
-            creds = ServiceAccountCredentials.from_json_keyfile_name(self.sheet_creds, scope)
+            # Authorize Google Sheets with modern google-auth
+            scope = [
+                'https://www.googleapis.com/auth/spreadsheets',
+                'https://www.googleapis.com/auth/drive'
+            ]
+            creds = Credentials.from_service_account_file(self.sheet_creds, scopes=scope)
             client = gspread.authorize(creds)
 
             # Open sheet

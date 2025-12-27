@@ -14,9 +14,25 @@ async function loadFeaturedEvents() {
     const featuredContainer = document.getElementById('featuredEvents');
     if (!featuredContainer) return;
 
-    // Wait for events to load first
+    // Wait for events to load first (with timeout)
     if (window.eventsLoadedPromise) {
         await window.eventsLoadedPromise;
+    } else {
+        // Wait up to 3 seconds for eventsLoadedPromise to exist
+        await new Promise(resolve => {
+            let attempts = 0;
+            const checkPromise = setInterval(() => {
+                attempts++;
+                if (window.eventsLoadedPromise) {
+                    clearInterval(checkPromise);
+                    window.eventsLoadedPromise.then(resolve);
+                } else if (attempts >= 30) { // 30 * 100ms = 3 seconds
+                    clearInterval(checkPromise);
+                    console.warn('⚠️ Events not loaded after 3s');
+                    resolve();
+                }
+            }, 100);
+        });
     }
 
     try {

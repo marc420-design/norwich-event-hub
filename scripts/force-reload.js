@@ -7,13 +7,27 @@ localStorage.removeItem('norwichEvents');
 
 // Force reload events from Google Sheets API or fallback to local JSON
 async function forceLoadEvents() {
-    // Wait for config to be available
+    // Wait for config to be available (max 2 seconds)
     await new Promise(resolve => {
         if (typeof APP_CONFIG !== 'undefined') {
             resolve();
-        } else {
-            setTimeout(resolve, 100);
+            return;
         }
+
+        let attempts = 0;
+        const maxAttempts = 20; // 20 attempts * 100ms = 2 seconds max
+
+        const checkConfig = setInterval(() => {
+            attempts++;
+            if (typeof APP_CONFIG !== 'undefined') {
+                clearInterval(checkConfig);
+                resolve();
+            } else if (attempts >= maxAttempts) {
+                clearInterval(checkConfig);
+                console.warn('⚠️ Config not loaded after 2s, using defaults');
+                resolve();
+            }
+        }, 100);
     });
 
     const config = typeof APP_CONFIG !== 'undefined' ? APP_CONFIG : { USE_LOCAL_STORAGE: true };

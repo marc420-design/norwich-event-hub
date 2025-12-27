@@ -1,0 +1,12 @@
+# Cloudflare Pages Redirects
+# Redirect www to non-www (optional - customize as needed)
+
+# Force HTTPS (Cloudflare handles this automatically, but good to be explicit)
+http://norwicheventshub.com/* https://norwicheventshub.com/:splat 301!
+http://www.norwicheventshub.com/* https://norwicheventshub.com/:splat 301!
+
+# Redirect www to non-www
+https://www.norwicheventshub.com/* https://norwicheventshub.com/:splat 301!
+
+# 404 handling
+/* /404.html 404

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Norwich Event Hub - API Connection Test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 40px;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .test-section h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .status.pending {
+            background: #ffc107;
+            color: #000;
+        }
+
+        .status.success {
+            background: #28a745;
+            color: white;
+        }
+
+        .status.error {
+            background: #dc3545;
+            color: white;
+        }
+
+        .result {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            white-space: pre-wrap;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        button:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .info {
+            background: #e7f3ff;
+            border: 1px solid #b3d9ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            color: #004085;
+            font-size: 14px;
+        }
+
+        .checklist {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .checklist li {
+            padding: 8px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .checklist li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .error-list {
+            color: #dc3545;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 API Connection Test</h1>
+        <p class="subtitle">Test your Norwich Event Hub API integration</p>
+
+        <div class="info">
+            <strong>📋 Before running this test:</strong>
+            <ul class="checklist">
+                <li>Clean up Apps Script project (delete extra files)</li>
+                <li>Redeploy Apps Script (Deploy → Manage Deployments → Edit → New Version)</li>
+                <li>Ensure Google Sheet exists and has "Event Submissions" sheet</li>
+            </ul>
+        </div>
+
+        <!-- Test 1: GET Events -->
+        <div class="test-section">
+            <h2>Test 1: Retrieve Events (GET)</h2>
+            <span class="status pending" id="status1">Not Started</span>
+            <div class="result" id="result1">Click "Run Test" to start...</div>
+            <button onclick="testGetEvents()" id="btn1">Run Test</button>
+        </div>
+
+        <!-- Test 2: POST Event -->
+        <div class="test-section">
+            <h2>Test 2: Submit Event (POST)</h2>
+            <span class="status pending" id="status2">Not Started</span>
+            <div class="result" id="result2">Test 1 must pass first...</div>
+            <button onclick="testPostEvent()" id="btn2" disabled>Run Test</button>
+        </div>
+
+        <!-- Test 3: Real-time Integration -->
+        <div class="test-section">
+            <h2>Test 3: Real-time Website Integration</h2>
+            <span class="status pending" id="status3">Not Started</span>
+            <div class="result" id="result3">Tests 1 & 2 must pass first...</div>
+            <button onclick="testRealtime()" id="btn3" disabled>Run Test</button>
+        </div>
+    </div>
+
+    <script src="scripts/config.js"></script>
+    <script>
+        const API_URL = APP_CONFIG.GOOGLE_APPS_SCRIPT_URL;
+
+        async function testGetEvents() {
+            const statusEl = document.getElementById('status1');
+            const resultEl = document.getElementById('result1');
+            const btnEl = document.getElementById('btn1');
+
+            statusEl.textContent = 'Testing...';
+            statusEl.className = 'status pending';
+            btnEl.disabled = true;
+            resultEl.textContent = 'Fetching events from API...\n';
+
+            try {
+                const response = await fetch(API_URL + '?action=getEvents&t=' + Date.now());
+                const data = await response.json();
+
+                if (data.success) {
+                    statusEl.textContent = '✅ PASS';
+                    statusEl.className = 'status success';
+                    resultEl.textContent = `SUCCESS!\n\n`;
+                    resultEl.textContent += `✅ API is working correctly\n`;
+                    resultEl.textContent += `✅ Found ${data.events ? data.events.length : 0} approved events\n\n`;
+                    resultEl.textContent += `Sample event:\n`;
+                    resultEl.textContent += JSON.stringify(data.events[0], null, 2);
+
+                    // Enable next test
+                    document.getElementById('btn2').disabled = false;
+                    document.getElementById('result2').textContent = 'Ready to test...';
+                } else {
+                    throw new Error(data.message || 'API returned success: false');
+                }
+            } catch (error) {
+                statusEl.textContent = '❌ FAIL';
+                statusEl.className = 'status error';
+                resultEl.textContent = `ERROR: ${error.message}\n\n`;
+                resultEl.textContent += `Common issues:\n`;
+                resultEl.textContent += `• Apps Script project still has extra files (scripts/*, *.html)\n`;
+                resultEl.textContent += `• Apps Script not redeployed after cleanup\n`;
+                resultEl.textContent += `• Google Sheet doesn't exist or is private\n`;
+                resultEl.textContent += `• Wrong Sheet ID in Code.js\n`;
+            } finally {
+                btnEl.disabled = false;
+            }
+        }
+
+        async function testPostEvent() {
+            const statusEl = document.getElementById('status2');
+            const resultEl = document.getElementById('result2');
+            const btnEl = document.getElementById('btn2');
+
+            statusEl.textContent = 'Testing...';
+            statusEl.className = 'status pending';
+            btnEl.disabled = true;
+            resultEl.textContent = 'Submitting test event...\n';
+
+            const testEvent = {
+                name: 'API Test Event',
+                date: new Date(Date.now() + 86400000).toISOString().split('T')[0],
+                time: '19:00',
+                location: 'Test Venue Norwich',
+                category: 'community',
+                description: 'This is a test event to verify API submission works. You can delete this from your Google Sheet.',
+                ticketLink: '',
+                promoterName: 'API Test',
+                promoterEmail: 'test@norwicheventshub.com',
+                promoterPhone: ''
+            };
+
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(testEvent)
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    statusEl.textContent = '✅ PASS';
+                    statusEl.className = 'status success';
+                    resultEl.textContent = `SUCCESS!\n\n`;
+                    resultEl.textContent += `✅ Event submitted successfully\n`;
+                    resultEl.textContent += `✅ Event ID: ${data.eventId}\n`;
+                    resultEl.textContent += `✅ Check your Google Sheet for the new row\n\n`;
+                    resultEl.textContent += `Response:\n`;
+                    resultEl.textContent += JSON.stringify(data, null, 2);
+
+                    // Enable next test
+                    document.getElementById('btn3').disabled = false;
+                    document.getElementById('result3').textContent = 'Ready to test...';
+                } else {
+                    throw new Error(data.message || 'API returned success: false');
+                }
+            } catch (error) {
+                statusEl.textContent = '❌ FAIL';
+                statusEl.className = 'status error';
+                resultEl.textContent = `ERROR: ${error.message}\n\n`;
+                resultEl.textContent += `Common issues:\n`;
+                resultEl.textContent += `• CORS error (Apps Script needs to allow POST)\n`;
+                resultEl.textContent += `• Wrong deployment URL\n`;
+                resultEl.textContent += `• Apps Script permissions not set correctly\n`;
+            } finally {
+                btnEl.disabled = false;
+            }
+        }
+
+        async function testRealtime() {
+            const statusEl = document.getElementById('status3');
+            const resultEl = document.getElementById('result3');
+            const btnEl = document.getElementById('btn3');
+
+            statusEl.textContent = 'Testing...';
+            statusEl.className = 'status pending';
+            btnEl.disabled = true;
+            resultEl.textContent = 'Testing real-time integration...\n';
+
+            try {
+                // Load force-reload.js functionality
+                resultEl.textContent += '1. Loading config...\n';
+                if (APP_CONFIG.USE_LOCAL_STORAGE) {
+                    throw new Error('Real-time mode is disabled (USE_LOCAL_STORAGE = true)');
+                }
+                resultEl.textContent += '   ✅ Real-time mode enabled\n\n';
+
+                resultEl.textContent += '2. Testing API connection...\n';
+                const response = await fetch(API_URL + '?action=getEvents&t=' + Date.now());
+                const data = await response.json();
+
+                if (!data.success) {
+                    throw new Error('API returned error');
+                }
+                resultEl.textContent += `   ✅ API responded with ${data.events.length} events\n\n`;
+
+                resultEl.textContent += '3. Testing fallback to JSON...\n';
+                const jsonResponse = await fetch('/data/sample-events.json?t=' + Date.now());
+                const jsonData = await jsonResponse.json();
+                resultEl.textContent += `   ✅ Fallback JSON has ${jsonData.events.length} events\n\n`;
+
+                statusEl.textContent = '✅ PASS';
+                statusEl.className = 'status success';
+                resultEl.textContent += `\n🎉 ALL TESTS PASSED!\n\n`;
+                resultEl.textContent += `Your setup is complete:\n`;
+                resultEl.textContent += `✅ API endpoint working\n`;
+                resultEl.textContent += `✅ Event submission working\n`;
+                resultEl.textContent += `✅ Real-time mode enabled\n`;
+                resultEl.textContent += `✅ Fallback to JSON working\n\n`;
+                resultEl.textContent += `Next steps:\n`;
+                resultEl.textContent += `1. Set up GitHub Secrets (see GITHUB_SECRETS_QUICK_SETUP.md)\n`;
+                resultEl.textContent += `2. Test automation workflow\n`;
+                resultEl.textContent += `3. Launch on Jan 1st! 🚀\n`;
+            } catch (error) {
+                statusEl.textContent = '❌ FAIL';
+                statusEl.className = 'status error';
+                resultEl.textContent += `\nERROR: ${error.message}\n`;
+            } finally {
+                btnEl.disabled = false;
+            }
+        }
+    </script>
+</body>
+</html>

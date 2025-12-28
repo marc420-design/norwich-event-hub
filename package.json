@@ -17,7 +17,7 @@
   ],
   "author": "Norwich Event Hub",
   "license": "MIT",
-  "devDependencies": {},
-  "dependencies": {}
+  "dependencies": {
+    "googleapis": "^169.0.0"
+  }
 }
-

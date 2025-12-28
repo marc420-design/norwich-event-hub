@@ -114,16 +114,33 @@ function doGet(e) {
 
     const data = sheet.getDataRange().getValues();
     const headers = data[0];
+
+    // DEBUG: Return raw data
+    if (e && e.parameter && e.parameter.debug === 'true') {
+      return ContentService.createTextOutput(JSON.stringify({
+        success: true,
+        debug: true,
+        totalRows: data.length,
+        headers: headers,
+        firstDataRow: data.length > 1 ? data[1] : null
+      })).setMimeType(ContentService.MimeType.JSON);
+    }
+
     const events = [];
 
     // Convert rows to objects (skip header row)
     for (let i = 1; i < data.length; i++) {
       const event = {};
       headers.forEach((header, index) => {
-        event[header.toLowerCase().replace(/\s+/g, '')] = data[i][index];
+        // Skip if header is not a valid string
+        if (header && typeof header === 'string' && header.trim()) {
+          const key = header.toLowerCase().replace(/\s+/g, '');
+          event[key] = data[i][index];
+        }
       });
       // Only return approved events
-      if (event.status && event.status.toLowerCase() === 'approved') {
+      const status = event.status ? String(event.status).toLowerCase().trim() : '';
+      if (status === 'approved') {
         events.push(event);
       }
     }
@@ -185,6 +202,51 @@ Norwich Event Hub Team
   } catch (error) {
     Logger.log('Error sending email: ' + error.toString());
   }
+}
+
+/**
+ * AUTOMATED SETUP: Fix header row - Run this once to set up proper headers
+ * Click the play button next to this function name in Apps Script editor
+ */
+function setupHeaders() {
+  const ss = SpreadsheetApp.openById(SHEET_ID);
+  const sheet = ss.getSheetByName(SHEET_NAME);
+
+  if (!sheet) {
+    Logger.log('Sheet not found!');
+    return;
+  }
+
+  // Clear row 1 completely
+  sheet.getRange(1, 1, 1, 13).clearContent();
+
+  // Set proper headers
+  const headers = [
+    'Timestamp',
+    'Event Name',
+    'Date',
+    'Time',
+    'Location',
+    'Category',
+    'Description',
+    'Ticket Link',
+    'Promoter Name',
+    'Promoter Email',
+    'Promoter Phone',
+    'Status',
+    'Event ID'
+  ];
+
+  sheet.getRange(1, 1, 1, 13).setValues([headers]);
+
+  // Format header row
+  const headerRange = sheet.getRange(1, 1, 1, 13);
+  headerRange.setFontWeight('bold');
+  headerRange.setBackground('#3AB8FF');
+  headerRange.setFontColor('#FFFFFF');
+
+  Logger.log('✅ Headers set up successfully!');
+  Browser.msgBox('Success!', '✅ Headers have been set up correctly!', Browser.Buttons.OK);
 }
 
 /**

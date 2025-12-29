@@ -121,6 +121,12 @@ function doGet(e) {
       headers.forEach((header, index) => {
         event[header.toLowerCase().replace(/\s+/g, '')] = data[i][index];
       });
+      
+      // Check for AI-discovered events based on ID
+      if (event.eventid && String(event.eventid).startsWith('AI-')) {
+        event.isAiDiscovered = true;
+      }
+
       // Only return approved events
       if (event.status && event.status.toLowerCase() === 'approved') {
         events.push(event);

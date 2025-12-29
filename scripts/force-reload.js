@@ -143,9 +143,9 @@ async function loadFromLocalJSON() {
     }
 }
 
-// Auto-refresh events every 5 minutes for real-time AI updates
+// Auto-refresh events once a day for AI updates
 function setupAutoRefresh() {
-    const REFRESH_INTERVAL = 5 * 60 * 1000; // 5 minutes
+    const REFRESH_INTERVAL = 24 * 60 * 60 * 1000; // 24 hours (once a day)
 
     setInterval(async () => {
         const config = typeof APP_CONFIG !== 'undefined' ? APP_CONFIG : { USE_LOCAL_STORAGE: true };
@@ -268,5 +268,5 @@ window.eventsLoadedPromise = forceLoadEvents();
 // Set up auto-refresh after initial load
 window.eventsLoadedPromise.then(() => {
     setupAutoRefresh();
-    console.log('🔄 Auto-refresh enabled (checks every 5 minutes)');
+    console.log('🔄 Auto-refresh enabled (checks once per day)');
 });

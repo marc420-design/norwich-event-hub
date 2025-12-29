@@ -470,6 +470,32 @@
     }
 }
 
+/* Lazy Loading Styles */
+.lazy-bg {
+    background: linear-gradient(135deg, var(--color-electric-blue), var(--color-forest-green));
+    background-size: 200% 200%;
+    animation: shimmer 2s infinite;
+}
+
+.lazy-loaded {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes shimmer {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 /* Accessibility */
 @media (prefers-reduced-motion: reduce) {
     *,
@@ -478,5 +504,14 @@
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
+    }
+
+    .lazy-bg {
+        animation: none;
+        background: linear-gradient(135deg, var(--color-electric-blue), var(--color-forest-green));
+    }
+
+    .lazy-loaded {
+        animation: none;
     }
 }

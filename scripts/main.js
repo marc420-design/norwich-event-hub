@@ -124,7 +124,14 @@ function createEventCard(event) {
     // Create elements safely to prevent XSS
     const eventImageDiv = document.createElement('div');
     eventImageDiv.className = 'event-image';
-    eventImageDiv.style.cssText = imageStyle;
+
+    // Lazy load images using data attributes and Intersection Observer
+    if (imageUrl) {
+        eventImageDiv.dataset.bgImage = imageUrl;
+        eventImageDiv.classList.add('lazy-bg');
+    } else {
+        eventImageDiv.style.cssText = imageStyle;
+    }
 
     const eventContentDiv = document.createElement('div');
     eventContentDiv.className = 'event-content';
@@ -297,6 +304,45 @@ function createEventCard(event) {
     card.appendChild(eventContentDiv);
 
     return card;
+}
+
+// Lazy loading for background images using Intersection Observer
+if (typeof window !== 'undefined' && 'IntersectionObserver' in window) {
+    const lazyBackgroundObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const lazyDiv = entry.target;
+                const bgImage = lazyDiv.dataset.bgImage;
+
+                if (bgImage) {
+                    lazyDiv.style.backgroundImage = `url('${bgImage}')`;
+                    lazyDiv.classList.remove('lazy-bg');
+                    lazyDiv.classList.add('lazy-loaded');
+                    lazyBackgroundObserver.unobserve(lazyDiv);
+                }
+            }
+        });
+    }, {
+        rootMargin: '50px 0px', // Start loading 50px before entering viewport
+        threshold: 0.01
+    });
+
+    // Observe all lazy background elements (existing and future)
+    function observeLazyBackgrounds() {
+        const lazyBackgrounds = document.querySelectorAll('.lazy-bg');
+        lazyBackgrounds.forEach(bg => lazyBackgroundObserver.observe(bg));
+    }
+
+    // Initial observation
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', observeLazyBackgrounds);
+    } else {
+        observeLazyBackgrounds();
+    }
+
+    // Re-observe when new events are loaded
+    window.addEventListener('eventsLoaded', observeLazyBackgrounds);
+    window.addEventListener('eventsUpdated', observeLazyBackgrounds);
 }
 
 // Export for use in other scripts

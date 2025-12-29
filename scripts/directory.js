@@ -4,18 +4,24 @@ document.addEventListener('DOMContentLoaded', function() {
     // Check for category filter in URL
     const urlParams = new URLSearchParams(window.location.search);
     const categoryParam = urlParams.get('category');
-    
+
     if (categoryParam) {
         document.getElementById('categoryFilter').value = categoryParam;
     }
-    
+
     // Load all events
     loadDirectoryEvents();
-    
+
     // Filter event listeners
     document.getElementById('categoryFilter').addEventListener('change', applyFilters);
     document.getElementById('monthFilter').addEventListener('change', applyFilters);
     document.getElementById('searchFilter').addEventListener('input', applyFilters);
+
+    // Auto-reload events when updated
+    window.addEventListener('eventsUpdated', function(e) {
+        console.log('🔄 Events updated, reloading directory...', e.detail);
+        loadDirectoryEvents();
+    });
 });
 
 async function loadDirectoryEvents() {

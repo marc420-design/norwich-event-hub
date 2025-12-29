@@ -121,10 +121,30 @@ function createEventCard(event) {
     const eventDateSpan = document.createElement('span');
     eventDateSpan.className = 'event-date';
     eventDateSpan.textContent = `${formatDate(event.date)} at ${formatTime(event.time)}`;
-    
+
     const eventTitle = document.createElement('h3');
     eventTitle.className = 'event-title';
     eventTitle.textContent = event.name;
+
+    // Add AI badge for AI-discovered events
+    if (event.isAiDiscovered || event.isaidiscovered) {
+        const aiBadge = document.createElement('span');
+        aiBadge.className = 'ai-badge';
+        aiBadge.style.cssText = `
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-left: 8px;
+            vertical-align: middle;
+        `;
+        aiBadge.textContent = '🤖 AI Discovered';
+        aiBadge.title = 'This event was automatically discovered by our AI system';
+        eventTitle.appendChild(aiBadge);
+    }
     
     const eventLocation = document.createElement('p');
     eventLocation.className = 'event-location';

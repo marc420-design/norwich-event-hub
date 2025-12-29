@@ -19,6 +19,20 @@ const EMAIL_TO = 'submit@norwicheventshub.com';
 const EMAIL_FROM = 'events@norwicheventshub.com';
 
 /**
+ * Add custom menu when sheet opens
+ */
+function onOpen() {
+  const ui = SpreadsheetApp.getUi();
+  ui.createMenu('📊 Event Management')
+    .addItem('📅 Sort by Date', 'sortEventsByDate')
+    .addItem('✅ Sort by Status', 'sortEventsByStatus')
+    .addItem('🎭 Sort by Category', 'sortEventsByCategory')
+    .addSeparator()
+    .addItem('🔧 Setup Headers', 'setupHeaders')
+    .addToUi();
+}
+
+/**
  * Handle POST request from event submission form
  */
 function doPost(e) {
@@ -138,9 +152,13 @@ function doGet(e) {
           event[key] = data[i][index];
         }
       });
-      // Only return approved events
+      // Only return approved events (case-insensitive to handle AI-generated events)
       const status = event.status ? String(event.status).toLowerCase().trim() : '';
       if (status === 'approved') {
+        // Add a flag to indicate if this is an AI-discovered event
+        if (event.eventid && String(event.eventid).startsWith('AI-')) {
+          event.isAiDiscovered = true;
+        }
         events.push(event);
       }
     }
@@ -247,6 +265,98 @@ function setupHeaders() {
 
   Logger.log('✅ Headers set up successfully!');
   Browser.msgBox('Success!', '✅ Headers have been set up correctly!', Browser.Buttons.OK);
+}
+
+/**
+ * Sort events by date (newest first) - Run this from Apps Script editor
+ * Click the play button next to this function name
+ */
+function sortEventsByDate() {
+  const ss = SpreadsheetApp.openById(SHEET_ID);
+  const sheet = ss.getSheetByName(SHEET_NAME);
+
+  if (!sheet) {
+    Logger.log('Sheet not found!');
+    return;
+  }
+
+  const lastRow = sheet.getLastRow();
+
+  if (lastRow <= 1) {
+    Logger.log('No data to sort');
+    return;
+  }
+
+  // Sort by Date column (column C, which is index 3)
+  // Range: from row 2 (skip header) to last row, all columns
+  const range = sheet.getRange(2, 1, lastRow - 1, sheet.getLastColumn());
+  range.sort([
+    {column: 3, ascending: false}, // Date column (newest first)
+    {column: 4, ascending: true}   // Time column (earliest first for same date)
+  ]);
+
+  Logger.log('✅ Events sorted by date (newest first)');
+  Browser.msgBox('Success!', '✅ Events sorted by date!', Browser.Buttons.OK);
+}
+
+/**
+ * Sort events by status (Approved first, then Pending)
+ */
+function sortEventsByStatus() {
+  const ss = SpreadsheetApp.openById(SHEET_ID);
+  const sheet = ss.getSheetByName(SHEET_NAME);
+
+  if (!sheet) {
+    Logger.log('Sheet not found!');
+    return;
+  }
+
+  const lastRow = sheet.getLastRow();
+
+  if (lastRow <= 1) {
+    Logger.log('No data to sort');
+    return;
+  }
+
+  // Sort by Status column (column L, which is index 12), then by Date
+  const range = sheet.getRange(2, 1, lastRow - 1, sheet.getLastColumn());
+  range.sort([
+    {column: 12, ascending: true},  // Status (Approved before Pending)
+    {column: 3, ascending: false}   // Date (newest first)
+  ]);
+
+  Logger.log('✅ Events sorted by status and date');
+  Browser.msgBox('Success!', '✅ Events sorted by status!', Browser.Buttons.OK);
+}
+
+/**
+ * Sort events by category
+ */
+function sortEventsByCategory() {
+  const ss = SpreadsheetApp.openById(SHEET_ID);
+  const sheet = ss.getSheetByName(SHEET_NAME);
+
+  if (!sheet) {
+    Logger.log('Sheet not found!');
+    return;
+  }
+
+  const lastRow = sheet.getLastRow();
+
+  if (lastRow <= 1) {
+    Logger.log('No data to sort');
+    return;
+  }
+
+  // Sort by Category column (column F, which is index 6), then by Date
+  const range = sheet.getRange(2, 1, lastRow - 1, sheet.getLastColumn());
+  range.sort([
+    {column: 6, ascending: true},   // Category (alphabetical)
+    {column: 3, ascending: false}   // Date (newest first)
+  ]);
+
+  Logger.log('✅ Events sorted by category and date');
+  Browser.msgBox('Success!', '✅ Events sorted by category!', Browser.Buttons.OK);
 }
 
 /**

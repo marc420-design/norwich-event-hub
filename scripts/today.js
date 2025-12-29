@@ -7,10 +7,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const today = new Date();
         todayDateElement.textContent = formatDate(getTodayDateString());
     }
-    
+
     // Load today's events
     loadTodayEvents();
-    
+
     // Filter functionality
     const filterButtons = document.querySelectorAll('.filter-btn');
     filterButtons.forEach(button => {
@@ -18,11 +18,17 @@ document.addEventListener('DOMContentLoaded', function() {
             // Update active state
             filterButtons.forEach(btn => btn.classList.remove('active'));
             this.classList.add('active');
-            
+
             // Filter events
             const filter = this.dataset.filter;
             filterEvents(filter);
         });
+    });
+
+    // Auto-reload events when updated
+    window.addEventListener('eventsUpdated', function(e) {
+        console.log('🔄 Events updated, reloading today\'s events...', e.detail);
+        loadTodayEvents();
     });
 });
 

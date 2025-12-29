@@ -40,11 +40,12 @@ async function forceLoadEvents() {
         }, 100);
     });
 
-    const config = typeof APP_CONFIG !== 'undefined' ? APP_CONFIG : { USE_LOCAL_STORAGE: true };
+    // FORCE LOCAL STORAGE MODE - Always use local JSON until explicitly configured otherwise
+    const config = { USE_LOCAL_STORAGE: true };
 
     // Try Google Sheets API first if not using local storage
-    if (!config.USE_LOCAL_STORAGE && config.GOOGLE_APPS_SCRIPT_URL &&
-        config.GOOGLE_APPS_SCRIPT_URL !== 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL') {
+    if (!config.USE_LOCAL_STORAGE && typeof APP_CONFIG !== 'undefined' && APP_CONFIG.GOOGLE_APPS_SCRIPT_URL &&
+        APP_CONFIG.GOOGLE_APPS_SCRIPT_URL !== 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL') {
 
         try {
             console.log('🔄 Loading events from Google Sheets API...');

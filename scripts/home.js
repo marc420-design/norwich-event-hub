@@ -41,8 +41,12 @@ async function loadFeaturedEvents() {
         const today = getTodayDateString();
 
         // Get upcoming events (next 6)
+        // Extract date portion from ISO timestamps (e.g., "2026-01-15T00:00:00.000Z" -> "2026-01-15")
         events = events
-            .filter(event => event.date >= today)
+            .filter(event => {
+                const eventDate = event.date ? event.date.split('T')[0] : '';
+                return eventDate >= today;
+            })
             .sort((a, b) => new Date(a.date) - new Date(b.date))
             .slice(0, 6);
 

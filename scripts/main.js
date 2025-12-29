@@ -99,35 +99,46 @@ function sanitizeUrl(url) {
 function createEventCard(event) {
     const card = document.createElement('div');
     card.className = 'event-card';
-    card.dataset.category = escapeHtml(event.category);
-    if (event.id) {
-        card.dataset.eventId = event.id;
+
+    // Handle both property formats from API (eventname) and local (name)
+    const name = event.name || event.eventname || 'Untitled Event';
+    const date = event.date || '';
+    const time = event.time || '';
+    const location = event.location || 'Location TBA';
+    const description = event.description || '';
+    const category = event.category || 'general';
+    const ticketLink = event.ticketLink || event.ticketlink || '';
+    const image = event.image || event.imageurl || '';
+
+    card.dataset.category = escapeHtml(category);
+    if (event.id || event.eventid) {
+        card.dataset.eventId = event.id || event.eventid;
     }
-    
+
     // Sanitize image URL
-    const imageUrl = sanitizeUrl(event.image);
+    const imageUrl = sanitizeUrl(image);
     const imageStyle = imageUrl
         ? `background-image: url('${imageUrl}')`
         : 'background: linear-gradient(135deg, var(--color-electric-blue), var(--color-forest-green))';
-    
+
     // Create elements safely to prevent XSS
     const eventImageDiv = document.createElement('div');
     eventImageDiv.className = 'event-image';
     eventImageDiv.style.cssText = imageStyle;
-    
+
     const eventContentDiv = document.createElement('div');
     eventContentDiv.className = 'event-content';
-    
+
     const eventDateSpan = document.createElement('span');
     eventDateSpan.className = 'event-date';
-    eventDateSpan.textContent = `${formatDate(event.date)} at ${formatTime(event.time)}`;
+    eventDateSpan.textContent = `${formatDate(date)} at ${formatTime(time)}`;
 
     const eventTitle = document.createElement('h3');
     eventTitle.className = 'event-title';
-    eventTitle.textContent = event.name;
+    eventTitle.textContent = name;
 
     // Add AI badge for AI-discovered events
-    if (event.isAiDiscovered || event.isaidiscovered) {
+    if (event.isAiDiscovered || event.isaidiscovered || (event.eventid && String(event.eventid).startsWith('AI-'))) {
         const aiBadge = document.createElement('span');
         aiBadge.className = 'ai-badge';
         aiBadge.style.cssText = `
@@ -145,37 +156,37 @@ function createEventCard(event) {
         aiBadge.title = 'This event was automatically discovered by our AI system';
         eventTitle.appendChild(aiBadge);
     }
-    
-    const eventLocation = document.createElement('p');
-    eventLocation.className = 'event-location';
-    eventLocation.textContent = `📍 ${event.location}`;
-    
-    const eventDescription = document.createElement('p');
-    eventDescription.className = 'event-description';
-    eventDescription.textContent = event.description;
-    
+
+    const eventLocationP = document.createElement('p');
+    eventLocationP.className = 'event-location';
+    eventLocationP.textContent = `📍 ${location}`;
+
+    const eventDescriptionP = document.createElement('p');
+    eventDescriptionP.className = 'event-description';
+    eventDescriptionP.textContent = description;
+
     eventContentDiv.appendChild(eventDateSpan);
     eventContentDiv.appendChild(eventTitle);
-    eventContentDiv.appendChild(eventLocation);
-    eventContentDiv.appendChild(eventDescription);
-    
+    eventContentDiv.appendChild(eventLocationP);
+    eventContentDiv.appendChild(eventDescriptionP);
+
     // Add ticket link if available
-    if (event.ticketLink) {
-        const ticketUrl = sanitizeUrl(event.ticketLink);
+    if (ticketLink) {
+        const ticketUrl = sanitizeUrl(ticketLink);
         if (ticketUrl) {
-            const ticketLink = document.createElement('a');
-            ticketLink.href = ticketUrl;
-            ticketLink.target = '_blank';
-            ticketLink.rel = 'noopener noreferrer'; // Security: prevent window.opener access
-            ticketLink.className = 'event-link';
-            ticketLink.textContent = 'Get Tickets →';
-            eventContentDiv.appendChild(ticketLink);
+            const ticketLinkEl = document.createElement('a');
+            ticketLinkEl.href = ticketUrl;
+            ticketLinkEl.target = '_blank';
+            ticketLinkEl.rel = 'noopener noreferrer'; // Security: prevent window.opener access
+            ticketLinkEl.className = 'event-link';
+            ticketLinkEl.textContent = 'Get Tickets →';
+            eventContentDiv.appendChild(ticketLinkEl);
         }
     }
-    
+
     card.appendChild(eventImageDiv);
     card.appendChild(eventContentDiv);
-    
+
     return card;
 }
 

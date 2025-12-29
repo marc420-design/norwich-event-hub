@@ -48,7 +48,11 @@ async function loadTodayEvents() {
 
         // Use the loaded events data - Show ALL events for today
         const today = getTodayDateString();
-        todayEvents = (window.eventsData || []).filter(event => event.date === today);
+        // Extract date portion from ISO timestamps (e.g., "2026-01-15T00:00:00.000Z" -> "2026-01-15")
+        todayEvents = (window.eventsData || []).filter(event => {
+            const eventDate = event.date ? event.date.split('T')[0] : '';
+            return eventDate === today;
+        });
         console.log(`📅 Today (${today}): Found ${todayEvents.length} events from ${window.eventsData?.length || 0} total`);
         
         eventsContainer.innerHTML = '';

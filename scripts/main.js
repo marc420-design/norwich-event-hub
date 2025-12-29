@@ -48,29 +48,18 @@ let eventsData = window.eventsData;
 // Note: Events are loaded by force-reload.js
 // This script just provides utility functions
 
-// Utility Functions
+// Date utility functions are now in date-utils.js
+// Keeping these for backwards compatibility
 function formatDate(dateString) {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-GB', { 
-        weekday: 'long', 
-        year: 'numeric', 
-        month: 'long', 
-        day: 'numeric' 
-    });
+    return window.formatDate ? window.formatDate(dateString) : dateString;
 }
 
 function formatTime(timeString) {
-    if (!timeString) return '';
-    const [hours, minutes] = timeString.split(':');
-    const hour = parseInt(hours);
-    const ampm = hour >= 12 ? 'PM' : 'AM';
-    const displayHour = hour % 12 || 12;
-    return `${displayHour}:${minutes} ${ampm}`;
+    return window.formatTime ? window.formatTime(timeString) : timeString;
 }
 
 function getTodayDateString() {
-    const today = new Date();
-    return today.toISOString().split('T')[0];
+    return window.getTodayDateString ? window.getTodayDateString() : new Date().toISOString().split('T')[0];
 }
 
 // HTML escape function to prevent XSS

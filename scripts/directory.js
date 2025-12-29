@@ -111,15 +111,15 @@ function applyFilters() {
         // Category filter
         const categoryMatch = categoryFilter === 'all' || event.category === categoryFilter;
         
-        // Month filter
-        const eventMonth = event.date.split('-')[1];
-        const monthMatch = monthFilter === 'all' || eventMonth === monthFilter;
-        
-        // Search filter
-        const searchMatch = !searchFilter || 
-            event.name.toLowerCase().includes(searchFilter) ||
-            event.description.toLowerCase().includes(searchFilter) ||
-            event.location.toLowerCase().includes(searchFilter);
+        // Month filter - use getMonthNumber utility for proper parsing
+        const eventMonth = event.date && window.getMonthNumber ? window.getMonthNumber(event.date) : null;
+        const monthMatch = monthFilter === 'all' || (eventMonth && eventMonth === monthFilter);
+
+        // Search filter - add null checks to prevent crashes
+        const searchMatch = !searchFilter ||
+            (event.name && event.name.toLowerCase().includes(searchFilter)) ||
+            (event.description && event.description.toLowerCase().includes(searchFilter)) ||
+            (event.location && event.location.toLowerCase().includes(searchFilter));
         
         if (categoryMatch && monthMatch && searchMatch) {
             card.style.display = 'block';

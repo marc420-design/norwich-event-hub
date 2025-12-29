@@ -75,16 +75,18 @@ async function loadFeaturedEvents() {
     try {
         // Use loaded events
         let events = (window.eventsData || []);
-        const today = getTodayDateString();
 
-        // Get upcoming events (next 6)
-        // Extract date portion from ISO timestamps (e.g., "2026-01-15T00:00:00.000Z" -> "2026-01-15")
+        // Get upcoming events (next 6) - use date utilities for proper parsing
         events = events
             .filter(event => {
-                const eventDate = event.date ? event.date.split('T')[0] : '';
-                return eventDate >= today;
+                // Use isFutureEvent utility which handles all date formats
+                return event.date && window.isFutureEvent && window.isFutureEvent(event.date);
             })
-            .sort((a, b) => new Date(a.date) - new Date(b.date))
+            .sort((a, b) => {
+                const dateA = window.parseEventDate ? window.parseEventDate(a.date) : new Date(a.date);
+                const dateB = window.parseEventDate ? window.parseEventDate(b.date) : new Date(b.date);
+                return dateA - dateB;
+            })
             .slice(0, 6);
 
         console.log(`🏠 Homepage showing ${events.length} upcoming events from ${window.eventsData?.length || 0} total`);

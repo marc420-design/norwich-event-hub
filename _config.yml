@@ -1,0 +1,14 @@
+# Jekyll configuration for GitHub Pages
+# Ensure all files are included
+
+include:
+  - scripts
+  - data
+  - .nojekyll
+
+exclude:
+  - node_modules
+  - automation
+
+# Disable Jekyll processing
+markdown: kramdown

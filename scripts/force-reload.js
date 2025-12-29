@@ -349,3 +349,4 @@ window.eventsLoadedPromise.then(() => {
     setupAutoRefresh();
     console.log('🔄 Auto-refresh enabled (checks once per day)');
 });
+// Force CDN cache clear Mon, Dec 29, 2025 11:02:31 PM

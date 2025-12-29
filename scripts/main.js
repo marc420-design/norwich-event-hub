@@ -184,6 +184,115 @@ function createEventCard(event) {
         }
     }
 
+    // Add social share buttons
+    const shareContainer = document.createElement('div');
+    shareContainer.className = 'event-share';
+    shareContainer.style.cssText = 'margin-top: 12px; display: flex; gap: 8px; flex-wrap: wrap;';
+    
+    const shareUrl = encodeURIComponent(window.location.origin + window.location.pathname + '?event=' + (event.id || event.eventid || ''));
+    const shareText = encodeURIComponent(`${name} - ${formatDate(date)} at ${location}`);
+    
+    // Twitter share
+    const twitterShare = document.createElement('a');
+    twitterShare.href = `https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareText}`;
+    twitterShare.target = '_blank';
+    twitterShare.rel = 'noopener noreferrer';
+    twitterShare.className = 'share-button';
+    twitterShare.style.cssText = 'display: inline-flex; align-items: center; gap: 4px; padding: 6px 12px; background: #1DA1F2; color: white; border-radius: 4px; text-decoration: none; font-size: 13px;';
+    twitterShare.innerHTML = '🐦 Share';
+    twitterShare.title = 'Share on Twitter';
+    
+    // Facebook share
+    const facebookShare = document.createElement('a');
+    facebookShare.href = `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`;
+    facebookShare.target = '_blank';
+    facebookShare.rel = 'noopener noreferrer';
+    facebookShare.className = 'share-button';
+    facebookShare.style.cssText = 'display: inline-flex; align-items: center; gap: 4px; padding: 6px 12px; background: #1877F2; color: white; border-radius: 4px; text-decoration: none; font-size: 13px;';
+    facebookShare.innerHTML = '📘 Share';
+    facebookShare.title = 'Share on Facebook';
+    
+    // Copy link
+    const copyLink = document.createElement('button');
+    copyLink.className = 'share-button';
+    copyLink.style.cssText = 'display: inline-flex; align-items: center; gap: 4px; padding: 6px 12px; background: #666; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 13px;';
+    copyLink.innerHTML = '🔗 Copy Link';
+    copyLink.title = 'Copy event link';
+    copyLink.onclick = function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const urlToCopy = window.location.origin + window.location.pathname + '?event=' + (event.id || event.eventid || '');
+        navigator.clipboard.writeText(urlToCopy).then(() => {
+            const originalText = copyLink.innerHTML;
+            copyLink.innerHTML = '✓ Copied!';
+            copyLink.style.background = '#2B7A47';
+            setTimeout(() => {
+                copyLink.innerHTML = originalText;
+                copyLink.style.background = '#666';
+            }, 2000);
+        }).catch(() => {
+            alert('Could not copy link. Please copy manually: ' + urlToCopy);
+        });
+    };
+    
+    shareContainer.appendChild(twitterShare);
+    shareContainer.appendChild(facebookShare);
+    shareContainer.appendChild(copyLink);
+    eventContentDiv.appendChild(shareContainer);
+
+    // Add Schema.org structured data
+    if (typeof document !== 'undefined') {
+        const schemaScript = document.createElement('script');
+        schemaScript.type = 'application/ld+json';
+        
+        // Parse date and time
+        let startDate = '';
+        if (date) {
+            const dateStr = date.split('T')[0]; // Get date part if ISO format
+            const [year, month, day] = dateStr.split('-');
+            if (time) {
+                const timeStr = time.includes('T') ? time.split('T')[1].split('.')[0] : time;
+                const [hours, minutes] = timeStr.split(':');
+                startDate = `${year}-${month}-${day}T${hours || '00'}:${minutes || '00'}:00`;
+            } else {
+                startDate = `${year}-${month}-${day}T00:00:00`;
+            }
+        }
+        
+        const schemaData = {
+            "@context": "https://schema.org",
+            "@type": "Event",
+            "name": escapeHtml(name),
+            "startDate": startDate || date,
+            "location": {
+                "@type": "Place",
+                "name": escapeHtml(location),
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Norwich",
+                    "addressCountry": "GB"
+                }
+            },
+            "description": escapeHtml(description),
+            "image": imageUrl || undefined,
+            "eventStatus": "https://schema.org/EventScheduled",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode"
+        };
+        
+        if (ticketLink) {
+            schemaData.offers = {
+                "@type": "Offer",
+                "url": ticketUrl,
+                "price": "0",
+                "priceCurrency": "GBP",
+                "availability": "https://schema.org/InStock"
+            };
+        }
+        
+        schemaScript.textContent = JSON.stringify(schemaData);
+        card.appendChild(schemaScript);
+    }
+
     card.appendChild(eventImageDiv);
     card.appendChild(eventContentDiv);
 

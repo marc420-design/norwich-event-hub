@@ -104,11 +104,25 @@ function createEventCard(event) {
         card.dataset.eventId = event.id || event.eventid;
     }
 
-    // Sanitize image URL
+    // Get category-specific gradient or image
+    const categoryGradients = {
+        'nightlife': 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+        'gigs': 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+        'theatre': 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+        'sports': 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
+        'markets': 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
+        'community': 'linear-gradient(135deg, #30cfd0 0%, #330867 100%)',
+        'culture': 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
+        'free': 'linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)',
+        'default': 'linear-gradient(135deg, var(--color-electric-blue), var(--color-forest-green))'
+    };
+
+    // Sanitize image URL or use category gradient
     const imageUrl = sanitizeUrl(image);
+    const categoryGradient = categoryGradients[category] || categoryGradients['default'];
     const imageStyle = imageUrl
         ? `background-image: url('${imageUrl}')`
-        : 'background: linear-gradient(135deg, var(--color-electric-blue), var(--color-forest-green))';
+        : `background: ${categoryGradient}`;
 
     // Create elements safely to prevent XSS
     const eventImageDiv = document.createElement('div');

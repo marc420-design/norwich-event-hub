@@ -30,6 +30,27 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('🔄 Events updated, reloading today\'s events...', e.detail);
         loadTodayEvents();
     });
+    
+    // Listen for error events
+    window.addEventListener('eventsLoadError', function(e) {
+        console.error('Events load error:', e.detail);
+        const eventsContainer = document.getElementById('todayEvents');
+        if (eventsContainer) {
+            eventsContainer.innerHTML = `
+                <div class="event-card placeholder">
+                    <div class="event-image"></div>
+                    <div class="event-content">
+                        <span class="event-date">Unable to load events</span>
+                        <h3 class="event-title">${e.detail.message || 'Please try again later'}</h3>
+                        <p style="margin-top: 10px; color: #666;">
+                            ${e.detail.willRetry !== false ? 'Retrying automatically...' : 'Please refresh the page or check your connection.'}
+                        </p>
+                        <a href="submit.html" class="event-link" style="margin-top: 15px; display: inline-block;">Submit an Event →</a>
+                    </div>
+                </div>
+            `;
+        }
+    });
 });
 
 async function loadTodayEvents() {
@@ -38,9 +59,20 @@ async function loadTodayEvents() {
 
     eventsContainer.innerHTML = '<div class="event-card placeholder"><div class="event-content"><span class="event-date">Loading...</span></div></div>';
 
-    // Wait for events to load first
+    // Wait for events to load first (with timeout)
     if (window.eventsLoadedPromise) {
-        await window.eventsLoadedPromise;
+        try {
+            // Wait for events with 12 second timeout
+            await Promise.race([
+                window.eventsLoadedPromise,
+                new Promise((_, reject) => 
+                    setTimeout(() => reject(new Error('Timeout: Events took too long to load')), 12000)
+                )
+            ]);
+        } catch (error) {
+            console.error('Events load timeout:', error);
+            // Error event should have been triggered by force-reload.js
+        }
     }
 
     try {
@@ -81,8 +113,12 @@ async function loadTodayEvents() {
             <div class="event-card placeholder">
                 <div class="event-image"></div>
                 <div class="event-content">
-                    <span class="event-date">Error loading events</span>
-                    <h3 class="event-title">Please try again later</h3>
+                    <span class="event-date">Unable to load events</span>
+                    <h3 class="event-title">Something went wrong</h3>
+                    <p style="margin-top: 10px; color: #666;">
+                        We're having trouble loading today's events. Please try refreshing the page.
+                    </p>
+                    <a href="submit.html" class="event-link" style="margin-top: 15px; display: inline-block;">Submit an Event →</a>
                 </div>
             </div>
         `;

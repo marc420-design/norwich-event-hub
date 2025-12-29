@@ -5,6 +5,16 @@ window.eventsData = window.eventsData || [];
 // Clear old localStorage on page load to force fresh data
 localStorage.removeItem('norwichEvents');
 
+// Helper function to add timeout to fetch requests
+function fetchWithTimeout(url, options = {}, timeout = 10000) {
+    return Promise.race([
+        fetch(url, options),
+        new Promise((_, reject) =>
+            setTimeout(() => reject(new Error('Request timeout: API did not respond within 10 seconds')), timeout)
+        )
+    ]);
+}
+
 // Force reload events from Google Sheets API or fallback to local JSON
 async function forceLoadEvents() {
     // Wait for config to be available (max 2 seconds)
@@ -41,14 +51,15 @@ async function forceLoadEvents() {
             const cacheBuster = Date.now();
             const apiUrl = config.GOOGLE_APPS_SCRIPT_URL + '?action=getEvents&t=' + cacheBuster;
 
-            const response = await fetch(apiUrl, {
+            // Use fetchWithTimeout to prevent hanging
+            const response = await fetchWithTimeout(apiUrl, {
                 method: 'GET',
                 cache: 'no-store',
                 headers: {
                     'Cache-Control': 'no-cache, no-store, must-revalidate',
                     'Pragma': 'no-cache'
                 }
-            });
+            }, 10000); // 10 second timeout
 
             if (!response.ok) {
                 throw new Error(`API error! status: ${response.status}`);
@@ -56,35 +67,78 @@ async function forceLoadEvents() {
 
             const result = await response.json();
 
-            if (result.success && result.events && result.events.length > 0) {
-                // Set global eventsData
-                window.eventsData = result.events;
+            if (result.success && result.events) {
+                // Set global eventsData (even if empty array)
+                window.eventsData = result.events || [];
 
                 // Save to localStorage for offline access
-                localStorage.setItem('norwichEvents', JSON.stringify(result.events));
+                localStorage.setItem('norwichEvents', JSON.stringify(result.events || []));
 
-                console.log(`✅ Loaded ${result.events.length} events from Google Sheets API`);
-                console.log(`📊 Sample event:`, result.events[0]);
-                console.log(`🕐 Last updated:`, result.lastUpdated || 'N/A');
+                if (result.events.length > 0) {
+                    console.log(`✅ Loaded ${result.events.length} events from Google Sheets API`);
+                    console.log(`📊 Sample event:`, result.events[0]);
+                    console.log(`🕐 Last updated:`, result.lastUpdated || 'N/A');
+                } else {
+                    console.warn('⚠️ API returned success but no events');
+                }
 
-                // Trigger event to notify other scripts
+                // Trigger event to notify other scripts (even if empty)
                 window.dispatchEvent(new CustomEvent('eventsLoaded', {
                     detail: {
-                        count: result.events.length,
+                        count: result.events.length || 0,
                         source: 'api',
-                        lastUpdated: result.lastUpdated
+                        lastUpdated: result.lastUpdated,
+                        success: true
                     }
                 }));
 
-                return result.events;
+                // If no events, try fallback but don't wait for it
+                if (result.events.length === 0) {
+                    console.warn('⚠️ API returned no events, trying local JSON fallback...');
+                    loadFromLocalJSON().catch(err => {
+                        console.error('Fallback also failed:', err);
+                        // Trigger error event
+                        window.dispatchEvent(new CustomEvent('eventsLoadError', {
+                            detail: {
+                                message: 'No events available. Please try again later or submit an event.',
+                                source: 'api'
+                            }
+                        }));
+                    });
+                }
+
+                return result.events || [];
             } else {
-                console.warn('⚠️ API returned no events, falling back to local JSON');
+                console.warn('⚠️ API returned unexpected format, falling back to local JSON');
                 return await loadFromLocalJSON();
             }
         } catch (error) {
             console.error('❌ Failed to load from Google Sheets API:', error);
             console.log('⚠️ Falling back to local JSON file...');
-            return await loadFromLocalJSON();
+            
+            // Trigger error event for UI to handle
+            window.dispatchEvent(new CustomEvent('eventsLoadError', {
+                detail: {
+                    message: error.message || 'Failed to load events from server',
+                    source: 'api',
+                    willRetry: true
+                }
+            }));
+            
+            try {
+                return await loadFromLocalJSON();
+            } catch (fallbackError) {
+                console.error('❌ Fallback also failed:', fallbackError);
+                // Trigger final error event
+                window.dispatchEvent(new CustomEvent('eventsLoadError', {
+                    detail: {
+                        message: 'Unable to load events. Please check your connection and try again.',
+                        source: 'both',
+                        willRetry: false
+                    }
+                }));
+                return [];
+            }
         }
     } else {
         // Use local JSON file
@@ -99,14 +153,17 @@ async function loadFromLocalJSON() {
         console.log('📁 Loading events from local JSON file...');
         // Aggressive cache busting with multiple parameters
         const cacheBuster = Date.now() + Math.random();
-        const response = await fetch('data/sample-events.json?v=' + cacheBuster + '&nocache=' + Date.now(), {
+        const jsonUrl = 'data/sample-events.json?v=' + cacheBuster + '&nocache=' + Date.now();
+        
+        // Use fetchWithTimeout for local JSON as well
+        const response = await fetchWithTimeout(jsonUrl, {
             cache: 'no-store',
             headers: {
                 'Cache-Control': 'no-cache, no-store, must-revalidate',
                 'Pragma': 'no-cache',
                 'Expires': '0'
             }
-        });
+        }, 5000); // 5 second timeout for local file
 
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -116,29 +173,46 @@ async function loadFromLocalJSON() {
 
         if (data && data.events) {
             // Set global eventsData
-            window.eventsData = data.events;
+            window.eventsData = data.events || [];
 
             // Save to localStorage
-            localStorage.setItem('norwichEvents', JSON.stringify(data.events));
+            localStorage.setItem('norwichEvents', JSON.stringify(data.events || []));
 
-            console.log(`✅ Loaded ${data.events.length} events from local JSON`);
-            console.log(`📊 Sample event:`, data.events[0]);
+            if (data.events.length > 0) {
+                console.log(`✅ Loaded ${data.events.length} events from local JSON`);
+                console.log(`📊 Sample event:`, data.events[0]);
+            } else {
+                console.warn('⚠️ Local JSON contains no events');
+            }
 
             // Trigger event to notify other scripts
             window.dispatchEvent(new CustomEvent('eventsLoaded', {
                 detail: {
-                    count: data.events.length,
-                    source: 'local'
+                    count: data.events.length || 0,
+                    source: 'local',
+                    success: true
                 }
             }));
 
-            return data.events;
+            return data.events || [];
         } else {
             console.error('❌ No events in JSON data');
+            window.dispatchEvent(new CustomEvent('eventsLoadError', {
+                detail: {
+                    message: 'No events found in data file',
+                    source: 'local'
+                }
+            }));
             return [];
         }
     } catch (error) {
         console.error('❌ Failed to load events from local JSON:', error);
+        window.dispatchEvent(new CustomEvent('eventsLoadError', {
+            detail: {
+                message: error.message || 'Failed to load events from local file',
+                source: 'local'
+            }
+        }));
         return [];
     }
 }
@@ -158,25 +232,26 @@ function setupAutoRefresh() {
                 const cacheBuster = Date.now();
                 const apiUrl = config.GOOGLE_APPS_SCRIPT_URL + '?action=getEvents&t=' + cacheBuster;
 
-                const response = await fetch(apiUrl, {
+                // Use fetchWithTimeout for auto-refresh as well
+                const response = await fetchWithTimeout(apiUrl, {
                     method: 'GET',
                     cache: 'no-store',
                     headers: {
                         'Cache-Control': 'no-cache, no-store, must-revalidate',
                         'Pragma': 'no-cache'
                     }
-                });
+                }, 10000); // 10 second timeout
 
                 if (response.ok) {
                     const result = await response.json();
 
                     if (result.success && result.events) {
                         const oldCount = window.eventsData?.length || 0;
-                        const newCount = result.events.length;
+                        const newCount = result.events.length || 0;
 
                         if (newCount !== oldCount) {
-                            window.eventsData = result.events;
-                            localStorage.setItem('norwichEvents', JSON.stringify(result.events));
+                            window.eventsData = result.events || [];
+                            localStorage.setItem('norwichEvents', JSON.stringify(result.events || []));
 
                             console.log(`✨ New events detected! ${oldCount} → ${newCount}`);
 
@@ -189,8 +264,10 @@ function setupAutoRefresh() {
                                 }
                             }));
 
-                            // Show notification to user
-                            showUpdateNotification(newCount - oldCount);
+                            // Show notification to user only if there are new events
+                            if (newCount > oldCount) {
+                                showUpdateNotification(newCount - oldCount);
+                            }
                         } else {
                             console.log('✅ Events up to date');
                         }
@@ -198,6 +275,7 @@ function setupAutoRefresh() {
                 }
             } catch (error) {
                 console.error('Auto-refresh error:', error);
+                // Don't show error to user for background refresh failures
             }
         }
     }, REFRESH_INTERVAL);

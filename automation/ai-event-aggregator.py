@@ -6,7 +6,7 @@ Usage:
     python ai-event-aggregator.py
 
 Environment variables required:
-    CLAUDE_API_KEY - Anthropic Claude API key
+    GEMINI_API_KEY - Google Gemini API key (or OPENAI_API_KEY for OpenAI)
     FACEBOOK_ACCESS_TOKEN - Facebook Graph API token (optional)
     EVENTBRITE_API_KEY - Eventbrite API key (optional)
     GOOGLE_SHEETS_CREDENTIALS - Path to Google service account JSON
@@ -22,7 +22,7 @@ import re
 
 # External dependencies (install via: pip install -r requirements.txt)
 try:
-    import anthropic
+    import google.generativeai as genai
     import requests
     from bs4 import BeautifulSoup
     import gspread
@@ -30,7 +30,7 @@ try:
     from dateutil import parser as date_parser
 except ImportError as e:
     print(f"Missing dependency: {e}")
-    print("Install with: pip install anthropic requests beautifulsoup4 gspread oauth2client python-dateutil")
+    print("Install with: pip install google-generativeai requests beautifulsoup4 gspread oauth2client python-dateutil")
     exit(1)
 
 # Configure logging
@@ -45,16 +45,27 @@ class EventAggregator:
     """Main event aggregation system"""
 
     def __init__(self):
-        self.claude_api_key = os.environ.get('CLAUDE_API_KEY')
+        self.gemini_api_key = os.environ.get('GEMINI_API_KEY')
+        self.openai_api_key = os.environ.get('OPENAI_API_KEY')
         self.facebook_token = os.environ.get('FACEBOOK_ACCESS_TOKEN')
         self.eventbrite_key = os.environ.get('EVENTBRITE_API_KEY')
         self.sheet_id = os.environ.get('GOOGLE_SHEET_ID')
         self.sheet_creds = os.environ.get('GOOGLE_SHEETS_CREDENTIALS')
 
-        if not self.claude_api_key:
-            raise ValueError("CLAUDE_API_KEY environment variable required")
+        # Use Gemini by default, fallback to OpenAI
+        if self.gemini_api_key:
+            genai.configure(api_key=self.gemini_api_key)
+            self.model = genai.GenerativeModel('gemini-pro')
+            self.ai_provider = 'Gemini'
+            logger.info("Using Google Gemini AI")
+        elif self.openai_api_key:
+            import openai
+            openai.api_key = self.openai_api_key
+            self.ai_provider = 'OpenAI'
+            logger.info("Using OpenAI")
+        else:
+            raise ValueError("Either GEMINI_API_KEY or OPENAI_API_KEY environment variable required")
 
-        self.claude = anthropic.Anthropic(api_key=self.claude_api_key)
         self.events = []
         self.categories = ['nightlife', 'gigs', 'theatre', 'sports', 'markets', 'community', 'culture', 'free']
 
@@ -272,7 +283,7 @@ class EventAggregator:
             logger.info(f"  Processing event {i+1}/{len(self.events)}...")
 
             try:
-                structured_event = self.parse_event_with_claude(event)
+                structured_event = self.parse_event_with_ai(event)
                 if structured_event:
                     processed_events.append(structured_event)
             except Exception as e:
@@ -280,8 +291,8 @@ class EventAggregator:
 
         self.events = processed_events
 
-    def parse_event_with_claude(self, raw_event: Dict) -> Optional[Dict]:
-        """Use Claude to extract structured data from raw event"""
+    def parse_event_with_ai(self, raw_event: Dict) -> Optional[Dict]:
+        """Use AI (Gemini or OpenAI) to extract structured data from raw event"""
 
         prompt = f"""Extract event information from this data and return ONLY a JSON object.
 
@@ -313,16 +324,17 @@ Example output:
 {{"name": "Live Music Night", "date": "2026-01-15", "time": "20:00", "location": "Waterfront Norwich", "address": "King Street, Norwich", "category": "gigs", "description": "Evening of live music featuring local bands", "ticketLink": "https://example.com/tickets", "price": "£12.50", "imageUrl": null}}"""
 
         try:
-            message = self.claude.messages.create(
-                model="claude-sonnet-4-5-20250929",
-                max_tokens=1024,
-                messages=[{
-                    "role": "user",
-                    "content": prompt
-                }]
-            )
-
-            response_text = message.content[0].text.strip()
+            if self.ai_provider == 'Gemini':
+                response = self.model.generate_content(prompt)
+                response_text = response.text.strip()
+            else:  # OpenAI
+                import openai
+                response = openai.ChatCompletion.create(
+                    model="gpt-3.5-turbo",
+                    messages=[{"role": "user", "content": prompt}],
+                    max_tokens=1024
+                )
+                response_text = response.choices[0].message.content.strip()
 
             # Extract JSON from response
             json_match = re.search(r'\{.*\}', response_text, re.DOTALL)
@@ -333,11 +345,12 @@ Example output:
                 event_data['source'] = raw_event.get('source')
                 event_data['sourceUrl'] = raw_event.get('url')
                 event_data['scrapedAt'] = datetime.now().isoformat()
+                event_data['aiProvider'] = self.ai_provider
 
                 return event_data
 
         except Exception as e:
-            logger.error(f"Claude parsing error: {e}")
+            logger.error(f"AI parsing error ({self.ai_provider}): {e}")
 
         return None
 

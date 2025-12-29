@@ -1,14 +1,24 @@
-# Jekyll configuration for GitHub Pages
-# Ensure all files are included
+# Disable Jekyll processing completely - serve files as-is
+# GitHub Pages will still use Jekyll but won't transform content
 
+# Keep these directories (don't exclude them)
 include:
-  - scripts
-  - data
-  - .nojekyll
+  - _*
+  - .htaccess
 
+# Only exclude these
 exclude:
   - node_modules
   - automation
+  - "*.log"
+  - README.md
 
-# Disable Jekyll processing
-markdown: kramdown
+# Don't process JavaScript or JSON files
+keep_files:
+  - scripts
+  - data
+  - styles
+  - images
+
+# Serve everything as static files
+plugins: []

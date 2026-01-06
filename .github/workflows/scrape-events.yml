@@ -42,7 +42,7 @@ jobs:
       - name: Create credentials file
         run: |
           cd automation
-          echo '${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}' > google-credentials.json
+          echo '${{ secrets.GOOGLE_SHEETS_CREDENTIALS }}' > google-credentials.json
 
       - name: Run AI Event Aggregator
         env:

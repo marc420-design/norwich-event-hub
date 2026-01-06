@@ -1,7 +1,34 @@
-# AI Event Aggregator Setup Guide
+# 🤖 AI Event Discovery - Complete Setup Guide
 
-## Overview
-The AI Event Aggregator automatically discovers Norwich events from multiple sources using Claude AI, validates them, and adds them to your Google Sheets database in real-time.
+Transform Norwich Event Hub into a self-updating platform that automatically discovers events from across the web!
+
+---
+
+## 🎯 What This Does
+
+The AI Event Discovery system:
+
+✅ **Automatically finds events** from multiple sources:
+- Eventbrite, Ticketmaster, and other event platforms
+- Venue websites (Waterfront, Arts Centre, Forum, etc.)
+- Social media (Instagram, Facebook, Twitter)
+- Local news sites (EDP24, Evening News)
+
+✅ **Smart categorization:**
+- AI detects event type (gigs, nightlife, theatre, etc.)
+- Extracts date, time, location, price
+- Identifies venue from Norwich venue database
+
+✅ **Automatic submission:**
+- Submits to Google Sheets with "AI-" prefix
+- Status set to "Pending" for manual review
+- Deduplicates to avoid duplicates
+- Runs on schedule (every 6 hours)
+
+✅ **Real-time updates:**
+- No manual data entry needed
+- Events update automatically
+- Always shows fresh, relevant content
 
 ## Features
 - 🤖 AI-powered event parsing with Claude

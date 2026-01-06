@@ -650,8 +650,9 @@ Return JSON with these EXACT fields:
 
 CRITICAL RULES:
 ✓ Return ONLY JSON, no explanations or markdown
-✓ Date must be FUTURE (after {datetime.now().strftime('%Y-%m-%d')})
-✓ If no clear date found, use next Saturday: {(datetime.now() + timedelta(days=(5 - datetime.now().weekday()) % 7)).strftime('%Y-%m-%d')}
+✓ Date must be FUTURE (after {datetime.now().strftime('%Y-%m-%d')}) and within 2026
+✓ If no clear date found, estimate from context or use next Saturday: {(datetime.now() + timedelta(days=(5 - datetime.now().weekday()) % 7)).strftime('%Y-%m-%d')}
+✓ Include ALL 2026 events, not just next few weeks
 ✓ Location can be venue name from SOURCE if not in data
 ✓ Category: DJs/clubs=nightlife, bands=gigs, theatre/art=culture, food/drink=food, exercise=sports, kids=family
 ✓ Norwich/Norfolk events ONLY
@@ -724,10 +725,16 @@ JSON:"""
         if event['category'] not in self.categories:
             return False
 
-        # Validate date is in future
+        # Validate date is in future and within 2026
         try:
             event_date = datetime.fromisoformat(event['date'])
-            if event_date < datetime.now():
+            now = datetime.now()
+            end_of_2026 = datetime(2026, 12, 31, 23, 59, 59)
+            
+            # Event must be in future and not beyond end of 2026
+            if event_date < now:
+                return False
+            if event_date > end_of_2026:
                 return False
         except:
             return False

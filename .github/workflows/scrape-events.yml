@@ -50,9 +50,9 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
           GOOGLE_SHEETS_CREDENTIALS: './google-credentials.json'
-          SCRAPE_DAYS_AHEAD: 90
+          SCRAPE_DAYS_AHEAD: 365
           MIN_QUALITY_SCORE: 50
-          AUTO_APPROVE_THRESHOLD: 80
+          AUTO_APPROVE_THRESHOLD: 60
           NORWICH_RADIUS_KM: 15
         run: |
           cd automation

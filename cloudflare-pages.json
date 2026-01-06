@@ -1,7 +1,7 @@
 {
   "name": "norwich-event-hub",
   "production": {
-    "branch": "main",
+    "branch": "master",
     "build_command": "",
     "output_directory": "/",
     "root_directory": "/"

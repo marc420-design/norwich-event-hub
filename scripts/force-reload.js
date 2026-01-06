@@ -17,7 +17,14 @@ function fetchWithTimeout(url, options = {}, timeout = 10000) {
 
 // Force reload events from Google Sheets API or fallback to local JSON
 async function forceLoadEvents() {
-    // Wait for config to be available (max 2 seconds)
+    // CRITICAL: Load local JSON immediately as fallback (don't wait for config)
+    // This ensures events always load within 2 seconds
+    let localLoadPromise = loadFromLocalJSON().catch(err => {
+        console.warn('Local JSON load failed, will retry:', err);
+        return [];
+    });
+
+    // Wait for config to be available (max 1 second - reduced from 2)
     await new Promise(resolve => {
         if (typeof APP_CONFIG !== 'undefined') {
             resolve();
@@ -25,7 +32,7 @@ async function forceLoadEvents() {
         }
 
         let attempts = 0;
-        const maxAttempts = 20; // 20 attempts * 100ms = 2 seconds max
+        const maxAttempts = 10; // 10 attempts * 100ms = 1 second max
 
         const checkConfig = setInterval(() => {
             attempts++;
@@ -34,17 +41,22 @@ async function forceLoadEvents() {
                 resolve();
             } else if (attempts >= maxAttempts) {
                 clearInterval(checkConfig);
-                console.warn('⚠️ Config not loaded after 2s, using defaults');
+                console.warn('⚠️ Config not loaded after 1s, using defaults');
                 resolve();
             }
         }, 100);
     });
 
-    // FORCE LOCAL STORAGE MODE - Always use local JSON until explicitly configured otherwise
-    const config = { USE_LOCAL_STORAGE: true };
+    // Use APP_CONFIG if available, otherwise default to local storage mode
+    const config = {
+        USE_LOCAL_STORAGE: typeof APP_CONFIG !== 'undefined' && APP_CONFIG.USE_LOCAL_STORAGE !== undefined
+            ? APP_CONFIG.USE_LOCAL_STORAGE
+            : true,
+        GOOGLE_APPS_SCRIPT_URL: typeof APP_CONFIG !== 'undefined' ? APP_CONFIG.GOOGLE_APPS_SCRIPT_URL : null
+    };
 
     // Try Google Sheets API first if not using local storage
-    if (!config.USE_LOCAL_STORAGE && typeof APP_CONFIG !== 'undefined' && APP_CONFIG.GOOGLE_APPS_SCRIPT_URL &&
+    if (!config.USE_LOCAL_STORAGE && config.GOOGLE_APPS_SCRIPT_URL &&
         APP_CONFIG.GOOGLE_APPS_SCRIPT_URL !== 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL') {
 
         try {
@@ -142,9 +154,16 @@ async function forceLoadEvents() {
             }
         }
     } else {
-        // Use local JSON file
+        // Use local JSON file - CRITICAL: Always load immediately
         console.log('🔄 Using local storage mode...');
-        return await loadFromLocalJSON();
+        // Return the promise we already started (or start a new one if it failed)
+        try {
+            return await localLoadPromise;
+        } catch (err) {
+            // If the initial promise failed, try again
+            console.warn('Initial local load failed, retrying...');
+            return await loadFromLocalJSON();
+        }
     }
 }
 
@@ -156,7 +175,7 @@ async function loadFromLocalJSON() {
         const cacheBuster = Date.now() + Math.random();
         const jsonUrl = 'data/sample-events.json?v=' + cacheBuster + '&nocache=' + Date.now();
         
-        // Use fetchWithTimeout for local JSON as well
+        // CRITICAL: Reduced timeout to 2 seconds for faster fallback
         const response = await fetchWithTimeout(jsonUrl, {
             cache: 'no-store',
             headers: {
@@ -164,7 +183,7 @@ async function loadFromLocalJSON() {
                 'Pragma': 'no-cache',
                 'Expires': '0'
             }
-        }, 5000); // 5 second timeout for local file
+        }, 2000); // 2 second timeout for local file - CRITICAL for fast loading
 
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);

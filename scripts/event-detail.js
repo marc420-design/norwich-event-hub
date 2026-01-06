@@ -31,12 +31,16 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     // Update page metadata
     updatePageMetadata(event);
+    
+    // Start countdown timer if event is soon
+    startCountdownTimer(event);
 });
 
 function displayEventDetail(event) {
     const container = document.getElementById('eventDetailContent');
 
     // Format date
+    const now = new Date();
     const eventDate = event.date ? new Date(event.date) : null;
     const formattedDate = eventDate ? eventDate.toLocaleDateString('en-GB', {
         weekday: 'long',
@@ -123,9 +127,10 @@ function displayEventDetail(event) {
                 </div>
                 ` : ''}
 
-                ${(event.vibe || event.crowdType || event.bestFor) ? `
+                ${(event.vibe || event.crowdType || event.bestFor || event.category) ? `
                 <div class="event-snapshot">
                     <h3>📋 Event Snapshot</h3>
+                    <p class="snapshot-intro">Quick info to help you decide if this event is for you</p>
                     <div class="snapshot-grid">
                         ${event.category ? `
                         <div class="snapshot-item">
@@ -154,6 +159,13 @@ function displayEventDetail(event) {
                         </div>
                         ` : ''}
                     </div>
+                </div>
+                ` : ''}
+                
+                ${eventDate && eventDate > now ? `
+                <div class="event-countdown" id="eventCountdown" style="display: none;">
+                    <h3>⏰ Event Starts In</h3>
+                    <div class="countdown-display" id="countdownDisplay"></div>
                 </div>
                 ` : ''}
 
@@ -343,6 +355,69 @@ function copyLink(eventId) {
         console.error('Failed to copy link:', err);
         alert('Failed to copy link. Please copy manually: ' + url);
     });
+}
+
+function startCountdownTimer(event) {
+    const countdownContainer = document.getElementById('eventCountdown');
+    const countdownDisplay = document.getElementById('countdownDisplay');
+    
+    if (!countdownContainer || !countdownDisplay || !event.date) return;
+    
+    const eventDate = window.parseEventDate ? window.parseEventDate(event.date) : new Date(event.date);
+    if (event.time) {
+        const timeParts = event.time.split(':');
+        if (timeParts.length >= 2) {
+            eventDate.setHours(parseInt(timeParts[0]), parseInt(timeParts[1]), 0, 0);
+        }
+    }
+    
+    const now = new Date();
+    const msUntilEvent = eventDate - now;
+    const hoursUntilEvent = msUntilEvent / (1000 * 60 * 60);
+    
+    // Only show countdown if event is within 24 hours
+    if (hoursUntilEvent > 0 && hoursUntilEvent <= 24) {
+        countdownContainer.style.display = 'block';
+        
+        const updateCountdown = () => {
+            const now = new Date();
+            const msUntilEvent = eventDate - now;
+            
+            if (msUntilEvent <= 0) {
+                countdownDisplay.textContent = 'Event has started!';
+                return;
+            }
+            
+            const hours = Math.floor(msUntilEvent / (1000 * 60 * 60));
+            const minutes = Math.floor((msUntilEvent % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((msUntilEvent % (1000 * 60)) / 1000);
+            
+            countdownDisplay.innerHTML = `
+                <div class="countdown-unit">
+                    <span class="countdown-number">${hours}</span>
+                    <span class="countdown-label">Hours</span>
+                </div>
+                <div class="countdown-unit">
+                    <span class="countdown-number">${minutes}</span>
+                    <span class="countdown-label">Minutes</span>
+                </div>
+                <div class="countdown-unit">
+                    <span class="countdown-number">${seconds}</span>
+                    <span class="countdown-label">Seconds</span>
+                </div>
+            `;
+        };
+        
+        updateCountdown();
+        const countdownInterval = setInterval(() => {
+            updateCountdown();
+            const now = new Date();
+            if (eventDate <= now) {
+                clearInterval(countdownInterval);
+                countdownDisplay.textContent = 'Event has started!';
+            }
+        }, 1000);
+    }
 }
 
 function addToCalendar(eventId) {

@@ -142,6 +142,7 @@
 
 .btn-secondary {
     background: transparent;
+    -webkit-backdrop-filter: var(--glass-blur);
     backdrop-filter: var(--glass-blur);
     border: 2px solid var(--glass-border);
 }
@@ -284,6 +285,7 @@
     right: 1rem;
     padding: 0.5rem 1rem;
     background: var(--glass-bg);
+    -webkit-backdrop-filter: var(--glass-blur);
     backdrop-filter: var(--glass-blur);
     border: 1px solid var(--glass-border);
     border-radius: 20px;
@@ -318,6 +320,7 @@
 
 /* Enhanced Navigation */
 .navbar {
+    -webkit-backdrop-filter: blur(20px);
     backdrop-filter: blur(20px);
     background: rgba(0, 0, 0, 0.95);
     border-bottom: 1px solid rgba(58, 184, 255, 0.1);
@@ -369,6 +372,7 @@
 /* Glassmorphism Cards */
 .glass-card {
     background: var(--glass-bg);
+    -webkit-backdrop-filter: var(--glass-blur);
     backdrop-filter: var(--glass-blur);
     border: 1px solid var(--glass-border);
     border-radius: 16px;
@@ -818,10 +822,17 @@
 }
 
 .event-snapshot h3 {
-    margin: 0 0 1.5rem 0;
+    margin: 0 0 0.5rem 0;
     color: #000;
     font-size: 1.3rem;
     font-weight: 700;
+}
+
+.snapshot-intro {
+    margin: 0 0 1.5rem 0;
+    color: #666;
+    font-size: 0.95rem;
+    font-style: italic;
 }
 
 .snapshot-grid {
@@ -862,6 +873,56 @@
     font-weight: 500;
     color: #000;
     line-height: 1.6;
+}
+
+/* Event Countdown Timer */
+.event-countdown {
+    background: linear-gradient(135deg, rgba(255, 87, 34, 0.1) 0%, rgba(229, 57, 53, 0.1) 100%);
+    border: 2px solid #FF5722;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.event-countdown h3 {
+    margin: 0 0 1rem 0;
+    color: #FF5722;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.countdown-display {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.countdown-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: white;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    min-width: 80px;
+}
+
+.countdown-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #FF5722;
+    line-height: 1;
+}
+
+.countdown-label {
+    font-size: 0.75rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 0.5rem;
 }
 
 /* Vibe Badges */

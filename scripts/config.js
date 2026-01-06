@@ -33,7 +33,16 @@ const APP_CONFIG = {
         facebook: 'norwicheventshub',
         twitter: '@norwicheventshub',
         tiktok: '@norwicheventshub'
-    }
+    },
+
+    // Analytics configuration (optional)
+    // GA_MEASUREMENT_ID: 'G-XXXXXXXXXX',  // Uncomment and add your GA4 ID
+
+    // Newsletter configuration (optional)
+    // NEWSLETTER_ENDPOINT: 'https://your-newsletter-service.com/api/subscribe',  // Uncomment and add endpoint
+
+    // Cloudflare Turnstile (spam protection) - optional
+    // TURNSTILE_SITE_KEY: 'your-site-key'  // Uncomment and add your site key
 };
 
 // Make config available globally

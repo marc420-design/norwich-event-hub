@@ -159,11 +159,41 @@ function createEventCardHTML(event) {
 }
 
 function updatePageMetadata(venue) {
-    document.getElementById('pageTitle').textContent = `${venue.name} - Norwich Event Hub`;
+    // Update page title
+    document.getElementById('pageTitle').textContent = `${venue.name} - Events & Info | Norwich Event Hub`;
+    
+    // Update meta description
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
-        metaDesc.content = `Upcoming events and tickets for ${venue.name} in Norwich. Find out what's on at ${venue.name}.`;
+        const description = venue.description 
+            ? `${venue.description.substring(0, 150)}... Find upcoming events at ${venue.name} in Norwich.`
+            : `Upcoming events and tickets for ${venue.name} in Norwich. Find out what's on at ${venue.name}.`;
+        metaDesc.content = description;
     }
+    
+    // Update Open Graph tags
+    const venueUrl = `https://norwicheventshub.com/venue-detail.html?id=${venue.id}`;
+    
+    updateOrCreateMeta('property', 'og:title', `${venue.name} | Norwich Event Hub`);
+    updateOrCreateMeta('property', 'og:description', venue.description || `Events at ${venue.name}, Norwich`);
+    updateOrCreateMeta('property', 'og:url', venueUrl);
+    updateOrCreateMeta('property', 'og:type', 'place');
+    
+    // Update Twitter Card tags
+    updateOrCreateMeta('name', 'twitter:title', `${venue.name} | Norwich Event Hub`);
+    updateOrCreateMeta('name', 'twitter:description', venue.description || `Events at ${venue.name}, Norwich`);
+}
+
+function updateOrCreateMeta(attr, name, content) {
+    if (!content) return;
+    
+    let meta = document.querySelector(`meta[${attr}="${name}"]`);
+    if (!meta) {
+        meta = document.createElement('meta');
+        meta.setAttribute(attr, name);
+        document.head.appendChild(meta);
+    }
+    meta.setAttribute('content', content);
 }
 
 function showError(message) {

@@ -17,6 +17,38 @@
     font-size: 1.1rem;
 }
 
+.page-subtitle {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--color-white);
+    margin-bottom: 1.5rem;
+}
+
+.submit-benefits {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.75rem 1.25rem;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    color: var(--color-white);
+}
+
+.benefit-icon {
+    font-weight: 700;
+    color: var(--color-gold);
+    font-size: 1.1rem;
+}
+
 .submit-section {
     padding: var(--spacing-xl) 0;
     background-color: var(--color-gray-light);
@@ -199,6 +231,33 @@
 
 .form-info a {
     color: var(--color-electric-blue);
+}
+
+.info-box {
+    background: linear-gradient(135deg, rgba(58, 184, 255, 0.1) 0%, rgba(43, 122, 71, 0.1) 100%);
+    border: 2px solid rgba(58, 184, 255, 0.3);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.info-box.highlight-box {
+    background: linear-gradient(135deg, rgba(58, 184, 255, 0.15) 0%, rgba(43, 122, 71, 0.15) 100%);
+    border-color: var(--color-electric-blue);
+}
+
+.info-box.quality-box {
+    background: linear-gradient(135deg, rgba(214, 167, 43, 0.1) 0%, rgba(244, 196, 48, 0.1) 100%);
+    border-color: var(--color-gold);
+}
+
+.info-box h3 {
+    color: var(--color-electric-blue);
+    margin-top: 0;
+}
+
+.info-box.quality-box h3 {
+    color: var(--color-gold);
 }
 
 /* Directory Filters */

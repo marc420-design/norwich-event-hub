@@ -1,98 +1,111 @@
-// Analytics Integration for Norwich Event Hub
-// Supports Google Analytics 4, Plausible, or Cloudflare Analytics
+/**
+ * Google Analytics 4 Integration
+ * Config-based implementation - only loads if GA4 Measurement ID is provided
+ */
 
-// ============================================
-// SETUP INSTRUCTIONS
-// ============================================
-// 
-// GOOGLE ANALYTICS 4:
-// 1. Go to https://analytics.google.com
-// 2. Create a new GA4 property
-// 3. Copy your Measurement ID (format: G-XXXXXXXXXX)
-// 4. Uncomment the GA4 code below and replace G-XXXXXXXXXX with your ID
-// 5. Add the gtag script to your HTML files (see instructions in HTML)
-//
-// PLAUSIBLE ANALYTICS:
-// 1. Sign up at https://plausible.io
-// 2. Add your domain (norwicheventshub.com)
-// 3. Add this script tag to your HTML <head>:
-//    <script defer data-domain="norwicheventshub.com" src="https://plausible.io/js/script.js"></script>
-//
-// CLOUDFLARE ANALYTICS:
-// 1. Enable Web Analytics in Cloudflare Dashboard
-// 2. Add the provided script tag to your HTML
-// ============================================
-
-// Google Analytics 4 (GA4) - Uncomment and configure
-/*
 (function() {
-    // Add this script tag to your HTML <head> section:
-    // <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    
+    'use strict';
+
+    // Check if APP_CONFIG exists and has GA4 ID
+    const GA4_MEASUREMENT_ID = (typeof APP_CONFIG !== 'undefined' && APP_CONFIG.GA_MEASUREMENT_ID) 
+        ? APP_CONFIG.GA_MEASUREMENT_ID 
+        : null;
+
+    // Only initialize analytics if ID is configured
+    if (!GA4_MEASUREMENT_ID || GA4_MEASUREMENT_ID === 'G-XXXXXXXXXX') {
+        console.log('📊 Analytics: Not configured (no GA4 Measurement ID)');
+        return;
+    }
+
+    console.log('📊 Analytics: Initializing with ID:', GA4_MEASUREMENT_ID);
+
+    // Load Google Analytics 4 script
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${GA4_MEASUREMENT_ID}`;
+    document.head.appendChild(script);
+
+    // Initialize gtag
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    
-    // Replace G-XXXXXXXXXX with your GA4 Measurement ID
-    const GA4_MEASUREMENT_ID = 'G-XXXXXXXXXX';
     gtag('config', GA4_MEASUREMENT_ID, {
-        'page_title': document.title,
-        'page_location': window.location.href
+        'anonymize_ip': true,
+        'cookie_flags': 'SameSite=None;Secure'
     });
-    
-    // Make gtag available globally
+
+    // Make gtag available globally for custom events
     window.gtag = gtag;
-})();
-*/
 
-// Custom Event Tracking
-function trackEvent(category, action, label) {
-    // Google Analytics
-    if (typeof gtag !== 'undefined') {
-        gtag('event', action, {
-            'event_category': category,
-            'event_label': label
-        });
+    // Track custom events
+    function trackEvent(eventName, eventParams) {
+        if (window.gtag) {
+            window.gtag('event', eventName, eventParams);
+        }
     }
-    
-    // Plausible
-    if (typeof plausible !== 'undefined') {
-        plausible(action, { props: { category: category, label: label } });
+
+    // Track page views (for SPAs)
+    function trackPageView(pagePath) {
+        if (window.gtag) {
+            window.gtag('config', GA4_MEASUREMENT_ID, {
+                'page_path': pagePath
+            });
+        }
     }
-    
-    // Console log for development
-    console.log('Event tracked:', { category, action, label });
-}
 
-// Track form submissions
-document.addEventListener('DOMContentLoaded', function() {
-    const forms = document.querySelectorAll('form');
-    forms.forEach(form => {
-        form.addEventListener('submit', function() {
-            trackEvent('Form', 'Submit', form.id || 'unknown');
-        });
-    });
-    
-    // Track external links
-    const externalLinks = document.querySelectorAll('a[href^="http"]');
-    externalLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            trackEvent('Outbound', 'Click', this.href);
-        });
-    });
-    
-    // Track event card clicks
-    const eventCards = document.querySelectorAll('.event-card');
-    eventCards.forEach(card => {
-        card.addEventListener('click', function() {
-            const eventTitle = this.querySelector('.event-title')?.textContent || 'Unknown';
-            trackEvent('Event', 'View', eventTitle);
-        });
-    });
-});
-
-// Export for use in other scripts
-if (typeof window !== 'undefined') {
+    // Expose tracking functions
     window.trackEvent = trackEvent;
-}
+    window.trackPageView = trackPageView;
 
+    // Track outbound links (ticket purchases, external venue links)
+    document.addEventListener('click', function(e) {
+        const link = e.target.closest('a');
+        if (link && link.href) {
+            const isExternal = link.hostname !== window.location.hostname;
+            const isTicketLink = link.classList.contains('btn-ticket') || link.href.includes('ticket');
+            
+            if (isExternal || isTicketLink) {
+                trackEvent('click', {
+                    'event_category': isTicketLink ? 'Ticket Link' : 'Outbound Link',
+                    'event_label': link.href,
+                    'transport_type': 'beacon'
+                });
+            }
+        }
+    });
+
+    // Track event card clicks
+    document.addEventListener('click', function(e) {
+        const eventCard = e.target.closest('.event-card');
+        if (eventCard) {
+            const eventName = eventCard.querySelector('.event-title')?.textContent || 'Unknown';
+            trackEvent('view_event', {
+                'event_category': 'Event Interaction',
+                'event_label': eventName
+            });
+        }
+    });
+
+    // Track form submissions
+    document.addEventListener('submit', function(e) {
+        const form = e.target;
+        const formType = form.id || form.name || 'unknown_form';
+        
+        trackEvent('form_submit', {
+            'event_category': 'Form',
+            'event_label': formType
+        });
+    });
+
+    // Track search queries (if search functionality exists)
+    window.addEventListener('search', function(e) {
+        if (e.detail && e.detail.query) {
+            trackEvent('search', {
+                'search_term': e.detail.query
+            });
+        }
+    });
+
+    console.log('✅ Analytics initialized successfully');
+
+})();

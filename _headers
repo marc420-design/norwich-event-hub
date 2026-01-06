@@ -10,8 +10,8 @@
   Permissions-Policy: geolocation=(), microphone=(), camera=()
 
   # Content Security Policy
-  # Allows: self, Google Fonts, Google Apps Script, inline styles/scripts for SPAs
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://script.google.com https://script.googleusercontent.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://script.google.com https://script.googleusercontent.com; frame-ancestors 'none';
+  # Allows: self, Google Fonts, Google Apps Script, GA4, Newsletter APIs, inline styles/scripts for SPAs
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://script.google.com https://script.googleusercontent.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://script.google.com https://script.googleusercontent.com https://www.googletagmanager.com https://region1.google-analytics.com https://api.convertkit.com https://api.mailchimp.com; frame-ancestors 'none';
 
   # Performance Headers
   Cache-Control: public, max-age=3600, must-revalidate

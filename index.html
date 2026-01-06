@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Discover what's on in Norwich today and this week. Live music, nightlife, theatre, markets, sports and free events. Your complete guide to Norwich events.">
-    <meta name="keywords" content="Norwich events, what's on Norwich, Norwich nightlife, Norwich gigs, Norwich theatre, Norwich events today, things to do Norwich">
-    <title>Norwich Event Hub - What's On in Norwich Today & This Week</title>
+    <meta name="description" content="Discover what's on in Norwich today and this weekend. Live music, nightlife, theatre, markets, sports and free events. Your complete guide to Norwich events this weekend.">
+    <meta name="keywords" content="Norwich events, Norwich events this weekend, what's on Norwich, Norwich nightlife, Norwich gigs, Norwich theatre, Norwich events today, things to do Norwich">
+    <title>Norwich Event Hub - What's On in Norwich Today & This Weekend</title>
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
@@ -54,6 +54,7 @@
             <ul class="nav-menu">
                 <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="today.html">What's On Today</a></li>
+                <li><a href="this-weekend.html">This Weekend</a></li>
                 <li><a href="venues.html">Venues</a></li>
                 <li><a href="directory.html">Event Directory</a></li>
                 <li><a href="submit.html">Submit Event</a></li>
@@ -73,9 +74,9 @@
                 <div class="hero-badge">Updated Daily · Independent · Local</div>
                 <h1 class="hero-title">What's On in Norwich</h1>
                 <p class="hero-subtitle">Gigs, Club Nights, Theatre, Markets & Free Events</p>
-                <p class="hero-description">Your independent guide to Norwich nightlife and culture. Find tonight's events, plan your weekend, or discover something new.</p>
+                <p class="hero-description">Your independent guide to Norwich nightlife and culture. Find tonight's events, plan your weekend, or discover something new. Updated daily with the best events happening in Norwich.</p>
                 <div class="hero-cta">
-                    <a href="today.html" class="btn btn-primary btn-large">Find Events This Weekend</a>
+                    <a href="this-weekend.html" class="btn btn-primary btn-large">Find Events This Weekend</a>
                     <a href="submit.html" class="btn btn-secondary btn-large">Submit an Event</a>
                 </div>
                 <div class="hero-stats">
@@ -96,6 +97,38 @@
         </div>
     </section>
 
+    <!-- Featured This Week -->
+    <section class="featured-events section-featured-week" style="background: linear-gradient(135deg, rgba(58, 184, 255, 0.05) 0%, rgba(43, 122, 71, 0.05) 100%);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">🔥 Featured This Week</h2>
+                <p class="section-subtitle">This week's standout events you don't want to miss</p>
+            </div>
+            <div class="events-grid" id="featuredThisWeekEvents">
+                <!-- Events will load here -->
+            </div>
+            <div class="section-cta">
+                <a href="directory.html" class="btn btn-secondary">See All Events →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tonight -->
+    <section class="featured-events section-tonight" id="tonightSection" style="display: none; background: linear-gradient(135deg, rgba(255, 87, 34, 0.1) 0%, rgba(229, 57, 53, 0.1) 100%);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">🔴 Tonight</h2>
+                <p class="section-subtitle">Events happening today - don't miss out!</p>
+            </div>
+            <div class="events-grid" id="tonightEvents">
+                <!-- Events will load here -->
+            </div>
+            <div class="section-cta">
+                <a href="today.html" class="btn btn-secondary">See All Today's Events →</a>
+            </div>
+        </div>
+    </section>
+
     <!-- Editor's Picks -->
     <section class="featured-events section-editors-picks" style="background: linear-gradient(135deg, rgba(214, 167, 43, 0.05) 0%, rgba(244, 196, 48, 0.05) 100%);">
         <div class="container">
@@ -104,11 +137,7 @@
                 <p class="section-subtitle">Hand-picked events we think you'll love</p>
             </div>
             <div class="events-grid" id="editorsPicksEvents">
-                <div class="event-card placeholder">
-                    <div class="event-content">
-                        <span class="event-date">Loading...</span>
-                    </div>
-                </div>
+                <!-- Events will load here -->
             </div>
             <div class="section-cta">
                 <a href="directory.html" class="btn btn-secondary">See All Events →</a>
@@ -124,11 +153,7 @@
                 <p class="section-subtitle">The best events happening Saturday & Sunday</p>
             </div>
             <div class="events-grid" id="thisWeekendEvents">
-                <div class="event-card placeholder">
-                    <div class="event-content">
-                        <span class="event-date">Loading...</span>
-                    </div>
-                </div>
+                <!-- Events will load here -->
             </div>
             <div class="section-cta">
                 <a href="directory.html?filter=weekend" class="btn btn-secondary">See All Weekend Events →</a>
@@ -144,11 +169,7 @@
                 <p class="section-subtitle">DJs, dance floors, and late nights</p>
             </div>
             <div class="events-grid" id="clubNightsEvents">
-                <div class="event-card placeholder">
-                    <div class="event-content">
-                        <span class="event-date">Loading...</span>
-                    </div>
-                </div>
+                <!-- Events will load here -->
             </div>
             <div class="section-cta">
                 <a href="directory.html?category=nightlife" class="btn btn-secondary">See All Nightlife →</a>
@@ -164,11 +185,7 @@
                 <p class="section-subtitle">Theatre, exhibitions, and cultural experiences</p>
             </div>
             <div class="events-grid" id="cultureEvents">
-                <div class="event-card placeholder">
-                    <div class="event-content">
-                        <span class="event-date">Loading...</span>
-                    </div>
-                </div>
+                <!-- Events will load here -->
             </div>
             <div class="section-cta">
                 <a href="directory.html?category=culture" class="btn btn-secondary">See All Culture →</a>
@@ -184,11 +201,7 @@
                 <p class="section-subtitle">Great experiences that won't cost you a penny</p>
             </div>
             <div class="events-grid" id="freeEvents">
-                <div class="event-card placeholder">
-                    <div class="event-content">
-                        <span class="event-date">Loading...</span>
-                    </div>
-                </div>
+                <!-- Events will load here -->
             </div>
             <div class="section-cta">
                 <a href="directory.html?price=free" class="btn btn-secondary">See All Free Events →</a>
@@ -233,39 +246,66 @@
     <section class="categories">
         <div class="container">
             <h2 class="section-title">Explore by Category</h2>
+            <p class="section-subtitle" style="text-align: center; margin-bottom: 2rem; color: #666;">Find events that match your interests</p>
             <div class="categories-grid">
-                <a href="directory.html?category=nightlife" class="category-card">
+                <a href="nightlife.html" class="category-card">
                     <div class="category-icon">🌙</div>
                     <h3>Nightlife</h3>
+                    <p class="category-description">Best nightlife nights, club nights & DJ events happening around Norwich this weekend. From drum & bass and techno to house and underground electronic music.</p>
                 </a>
-                <a href="directory.html?category=culture" class="category-card">
+                <a href="culture.html" class="category-card">
                     <div class="category-icon">🎭</div>
                     <h3>Culture</h3>
+                    <p class="category-description">Theatre productions, art exhibitions, and cultural experiences in Norwich. Discover the city's vibrant arts scene.</p>
                 </a>
                 <a href="directory.html?category=community" class="category-card">
                     <div class="category-icon">🤝</div>
                     <h3>Community</h3>
+                    <p class="category-description">Local community gatherings, workshops, and social events. Connect with your neighbors and get involved.</p>
                 </a>
                 <a href="directory.html?category=markets" class="category-card">
                     <div class="category-icon">🛒</div>
                     <h3>Markets</h3>
+                    <p class="category-description">Norwich Market and pop-up markets featuring local produce, crafts, and street food. Support local businesses.</p>
                 </a>
                 <a href="directory.html?category=gigs" class="category-card">
                     <div class="category-icon">🎸</div>
                     <h3>Gigs</h3>
+                    <p class="category-description">Live music gigs and concerts across Norwich. From intimate acoustic sets to full band performances.</p>
                 </a>
                 <a href="directory.html?category=theatre" class="category-card">
                     <div class="category-icon">🎪</div>
                     <h3>Theatre</h3>
+                    <p class="category-description">Theatre shows, plays, and performances at venues across Norwich. Experience the city's dramatic arts.</p>
                 </a>
                 <a href="directory.html?category=sports" class="category-card">
                     <div class="category-icon">⚽</div>
                     <h3>Sports</h3>
+                    <p class="category-description">Sports events, matches, and activities in Norwich. Support local teams or join in the action.</p>
                 </a>
                 <a href="directory.html?category=free" class="category-card">
                     <div class="category-icon">🆓</div>
                     <h3>Free Events</h3>
+                    <p class="category-description">Free events and activities happening in Norwich. Great experiences that won't cost you a penny.</p>
                 </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section-homepage">
+        <div class="container">
+            <div class="about-content">
+                <h2>About Norwich Event Hub</h2>
+                <p class="about-mission"><strong>Run by Norwich locals. Independent. No spam listings.</strong></p>
+                <p>We're a small team of Norwich residents who love our city's events scene. Every submission is manually reviewed to keep quality high. We don't sell your data, we don't spam, and we never charge promoters to list events. Our goal is simple: help people find great things to do in Norwich.</p>
+                <div class="trust-indicators">
+                    <span class="trust-badge">✓ Updated Daily</span>
+                    <span class="trust-badge">✓ Independent</span>
+                    <span class="trust-badge">✓ Local</span>
+                    <span class="trust-badge">✓ Free Always</span>
+                </div>
+                <a href="about.html" class="btn btn-secondary">Learn More About Us →</a>
             </div>
         </div>
     </section>

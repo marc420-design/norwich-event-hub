@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="What's on in Norwich this weekend - Discover the best events happening Saturday & Sunday. Club nights, gigs, theatre, markets and more.">
+    <meta name="keywords" content="Norwich events this weekend, Norwich weekend events, what's on Norwich weekend, Norwich Saturday events, Norwich Sunday events">
+    <title>What's On This Weekend in Norwich | Norwich Event Hub</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="alternate icon" href="assets/favicon.svg">
+    <link rel="apple-touch-icon" href="assets/favicon.svg">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://norwicheventshub.com/this-weekend.html">
+    <meta property="og:title" content="What's On This Weekend in Norwich | Norwich Event Hub">
+    <meta property="og:description" content="Discover the best events happening this weekend in Norwich. Club nights, gigs, theatre, markets and more.">
+    <meta property="og:image" content="https://norwicheventshub.com/assets/logo-image.jpg">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://norwicheventshub.com/this-weekend.html">
+    <meta name="twitter:title" content="What's On This Weekend in Norwich">
+    <meta name="twitter:description" content="Discover the best events happening this weekend in Norwich.">
+    <meta name="twitter:image" content="https://norwicheventshub.com/assets/logo-image.jpg">
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#3AB8FF">
+    
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/enhanced.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="logo">
+                    <img src="assets/logo-image.jpg" alt="Norwich Event Hub" class="logo-image" />
+                    <span class="logo-text">NORWICH</span>
+                    <span class="logo-subtext">EVENT HUB</span>
+                </a>
+            </div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="today.html">What's On Today</a></li>
+                <li><a href="this-weekend.html" class="active">This Weekend</a></li>
+                <li><a href="venues.html">Venues</a></li>
+                <li><a href="directory.html">Event Directory</a></li>
+                <li><a href="submit.html">Submit Event</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="page-header" style="background: linear-gradient(135deg, #FF5722 0%, #E53935 100%);">
+        <div class="container">
+            <h1>🔥 This Weekend in Norwich</h1>
+            <p id="weekendDateRange" class="page-subtitle" style="color: white; font-size: 1.2rem;">Loading...</p>
+            <p style="color: rgba(255,255,255,0.9); margin-top: 1rem;">The best events happening Saturday & Sunday</p>
+        </div>
+    </section>
+
+    <!-- Don't Miss Section -->
+    <section class="featured-events section-dont-miss" style="background: linear-gradient(135deg, rgba(255, 107, 107, 0.1) 0%, rgba(255, 142, 83, 0.1) 100%);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">🔥 Don't Miss These</h2>
+                <p class="section-subtitle">Editorial picks for this weekend</p>
+            </div>
+            <div class="events-grid" id="dontMissEvents">
+                <!-- Events will load here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Saturday Events -->
+    <section class="featured-events section-saturday">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">📅 Saturday</h2>
+                <p class="section-subtitle" id="saturdayDate">Loading...</p>
+            </div>
+            <div class="events-grid" id="saturdayEvents">
+                <!-- Events will load here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Sunday Events -->
+    <section class="featured-events section-sunday">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">📅 Sunday</h2>
+                <p class="section-subtitle" id="sundayDate">Loading...</p>
+            </div>
+            <div class="events-grid" id="sundayEvents">
+                <!-- Events will load here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- All Weekend Events -->
+    <section class="featured-events section-all-weekend">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">🎉 All Weekend Events</h2>
+                <p class="section-subtitle">Everything happening this weekend</p>
+            </div>
+            <div class="events-grid" id="allWeekendEvents">
+                <!-- Events will load here -->
+            </div>
+            <div class="section-cta">
+                <a href="directory.html?filter=weekend" class="btn btn-secondary">See All Weekend Events →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Norwich Event Hub</h3>
+                    <p>Your independent guide to everything happening in Norwich</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="today.html">What's On Today</a></li>
+                        <li><a href="this-weekend.html">This Weekend</a></li>
+                        <li><a href="directory.html">Event Directory</a></li>
+                        <li><a href="submit.html">Submit Event</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:info@norwicheventshub.com">info@norwicheventshub.com</a></li>
+                        <li><a href="mailto:submit@norwicheventshub.com">submit@norwicheventshub.com</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/norwicheventshub" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
+                        <a href="https://www.facebook.com/norwicheventshub" target="_blank" rel="noopener noreferrer" aria-label="Facebook">Facebook</a>
+                        <a href="https://twitter.com/norwicheventshub" target="_blank" rel="noopener noreferrer" aria-label="Twitter">Twitter</a>
+                        <a href="https://www.tiktok.com/@norwicheventshub" target="_blank" rel="noopener noreferrer" aria-label="TikTok">TikTok</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025-2026 Norwich Event Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Schema.org Organization Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Norwich Event Hub",
+        "url": "https://norwicheventshub.com",
+        "logo": "https://norwicheventshub.com/assets/logo-image.jpg",
+        "description": "Your complete guide to events, nightlife, culture, and community happenings in Norwich"
+    }
+    </script>
+    
+    <script defer src="scripts/config.js"></script>
+    <script defer src="scripts/date-utils.js"></script>
+    <script defer src="scripts/force-reload.js"></script>
+    <script defer src="scripts/main.js"></script>
+    <script defer src="scripts/api.js"></script>
+    <script defer src="scripts/this-weekend.js"></script>
+</body>
+</html>
+

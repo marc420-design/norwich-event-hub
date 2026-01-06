@@ -241,21 +241,93 @@ function createEventCard(event) {
     if (urgencyInfo.urgencyBadge) {
         const urgencyBadge = document.createElement('span');
         urgencyBadge.className = `urgency-badge urgency-${urgencyInfo.urgencyLevel}`;
-        urgencyBadge.style.cssText = `
+        
+        // Enhanced styling for better visibility
+        const isImmediate = urgencyInfo.urgencyLevel === 'immediate' || urgencyInfo.urgencyLevel === 'today';
+        const badgeStyle = isImmediate ? `
             display: inline-block;
             background: ${urgencyInfo.badgeColor};
             color: white;
-            padding: 3px 8px;
-            border-radius: 3px;
-            font-size: 10px;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-right: 10px;
+            vertical-align: middle;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            animation: ${isImmediate ? 'pulse 2s infinite' : 'none'};
+        ` : `
+            display: inline-block;
+            background: ${urgencyInfo.badgeColor};
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 11px;
             font-weight: 700;
             margin-right: 8px;
             vertical-align: middle;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         `;
+        
+        urgencyBadge.style.cssText = badgeStyle;
         urgencyBadge.textContent = urgencyInfo.urgencyBadge;
         eventDateSpan.appendChild(urgencyBadge);
+        
+        // Add countdown timer for events starting soon (<6 hours)
+        if (urgencyInfo.urgencyLevel === 'immediate' && time) {
+            const countdownSpan = document.createElement('span');
+            countdownSpan.className = 'countdown-timer';
+            countdownSpan.style.cssText = `
+                display: inline-block;
+                margin-left: 8px;
+                font-size: 11px;
+                font-weight: 600;
+                color: ${urgencyInfo.badgeColor};
+            `;
+            
+            // Calculate and update countdown
+            const updateCountdown = () => {
+                const eventDate = window.parseEventDate ? window.parseEventDate(date) : new Date(date);
+                if (time) {
+                    const timeParts = time.split(':');
+                    if (timeParts.length >= 2) {
+                        eventDate.setHours(parseInt(timeParts[0]), parseInt(timeParts[1]), 0, 0);
+                    }
+                }
+                const now = new Date();
+                const msUntilEvent = eventDate - now;
+                const hoursUntilEvent = msUntilEvent / (1000 * 60 * 60);
+                
+                if (hoursUntilEvent > 0 && hoursUntilEvent <= 6) {
+                    const hours = Math.floor(hoursUntilEvent);
+                    const minutes = Math.floor((hoursUntilEvent - hours) * 60);
+                    countdownSpan.textContent = `⏰ ${hours}h ${minutes}m`;
+                } else {
+                    countdownSpan.textContent = '';
+                }
+            };
+            
+            updateCountdown();
+            const countdownInterval = setInterval(() => {
+                updateCountdown();
+                const eventDate = window.parseEventDate ? window.parseEventDate(date) : new Date(date);
+                if (time) {
+                    const timeParts = time.split(':');
+                    if (timeParts.length >= 2) {
+                        eventDate.setHours(parseInt(timeParts[0]), parseInt(timeParts[1]), 0, 0);
+                    }
+                }
+                if (eventDate < new Date()) {
+                    clearInterval(countdownInterval);
+                    countdownSpan.textContent = '';
+                }
+            }, 60000); // Update every minute
+            
+            eventDateSpan.appendChild(countdownSpan);
+        }
     }
 
     const dateText = document.createTextNode(`${formatDate(date)} at ${formatTime(time)}`);
@@ -270,7 +342,7 @@ function createEventCard(event) {
     badgesContainer.className = 'event-badges';
     badgesContainer.style.cssText = 'margin-top: 8px; display: flex; gap: 6px; flex-wrap: wrap;';
 
-    // Editor's Pick badge
+    // Editor's Pick badge - Enhanced for prominence
     if (event.featured) {
         const featuredBadge = document.createElement('span');
         featuredBadge.className = 'editorial-badge featured-badge';
@@ -278,18 +350,19 @@ function createEventCard(event) {
             display: inline-block;
             background: linear-gradient(135deg, #D6A72B 0%, #F4C430 100%);
             color: #000;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 11px;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
             font-weight: 700;
             vertical-align: middle;
+            box-shadow: 0 2px 6px rgba(214, 167, 43, 0.3);
         `;
         featuredBadge.textContent = "⭐ Editor's Pick";
         featuredBadge.title = "Hand-picked by our editorial team";
         badgesContainer.appendChild(featuredBadge);
     }
 
-    // Don't Miss This badge
+    // Don't Miss This badge - Enhanced for prominence
     if (event.priority === 'high') {
         const priorityBadge = document.createElement('span');
         priorityBadge.className = 'editorial-badge priority-badge';
@@ -297,18 +370,19 @@ function createEventCard(event) {
             display: inline-block;
             background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
             color: white;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 11px;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
             font-weight: 700;
             vertical-align: middle;
+            box-shadow: 0 2px 6px rgba(255, 107, 107, 0.3);
         `;
         priorityBadge.textContent = "🔥 Don't Miss";
         priorityBadge.title = "Essential Norwich event";
         badgesContainer.appendChild(priorityBadge);
     }
 
-    // Sold Out Soon badge
+    // Sold Out Soon badge - Enhanced for prominence
     if (event.soldOutSoon) {
         const soldOutBadge = document.createElement('span');
         soldOutBadge.className = 'editorial-badge soldout-badge';
@@ -316,11 +390,12 @@ function createEventCard(event) {
             display: inline-block;
             background: linear-gradient(135deg, #E53935 0%, #D32F2F 100%);
             color: white;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 11px;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
             font-weight: 700;
             vertical-align: middle;
+            box-shadow: 0 2px 8px rgba(229, 57, 53, 0.4);
             animation: pulse 2s infinite;
         `;
         soldOutBadge.textContent = "⚡ Selling Fast";

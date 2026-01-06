@@ -1,30 +1,37 @@
-name: Daily AI Event Aggregation
+name: AI Event Scraper
 
+# Schedule: Run once daily
 on:
   schedule:
-    # Run daily at 6:00 AM and 6:00 PM UTC for real-time updates
-    - cron: '0 6 * * *'  # 6 AM UTC daily
-    - cron: '0 18 * * *' # 6 PM UTC daily
-
-  # Allow manual trigger
+    # Runs at 06:00 UTC daily (1am EST / 10pm PST)
+    - cron: '0 6 * * *'
+  
+  # Allow manual triggering
   workflow_dispatch:
+    inputs:
+      force_run:
+        description: 'Force run even if recently executed'
+        required: false
+        default: 'false'
 
-# Required permissions for the workflow
-permissions:
-  contents: write  # Allow pushing to the repository
+# Environment variables (use GitHub Secrets for sensitive values)
+env:
+  PYTHON_VERSION: '3.11'
 
 jobs:
-  aggregate-events:
+  scrape-and-update:
     runs-on: ubuntu-latest
-
+    
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: ${{ env.PYTHON_VERSION }}
           cache: 'pip'
 
       - name: Install dependencies
@@ -32,19 +39,16 @@ jobs:
           cd automation
           pip install -r requirements.txt
 
-      - name: Create Google credentials file
+      - name: Create credentials file
         run: |
           cd automation
-          echo '${{ secrets.GOOGLE_SHEETS_CREDENTIALS }}' > google-service-account.json
+          echo '${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}' > google-credentials.json
 
       - name: Run AI Event Aggregator
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
-          GOOGLE_SHEETS_CREDENTIALS: ./google-service-account.json
-          EVENTBRITE_API_KEY: ${{ secrets.EVENTBRITE_API_KEY }}
-          FACEBOOK_ACCESS_TOKEN: ${{ secrets.FACEBOOK_ACCESS_TOKEN }}
+          GOOGLE_SHEETS_CREDENTIALS: './google-credentials.json'
           SCRAPE_DAYS_AHEAD: 90
           MIN_QUALITY_SCORE: 50
           AUTO_APPROVE_THRESHOLD: 80
@@ -53,48 +57,26 @@ jobs:
           cd automation
           python ai-event-aggregator.py
 
-      - name: Sync data to website
+      - name: Save events to JSON (optional backup)
         run: |
-          cd automation
-          # Find the latest events file (check both naming patterns)
-          LATEST_FILE=$(ls -t ai_events_*.json events_*.json 2>/dev/null | head -1 || echo "")
-
-          if [ -n "$LATEST_FILE" ]; then
-            echo "Found latest file: $LATEST_FILE"
-            # Copy to website data directory (Python script may have already done this)
-            cp "$LATEST_FILE" ../data/sample-events.json 2>/dev/null || echo "Already synced by Python script"
-            echo "✅ Data synced to website"
-          else
-            echo "⚠️ No events file found"
+          # If aggregator creates output file, commit it
+          if [ -f "automation/events_output.json" ]; then
+            cp automation/events_output.json data/latest-scraped-events.json
+            git config user.name "GitHub Actions Bot"
+            git config user.email "actions@github.com"
+            git add data/latest-scraped-events.json
+            git diff --quiet && git diff --staged --quiet || git commit -m "🤖 Auto-update: Scraped events $(date +'%Y-%m-%d %H:%M UTC')"
+            # Uncomment to push back to repo (optional):
+            # git push
           fi
 
-      - name: Commit and push updated data
-        run: |
-          git config user.name "AI Event Bot"
-          git config user.email "bot@norwicheventshub.com"
-          git add data/sample-events.json
-
-          # Only commit if there are changes
-          if git diff --staged --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "🤖 Update events data from AI scraper [automated]"
-            git push
-            echo "✅ Changes pushed to repository"
-          fi
-
-      - name: Upload results artifact
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: aggregation-results
-          path: |
-            automation/events_*.json
-            automation/ai_events_*.json
-          retention-days: 30
-
-      - name: Clean up credentials
+      - name: Cleanup credentials
         if: always()
         run: |
-          cd automation
-          rm -f google-service-account.json
+          rm -f automation/google-credentials.json
+
+      - name: Summary
+        run: |
+          echo "✅ Event scraping complete!"
+          echo "Events have been uploaded to Google Sheets"
+          echo "Google Sheet ID: ${{ secrets.GOOGLE_SHEET_ID }}"

@@ -17,15 +17,18 @@ const SHEET_NAME = 'Event Submissions';
 const EMAIL_TO = 'submit@norwicheventshub.com';
 const EMAIL_FROM = 'events@norwicheventshub.com';
 
+// Configuration - IMPORTANT: Set your Google Sheet ID here
+const SHEET_ID = '1wdh2VOlZ8gp0hwFpFV6cVpDDmaMxGs48eCDqoFFZTcU';
+
 /**
  * Handle POST request from event submission form
  */
 function doPost(e) {
   try {
     const data = JSON.parse(e.postData.contents);
-    
-    // Get the active spreadsheet
-    const ss = SpreadsheetApp.getActiveSpreadsheet();
+
+    // Get the spreadsheet by ID (required for web app deployments)
+    const ss = SpreadsheetApp.openById(SHEET_ID);
     let sheet = ss.getSheetByName(SHEET_NAME);
     
     // Create sheet if it doesn't exist
@@ -101,7 +104,7 @@ function doPost(e) {
  */
 function doGet(e) {
   try {
-    const ss = SpreadsheetApp.getActiveSpreadsheet();
+    const ss = SpreadsheetApp.openById(SHEET_ID);
     const sheet = ss.getSheetByName(SHEET_NAME);
     
     if (!sheet) {

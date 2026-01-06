@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Admin Dashboard - Norwich Event Hub</title>
+
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/enhanced.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background: #f5f7fa;
+        }
+
+        .admin-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .admin-header {
+            background: linear-gradient(135deg, #3AB8FF 0%, #234F32 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .admin-header h1 {
+            margin: 0 0 0.5rem 0;
+            font-size: 2.5rem;
+        }
+
+        .admin-header p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        .admin-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #3AB8FF;
+            margin: 0;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+            margin: 0.5rem 0 0 0;
+        }
+
+        .filter-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-tab {
+            padding: 0.75rem 1.5rem;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .filter-tab:hover {
+            border-color: #3AB8FF;
+            color: #3AB8FF;
+        }
+
+        .filter-tab.active {
+            background: #3AB8FF;
+            color: white;
+            border-color: #3AB8FF;
+        }
+
+        .events-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .admin-event-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 1.5rem;
+            align-items: start;
+            transition: all 0.3s ease;
+        }
+
+        .admin-event-card:hover {
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        .event-info h3 {
+            margin: 0 0 0.5rem 0;
+            color: #000;
+            font-size: 1.4rem;
+        }
+
+        .event-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin: 0.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .event-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .event-description {
+            color: #444;
+            line-height: 1.6;
+            margin: 1rem 0;
+        }
+
+        .event-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            min-width: 150px;
+        }
+
+        .admin-btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        .btn-approve {
+            background: #2B7A47;
+            color: white;
+        }
+
+        .btn-approve:hover {
+            background: #236237;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(43, 122, 71, 0.3);
+        }
+
+        .btn-reject {
+            background: #E53935;
+            color: white;
+        }
+
+        .btn-reject:hover {
+            background: #C62828;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(229, 57, 53, 0.3);
+        }
+
+        .btn-view {
+            background: #3AB8FF;
+            color: white;
+        }
+
+        .btn-view:hover {
+            background: #2A9FE8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(58, 184, 255, 0.3);
+        }
+
+        .category-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-nightlife { background: #667eea; color: white; }
+        .badge-gigs { background: #f093fb; color: white; }
+        .badge-theatre { background: #4facfe; color: white; }
+        .badge-sports { background: #43e97b; color: white; }
+        .badge-markets { background: #fa709a; color: white; }
+        .badge-community { background: #30cfd0; color: white; }
+        .badge-culture { background: #a8edea; color: #333; }
+        .badge-free { background: #ff9a9e; color: white; }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-pending {
+            background: #FFA726;
+            color: white;
+        }
+
+        .status-approved {
+            background: #2B7A47;
+            color: white;
+        }
+
+        .status-rejected {
+            background: #E53935;
+            color: white;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: #666;
+        }
+
+        .loading::after {
+            content: '...';
+            animation: dots 1.5s steps(4, end) infinite;
+        }
+
+        @keyframes dots {
+            0%, 20% { content: '.'; }
+            40% { content: '..'; }
+            60%, 100% { content: '...'; }
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: #666;
+        }
+
+        .empty-state h3 {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #2B7A47;
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            display: none;
+            animation: slideIn 0.3s ease;
+            z-index: 1000;
+        }
+
+        .toast.show {
+            display: block;
+        }
+
+        .toast.error {
+            background: #E53935;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .admin-event-card {
+                grid-template-columns: 1fr;
+            }
+
+            .event-actions {
+                flex-direction: row;
+            }
+
+            .event-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1>🎯 Admin Dashboard</h1>
+            <p>Manage event submissions and approvals</p>
+        </div>
+
+        <div class="admin-stats">
+            <div class="stat-card">
+                <h2 class="stat-number" id="totalEvents">0</h2>
+                <p class="stat-label">Total Submissions</p>
+            </div>
+            <div class="stat-card">
+                <h2 class="stat-number" id="pendingEvents">0</h2>
+                <p class="stat-label">Pending Review</p>
+            </div>
+            <div class="stat-card">
+                <h2 class="stat-number" id="approvedEvents">0</h2>
+                <p class="stat-label">Approved</p>
+            </div>
+            <div class="stat-card">
+                <h2 class="stat-number" id="rejectedEvents">0</h2>
+                <p class="stat-label">Rejected</p>
+            </div>
+        </div>
+
+        <div class="filter-tabs">
+            <button class="filter-tab active" data-filter="pending">Pending</button>
+            <button class="filter-tab" data-filter="approved">Approved</button>
+            <button class="filter-tab" data-filter="rejected">Rejected</button>
+            <button class="filter-tab" data-filter="all">All</button>
+        </div>
+
+        <div id="eventsList" class="events-list">
+            <div class="loading">Loading events</div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <script defer src="scripts/config.js"></script>
+    <script defer src="scripts/admin.js"></script>
+</body>
+</html>

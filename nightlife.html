@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover the best nightlife events in Norwich. From drum & bass and techno to house and underground club nights. Your guide to Norwich's vibrant clubbing scene.">
+    <meta name="keywords" content="Norwich nightlife, Norwich clubs, Norwich club nights, drum and bass Norwich, techno Norwich, Norwich DJ events, Norwich raves">
+    <title>Norwich Nightlife & Club Nights 2025-2026 | Norwich Event Hub</title>
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://norwicheventshub.com/nightlife.html">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://norwicheventshub.com/nightlife.html">
+    <meta property="og:title" content="Norwich Nightlife & Club Nights | Norwich Event Hub">
+    <meta property="og:description" content="Discover the best nightlife events in Norwich. Club nights, DJ sets, and underground events.">
+    <meta property="og:image" content="https://norwicheventshub.com/assets/logo-image.jpg">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#3AB8FF">
+
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/enhanced.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="logo">
+                    <img src="assets/logo-image.jpg" alt="Norwich Event Hub" class="logo-image" />
+                    <span class="logo-text">NORWICH</span>
+                    <span class="logo-subtext">EVENT HUB</span>
+                </a>
+            </div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="today.html">What's On Today</a></li>
+                <li><a href="directory.html">Event Directory</a></li>
+                <li><a href="submit.html">Submit Event</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Category Header -->
+    <section class="category-hero" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+        <div class="container">
+            <div class="breadcrumbs">
+                <a href="index.html">Home</a> → <a href="directory.html">Events</a> → <span>Nightlife</span>
+            </div>
+            <h1 class="category-title">🌙 Norwich Nightlife</h1>
+            <p class="category-subtitle">Club nights, DJ sets, and unforgettable nights out</p>
+        </div>
+    </section>
+
+    <!-- SEO Content Section -->
+    <section class="category-intro">
+        <div class="container">
+            <div class="seo-content">
+                <h2>Norwich Nightlife & Club Nights</h2>
+                <p>Norwich is known for its thriving nightlife scene, with a rich history of drum & bass, techno, and underground electronic music. From legendary venues like <a href="#venues">The Waterfront</a> and <a href="#venues">Epic Studios</a> to intimate basement clubs like <a href="#venues">The Birdcage</a>, Norwich offers something for every taste.</p>
+
+                <p>Whether you're into heavy basslines, commercial club anthems, or underground warehouse raves, you'll find your tribe here. Our nightlife calendar features everything from student nights and retro throwbacks to cutting-edge electronic showcases and international DJ bookings.</p>
+
+                <h3>Popular Nightlife Venues in Norwich</h3>
+                <ul class="venue-links">
+                    <li><a href="directory.html?venue=waterfront">The Waterfront</a> - Live music and club nights</li>
+                    <li><a href="directory.html?venue=epic">Epic Studios</a> - Underground electronic music</li>
+                    <li><a href="directory.html?venue=birdcage">The Birdcage</a> - Indie and alternative nights</li>
+                    <li><a href="directory.html?venue=loft">The Loft</a> - Commercial club nights</li>
+                </ul>
+
+                <div class="browse-categories">
+                    <h3>Browse Other Event Types</h3>
+                    <div class="category-tags">
+                        <a href="directory.html?category=gigs" class="category-tag">🎸 Gigs</a>
+                        <a href="directory.html?category=culture" class="category-tag">🎭 Culture</a>
+                        <a href="directory.html?category=markets" class="category-tag">🛒 Markets</a>
+                        <a href="directory.html?category=theatre" class="category-tag">🎪 Theatre</a>
+                        <a href="directory.html?category=community" class="category-tag">🤝 Community</a>
+                        <a href="directory.html?category=sports" class="category-tag">⚽ Sports</a>
+                        <a href="directory.html?category=free" class="category-tag">🆓 Free Events</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Grid -->
+    <section class="category-events">
+        <div class="container">
+            <h2 class="section-title">Upcoming Nightlife Events</h2>
+            <div class="events-grid" id="categoryEvents">
+                <div class="loading-placeholder">
+                    <p>Loading events...</p>
+                </div>
+            </div>
+
+            <div class="no-events" id="noEvents" style="display: none;">
+                <h3>No upcoming nightlife events</h3>
+                <p>Check back soon or <a href="submit.html">submit your event</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Norwich Event Hub</h3>
+                    <p>Run by Norwich locals. Independent. No spam listings.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="today.html">What's On Today</a></li>
+                        <li><a href="directory.html">Event Directory</a></li>
+                        <li><a href="submit.html">Submit Event</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:info@norwicheventshub.com">info@norwicheventshub.com</a></li>
+                        <li><a href="mailto:submit@norwicheventshub.com">submit@norwicheventshub.com</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/norwicheventshub" target="_blank" rel="noopener noreferrer">Instagram</a>
+                        <a href="https://www.facebook.com/norwicheventshub" target="_blank" rel="noopener noreferrer">Facebook</a>
+                        <a href="https://twitter.com/norwicheventshub" target="_blank" rel="noopener noreferrer">Twitter</a>
+                        <a href="https://www.tiktok.com/@norwicheventshub" target="_blank" rel="noopener noreferrer">TikTok</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025-2026 Norwich Event Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script defer src="scripts/config.js"></script>
+    <script defer src="scripts/date-utils.js"></script>
+    <script defer src="scripts/force-reload.js"></script>
+    <script defer src="scripts/main.js"></script>
+    <script defer src="scripts/api.js"></script>
+    <script>
+        // Category-specific script
+        const CATEGORY = 'nightlife';
+
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Wait for events to load
+            if (window.eventsLoadedPromise) {
+                await window.eventsLoadedPromise;
+            }
+
+            const container = document.getElementById('categoryEvents');
+            const noEventsMsg = document.getElementById('noEvents');
+            const allEvents = window.eventsData || [];
+
+            // Filter by category and future events only
+            const categoryEvents = allEvents
+                .filter(event => {
+                    const isFuture = event.date && window.isFutureEvent && window.isFutureEvent(event.date);
+                    const matchesCategory = event.category === CATEGORY;
+                    return isFuture && matchesCategory;
+                })
+                .sort((a, b) => {
+                    const dateA = window.parseEventDate ? window.parseEventDate(a.date) : new Date(a.date);
+                    const dateB = window.parseEventDate ? window.parseEventDate(b.date) : new Date(b.date);
+                    return dateA - dateB;
+                });
+
+            container.innerHTML = '';
+
+            if (categoryEvents.length === 0) {
+                noEventsMsg.style.display = 'block';
+            } else {
+                categoryEvents.forEach(event => {
+                    const card = createEventCard(event);
+                    container.appendChild(card);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

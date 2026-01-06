@@ -21,12 +21,18 @@ const EMAIL_FROM = 'events@norwicheventshub.com';
 const SHEET_ID = '1wdh2VOlZ8gp0hwFpFV6cVpDDmaMxGs48eCDqoFFZTcU';
 
 /**
- * Handle POST request from event submission form
+ * Handle POST request from event submission form or admin actions
  */
 function doPost(e) {
   try {
     const data = JSON.parse(e.postData.contents);
 
+    // Check if this is an admin action
+    if (data.action === 'updateStatus') {
+      return updateEventStatus(data.eventId, data.status);
+    }
+
+    // Otherwise, treat as event submission
     // Get the spreadsheet by ID (required for web app deployments)
     const ss = SpreadsheetApp.openById(SHEET_ID);
     let sheet = ss.getSheetByName(SHEET_NAME);
@@ -44,6 +50,11 @@ function doPost(e) {
         'Category',
         'Description',
         'Ticket Link',
+        'Price',
+        'Image URL',
+        'Vibe',
+        'Crowd Type',
+        'Best For',
         'Promoter Name',
         'Promoter Email',
         'Promoter Phone',
@@ -51,7 +62,7 @@ function doPost(e) {
         'Event ID'
       ]);
       // Format header row
-      const headerRange = sheet.getRange(1, 1, 1, 13);
+      const headerRange = sheet.getRange(1, 1, 1, 18);
       headerRange.setFontWeight('bold');
       headerRange.setBackground('#3AB8FF');
       headerRange.setFontColor('#FFFFFF');
@@ -70,6 +81,11 @@ function doPost(e) {
       data.category || '',
       data.description || '',
       data.ticketLink || '',
+      data.price || '',
+      data.imageUrl || '', // Image URL (uploaded separately)
+      data.vibe || '',
+      data.crowdType || '',
+      data.bestFor || '',
       data.promoterName || '',
       data.promoterEmail || '',
       data.promoterPhone || '',
@@ -100,24 +116,33 @@ function doPost(e) {
 }
 
 /**
- * Handle GET request (for testing or retrieving events)
+ * Handle GET request (for retrieving events)
  */
 function doGet(e) {
   try {
+    const params = e.parameter || {};
+    const action = params.action;
+
+    // If action is getAllEvents, return all events including pending (for admin)
+    if (action === 'getAllEvents') {
+      return getAllEvents();
+    }
+
+    // Default: return only approved events (for public site)
     const ss = SpreadsheetApp.openById(SHEET_ID);
     const sheet = ss.getSheetByName(SHEET_NAME);
-    
+
     if (!sheet) {
       return ContentService.createTextOutput(JSON.stringify({
         success: false,
         message: 'Sheet not found'
       })).setMimeType(ContentService.MimeType.JSON);
     }
-    
+
     const data = sheet.getDataRange().getValues();
     const headers = data[0];
     const events = [];
-    
+
     // Convert rows to objects (skip header row)
     for (let i = 1; i < data.length; i++) {
       const event = {};
@@ -149,12 +174,74 @@ function doGet(e) {
         events.push(event);
       }
     }
-    
+
     return ContentService.createTextOutput(JSON.stringify({
       success: true,
       events: events
     })).setMimeType(ContentService.MimeType.JSON);
-    
+
+  } catch (error) {
+    return ContentService.createTextOutput(JSON.stringify({
+      success: false,
+      message: 'Error retrieving events: ' + error.toString()
+    })).setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
+/**
+ * Get ALL events (including pending) - for admin dashboard
+ */
+function getAllEvents() {
+  try {
+    const ss = SpreadsheetApp.openById(SHEET_ID);
+    const sheet = ss.getSheetByName(SHEET_NAME);
+
+    if (!sheet) {
+      return ContentService.createTextOutput(JSON.stringify({
+        success: false,
+        message: 'Sheet not found'
+      })).setMimeType(ContentService.MimeType.JSON);
+    }
+
+    const data = sheet.getDataRange().getValues();
+    const headers = data[0];
+    const events = [];
+
+    // Convert rows to objects (skip header row)
+    for (let i = 1; i < data.length; i++) {
+      const event = {};
+      headers.forEach((header, index) => {
+        event[header.toLowerCase().replace(/\s+/g, '')] = data[i][index];
+      });
+
+      // Normalize field names for frontend compatibility
+      if (event.eventname) {
+        event.name = event.eventname;
+      }
+      if (event.ticketlink) {
+        event.ticketLink = event.ticketlink;
+      }
+      if (event.eventdate) {
+        event.date = event.eventdate;
+      }
+      if (event.imageurl) {
+        event.image = event.imageurl;
+      }
+
+      // Check for AI-discovered events based on ID
+      if (event.eventid && String(event.eventid).startsWith('AI-')) {
+        event.isAiDiscovered = true;
+      }
+
+      // Return ALL events (don't filter by status)
+      events.push(event);
+    }
+
+    return ContentService.createTextOutput(JSON.stringify({
+      success: true,
+      events: events
+    })).setMimeType(ContentService.MimeType.JSON);
+
   } catch (error) {
     return ContentService.createTextOutput(JSON.stringify({
       success: false,
@@ -249,7 +336,7 @@ Thank you for being part of the Norwich event community!
 Best regards,
 Norwich Event Hub Team
   `;
-  
+
   try {
     MailApp.sendEmail({
       to: email,
@@ -259,6 +346,73 @@ Norwich Event Hub Team
     });
   } catch (error) {
     Logger.log('Error sending approval email: ' + error.toString());
+  }
+}
+
+/**
+ * Update event status (Approve/Reject) - called from admin dashboard
+ */
+function updateEventStatus(eventId, newStatus) {
+  try {
+    const ss = SpreadsheetApp.openById(SHEET_ID);
+    const sheet = ss.getSheetByName(SHEET_NAME);
+
+    if (!sheet) {
+      return ContentService.createTextOutput(JSON.stringify({
+        success: false,
+        message: 'Sheet not found'
+      })).setMimeType(ContentService.MimeType.JSON);
+    }
+
+    const data = sheet.getDataRange().getValues();
+    const headers = data[0];
+
+    // Find the column indices
+    const eventIdColumn = headers.indexOf('Event ID');
+    const statusColumn = headers.indexOf('Status');
+    const promoterEmailColumn = headers.indexOf('Promoter Email');
+    const eventNameColumn = headers.indexOf('Event Name');
+
+    if (eventIdColumn === -1 || statusColumn === -1) {
+      return ContentService.createTextOutput(JSON.stringify({
+        success: false,
+        message: 'Required columns not found in sheet'
+      })).setMimeType(ContentService.MimeType.JSON);
+    }
+
+    // Find the event row
+    for (let i = 1; i < data.length; i++) {
+      if (data[i][eventIdColumn] === eventId) {
+        // Update status
+        sheet.getRange(i + 1, statusColumn + 1).setValue(newStatus);
+
+        // Send approval email if approved
+        if (newStatus.toLowerCase() === 'approved' && promoterEmailColumn !== -1) {
+          const promoterEmail = data[i][promoterEmailColumn];
+          const eventName = data[i][eventNameColumn];
+          if (promoterEmail) {
+            sendApprovalEmail(promoterEmail, eventName);
+          }
+        }
+
+        return ContentService.createTextOutput(JSON.stringify({
+          success: true,
+          message: 'Event status updated successfully'
+        })).setMimeType(ContentService.MimeType.JSON);
+      }
+    }
+
+    // Event not found
+    return ContentService.createTextOutput(JSON.stringify({
+      success: false,
+      message: 'Event not found'
+    })).setMimeType(ContentService.MimeType.JSON);
+
+  } catch (error) {
+    return ContentService.createTextOutput(JSON.stringify({
+      success: false,
+      message: 'Error updating event status: ' + error.toString()
+    })).setMimeType(ContentService.MimeType.JSON);
   }
 }
 

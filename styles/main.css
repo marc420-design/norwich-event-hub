@@ -932,6 +932,30 @@ section {
     padding: var(--spacing-lg) 0 var(--spacing-sm);
 }
 
+.trust-statement {
+    background: linear-gradient(135deg, rgba(58, 184, 255, 0.1) 0%, rgba(35, 79, 50, 0.1) 100%);
+    border: 2px solid rgba(58, 184, 255, 0.3);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.trust-statement h4 {
+    color: #3AB8FF;
+    margin: 0 0 1rem 0;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.trust-statement p {
+    color: #fff;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto;
+    opacity: 0.9;
+}
+
 .footer-content {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));

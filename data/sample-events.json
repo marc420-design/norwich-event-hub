@@ -1,11 +1,11 @@
 {
-  "timestamp": "2024-12-29T20:00:00.000Z",
+  "timestamp": "2026-01-06T20:00:00.000Z",
   "total_events": 15,
   "events": [
     {
       "id": "evt-001",
       "name": "New Year's Eve Party at The Waterfront",
-      "date": "2024-12-31T00:00:00.000Z",
+      "date": "2025-12-31T00:00:00.000Z",
       "time": "21:00",
       "location": "The Waterfront",
       "address": "139-141 King Street, Norwich, NR1 1QH",
@@ -14,7 +14,13 @@
       "ticketLink": "https://www.waterfront.co.uk/",
       "price": "£25",
       "image": "",
-      "status": "approved"
+      "status": "approved",
+      "featured": true,
+      "priority": "high",
+      "soldOutSoon": true,
+      "vibe": "Commercial",
+      "crowdType": "Mixed crowd, ages 21-40, party-goers and celebration seekers",
+      "bestFor": "Party-goers, Couples, Groups"
     },
     {
       "id": "evt-002",
@@ -42,12 +48,17 @@
       "ticketLink": "https://www.norwichartscentre.co.uk/",
       "price": "£15",
       "image": "",
-      "status": "approved"
+      "status": "approved",
+      "featured": true,
+      "priority": "high",
+      "vibe": "Chill",
+      "crowdType": "Folk music lovers, all ages welcome",
+      "bestFor": "Music Fans, Families, 30+"
     },
     {
       "id": "evt-004",
       "name": "Pantomime: Cinderella",
-      "date": "2025-01-05T00:00:00.000Z",
+      "date": "2026-01-06T00:00:00.000Z",
       "time": "14:30",
       "location": "Theatre Royal Norwich",
       "address": "Theatre Street, Norwich, NR2 1RL",
@@ -61,7 +72,7 @@
     {
       "id": "evt-005",
       "name": "Norwich City FC vs Leeds United",
-      "date": "2025-01-11T00:00:00.000Z",
+      "date": "2026-01-11T00:00:00.000Z",
       "time": "15:00",
       "location": "Carrow Road",
       "address": "Carrow Road, Norwich, NR1 1JE",
@@ -75,7 +86,7 @@
     {
       "id": "evt-006",
       "name": "Saturday Night Fever Tribute Night",
-      "date": "2025-01-11T00:00:00.000Z",
+      "date": "2026-01-11T00:00:00.000Z",
       "time": "19:30",
       "location": "Epic Studios",
       "address": "110 Magdalen Street, Norwich, NR3 1JD",
@@ -140,7 +151,11 @@
       "ticketLink": "",
       "price": "£5",
       "image": "",
-      "status": "approved"
+      "status": "approved",
+      "priority": "high",
+      "vibe": "Underground",
+      "crowdType": "Alternative music lovers, students, indie scene regulars",
+      "bestFor": "Students, Indie Fans, Under 30s"
     },
     {
       "id": "evt-011",
@@ -154,7 +169,8 @@
       "ticketLink": "",
       "price": "Free",
       "image": "",
-      "status": "approved"
+      "status": "approved",
+      "featured": true
     },
     {
       "id": "evt-012",
@@ -196,7 +212,10 @@
       "ticketLink": "",
       "price": "£8",
       "image": "",
-      "status": "approved"
+      "status": "approved",
+      "vibe": "Commercial",
+      "crowdType": "Retro music fans, ages 25-50, nostalgia seekers",
+      "bestFor": "Dancers, 30+, Groups"
     },
     {
       "id": "evt-015",

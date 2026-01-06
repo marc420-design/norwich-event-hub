@@ -123,6 +123,40 @@ function displayEventDetail(event) {
                 </div>
                 ` : ''}
 
+                ${(event.vibe || event.crowdType || event.bestFor) ? `
+                <div class="event-snapshot">
+                    <h3>📋 Event Snapshot</h3>
+                    <div class="snapshot-grid">
+                        ${event.category ? `
+                        <div class="snapshot-item">
+                            <div class="snapshot-label">Genre</div>
+                            <div class="snapshot-value">${event.category.charAt(0).toUpperCase() + event.category.slice(1)}</div>
+                        </div>
+                        ` : ''}
+                        ${event.vibe ? `
+                        <div class="snapshot-item">
+                            <div class="snapshot-label">Vibe</div>
+                            <div class="snapshot-value">
+                                <span class="vibe-badge vibe-${event.vibe.toLowerCase()}">${event.vibe}</span>
+                            </div>
+                        </div>
+                        ` : ''}
+                        ${event.crowdType ? `
+                        <div class="snapshot-item snapshot-full">
+                            <div class="snapshot-label">Crowd Type</div>
+                            <div class="snapshot-value">${event.crowdType}</div>
+                        </div>
+                        ` : ''}
+                        ${event.bestFor ? `
+                        <div class="snapshot-item snapshot-full">
+                            <div class="snapshot-label">Best For</div>
+                            <div class="snapshot-value">${event.bestFor}</div>
+                        </div>
+                        ` : ''}
+                    </div>
+                </div>
+                ` : ''}
+
                 <div class="event-detail-actions">
                     ${event.ticketLink ? `
                     <a href="${event.ticketLink}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-large">

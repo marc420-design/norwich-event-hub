@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Event details - Norwich Event Hub">
-    <meta property="og:type" content="event">
-    <title id="pageTitle">Event Details - Norwich Event Hub</title>
+    <meta name="description" content="Venue details - Norwich Event Hub">
+    <meta property="og:type" content="website">
+    <title id="pageTitle">Venue Details - Norwich Event Hub</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
@@ -20,6 +20,82 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .venue-header {
+            background-color: var(--white);
+            padding: 3rem 0;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+        
+        .venue-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+        
+        .venue-address {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .venue-map {
+            width: 100%;
+            height: 300px;
+            background-color: #eee;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .venue-map iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        
+        .venue-stats {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            background: #f8f9fa;
+            padding: 1rem 1.5rem;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--secondary-color);
+        }
+        
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-color);
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .venue-events-section h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -43,33 +119,17 @@
                 <li><a href="venues.html">Venues</a></li>
                 <li><a href="directory.html">Event Directory</a></li>
                 <li><a href="submit.html">Submit Event</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Event Detail Section -->
-    <section class="event-detail-section">
-        <div class="container">
-            <div class="event-detail-content" id="eventDetailContent">
-                <!-- Loading placeholder -->
-                <div class="loading-placeholder">
-                    <p>Loading event details...</p>
-                </div>
-            </div>
+    <!-- Venue Detail Section -->
+    <div id="venueDetailContent">
+        <!-- Loading placeholder -->
+        <div class="container" style="padding: 4rem 0; text-align: center;">
+            <p>Loading venue details...</p>
         </div>
-    </section>
-
-    <!-- Related Events -->
-    <section class="related-events-section">
-        <div class="container">
-            <h2 class="section-title">More Events You Might Like</h2>
-            <div class="events-grid" id="relatedEvents">
-                <!-- Related events will be loaded dynamically -->
-            </div>
-        </div>
-    </section>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
@@ -83,6 +143,7 @@
                     <h4>Quick Links</h4>
                     <ul>
                         <li><a href="today.html">What's On Today</a></li>
+                        <li><a href="venues.html">Venues</a></li>
                         <li><a href="directory.html">Event Directory</a></li>
                         <li><a href="submit.html">Submit Event</a></li>
                     </ul>
@@ -92,7 +153,6 @@
                     <ul>
                         <li><a href="mailto:info@norwicheventshub.com">info@norwicheventshub.com</a></li>
                         <li><a href="mailto:submit@norwicheventshub.com">submit@norwicheventshub.com</a></li>
-                        <li><a href="mailto:press@norwicheventshub.com">press@norwicheventshub.com</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -100,8 +160,6 @@
                     <div class="social-links">
                         <a href="https://www.instagram.com/norwicheventshub" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
                         <a href="https://www.facebook.com/norwicheventshub" target="_blank" rel="noopener noreferrer" aria-label="Facebook">Facebook</a>
-                        <a href="https://twitter.com/norwicheventshub" target="_blank" rel="noopener noreferrer" aria-label="Twitter">Twitter</a>
-                        <a href="https://www.tiktok.com/@norwicheventshub" target="_blank" rel="noopener noreferrer" aria-label="TikTok">TikTok</a>
                     </div>
                 </div>
             </div>
@@ -111,16 +169,11 @@
         </div>
     </footer>
 
-    <!-- Schema.org Event Markup -->
-    <script type="application/ld+json" id="eventSchema">
-    {}
-    </script>
-
     <script defer src="scripts/config.js"></script>
     <script defer src="scripts/date-utils.js"></script>
     <script defer src="scripts/force-reload.js"></script>
     <script defer src="scripts/main.js"></script>
     <script defer src="scripts/api.js"></script>
-    <script defer src="scripts/event-detail.js"></script>
+    <script defer src="scripts/venue-detail.js"></script>
 </body>
 </html>

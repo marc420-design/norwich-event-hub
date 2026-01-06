@@ -54,6 +54,7 @@
             <ul class="nav-menu">
                 <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="today.html">What's On Today</a></li>
+                <li><a href="venues.html">Venues</a></li>
                 <li><a href="directory.html">Event Directory</a></li>
                 <li><a href="submit.html">Submit Event</a></li>
                 <li><a href="about.html">About</a></li>
@@ -95,19 +96,102 @@
         </div>
     </section>
 
-    <!-- Featured Events -->
-    <section class="featured-events">
+    <!-- Editor's Picks -->
+    <section class="featured-events section-editors-picks" style="background: linear-gradient(135deg, rgba(214, 167, 43, 0.05) 0%, rgba(244, 196, 48, 0.05) 100%);">
         <div class="container">
-            <h2 class="section-title">Featured This Week</h2>
-            <div class="events-grid" id="featuredEvents">
-                <!-- Events will be loaded dynamically -->
+            <div class="section-header">
+                <h2 class="section-title">⭐ Editor's Picks</h2>
+                <p class="section-subtitle">Hand-picked events we think you'll love</p>
+            </div>
+            <div class="events-grid" id="editorsPicksEvents">
                 <div class="event-card placeholder">
-                    <div class="event-image"></div>
                     <div class="event-content">
-                        <span class="event-date">Loading events...</span>
-                        <h3 class="event-title">Events coming soon</h3>
+                        <span class="event-date">Loading...</span>
                     </div>
                 </div>
+            </div>
+            <div class="section-cta">
+                <a href="directory.html" class="btn btn-secondary">See All Events →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- This Weekend -->
+    <section class="featured-events section-this-weekend">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">🔥 This Weekend</h2>
+                <p class="section-subtitle">The best events happening Saturday & Sunday</p>
+            </div>
+            <div class="events-grid" id="thisWeekendEvents">
+                <div class="event-card placeholder">
+                    <div class="event-content">
+                        <span class="event-date">Loading...</span>
+                    </div>
+                </div>
+            </div>
+            <div class="section-cta">
+                <a href="directory.html?filter=weekend" class="btn btn-secondary">See All Weekend Events →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Club Nights -->
+    <section class="featured-events section-club-nights">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">🌙 Club Nights & Nightlife</h2>
+                <p class="section-subtitle">DJs, dance floors, and late nights</p>
+            </div>
+            <div class="events-grid" id="clubNightsEvents">
+                <div class="event-card placeholder">
+                    <div class="event-content">
+                        <span class="event-date">Loading...</span>
+                    </div>
+                </div>
+            </div>
+            <div class="section-cta">
+                <a href="directory.html?category=nightlife" class="btn btn-secondary">See All Nightlife →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Culture & Arts -->
+    <section class="featured-events section-culture">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">🎭 Culture & Arts</h2>
+                <p class="section-subtitle">Theatre, exhibitions, and cultural experiences</p>
+            </div>
+            <div class="events-grid" id="cultureEvents">
+                <div class="event-card placeholder">
+                    <div class="event-content">
+                        <span class="event-date">Loading...</span>
+                    </div>
+                </div>
+            </div>
+            <div class="section-cta">
+                <a href="directory.html?category=culture" class="btn btn-secondary">See All Culture →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Free Events -->
+    <section class="featured-events section-free">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">🆓 Free Events</h2>
+                <p class="section-subtitle">Great experiences that won't cost you a penny</p>
+            </div>
+            <div class="events-grid" id="freeEvents">
+                <div class="event-card placeholder">
+                    <div class="event-content">
+                        <span class="event-date">Loading...</span>
+                    </div>
+                </div>
+            </div>
+            <div class="section-cta">
+                <a href="directory.html?price=free" class="btn btn-secondary">See All Free Events →</a>
             </div>
         </div>
     </section>
@@ -200,6 +284,11 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
+            <div class="trust-statement">
+                <h4>🎯 Run by Norwich locals. Independent. No spam listings.</h4>
+                <p>We're a small team of Norwich residents who love our city's events scene. Every submission is manually reviewed to keep quality high. We don't sell your data, we don't spam, and we never charge promoters to list events. Our goal is simple: help people find great things to do in Norwich.</p>
+            </div>
+
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>Norwich Event Hub</h3>
@@ -296,4 +385,4 @@
 </body>
 </html>
 
-<!-- Cache bust 1767047326 -->
+<!-- Cache bust 1767847326 -->

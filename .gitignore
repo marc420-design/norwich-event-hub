@@ -6,7 +6,6 @@ package-lock.json
 .env
 .env.local
 .env.*
-scripts/config.js
 automation/.env
 automation/.env.*
 **/google-service-account.json

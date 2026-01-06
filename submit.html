@@ -54,6 +54,7 @@
             <ul class="nav-menu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="today.html">What's On Today</a></li>
+                <li><a href="venues.html">Venues</a></li>
                 <li><a href="directory.html">2026 Directory</a></li>
                 <li><a href="submit.html" class="active">Submit Event</a></li>
             </ul>
@@ -115,14 +116,48 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="ticketLink">Ticket Link</label>
-                        <input type="url" id="ticketLink" name="ticketLink" placeholder="https://example.com/tickets">
+                        <label for="ticketLink">Ticket/Info Link *</label>
+                        <input type="url" id="ticketLink" name="ticketLink" required placeholder="https://example.com/tickets or your website">
+                        <small>Required - Link to tickets or event information page</small>
                     </div>
 
                     <div class="form-group">
-                        <label for="eventFlyer">Event Flyer / Image</label>
-                        <input type="file" id="eventFlyer" name="eventFlyer" accept="image/*">
-                        <small>Upload a flyer or promotional image (JPG, PNG, max 5MB)</small>
+                        <label for="eventPrice">Entry Price *</label>
+                        <input type="text" id="eventPrice" name="eventPrice" required placeholder="e.g., £10, Free, £5-£15">
+                        <small>Enter "Free" if the event is free to attend</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="eventFlyer">Event Flyer / Image *</label>
+                        <input type="file" id="eventFlyer" name="eventFlyer" accept="image/*" required>
+                        <small>Required - Upload a flyer or promotional image (JPG, PNG, max 5MB)</small>
+                    </div>
+
+                    <div class="form-divider">
+                        <h3>📋 Event Snapshot (Help users find the right event)</h3>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="eventVibe">Event Vibe *</label>
+                        <select id="eventVibe" name="eventVibe" required>
+                            <option value="">Select the event vibe</option>
+                            <option value="Underground">Underground - Alternative, edgy, niche audience</option>
+                            <option value="Commercial">Commercial - Mainstream, broad appeal</option>
+                            <option value="Chill">Chill - Relaxed, laid-back atmosphere</option>
+                            <option value="Heavy">Heavy - Intense, high-energy, loud</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="crowdType">Crowd Type *</label>
+                        <input type="text" id="crowdType" name="crowdType" required placeholder="e.g., Students, families, 25-40 professionals, electronic music fans">
+                        <small>Describe the expected audience (age, interests, demographics)</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="bestFor">Best For *</label>
+                        <input type="text" id="bestFor" name="bestFor" required placeholder="e.g., Dancers, Students, Families, Ravers, 30+">
+                        <small>Who would enjoy this event most? (separate with commas)</small>
                     </div>
 
                     <div class="form-group">
@@ -156,12 +191,25 @@
                 </form>
 
                 <div class="form-info">
+                    <h3>✨ Why These Details Matter</h3>
+                    <p>We ask for more information to help attendees find events they'll love. Quality listings get more engagement!</p>
+
                     <h3>Submission Guidelines</h3>
                     <ul>
-                        <li>All events must be happening in Norwich</li>
-                        <li>Events will be reviewed before publication</li>
-                        <li>You'll receive a confirmation email once your event is approved</li>
-                        <li>For urgent submissions, email <a href="mailto:submit@norwicheventshub.com">submit@norwicheventshub.com</a></li>
+                        <li>✓ All events must be happening in Norwich</li>
+                        <li>✓ High-quality flyer/image required (makes your event stand out)</li>
+                        <li>✓ Events will be reviewed before publication</li>
+                        <li>✓ You'll receive a confirmation email once approved</li>
+                        <li>✓ Complete all fields for faster approval</li>
+                        <li>✓ For urgent submissions, email <a href="mailto:submit@norwicheventshub.com">submit@norwicheventshub.com</a></li>
+                    </ul>
+
+                    <h3>💡 Tips for Success</h3>
+                    <ul>
+                        <li>Use a clear, professional event flyer</li>
+                        <li>Write a compelling description</li>
+                        <li>Be specific about your target audience</li>
+                        <li>Include all relevant links</li>
                     </ul>
                 </div>
             </div>

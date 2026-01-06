@@ -8,9 +8,3 @@ http://www.norwicheventshub.com/* https://norwicheventshub.com/:splat 301!
 # Redirect www to non-www
 https://www.norwicheventshub.com/* https://norwicheventshub.com/:splat 301!
 
-# Admin dashboard routes
-/admin /admin.html 200
-/dashboard /admin.html 200
-
-# 404 handling
-/* /404.html 404

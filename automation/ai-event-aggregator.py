@@ -194,73 +194,134 @@ class EventAggregator:
         return events
 
     def scrape_skiddle(self) -> List[Dict]:
-        """Scrape Skiddle for Norwich events using their API"""
+        """Scrape Skiddle for Norwich events using their API with specific venue IDs"""
         events = []
+        
+        # Major Norwich venue IDs on Skiddle
+        norwich_venue_ids = [
+            9132,    # UEA The LCR
+            59737,   # University of East Anglia (general)
+            2003,    # Waterfront (Norwich)
+            112257,  # Gonzo's Two Room
+            46430,   # Epic Studios (primary)
+            124745,  # NORWICH EPIC STUDIOS (duplicate)
+        ]
         
         # Skiddle API endpoint
         if self.skiddle_key:
-            # Use official Skiddle API if key provided
-            api_url = "https://www.skiddle.com/api/v1/events/search/"
-            params = {
-                'api_key': self.skiddle_key,
-                'latitude': 52.6309,  # Norwich coordinates
-                'longitude': 1.2974,
-                'radius': 15,  # 15km radius
-                'eventcode': 'LIVE',  # Live events
-                'limit': 50,
-                'order': 'date'
-            }
+            logger.info("    🎫 Using Skiddle API with Norwich venue IDs")
             
+            # Method 1: Get events by venue IDs
+            for venue_id in norwich_venue_ids:
+                try:
+                    api_url = f"https://www.skiddle.com/api/v1/venues/{venue_id}/events/"
+                    params = {
+                        'api_key': self.skiddle_key,
+                        'limit': 20
+                    }
+                    
+                    response = requests.get(api_url, params=params, timeout=30)
+                    response.raise_for_status()
+                    data = response.json()
+                    
+                    if data.get('results'):
+                        for event in data['results']:
+                            events.append({
+                                'raw_data': event,
+                                'source': 'Skiddle API',
+                                'url': event.get('link', ''),
+                                'venue_id': venue_id
+                            })
+                        logger.info(f"    ✅ Found {len(data['results'])} events from venue {venue_id}")
+                    
+                except Exception as e:
+                    logger.error(f"Skiddle API venue {venue_id} error: {e}")
+                    continue
+            
+            # Method 2: Also search by location as backup
             try:
+                api_url = "https://www.skiddle.com/api/v1/events/search/"
+                params = {
+                    'api_key': self.skiddle_key,
+                    'latitude': 52.6309,  # Norwich coordinates
+                    'longitude': 1.2974,
+                    'radius': 10,  # 10km radius
+                    'eventcode': 'LIVE',  # Live events
+                    'limit': 30,
+                    'order': 'date'
+                }
+                
                 response = requests.get(api_url, params=params, timeout=30)
                 response.raise_for_status()
                 data = response.json()
                 
                 if data.get('results'):
+                    location_events = 0
                     for event in data['results']:
-                        events.append({
-                            'raw_data': event,
-                            'source': 'Skiddle API',
-                            'url': event.get('link', '')
-                        })
-                    logger.info(f"    ✅ Found {len(events)} events from Skiddle API")
+                        # Avoid duplicates from venue searches
+                        event_id = event.get('id')
+                        if not any(e.get('raw_data', {}).get('id') == event_id for e in events):
+                            events.append({
+                                'raw_data': event,
+                                'source': 'Skiddle API (Location)',
+                                'url': event.get('link', '')
+                            })
+                            location_events += 1
+                    
+                    if location_events > 0:
+                        logger.info(f"    ✅ Found {location_events} additional events from location search")
                     
             except Exception as e:
-                logger.error(f"Skiddle API error: {e}")
+                logger.error(f"Skiddle location search error: {e}")
+        
         else:
             # Fallback to web scraping if no API key
             logger.info("    ⏭️ Skiddle API key not provided, trying web scrape")
-            url = "https://www.skiddle.com/whats-on/Norwich/"
             
-            try:
-                response = requests.get(url, timeout=30, headers={
-                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-                })
-                response.raise_for_status()
-                soup = BeautifulSoup(response.text, 'html.parser')
-                
-                # Look for event links in the page
-                event_links = soup.find_all('a', href=lambda x: x and '/whats-on/' in x and '/Norwich/' not in x)
-                
-                for link in event_links[:30]:
-                    title = link.get_text(strip=True)
-                    href = link.get('href', '')
+            # Try venue-specific pages first
+            venue_urls = [
+                "https://www.skiddle.com/venues/uea-the-lcr-norwich/9132/",
+                "https://www.skiddle.com/venues/waterfront-norwich/2003/",
+                "https://www.skiddle.com/venues/epic-studios-norwich/46430/",
+                "https://www.skiddle.com/whats-on/Norwich/"
+            ]
+            
+            for url in venue_urls:
+                try:
+                    response = requests.get(url, timeout=30, headers={
+                        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+                    })
+                    response.raise_for_status()
+                    soup = BeautifulSoup(response.text, 'html.parser')
                     
-                    if title and len(title) > 5:
-                        events.append({
-                            'raw_data': {
-                                'title': title,
-                                'url': f"https://www.skiddle.com{href}" if href.startswith('/') else href,
-                                'html': str(link.parent)
-                            },
-                            'source': 'Skiddle',
-                            'url': f"https://www.skiddle.com{href}" if href.startswith('/') else href
-                        })
-                
+                    # Look for event links
+                    event_links = soup.find_all('a', href=lambda x: x and '/whats-on/' in x and '/Norwich/' not in x)
+                    
+                    for link in event_links[:10]:  # Limit per venue
+                        title = link.get_text(strip=True)
+                        href = link.get('href', '')
+                        
+                        if title and len(title) > 5:
+                            full_url = f"https://www.skiddle.com{href}" if href.startswith('/') else href
+                            
+                            # Avoid duplicates
+                            if not any(e.get('url') == full_url for e in events):
+                                events.append({
+                                    'raw_data': {
+                                        'title': title,
+                                        'url': full_url,
+                                        'html': str(link.parent)
+                                    },
+                                    'source': 'Skiddle',
+                                    'url': full_url
+                                })
+                    
+                except Exception as e:
+                    logger.error(f"Skiddle web scraping error ({url}): {e}")
+                    continue
+            
+            if events:
                 logger.info(f"    ✅ Found {len(events)} events from Skiddle web scrape")
-                
-            except Exception as e:
-                logger.error(f"Skiddle web scraping error: {e}")
 
         return events
 

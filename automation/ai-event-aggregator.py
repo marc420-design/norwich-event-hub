@@ -69,10 +69,21 @@ class EventAggregator:
             logger.info("Using OpenAI (primary)")
         elif self.gemini_api_key:
             genai.configure(api_key=self.gemini_api_key)
-            # Use current Gemini 1.5 Flash model (free tier)
-            self.model = genai.GenerativeModel('gemini-1.5-flash')
+            # Try different model name formats for Gemini 1.5
+            try:
+                # Try without models/ prefix first
+                self.model = genai.GenerativeModel('gemini-1.5-flash-001')
+                logger.info("Using Google Gemini AI (gemini-1.5-flash-001)")
+            except:
+                try:
+                    # Try 2.0 flash
+                    self.model = genai.GenerativeModel('gemini-2.0-flash-exp')
+                    logger.info("Using Google Gemini AI (gemini-2.0-flash-exp)")
+                except:
+                    # Fallback to older stable version
+                    self.model = genai.GenerativeModel('gemini-1.5-pro')
+                    logger.info("Using Google Gemini AI (gemini-1.5-pro fallback)")
             self.ai_provider = 'Gemini'
-            logger.info("Using Google Gemini AI (fallback)")
         else:
             raise ValueError("Either GEMINI_API_KEY or OPENAI_API_KEY environment variable required")
 

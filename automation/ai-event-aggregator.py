@@ -65,8 +65,6 @@ class EventAggregator:
 
         # Use OpenAI by default (working), fallback to Gemini
         if self.openai_api_key:
-            import openai
-            openai.api_key = self.openai_api_key
             self.ai_provider = 'OpenAI'
             logger.info("Using OpenAI (primary)")
         elif self.gemini_api_key:
@@ -563,8 +561,9 @@ Example output:
                 response = self.model.generate_content(prompt)
                 response_text = response.text.strip()
             else:  # OpenAI
-                import openai
-                response = openai.ChatCompletion.create(
+                from openai import OpenAI
+                client = OpenAI(api_key=self.openai_api_key)
+                response = client.chat.completions.create(
                     model="gpt-3.5-turbo",
                     messages=[{"role": "user", "content": prompt}],
                     max_tokens=1024

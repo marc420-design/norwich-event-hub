@@ -593,34 +593,40 @@ class EventAggregator:
     def parse_event_with_ai(self, raw_event: Dict) -> Optional[Dict]:
         """Use AI (Gemini or OpenAI) to extract structured data from raw event"""
 
-        prompt = f"""Extract event information from this data and return ONLY a JSON object.
+        prompt = f"""You are an event data extraction expert. Extract event information from the following data and return ONLY a valid JSON object.
 
-Source: {raw_event.get('source', 'Unknown')}
-Raw data: {raw_event.get('raw_data', '')}
-URL: {raw_event.get('url', '')}
+EVENT SOURCE: {raw_event.get('source', 'Unknown')}
+EVENT URL: {raw_event.get('url', '')}
+RAW DATA: {str(raw_event.get('raw_data', ''))[:2000]}
 
-Extract and return JSON with these fields:
-- name: Event name (string)
-- date: Event date in YYYY-MM-DD format (string)
-- time: Event time in HH:MM 24-hour format (string, or null if not specified)
-- location: Venue name (string)
-- address: Full address (string, or null if not available)
-- category: ONE of: {', '.join(self.categories)} (string)
-- description: Brief 1-2 sentence description (string)
-- ticketLink: Ticket URL if available (string, or null)
-- price: "Free" or price like "£10" or "£5-15" (string, or null)
-- imageUrl: Image URL if available (string, or null)
+Required JSON fields (use "null" for unknown values):
+- name: Event name (string, REQUIRED - extract from titles, headings, or text)
+- date: Event date in YYYY-MM-DD format (string, REQUIRED - if only month/day, assume 2026)
+- time: Event time in HH:MM 24-hour format (string or null)
+- location: Venue name (string, REQUIRED - extract from text or use source venue)
+- address: Full address (string or null)
+- category: ONE of: nightlife, gigs, culture, food, sports, family (string, REQUIRED)
+- description: Brief description (string, 1-2 sentences)
+- ticketLink: Ticket URL (string or null)
+- price: Price like "Free", "£10", or "£5-15" (string or null)
+- imageUrl: Image URL (string or null)
 
-IMPORTANT:
-- Return ONLY valid JSON, no other text
-- Categorize accurately based on event type
-- Ensure date is in future and in YYYY-MM-DD format
-- Return null for missing optional fields
-- If event is in Norwich/Norfolk area, include it
-- If event is outside Norwich area, return null
+STRICT RULES:
+1. Return ONLY the JSON object, no explanations
+2. Date MUST be future date in YYYY-MM-DD format (today is {datetime.now().strftime('%Y-%m-%d')})
+3. If date is missing or past, estimate from context or set to null
+4. If event lacks name/date/location, return null for ALL fields
+5. Category MUST be one of: nightlife, gigs, culture, food, sports, family
+6. Choose category based on: clubs/DJ → nightlife, bands/music → gigs, theatre/art → culture
+7. For Norwich/Norfolk events only (ignore events clearly outside the area)
 
-Example output:
-{{"name": "Live Music Night", "date": "2026-01-15", "time": "20:00", "location": "Waterfront Norwich", "address": "King Street, Norwich", "category": "gigs", "description": "Evening of live music featuring local bands", "ticketLink": "https://example.com/tickets", "price": "£12.50", "imageUrl": null}}"""
+Example valid response:
+{{"name": "DnB Night", "date": "2026-01-10", "time": "22:00", "location": "Epic Studios", "address": null, "category": "nightlife", "description": "Drum and bass night featuring local DJs", "ticketLink": null, "price": "£5", "imageUrl": null}}
+
+If data is insufficient, return:
+{{"name": null, "date": null, "time": null, "location": null, "address": null, "category": null, "description": null, "ticketLink": null, "price": null, "imageUrl": null}}
+
+Extract event data from the RAW DATA above and return JSON:"""
 
         try:
             if self.ai_provider == 'Gemini':
@@ -764,11 +770,15 @@ Example output:
             # Authorize Google Sheets
             scope = ['https://spreadsheets.google.com/feeds',
                      'https://www.googleapis.com/auth/drive']
+            
+            logger.info("  🔑 Authenticating with Google Sheets...")
             creds = ServiceAccountCredentials.from_json_keyfile_name(self.sheet_creds, scope)
             client = gspread.authorize(creds)
 
-            # Open sheet
+            logger.info(f"  📊 Opening spreadsheet: {self.sheet_id}")
             spreadsheet = client.open_by_key(self.sheet_id)
+            
+            logger.info("  📝 Accessing 'Event Submissions' worksheet...")
             worksheet = spreadsheet.worksheet('Event Submissions')
 
             # Prepare rows
@@ -804,8 +814,22 @@ Example output:
 
             logger.info(f"  ✅ Uploaded {approved_count} approved and {pending_count} pending events")
 
+        except json.JSONDecodeError as e:
+            logger.error(f"  ❌ Google Sheets JSON parsing error: {e}")
+            logger.error(f"  ℹ️ This usually means credentials are invalid or sheet doesn't exist")
+            self.save_to_json()
+        except gspread.exceptions.SpreadsheetNotFound:
+            logger.error(f"  ❌ Spreadsheet not found: {self.sheet_id}")
+            logger.error(f"  ℹ️ Check that GOOGLE_SHEET_ID is correct and service account has access")
+            self.save_to_json()
+        except gspread.exceptions.WorksheetNotFound:
+            logger.error(f"  ❌ Worksheet 'Event Submissions' not found")
+            logger.error(f"  ℹ️ Create a worksheet named 'Event Submissions' in your Google Sheet")
+            self.save_to_json()
         except Exception as e:
-            logger.error(f"  ❌ Failed to upload to Google Sheets: {e}")
+            logger.error(f"  ❌ Failed to upload to Google Sheets: {type(e).__name__}: {e}")
+            import traceback
+            logger.error(f"  ℹ️ Full traceback: {traceback.format_exc()}")
             self.save_to_json()
 
     def save_to_json(self):

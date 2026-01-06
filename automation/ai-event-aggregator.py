@@ -283,12 +283,12 @@ class EventAggregator:
             # Fallback to web scraping if no API key
             logger.info("    ⏭️ Skiddle API key not provided, trying web scrape")
             
-            # Try venue-specific pages first
+            # Try main Norwich page and major venue pages
             venue_urls = [
-                "https://www.skiddle.com/venues/uea-the-lcr-norwich/9132/",
-                "https://www.skiddle.com/venues/waterfront-norwich/2003/",
-                "https://www.skiddle.com/venues/epic-studios-norwich/46430/",
-                "https://www.skiddle.com/whats-on/Norwich/"
+                "https://www.skiddle.com/whats-on/Norwich/",
+                "https://www.skiddle.com/whats-on/Norwich/clubs/",
+                "https://www.skiddle.com/whats-on/Norwich/live-music/",
+                "https://www.skiddle.com/whats-on/Norwich/festivals/"
             ]
             
             for url in venue_urls:
@@ -436,15 +436,32 @@ class EventAggregator:
 
             soup = BeautifulSoup(response.text, 'html.parser')
 
-            # Parse events (adjust selectors based on actual site)
-            event_listings = soup.find_all('article', class_='event')  # Example
+            # Try multiple selectors to find events
+            event_listings = (
+                soup.find_all('article', class_=lambda x: x and 'event' in str(x).lower()) or
+                soup.find_all('div', class_=lambda x: x and 'event' in str(x).lower()) or
+                soup.find_all('li', class_=lambda x: x and 'event' in str(x).lower()) or
+                soup.find_all('a', href=lambda x: x and '/event/' in str(x).lower())[:20]
+            )
 
-            for listing in event_listings:
-                events.append({
-                    'raw_data': str(listing),
-                    'source': 'Visit Norwich',
-                    'url': url
-                })
+            for listing in event_listings[:30]:
+                text = listing.get_text(strip=True, separator=' ')
+                link_elem = listing.find('a', href=True) if listing.name != 'a' else listing
+                link = link_elem.get('href', '') if link_elem else ''
+                
+                if text and len(text) > 20:
+                    events.append({
+                        'raw_data': {
+                            'content': text[:500],
+                            'html': str(listing)[:1000],
+                            'link': link
+                        },
+                        'source': 'Visit Norwich',
+                        'url': f"https://www.visitnorwich.co.uk{link}" if link.startswith('/') else (link if link.startswith('http') else url)
+                    })
+            
+            if events:
+                logger.info(f"    ✅ Found {len(events)} events from Visit Norwich")
 
         except Exception as e:
             logger.error(f"Visit Norwich scraping error: {e}")
@@ -455,9 +472,10 @@ class EventAggregator:
         """Scrape The Halls Norwich venue for events"""
         events = []
         
-        # The Halls Norwich - major venue
+        # The Halls Norwich - major venue (updated URL)
         urls = [
-            "https://www.thehallsnorwich.com/whats-on/",
+            "https://thehallsnorwich.com/events/full",
+            "https://thehallsnorwich.com/events/",
             "https://www.thehallsnorwich.com/events/"
         ]
         
@@ -508,23 +526,35 @@ class EventAggregator:
         """Scrape multiple Norwich venues for events"""
         events = []
         
-        # Major Norwich venues with potential RSS/events pages
+        # Major Norwich venues - updated URLs from web search
         venues = [
             {
                 'name': 'Norwich Arts Centre',
-                'url': 'https://www.norwichartscentre.co.uk/events/'
+                'url': 'https://norwichartscentre.com/events/'
             },
             {
                 'name': 'Norwich Playhouse',
-                'url': 'https://www.norwichplayhouse.co.uk/whats-on/'
+                'url': 'https://norwichplayhouse.org.uk/whats-on/'
             },
             {
                 'name': 'Theatre Royal Norwich',
-                'url': 'https://www.theatreroyalnorwich.co.uk/whats-on/'
+                'url': 'https://theatreroyalnorwich.co.uk/whats-on/'
             },
             {
-                'name': 'The Waterfront',
-                'url': 'https://www.uea.su/organisation/16138/'
+                'name': 'The Waterfront Norwich',
+                'url': 'https://www.waterfrontnorwich.com/events/'
+            },
+            {
+                'name': 'Norwich Puppet Theatre',
+                'url': 'https://www.puppettheatre.co.uk/whats-on/'
+            },
+            {
+                'name': 'The Assembly House Norwich',
+                'url': 'https://www.assemblyhousenorwich.co.uk/whats-on/'
+            },
+            {
+                'name': 'Norwich Cathedral',
+                'url': 'https://www.cathedral.org.uk/events/'
             }
         ]
         
@@ -593,40 +623,48 @@ class EventAggregator:
     def parse_event_with_ai(self, raw_event: Dict) -> Optional[Dict]:
         """Use AI (Gemini or OpenAI) to extract structured data from raw event"""
 
-        prompt = f"""You are an event data extraction expert. Extract event information from the following data and return ONLY a valid JSON object.
+        # Clean and prepare the raw data
+        raw_data = raw_event.get('raw_data', '')
+        if isinstance(raw_data, dict):
+            raw_data_str = f"Title: {raw_data.get('title', '')}, Content: {raw_data.get('content', '')}, Link: {raw_data.get('link', '')}"
+        else:
+            raw_data_str = str(raw_data)
+        
+        prompt = f"""Extract Norwich event information and return ONLY valid JSON.
 
-EVENT SOURCE: {raw_event.get('source', 'Unknown')}
-EVENT URL: {raw_event.get('url', '')}
-RAW DATA: {str(raw_event.get('raw_data', ''))[:2000]}
+SOURCE: {raw_event.get('source', 'Unknown')}
+URL: {raw_event.get('url', '')}
+DATA: {raw_data_str[:1500]}
 
-Required JSON fields (use "null" for unknown values):
-- name: Event name (string, REQUIRED - extract from titles, headings, or text)
-- date: Event date in YYYY-MM-DD format (string, REQUIRED - if only month/day, assume 2026)
-- time: Event time in HH:MM 24-hour format (string or null)
-- location: Venue name (string, REQUIRED - extract from text or use source venue)
-- address: Full address (string or null)
-- category: ONE of: nightlife, gigs, culture, food, sports, family (string, REQUIRED)
-- description: Brief description (string, 1-2 sentences)
-- ticketLink: Ticket URL (string or null)
-- price: Price like "Free", "£10", or "£5-15" (string or null)
-- imageUrl: Image URL (string or null)
+Return JSON with these EXACT fields:
+- name: Event title (REQUIRED - extract from headings/titles)
+- date: Format YYYY-MM-DD (REQUIRED - today is {datetime.now().strftime('%Y-%m-%d')}, dates must be FUTURE)
+- time: Format HH:MM 24h or null
+- location: Venue name (REQUIRED - extract or use "{raw_event.get('source', 'Norwich')}")
+- address: Full address or null
+- category: MUST be ONE of: nightlife, gigs, culture, food, sports, family (REQUIRED)
+- description: 1-2 sentences
+- ticketLink: URL or null
+- price: "Free", "£10", "£5-15" or null
+- imageUrl: URL or null
 
-STRICT RULES:
-1. Return ONLY the JSON object, no explanations
-2. Date MUST be future date in YYYY-MM-DD format (today is {datetime.now().strftime('%Y-%m-%d')})
-3. If date is missing or past, estimate from context or set to null
-4. If event lacks name/date/location, return null for ALL fields
-5. Category MUST be one of: nightlife, gigs, culture, food, sports, family
-6. Choose category based on: clubs/DJ → nightlife, bands/music → gigs, theatre/art → culture
-7. For Norwich/Norfolk events only (ignore events clearly outside the area)
+CRITICAL RULES:
+✓ Return ONLY JSON, no explanations or markdown
+✓ Date must be FUTURE (after {datetime.now().strftime('%Y-%m-%d')})
+✓ If no clear date found, use next Saturday: {(datetime.now() + timedelta(days=(5 - datetime.now().weekday()) % 7)).strftime('%Y-%m-%d')}
+✓ Location can be venue name from SOURCE if not in data
+✓ Category: DJs/clubs=nightlife, bands=gigs, theatre/art=culture, food/drink=food, exercise=sports, kids=family
+✓ Norwich/Norfolk events ONLY
 
-Example valid response:
-{{"name": "DnB Night", "date": "2026-01-10", "time": "22:00", "location": "Epic Studios", "address": null, "category": "nightlife", "description": "Drum and bass night featuring local DJs", "ticketLink": null, "price": "£5", "imageUrl": null}}
+EXAMPLES:
+{{"name": "Live Jazz Night", "date": "2026-01-15", "time": "20:00", "location": "Norwich Arts Centre", "address": null, "category": "gigs", "description": "Evening of live jazz music", "ticketLink": null, "price": "£12", "imageUrl": null}}
 
-If data is insufficient, return:
+{{"name": "Comedy Show", "date": "2026-01-20", "time": "19:30", "location": "Norwich Playhouse", "address": null, "category": "culture", "description": "Stand-up comedy night", "ticketLink": null, "price": "£15", "imageUrl": null}}
+
+If insufficient data (no name OR no date OR outside Norwich):
 {{"name": null, "date": null, "time": null, "location": null, "address": null, "category": null, "description": null, "ticketLink": null, "price": null, "imageUrl": null}}
 
-Extract event data from the RAW DATA above and return JSON:"""
+JSON:"""
 
         try:
             if self.ai_provider == 'Gemini':

@@ -69,14 +69,8 @@ class EventAggregator:
             logger.info("Using OpenAI (primary)")
         elif self.gemini_api_key:
             genai.configure(api_key=self.gemini_api_key)
-            # Try newer model names first, fallback to older ones
-            try:
-                self.model = genai.GenerativeModel('models/gemini-1.5-flash-latest')
-            except:
-                try:
-                    self.model = genai.GenerativeModel('gemini-1.5-flash-latest')
-                except:
-                    self.model = genai.GenerativeModel('gemini-pro')
+            # Use current Gemini 1.5 Flash model (free tier)
+            self.model = genai.GenerativeModel('gemini-1.5-flash')
             self.ai_provider = 'Gemini'
             logger.info("Using Google Gemini AI (fallback)")
         else:

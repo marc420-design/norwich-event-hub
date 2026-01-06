@@ -66,7 +66,7 @@ class EventAggregator:
         # Use Gemini by default, fallback to OpenAI
         if self.gemini_api_key:
             genai.configure(api_key=self.gemini_api_key)
-            self.model = genai.GenerativeModel('gemini-pro')
+            self.model = genai.GenerativeModel('gemini-1.5-flash')
             self.ai_provider = 'Gemini'
             logger.info("Using Google Gemini AI")
         elif self.openai_api_key:

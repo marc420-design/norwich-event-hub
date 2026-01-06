@@ -59,6 +59,7 @@ class EventAggregator:
         self.openai_api_key = os.environ.get('OPENAI_API_KEY')
         self.facebook_token = os.environ.get('FACEBOOK_ACCESS_TOKEN')
         self.eventbrite_key = os.environ.get('EVENTBRITE_API_KEY')
+        self.skiddle_key = os.environ.get('SKIDDLE_API_KEY')  # Optional Skiddle API key
         self.sheet_id = os.environ.get('GOOGLE_SHEET_ID')
         self.sheet_creds = os.environ.get('GOOGLE_SHEETS_CREDENTIALS')
 
@@ -133,6 +134,8 @@ class EventAggregator:
             ('Facebook', self.scrape_facebook),
             ('Council', self.scrape_norwich_council),
             ('Visit Norwich', self.scrape_visit_norwich),
+            ('The Halls Norwich', self.scrape_the_halls_norwich),
+            ('Norwich Venues', self.scrape_norwich_venues),
         ]
 
         for source_name, scraper_func in scrapers:
@@ -186,30 +189,73 @@ class EventAggregator:
         return events
 
     def scrape_skiddle(self) -> List[Dict]:
-        """Scrape Skiddle for Norwich events"""
+        """Scrape Skiddle for Norwich events using their API"""
         events = []
-        url = "https://www.skiddle.com/whats-on/Norwich/"
-
-        try:
-            response = requests.get(url, timeout=30, headers={
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-            })
-            response.raise_for_status()
-
-            soup = BeautifulSoup(response.text, 'html.parser')
-
-            # Find event cards (adjust selectors based on actual HTML)
-            event_cards = soup.find_all('div', class_='card')  # Example selector
-
-            for card in event_cards[:50]:  # Limit to first 50
-                events.append({
-                    'raw_data': str(card),
-                    'source': 'Skiddle',
-                    'url': url
+        
+        # Skiddle API endpoint
+        if self.skiddle_key:
+            # Use official Skiddle API if key provided
+            api_url = "https://www.skiddle.com/api/v1/events/search/"
+            params = {
+                'api_key': self.skiddle_key,
+                'latitude': 52.6309,  # Norwich coordinates
+                'longitude': 1.2974,
+                'radius': 15,  # 15km radius
+                'eventcode': 'LIVE',  # Live events
+                'limit': 50,
+                'order': 'date'
+            }
+            
+            try:
+                response = requests.get(api_url, params=params, timeout=30)
+                response.raise_for_status()
+                data = response.json()
+                
+                if data.get('results'):
+                    for event in data['results']:
+                        events.append({
+                            'raw_data': event,
+                            'source': 'Skiddle API',
+                            'url': event.get('link', '')
+                        })
+                    logger.info(f"    ✅ Found {len(events)} events from Skiddle API")
+                    
+            except Exception as e:
+                logger.error(f"Skiddle API error: {e}")
+        else:
+            # Fallback to web scraping if no API key
+            logger.info("    ⏭️ Skiddle API key not provided, trying web scrape")
+            url = "https://www.skiddle.com/whats-on/Norwich/"
+            
+            try:
+                response = requests.get(url, timeout=30, headers={
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
                 })
-
-        except Exception as e:
-            logger.error(f"Skiddle scraping error: {e}")
+                response.raise_for_status()
+                soup = BeautifulSoup(response.text, 'html.parser')
+                
+                # Look for event links in the page
+                event_links = soup.find_all('a', href=lambda x: x and '/whats-on/' in x and '/Norwich/' not in x)
+                
+                for link in event_links[:30]:
+                    title = link.get_text(strip=True)
+                    href = link.get('href', '')
+                    
+                    if title and len(title) > 5:
+                        events.append({
+                            'raw_data': {
+                                'title': title,
+                                'url': f"https://www.skiddle.com{href}" if href.startswith('/') else href,
+                                'html': str(link.parent)
+                            },
+                            'source': 'Skiddle',
+                            'url': f"https://www.skiddle.com{href}" if href.startswith('/') else href
+                        })
+                
+                logger.info(f"    ✅ Found {len(events)} events from Skiddle web scrape")
+                
+            except Exception as e:
+                logger.error(f"Skiddle web scraping error: {e}")
 
         return events
 
@@ -228,30 +274,81 @@ class EventAggregator:
         return events
 
     def scrape_norwich_council(self) -> List[Dict]:
-        """Scrape Norwich City Council events"""
+        """Scrape Norwich City Council events from RSS feed"""
         events = []
-        url = "https://www.norwich.gov.uk/events"
-
-        try:
-            response = requests.get(url, timeout=30, headers={
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-            })
-            response.raise_for_status()
-
-            soup = BeautifulSoup(response.text, 'html.parser')
-
-            # Parse council events (adjust selectors)
-            event_items = soup.find_all('div', class_='event-item')  # Example selector
-
-            for item in event_items:
-                events.append({
-                    'raw_data': str(item),
-                    'source': 'Norwich Council',
-                    'url': url
+        
+        # Try RSS feed first (best for council events)
+        rss_urls = [
+            "https://www.norwich.gov.uk/site/scripts/google_rss.php?categoryid=15",  # Events feed
+            "https://www.norwich.gov.uk/events"  # Fallback HTML page
+        ]
+        
+        for url in rss_urls:
+            try:
+                response = requests.get(url, timeout=30, headers={
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
                 })
-
-        except Exception as e:
-            logger.error(f"Council scraping error: {e}")
+                response.raise_for_status()
+                
+                # Check if it's RSS/XML
+                if 'xml' in response.headers.get('Content-Type', '') or url.endswith('.php'):
+                    soup = BeautifulSoup(response.text, 'xml')
+                    items = soup.find_all('item')
+                    
+                    for item in items:
+                        title = item.find('title')
+                        link = item.find('link')
+                        description = item.find('description')
+                        pubDate = item.find('pubDate')
+                        
+                        if title:
+                            events.append({
+                                'raw_data': {
+                                    'title': title.get_text(strip=True) if title else '',
+                                    'link': link.get_text(strip=True) if link else '',
+                                    'description': description.get_text(strip=True) if description else '',
+                                    'date': pubDate.get_text(strip=True) if pubDate else ''
+                                },
+                                'source': 'Norwich Council RSS',
+                                'url': link.get_text(strip=True) if link else url
+                            })
+                    
+                    if events:
+                        logger.info(f"    ✅ Found {len(events)} events from Norwich Council RSS")
+                        break
+                else:
+                    # HTML page
+                    soup = BeautifulSoup(response.text, 'html.parser')
+                    
+                    # Look for event listings
+                    event_elements = (
+                        soup.find_all('div', class_=lambda x: x and 'event' in str(x).lower()) or
+                        soup.find_all('article') or
+                        soup.find_all('li', class_=lambda x: x and 'event' in str(x).lower())
+                    )
+                    
+                    for elem in event_elements[:20]:
+                        text = elem.get_text(strip=True, separator=' ')
+                        link_elem = elem.find('a', href=True)
+                        
+                        if text and len(text) > 30:
+                            events.append({
+                                'raw_data': {
+                                    'content': text,
+                                    'link': link_elem.get('href', '') if link_elem else '',
+                                    'html': str(elem)
+                                },
+                                'source': 'Norwich Council',
+                                'url': link_elem.get('href', '') if link_elem else url
+                            })
+                    
+                    if events:
+                        logger.info(f"    ✅ Found {len(events)} events from Norwich Council HTML")
+                        break
+                        
+            except Exception as e:
+                logger.error(f"Council scraping error ({url}): {e}")
+                continue
 
         return events
 
@@ -281,6 +378,127 @@ class EventAggregator:
         except Exception as e:
             logger.error(f"Visit Norwich scraping error: {e}")
 
+        return events
+
+    def scrape_the_halls_norwich(self) -> List[Dict]:
+        """Scrape The Halls Norwich venue for events"""
+        events = []
+        
+        # The Halls Norwich - major venue
+        urls = [
+            "https://www.thehallsnorwich.com/whats-on/",
+            "https://www.thehallsnorwich.com/events/"
+        ]
+        
+        for url in urls:
+            try:
+                response = requests.get(url, timeout=30, headers={
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+                })
+                response.raise_for_status()
+                soup = BeautifulSoup(response.text, 'html.parser')
+                
+                # Look for event elements
+                event_elements = (
+                    soup.find_all('div', class_=lambda x: x and 'event' in str(x).lower()) or
+                    soup.find_all('article') or
+                    soup.find_all('a', href=lambda x: x and 'event' in str(x).lower())
+                )
+                
+                for elem in event_elements[:30]:
+                    title_elem = elem.find(['h2', 'h3', 'h4'])
+                    title = title_elem.get_text(strip=True) if title_elem else elem.get_text(strip=True)[:100]
+                    
+                    link = elem.get('href') if elem.name == 'a' else (elem.find('a', href=True).get('href') if elem.find('a', href=True) else '')
+                    
+                    if title and len(title) > 5:
+                        events.append({
+                            'raw_data': {
+                                'title': title,
+                                'link': f"https://www.thehallsnorwich.com{link}" if link.startswith('/') else link,
+                                'html': str(elem),
+                                'venue': 'The Halls Norwich'
+                            },
+                            'source': 'The Halls Norwich',
+                            'url': f"https://www.thehallsnorwich.com{link}" if link.startswith('/') else link
+                        })
+                
+                if events:
+                    logger.info(f"    ✅ Found {len(events)} events from The Halls Norwich")
+                    break
+                    
+            except Exception as e:
+                logger.error(f"The Halls Norwich scraping error: {e}")
+                continue
+        
+        return events
+    
+    def scrape_norwich_venues(self) -> List[Dict]:
+        """Scrape multiple Norwich venues for events"""
+        events = []
+        
+        # Major Norwich venues with potential RSS/events pages
+        venues = [
+            {
+                'name': 'Norwich Arts Centre',
+                'url': 'https://www.norwichartscentre.co.uk/events/'
+            },
+            {
+                'name': 'Norwich Playhouse',
+                'url': 'https://www.norwichplayhouse.co.uk/whats-on/'
+            },
+            {
+                'name': 'Theatre Royal Norwich',
+                'url': 'https://www.theatreroyalnorwich.co.uk/whats-on/'
+            },
+            {
+                'name': 'The Waterfront',
+                'url': 'https://www.uea.su/organisation/16138/'
+            }
+        ]
+        
+        for venue in venues:
+            try:
+                response = requests.get(venue['url'], timeout=30, headers={
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+                })
+                response.raise_for_status()
+                soup = BeautifulSoup(response.text, 'html.parser')
+                
+                # Generic event finder
+                event_elements = (
+                    soup.find_all('div', class_=lambda x: x and ('event' in str(x).lower() or 'show' in str(x).lower())) or
+                    soup.find_all('article') or
+                    soup.find_all('li', class_=lambda x: x and 'event' in str(x).lower())
+                )
+                
+                venue_events = 0
+                for elem in event_elements[:10]:  # Max 10 per venue
+                    text = elem.get_text(strip=True, separator=' ')
+                    
+                    if text and len(text) > 20:
+                        link_elem = elem.find('a', href=True)
+                        link = link_elem.get('href', '') if link_elem else ''
+                        
+                        events.append({
+                            'raw_data': {
+                                'content': text[:500],
+                                'link': link,
+                                'venue': venue['name'],
+                                'html': str(elem)[:1000]
+                            },
+                            'source': venue['name'],
+                            'url': link if link.startswith('http') else f"{venue['url'].rsplit('/', 2)[0]}{link}"
+                        })
+                        venue_events += 1
+                
+                if venue_events > 0:
+                    logger.info(f"    ✅ Found {venue_events} events from {venue['name']}")
+                    
+            except Exception as e:
+                logger.error(f"{venue['name']} scraping error: {e}")
+                continue
+        
         return events
 
     # ========== AI Processing ==========

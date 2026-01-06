@@ -662,7 +662,7 @@ Example output:
             if self.is_valid_event(event):
                 valid_events.append(event)
             else:
-                logger.debug(f"  ❌ Invalid event: {event.get('name', 'Unknown')}")
+                logger.info(f"  ❌ Invalid event: {event.get('name', 'Unknown')} - Date: {event.get('date')}, Category: {event.get('category')}, Location: {event.get('location')}")
 
         logger.info(f"  ✅ {len(valid_events)}/{len(self.events)} events passed validation")
         self.events = valid_events

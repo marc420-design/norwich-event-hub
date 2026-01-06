@@ -20,6 +20,16 @@ from datetime import datetime, timedelta
 from typing import List, Dict, Optional
 import re
 
+# Load environment variables from .env file
+try:
+    from dotenv import load_dotenv
+    # Load .env file from automation directory
+    env_path = os.path.join(os.path.dirname(__file__), '.env')
+    load_dotenv(env_path)
+except ImportError:
+    # python-dotenv not installed, will use system environment variables
+    pass
+
 # External dependencies (install via: pip install -r requirements.txt)
 try:
     import google.generativeai as genai
@@ -534,12 +544,12 @@ Example output:
                 by_category[cat] = by_category.get(cat, 0) + 1
 
         print("\n" + "="*50)
-        print("📊 AI EVENT AGGREGATOR SUMMARY")
+        print("AI EVENT AGGREGATOR SUMMARY")
         print("="*50)
-        print(f"✅ Auto-approved:     {approved}")
-        print(f"⏳ Pending review:    {pending}")
-        print(f"❌ Rejected:          {rejected}")
-        print(f"📋 Total processed:   {len(self.events)}")
+        print(f"[OK] Auto-approved:     {approved}")
+        print(f"[PENDING] review:       {pending}")
+        print(f"[X] Rejected:           {rejected}")
+        print(f"[*] Total processed:    {len(self.events)}")
         print("\nEvents by category:")
         for cat, count in sorted(by_category.items()):
             print(f"  {cat}: {count}")

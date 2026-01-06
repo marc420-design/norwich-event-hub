@@ -121,7 +121,21 @@ function doGet(e) {
       headers.forEach((header, index) => {
         event[header.toLowerCase().replace(/\s+/g, '')] = data[i][index];
       });
-      
+
+      // Normalize field names for frontend compatibility
+      if (event.eventname) {
+        event.name = event.eventname;
+      }
+      if (event.ticketlink) {
+        event.ticketLink = event.ticketlink;
+      }
+      if (event.eventdate) {
+        event.date = event.eventdate;
+      }
+      if (event.imageurl) {
+        event.image = event.imageurl;
+      }
+
       // Check for AI-discovered events based on ID
       if (event.eventid && String(event.eventid).startsWith('AI-')) {
         event.isAiDiscovered = true;

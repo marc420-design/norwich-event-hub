@@ -57,3 +57,30 @@ automation/events_*.json
 URGENT_SECURITY_BREACH.md
 *SECURITY*.md
 
+# Google credentials (sensitive!)
+google-credentials.json
+automation/google-credentials.json
+**/google-credentials.json
+google-service-account.json
+
+# AI aggregator output files
+ai_events_*.json
+
+# Windows batch/PowerShell scripts (temporary setup files)
+*.bat
+*.ps1
+
+# Temporary files
+nul
+
+# Setup documentation (keep the important ones, ignore duplicates)
+*_QUICKSTART.md
+EASY_*.md
+SETUP_NOW.md
+DEPLOY_NOW.md
+check-setup.py
+find-credentials.bat
+get-service-account-email.bat
+run-ai-aggregator.bat
+run-ai-aggregator.sh
+

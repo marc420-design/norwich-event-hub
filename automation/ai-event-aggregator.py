@@ -63,17 +63,24 @@ class EventAggregator:
         self.sheet_id = os.environ.get('GOOGLE_SHEET_ID')
         self.sheet_creds = os.environ.get('GOOGLE_SHEETS_CREDENTIALS')
 
-        # Use Gemini by default, fallback to OpenAI
-        if self.gemini_api_key:
-            genai.configure(api_key=self.gemini_api_key)
-            self.model = genai.GenerativeModel('gemini-1.5-flash')
-            self.ai_provider = 'Gemini'
-            logger.info("Using Google Gemini AI")
-        elif self.openai_api_key:
+        # Use OpenAI by default (working), fallback to Gemini
+        if self.openai_api_key:
             import openai
             openai.api_key = self.openai_api_key
             self.ai_provider = 'OpenAI'
-            logger.info("Using OpenAI")
+            logger.info("Using OpenAI (primary)")
+        elif self.gemini_api_key:
+            genai.configure(api_key=self.gemini_api_key)
+            # Try newer model names first, fallback to older ones
+            try:
+                self.model = genai.GenerativeModel('models/gemini-1.5-flash-latest')
+            except:
+                try:
+                    self.model = genai.GenerativeModel('gemini-1.5-flash-latest')
+                except:
+                    self.model = genai.GenerativeModel('gemini-pro')
+            self.ai_provider = 'Gemini'
+            logger.info("Using Google Gemini AI (fallback)")
         else:
             raise ValueError("Either GEMINI_API_KEY or OPENAI_API_KEY environment variable required")
 

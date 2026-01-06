@@ -88,6 +88,7 @@ function sanitizeUrl(url) {
 function createEventCard(event) {
     const card = document.createElement('div');
     card.className = 'event-card';
+    card.style.cursor = 'pointer';
 
     // Handle both property formats from API (eventname) and local (name)
     const name = event.name || event.eventname || 'Untitled Event';
@@ -98,11 +99,23 @@ function createEventCard(event) {
     const category = event.category || 'general';
     const ticketLink = event.ticketLink || event.ticketlink || '';
     const image = event.image || event.imageurl || '';
+    const eventId = event.id || event.eventid;
 
     card.dataset.category = escapeHtml(category);
-    if (event.id || event.eventid) {
-        card.dataset.eventId = event.id || event.eventid;
+    if (eventId) {
+        card.dataset.eventId = eventId;
     }
+
+    // Make card clickable to event detail page
+    card.addEventListener('click', function(e) {
+        // Don't navigate if clicking on links or buttons
+        if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON' || e.target.closest('a') || e.target.closest('button')) {
+            return;
+        }
+        if (eventId) {
+            window.location.href = `event-detail.html?id=${eventId}`;
+        }
+    });
 
     // Get category-specific gradient or image
     const categoryGradients = {

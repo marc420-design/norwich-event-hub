@@ -457,6 +457,230 @@ a:hover {
     }
 }
 
+/* Quick Filters */
+.quick-filters {
+    background: var(--color-gray-light);
+    padding: var(--spacing-md) 0;
+    border-bottom: 1px solid var(--color-gray-medium);
+}
+
+.filter-chips {
+    display: flex;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.filter-chip {
+    padding: 10px 20px;
+    border: 2px solid var(--color-gray-medium);
+    background: var(--color-white);
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.filter-chip:hover {
+    border-color: var(--color-electric-blue);
+    color: var(--color-electric-blue);
+}
+
+.filter-chip.active {
+    background: var(--color-electric-blue);
+    border-color: var(--color-electric-blue);
+    color: var(--color-white);
+}
+
+/* Advanced Filters */
+.directory-filters {
+    padding: var(--spacing-md) 0;
+    background: var(--color-white);
+}
+
+.filters-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-group label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--color-gray-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.filter-select,
+.filter-input {
+    padding: 12px;
+    border: 2px solid var(--color-gray-medium);
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.filter-select:focus,
+.filter-input:focus {
+    outline: none;
+    border-color: var(--color-electric-blue);
+}
+
+.search-row {
+    margin-top: var(--spacing-sm);
+}
+
+.search-group {
+    display: flex;
+    gap: var(--spacing-sm);
+    align-items: center;
+}
+
+.search-input {
+    flex: 1;
+}
+
+.btn-text {
+    background: none;
+    border: none;
+    color: var(--color-electric-blue);
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 0;
+}
+
+.btn-text:hover {
+    color: var(--color-gold);
+}
+
+/* Event Count */
+#eventCount {
+    color: var(--color-electric-blue);
+    font-weight: 700;
+}
+
+/* No Results */
+.no-results {
+    text-align: center;
+    padding: var(--spacing-xl);
+    color: var(--color-gray-dark);
+}
+
+.no-results p {
+    font-size: 1.1rem;
+}
+
+/* Mobile Filters - Enhanced for Touch */
+@media (max-width: 768px) {
+    /* Sticky filters on mobile */
+    .quick-filters {
+        position: sticky;
+        top: 60px; /* Below navbar */
+        z-index: 100;
+        background: var(--color-white);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        padding: var(--spacing-sm) 0;
+    }
+
+    .directory-filters {
+        position: sticky;
+        top: 120px; /* Below quick filters */
+        z-index: 99;
+        background: var(--color-white);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        padding: var(--spacing-sm) 0;
+    }
+
+    .filter-chips {
+        justify-content: flex-start;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 10px;
+        scrollbar-width: thin;
+    }
+
+    /* Hide scrollbar for webkit browsers */
+    .filter-chips::-webkit-scrollbar {
+        height: 4px;
+    }
+
+    .filter-chips::-webkit-scrollbar-track {
+        background: var(--color-gray-light);
+    }
+
+    .filter-chips::-webkit-scrollbar-thumb {
+        background: var(--color-electric-blue);
+        border-radius: 2px;
+    }
+
+    /* Larger tap targets for accessibility (min 44px) */
+    .filter-chip {
+        flex-shrink: 0;
+        font-size: 0.9rem;
+        padding: 12px 24px;
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Larger form controls */
+    .filter-select,
+    .filter-input {
+        padding: 14px;
+        font-size: 16px; /* Prevent iOS zoom on focus */
+        min-height: 48px;
+    }
+
+    .filters-row {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+
+    .search-group {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+
+    .btn-text {
+        align-self: flex-start;
+        min-height: 44px;
+        padding: 10px;
+    }
+
+    /* Larger buttons for touch */
+    .btn {
+        min-height: 48px;
+        padding: 14px 24px;
+        font-size: 1rem;
+    }
+
+    /* Event cards - better spacing for touch */
+    .event-card {
+        margin-bottom: 1.5rem;
+    }
+
+    .event-link,
+    .share-button {
+        min-height: 44px;
+        padding: 12px 20px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
 /* Buttons */
 .btn {
     display: inline-block;

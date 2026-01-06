@@ -62,49 +62,82 @@
     <!-- Page Header -->
     <section class="page-header">
         <div class="container">
-            <h1>2026 Event Directory</h1>
-            <p>Browse all events happening in Norwich throughout 2026</p>
+            <h1>Event Directory</h1>
+            <p>Browse all events happening in Norwich - <span id="eventCount">Loading...</span> events listed</p>
         </div>
     </section>
 
-    <!-- Filters -->
+    <!-- Quick Filters -->
+    <section class="quick-filters">
+        <div class="container">
+            <div class="filter-chips">
+                <button class="filter-chip active" data-filter="all">All Events</button>
+                <button class="filter-chip" data-filter="today">Today</button>
+                <button class="filter-chip" data-filter="weekend">This Weekend</button>
+                <button class="filter-chip" data-filter="week">This Week</button>
+                <button class="filter-chip" data-filter="free">Free Events</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advanced Filters -->
     <section class="directory-filters">
         <div class="container">
-            <div class="filter-group">
-                <label for="categoryFilter">Category:</label>
-                <select id="categoryFilter" class="filter-select">
-                    <option value="all">All Categories</option>
-                    <option value="nightlife">Nightlife</option>
-                    <option value="culture">Culture</option>
-                    <option value="community">Community</option>
-                    <option value="markets">Markets</option>
-                    <option value="gigs">Gigs</option>
-                    <option value="theatre">Theatre</option>
-                    <option value="sports">Sports</option>
-                    <option value="free">Free Events</option>
-                </select>
+            <div class="filters-row">
+                <div class="filter-group">
+                    <label for="categoryFilter">Category</label>
+                    <select id="categoryFilter" class="filter-select">
+                        <option value="all">All Categories</option>
+                        <option value="nightlife">Nightlife</option>
+                        <option value="gigs">Gigs</option>
+                        <option value="theatre">Theatre</option>
+                        <option value="culture">Culture</option>
+                        <option value="community">Community</option>
+                        <option value="markets">Markets</option>
+                        <option value="sports">Sports</option>
+                        <option value="free">Free Events</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="monthFilter">Month</label>
+                    <select id="monthFilter" class="filter-select">
+                        <option value="all">All Months</option>
+                        <option value="01">January</option>
+                        <option value="02">February</option>
+                        <option value="03">March</option>
+                        <option value="04">April</option>
+                        <option value="05">May</option>
+                        <option value="06">June</option>
+                        <option value="07">July</option>
+                        <option value="08">August</option>
+                        <option value="09">September</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="priceFilter">Price</label>
+                    <select id="priceFilter" class="filter-select">
+                        <option value="all">All Prices</option>
+                        <option value="free">Free</option>
+                        <option value="paid">Paid</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="sortFilter">Sort By</label>
+                    <select id="sortFilter" class="filter-select">
+                        <option value="date-asc">Date (Soonest First)</option>
+                        <option value="date-desc">Date (Latest First)</option>
+                        <option value="name">Name (A-Z)</option>
+                    </select>
+                </div>
             </div>
-            <div class="filter-group">
-                <label for="monthFilter">Month:</label>
-                <select id="monthFilter" class="filter-select">
-                    <option value="all">All Months</option>
-                    <option value="01">January</option>
-                    <option value="02">February</option>
-                    <option value="03">March</option>
-                    <option value="04">April</option>
-                    <option value="05">May</option>
-                    <option value="06">June</option>
-                    <option value="07">July</option>
-                    <option value="08">August</option>
-                    <option value="09">September</option>
-                    <option value="10">October</option>
-                    <option value="11">November</option>
-                    <option value="12">December</option>
-                </select>
-            </div>
-            <div class="filter-group">
-                <label for="searchFilter">Search:</label>
-                <input type="text" id="searchFilter" class="filter-input" placeholder="Search events...">
+            <div class="search-row">
+                <div class="search-group">
+                    <input type="text" id="searchFilter" class="filter-input search-input" placeholder="Search events by name, venue, or description...">
+                    <button id="clearFilters" class="btn-text">Clear All Filters</button>
+                </div>
             </div>
         </div>
     </section>

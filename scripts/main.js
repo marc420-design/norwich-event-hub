@@ -171,6 +171,10 @@ function createEventCard(event) {
     const image = event.image || event.imageurl || '';
     const eventId = event.id || event.eventid;
 
+    // Sanitize URLs at the top so they're available throughout the function
+    const imageUrl = sanitizeUrl(image);
+    const ticketUrl = sanitizeUrl(ticketLink);
+
     card.dataset.category = escapeHtml(category);
     if (eventId) {
         card.dataset.eventId = eventId;
@@ -200,8 +204,7 @@ function createEventCard(event) {
         'default': 'linear-gradient(135deg, var(--color-electric-blue), var(--color-forest-green))'
     };
 
-    // Sanitize image URL or use category gradient
-    const imageUrl = sanitizeUrl(image);
+    // Use sanitized image URL or category gradient
     const categoryGradient = categoryGradients[category] || categoryGradients['default'];
     const imageStyle = imageUrl
         ? `background-image: url('${imageUrl}')`
@@ -430,17 +433,14 @@ function createEventCard(event) {
     eventContentDiv.appendChild(eventDescriptionP);
 
     // Add ticket link if available
-    if (ticketLink) {
-        const ticketUrl = sanitizeUrl(ticketLink);
-        if (ticketUrl) {
-            const ticketLinkEl = document.createElement('a');
-            ticketLinkEl.href = ticketUrl;
-            ticketLinkEl.target = '_blank';
-            ticketLinkEl.rel = 'noopener noreferrer'; // Security: prevent window.opener access
-            ticketLinkEl.className = 'event-link';
-            ticketLinkEl.textContent = 'Get Tickets →';
-            eventContentDiv.appendChild(ticketLinkEl);
-        }
+    if (ticketUrl) {
+        const ticketLinkEl = document.createElement('a');
+        ticketLinkEl.href = ticketUrl;
+        ticketLinkEl.target = '_blank';
+        ticketLinkEl.rel = 'noopener noreferrer'; // Security: prevent window.opener access
+        ticketLinkEl.className = 'event-link';
+        ticketLinkEl.textContent = 'Get Tickets →';
+        eventContentDiv.appendChild(ticketLinkEl);
     }
 
     // Add social share buttons

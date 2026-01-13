@@ -1,0 +1,109 @@
+name: Sync Events from Google Sheets
+
+on:
+  # Run daily at midnight UTC
+  schedule:
+    - cron: '0 0 * * *'
+  
+  # Allow manual trigger from GitHub Actions tab
+  workflow_dispatch:
+  
+  # Run on push to main (optional - for testing)
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/sync-events.yml'
+
+jobs:
+  sync-events:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Fetch events from Google Apps Script
+        id: fetch
+        run: |
+          echo "📥 Fetching events from Google Sheets API..."
+          
+          # Fetch events from your API
+          curl -s "https://script.google.com/macros/s/AKfycbzZBuNCIP-kO3llZAo0w64z-GSWIxcH7TKrcQ12gm7GAgjkan9Z-4vTEmk_SNDkWpLpbg/exec" \
+            -o /tmp/api-response.json
+          
+          # Check if response is valid JSON
+          if jq empty /tmp/api-response.json 2>/dev/null; then
+            echo "✅ Valid JSON response received"
+            
+            # Extract events array (adjust based on your API response structure)
+            # If your API returns { "success": true, "events": [...] }
+            if jq -e '.events' /tmp/api-response.json > /dev/null 2>&1; then
+              jq '.events' /tmp/api-response.json > data/sample-events.json
+              EVENT_COUNT=$(jq length data/sample-events.json)
+              echo "📊 Synced $EVENT_COUNT events"
+              echo "event_count=$EVENT_COUNT" >> $GITHUB_OUTPUT
+              echo "status=success" >> $GITHUB_OUTPUT
+            # If your API returns array directly
+            elif jq -e 'type == "array"' /tmp/api-response.json > /dev/null 2>&1; then
+              cp /tmp/api-response.json data/sample-events.json
+              EVENT_COUNT=$(jq length data/sample-events.json)
+              echo "📊 Synced $EVENT_COUNT events"
+              echo "event_count=$EVENT_COUNT" >> $GITHUB_OUTPUT
+              echo "status=success" >> $GITHUB_OUTPUT
+            else
+              echo "❌ Unexpected API response format"
+              echo "status=error" >> $GITHUB_OUTPUT
+              exit 1
+            fi
+          else
+            echo "❌ Invalid JSON response from API"
+            cat /tmp/api-response.json
+            echo "status=error" >> $GITHUB_OUTPUT
+            exit 1
+          fi
+      
+      - name: Check for changes
+        id: changes
+        run: |
+          if git diff --quiet data/sample-events.json; then
+            echo "No changes detected"
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "Changes detected"
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Commit and push if changed
+        if: steps.changes.outputs.has_changes == 'true'
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+          git add data/sample-events.json
+          git commit -m "🔄 Auto-sync events from Google Sheets ($(date +'%Y-%m-%d %H:%M UTC'))"
+          git push
+      
+      - name: Summary
+        if: always()
+        run: |
+          echo "## 📊 Sync Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ "${{ steps.fetch.outputs.status }}" == "success" ]; then
+            echo "✅ **Status:** Success" >> $GITHUB_STEP_SUMMARY
+            echo "📝 **Events synced:** ${{ steps.fetch.outputs.event_count }}" >> $GITHUB_STEP_SUMMARY
+            
+            if [ "${{ steps.changes.outputs.has_changes }}" == "true" ]; then
+              echo "🔄 **Changes:** New events pushed to repository" >> $GITHUB_STEP_SUMMARY
+            else
+              echo "📌 **Changes:** No updates needed" >> $GITHUB_STEP_SUMMARY
+            fi
+          else
+            echo "❌ **Status:** Failed to fetch events" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "🌐 **Website:** https://norwicheventshub.com" >> $GITHUB_STEP_SUMMARY
+          echo "⏰ **Next sync:** $(date -d 'tomorrow' +'%Y-%m-%d 00:00 UTC')" >> $GITHUB_STEP_SUMMARY

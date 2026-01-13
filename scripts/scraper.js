@@ -13,35 +13,144 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Event sources configuration
 const EVENT_SOURCES = [
+    // Major Ticket Platforms
+    {
+        name: "Skiddle - Norwich",
+        url: "https://www.skiddle.com/whats-on/Norwich/",
+        category: "Mixed",
+        type: "platform",
+        enabled: true,
+        priority: 1
+    },
+    {
+        name: "Eventbrite - Norwich",
+        url: "https://www.eventbrite.co.uk/d/united-kingdom--norwich/events/",
+        category: "Mixed",
+        type: "platform",
+        enabled: true,
+        priority: 1
+    },
+    {
+        name: "Ents24 - Norwich",
+        url: "https://www.ents24.com/uk/norwich/",
+        category: "Mixed",
+        type: "platform",
+        enabled: true,
+        priority: 1
+    },
+    {
+        name: "SeeTickets - Norwich",
+        url: "https://www.seetickets.com/search?q=norwich",
+        category: "Mixed",
+        type: "platform",
+        enabled: true,
+        priority: 1
+    },
+    {
+        name: "Ticketmaster - Norwich",
+        url: "https://www.ticketmaster.co.uk/browse/all-categories/music/all/?city=Norwich",
+        category: "Mixed",
+        type: "platform",
+        enabled: true,
+        priority: 1
+    },
+    {
+        name: "Dice - Norwich",
+        url: "https://dice.fm/city/norwich",
+        category: "Nightlife",
+        type: "platform",
+        enabled: true,
+        priority: 1
+    },
+    {
+        name: "Resident Advisor - Norwich",
+        url: "https://ra.co/events/uk/norwich",
+        category: "Nightlife",
+        type: "platform",
+        enabled: true,
+        priority: 2
+    },
+    {
+        name: "Songkick - Norwich",
+        url: "https://www.songkick.com/metro-areas/24852-uk-norwich",
+        category: "Gig",
+        type: "platform",
+        enabled: true,
+        priority: 2
+    },
+    
+    // Local Venues
     {
         name: "The Halls Norwich",
         url: "https://www.thehallsnorwich.co.uk/events",
         category: "Gig",
-        enabled: true
+        type: "venue",
+        enabled: true,
+        priority: 2
     },
     {
         name: "Epic Studios Norwich",
         url: "https://www.epicstudiosnorwich.co.uk/events",
         category: "Nightlife",
-        enabled: true
+        type: "venue",
+        enabled: true,
+        priority: 2
     },
     {
         name: "Norwich Arts Centre",
         url: "https://www.norwichartscentre.co.uk/events",
         category: "Culture",
-        enabled: true
+        type: "venue",
+        enabled: true,
+        priority: 2
     },
     {
         name: "Theatre Royal Norwich",
         url: "https://www.theatreroyalnorwich.co.uk/whats-on",
         category: "Theatre",
-        enabled: true
+        type: "venue",
+        enabled: true,
+        priority: 2
     },
     {
         name: "Norwich Playhouse",
         url: "https://www.norwichplayhouse.co.uk/whats-on",
         category: "Theatre",
-        enabled: true
+        type: "venue",
+        enabled: true,
+        priority: 2
+    },
+    {
+        name: "The Waterfront Norwich",
+        url: "https://www.uea.su/venues/waterfront",
+        category: "Gig",
+        type: "venue",
+        enabled: true,
+        priority: 2
+    },
+    {
+        name: "Open Norwich",
+        url: "https://opennorwich.co.uk/events",
+        category: "Culture",
+        type: "venue",
+        enabled: true,
+        priority: 3
+    },
+    {
+        name: "Norwich Cathedral",
+        url: "https://www.cathedral.org.uk/visit/events",
+        category: "Culture",
+        type: "venue",
+        enabled: true,
+        priority: 3
+    },
+    {
+        name: "Norwich Castle",
+        url: "https://www.museums.norfolk.gov.uk/norwich-castle/events",
+        category: "Culture",
+        type: "venue",
+        enabled: true,
+        priority: 3
     }
 ];
 
@@ -80,9 +189,12 @@ async function scrapeEvents() {
         // Generate mock events from sources
         scrapedEvents = generateMockEvents();
         
+        const platformCount = EVENT_SOURCES.filter(s => s.type === 'platform').length;
+        const venueCount = EVENT_SOURCES.filter(s => s.type === 'venue').length;
+        
         status.innerHTML = `
             <strong>✅ Scraping Complete!</strong><br>
-            Found <strong>${scrapedEvents.length}</strong> events from <strong>${EVENT_SOURCES.length}</strong> sources
+            Found <strong>${scrapedEvents.length}</strong> events from <strong>${platformCount} ticket platforms</strong> and <strong>${venueCount} venues</strong>
         `;
         
         renderScrapedEvents();
@@ -92,6 +204,22 @@ async function scrapeEvents() {
 function generateMockEvents() {
     const today = new Date();
     const mockEvents = [
+        // From Skiddle
+        {
+            name: "Norwich Comedy Festival 2026",
+            date: new Date(today.getTime() + 21 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+            time: "19:00",
+            location: "Various Venues, Norwich",
+            category: "Culture",
+            description: "A week-long celebration of comedy featuring stand-up, improv, and sketch shows from the UK's best comedians. Multiple venues across Norwich city centre.",
+            price: "£18-£35",
+            ticketLink: "https://www.skiddle.com/norwich-comedy-festival",
+            source: "Skiddle - Norwich",
+            flyer: "https://via.placeholder.com/400x600/FF6B6B/FFFFFF?text=Comedy+Festival",
+            vibe: "Chill",
+            crowd: "18-60",
+            bestFor: "Comedy fans, night out with friends"
+        },
         {
             name: "Live Jazz Night with The Norwich Quartet",
             date: new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
@@ -106,6 +234,38 @@ function generateMockEvents() {
             vibe: "Chill",
             crowd: "25-55",
             bestFor: "Jazz enthusiasts, date night"
+        },
+        // From Eventbrite
+        {
+            name: "Norwich Vegan Food Market",
+            date: new Date(today.getTime() + 4 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+            time: "10:00",
+            location: "Norwich Market Place",
+            category: "Market",
+            description: "Discover delicious plant-based food from local vendors. Try vegan burgers, cakes, smoothies, and more. Live music and sustainability workshops throughout the day.",
+            price: "Free Entry",
+            ticketLink: "https://www.eventbrite.co.uk/norwich-vegan-market",
+            source: "Eventbrite - Norwich",
+            flyer: "https://via.placeholder.com/400x600/4ECDC4/FFFFFF?text=Vegan+Market",
+            vibe: "Chill",
+            crowd: "All ages",
+            bestFor: "Food lovers, families, vegans"
+        },
+        // From Ents24
+        {
+            name: "Indie Rock Night: The Strokes Tribute",
+            date: new Date(today.getTime() + 9 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+            time: "20:00",
+            location: "The Waterfront, Norwich",
+            category: "Gig",
+            description: "The UK's premier Strokes tribute band delivers all the hits. Expect Last Nite, Reptilia, and more indie anthems that'll have you dancing all night.",
+            price: "£14",
+            ticketLink: "https://www.ents24.com/uk/norwich/strokes-tribute",
+            source: "Ents24 - Norwich",
+            flyer: "https://via.placeholder.com/400x600/E94B3C/FFFFFF?text=Indie+Rock",
+            vibe: "Underground",
+            crowd: "18-35",
+            bestFor: "Indie fans, rock lovers"
         },
         {
             name: "Saturday Night House Party",
@@ -122,6 +282,38 @@ function generateMockEvents() {
             crowd: "18-30",
             bestFor: "Party lovers, house music fans"
         },
+        // From Ticketmaster
+        {
+            name: "West End Musical: Hamilton",
+            date: new Date(today.getTime() + 28 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+            time: "19:30",
+            location: "Theatre Royal Norwich",
+            category: "Theatre",
+            description: "The award-winning Broadway sensation comes to Norwich! Experience the revolutionary story of America's founding father with the show that's making history.",
+            price: "£45-£95",
+            ticketLink: "https://www.ticketmaster.co.uk/hamilton-norwich",
+            source: "Ticketmaster - Norwich",
+            flyer: "https://via.placeholder.com/400x600/2C3E50/FFFFFF?text=Hamilton",
+            vibe: "Commercial",
+            crowd: "All ages",
+            bestFor: "Theatre lovers, families"
+        },
+        // From Dice
+        {
+            name: "Techno Tuesday: Underground Warehouse",
+            date: new Date(today.getTime() + 2 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+            time: "23:00",
+            location: "Secret Location, Norwich",
+            category: "Nightlife",
+            description: "Location revealed 24h before. Dark techno and minimal sounds in an industrial warehouse setting. Berlin vibes in Norwich. Bring your dancing shoes.",
+            price: "£8",
+            ticketLink: "https://dice.fm/event/norwich-techno",
+            source: "Dice - Norwich",
+            flyer: "https://via.placeholder.com/400x600/1A1A1A/FFFFFF?text=Techno",
+            vibe: "Underground",
+            crowd: "20-35",
+            bestFor: "Techno heads, ravers"
+        },
         {
             name: "Contemporary Art Exhibition Opening",
             date: new Date(today.getTime() + 10 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
@@ -136,6 +328,22 @@ function generateMockEvents() {
             vibe: "Chill",
             crowd: "All ages",
             bestFor: "Art lovers, culture seekers"
+        },
+        // From Resident Advisor
+        {
+            name: "Jungle & Breakbeat: Rupture",
+            date: new Date(today.getTime() + 6 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+            time: "22:00",
+            location: "Epic Studios, Norwich",
+            category: "Nightlife",
+            description: "Cutting-edge jungle and breakbeat from UK's finest selectors. Expect rolling breaks, heavy bass, and high-energy vibes until 4am.",
+            price: "£10",
+            ticketLink: "https://ra.co/events/norwich-rupture",
+            source: "Resident Advisor - Norwich",
+            flyer: "https://via.placeholder.com/400x600/00D9FF/000000?text=Rupture",
+            vibe: "Heavy",
+            crowd: "18-30",
+            bestFor: "Jungle fans, ravers"
         },
         {
             name: "Romeo and Juliet - Opening Night",
@@ -152,6 +360,22 @@ function generateMockEvents() {
             crowd: "All ages",
             bestFor: "Theatre lovers, couples"
         },
+        // From Songkick
+        {
+            name: "Arctic Monkeys Tribute Night",
+            date: new Date(today.getTime() + 11 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+            time: "20:30",
+            location: "The Waterfront, Norwich",
+            category: "Gig",
+            description: "The ultimate Arctic Monkeys tribute experience. All the hits from AM, Whatever People Say I Am, and more. Plus support from local indie bands.",
+            price: "£12",
+            ticketLink: "https://www.songkick.com/norwich-arctic-monkeys",
+            source: "Songkick - Norwich",
+            flyer: "https://via.placeholder.com/400x600/8B4513/FFFFFF?text=Arctic+Monkeys",
+            vibe: "Commercial",
+            crowd: "18-40",
+            bestFor: "Rock fans, indie lovers"
+        },
         {
             name: "Underground Drum & Bass Night",
             date: new Date(today.getTime() + 12 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
@@ -166,6 +390,22 @@ function generateMockEvents() {
             vibe: "Heavy",
             crowd: "18-35",
             bestFor: "DnB heads, ravers"
+        },
+        // From SeeTickets
+        {
+            name: "Norwich Food & Drink Festival",
+            date: new Date(today.getTime() + 18 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+            time: "11:00",
+            location: "Norwich Forum & Surrounding Streets",
+            category: "Market",
+            description: "Three days of food stalls, drink tastings, live cooking demos, and street food from around the world. Local producers, craft beers, and family entertainment.",
+            price: "Free Entry",
+            ticketLink: "https://www.seetickets.com/norwich-food-festival",
+            source: "SeeTickets - Norwich",
+            flyer: "https://via.placeholder.com/400x600/FFA500/FFFFFF?text=Food+Festival",
+            vibe: "Chill",
+            crowd: "All ages",
+            bestFor: "Foodies, families, everyone!"
         }
     ];
     

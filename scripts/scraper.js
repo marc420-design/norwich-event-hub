@@ -193,8 +193,9 @@ async function scrapeEvents() {
         const venueCount = EVENT_SOURCES.filter(s => s.type === 'venue').length;
         
         status.innerHTML = `
-            <strong>✅ Scraping Complete!</strong><br>
-            Found <strong>${scrapedEvents.length}</strong> events from <strong>${platformCount} ticket platforms</strong> and <strong>${venueCount} venues</strong>
+            <strong>ℹ️ Demo Mode:</strong> Showing sample events to demonstrate UI.<br>
+            <strong>For REAL events:</strong> Run <code>python automation/real-time-scraper.py</code> daily.<br>
+            Real events will appear in your "Pending" tab for approval.
         `;
         
         renderScrapedEvents();

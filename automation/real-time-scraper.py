@@ -337,14 +337,31 @@ class RealTimeEventScraper:
         
         return all_events
     
+    def check_duplicate(self, event_name: str, event_date: str, events_list: List[Dict]) -> bool:
+        """Check if event is duplicate in current batch"""
+        event_key = f"{event_name.lower()}_{event_date}"
+        
+        for existing in events_list:
+            existing_key = f"{existing['name'].lower()}_{existing['date']}"
+            if event_key == existing_key:
+                return True
+        return False
+    
     def submit_to_api(self, events: List[Dict]) -> Dict:
         """Submit scraped events to Norwich API"""
         logger.info(f"\n📤 Submitting {len(events)} events to API...")
         
         success_count = 0
         fail_count = 0
+        skip_count = 0
+        submitted_events = []
         
         for event in events:
+            # Check for duplicates in current batch
+            if self.check_duplicate(event['name'], event['date'], submitted_events):
+                logger.info(f"  ⏭️  Duplicate skipped: {event['name'][:50]}")
+                skip_count += 1
+                continue
             try:
                 # Format for API
                 event_data = {
@@ -362,7 +379,7 @@ class RealTimeEventScraper:
                     "bestFor": event.get('bestFor', 'Everyone'),
                     "promoterName": f"Real-Time Scraper - {event.get('source', 'Unknown')}",
                     "promoterEmail": "scraper@norwicheventshub.com",
-                    "status": "approved"
+                    "status": "pending"  # CHANGED: Events need admin approval
                 }
                 
                 response = self.session.post(
@@ -377,6 +394,7 @@ class RealTimeEventScraper:
                     if result.get('success'):
                         logger.info(f"  ✅ {event['name'][:50]}")
                         success_count += 1
+                        submitted_events.append(event)  # Track for deduplication
                     else:
                         logger.warning(f"  ⚠ API rejected: {event['name'][:50]}")
                         fail_count += 1
@@ -392,9 +410,11 @@ class RealTimeEventScraper:
         
         logger.info(f"\n📊 RESULTS:")
         logger.info(f"  ✅ Successfully submitted: {success_count}")
+        logger.info(f"  ⏭️  Duplicates skipped: {skip_count}")
         logger.info(f"  ❌ Failed: {fail_count}")
+        logger.info(f"  📝 Total processed: {len(events)}")
         
-        return {"success": success_count, "failed": fail_count}
+        return {"success": success_count, "skipped": skip_count, "failed": fail_count}
 
 
 def main():

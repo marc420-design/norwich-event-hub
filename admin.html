@@ -13,6 +13,26 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
+    <script>
+        // Simple password protection (temporary solution until Cloudflare Access is properly configured)
+        (function() {
+            const ADMIN_EMAIL = 'nr1family420@gmail.com';
+            const ADMIN_PASSWORD = 'NorwichEvents2026!'; // Change this to your preferred password
+            const isAuthenticated = sessionStorage.getItem('admin_auth') === 'true';
+            
+            if (!isAuthenticated) {
+                const enteredPassword = prompt('Enter admin password to access dashboard:');
+                if (enteredPassword !== ADMIN_PASSWORD) {
+                    alert('Access denied. Incorrect password.');
+                    window.location.href = '/';
+                    return;
+                }
+                sessionStorage.setItem('admin_auth', 'true');
+                console.log('Admin authenticated');
+            }
+        })();
+    </script>
+
     <style>
         body {
             background: #f5f7fa;
@@ -611,8 +631,8 @@
         </div>
     </div>
 
-    <script defer src="scripts/config.js"></script>
-    <script defer src="scripts/admin.js"></script>
-    <script defer src="scripts/scraper.js"></script>
+    <script defer src="scripts/config.js?v=20260113g"></script>
+    <script defer src="scripts/admin.js?v=20260113g"></script>
+    <script defer src="scripts/scraper.js?v=20260113g"></script>
 </body>
 </html>

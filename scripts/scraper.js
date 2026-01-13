@@ -179,27 +179,66 @@ async function scrapeEvents() {
     const progress = document.getElementById('scraperProgress');
     const status = document.getElementById('scraperStatus');
     const list = document.getElementById('scrapedEventsList');
-    
-    // Show mock events (replace with actual scraping)
-    // For now, we'll generate sample events to demonstrate the UI
-    setTimeout(() => {
+
+    progress.style.display = 'block';
+    status.style.display = 'none';
+
+    try {
+        // Fetch REAL pending events from API
+        const response = await fetch(APP_CONFIG.GOOGLE_APPS_SCRIPT_URL + '?action=getAllEvents');
+        const data = await response.json();
+
+        if (data.success) {
+            // Filter for pending events only
+            scrapedEvents = (data.events || [])
+                .filter(e => e.status && e.status.toLowerCase() === 'pending')
+                .map(e => ({
+                    name: e.eventname || e.name || '',
+                    date: e.date || e.eventdate || '',
+                    time: e.time || '19:00',
+                    location: e.location || '',
+                    category: e.category || 'Mixed',
+                    description: e.description || '',
+                    price: e.price || 'See website',
+                    ticketLink: e.ticketlink || e.ticketLink || '',
+                    source: e.promotername || 'Unknown',
+                    eventId: e.eventid || e.eventId || '',
+                    flyer: e.imageurl || e.image || '',
+                    vibe: e.vibe || 'Commercial',
+                    crowd: e.crowd || 'All ages',
+                    bestFor: e.bestFor || 'Everyone'
+                }));
+
+            progress.style.display = 'none';
+            status.style.display = 'block';
+
+            if (scrapedEvents.length > 0) {
+                status.innerHTML = `
+                    <strong>✅ Found ${scrapedEvents.length} pending events</strong><br>
+                    Review and approve events below. Events will go live on your website after approval.
+                `;
+            } else {
+                status.innerHTML = `
+                    <strong>ℹ️ No pending events found</strong><br>
+                    Run <code>python automation/live-web-scraper.py</code> to discover new events from Norwich venues.
+                `;
+            }
+
+            renderScrapedEvents();
+        } else {
+            throw new Error(data.message || 'Failed to load events');
+        }
+
+    } catch (error) {
         progress.style.display = 'none';
         status.style.display = 'block';
-        
-        // Generate mock events from sources
-        scrapedEvents = generateMockEvents();
-        
-        const platformCount = EVENT_SOURCES.filter(s => s.type === 'platform').length;
-        const venueCount = EVENT_SOURCES.filter(s => s.type === 'venue').length;
-        
         status.innerHTML = `
-            <strong>ℹ️ Demo Mode:</strong> Showing sample events to demonstrate UI.<br>
-            <strong>For REAL events:</strong> Run <code>python automation/real-time-scraper.py</code> daily.<br>
-            Real events will appear in your "Pending" tab for approval.
+            <strong>❌ Error loading events</strong><br>
+            ${error.message}<br>
+            <small>Make sure your Google Apps Script is deployed correctly.</small>
         `;
-        
-        renderScrapedEvents();
-    }, 2000);
+        console.error('Scraper error:', error);
+    }
 }
 
 function generateMockEvents() {

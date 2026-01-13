@@ -1,6 +1,8 @@
 // Homepage JavaScript - Load featured events
 
 document.addEventListener('DOMContentLoaded', async function() {
+    console.log('🏠 Homepage loading...');
+
     // Load all homepage sections in priority order
     await loadFeaturedThisWeek();
     await loadTonightEvents();
@@ -15,6 +17,15 @@ document.addEventListener('DOMContentLoaded', async function() {
         await initializeEvents();
     }
 
+    // Update event counter
+    updateEventCounter();
+
+    // Listen for events loaded event to update counter
+    window.addEventListener('eventsLoaded', function(e) {
+        console.log('📊 Events loaded event received:', e.detail);
+        updateEventCounter();
+    });
+
     // Listen for error events
     window.addEventListener('eventsLoadError', function(e) {
         console.error('Events load error:', e.detail);
@@ -27,6 +38,18 @@ document.addEventListener('DOMContentLoaded', async function() {
         showErrorInContainer('freeEvents', e.detail);
     });
 });
+
+// Update the event counter on homepage
+function updateEventCounter() {
+    const totalEventsElement = document.getElementById('totalEvents');
+    if (totalEventsElement && window.eventsData) {
+        const futureEvents = window.eventsData.filter(event =>
+            event.date && window.isFutureEvent && window.isFutureEvent(event.date)
+        );
+        totalEventsElement.textContent = futureEvents.length;
+        console.log(`📈 Updated event counter: ${futureEvents.length} events`);
+    }
+}
 
 function showErrorInContainer(containerId, errorDetail) {
     const container = document.getElementById(containerId);
@@ -142,13 +165,20 @@ function populateEventContainer(container, events, emptyMessage = 'No events yet
 // Load Featured This Week (events from next 7 days, featured or high priority)
 async function loadFeaturedThisWeek() {
     const container = document.getElementById('featuredThisWeekEvents');
-    if (!container) return;
+    if (!container) {
+        console.warn('❌ featuredThisWeekEvents container not found');
+        return;
+    }
 
+    console.log('⏳ Loading Featured This Week section...');
     await waitForEvents();
 
     try {
         const allEvents = window.eventsData || [];
+        console.log(`📊 Total events available: ${allEvents.length}`);
+
         const futureEvents = getFutureEvents(allEvents);
+        console.log(`📅 Future events: ${futureEvents.length}`);
 
         // Get events from next 7 days, marked as featured or high priority
         const now = new Date();
@@ -165,15 +195,22 @@ async function loadFeaturedThisWeek() {
             })
             .slice(0, 6);
 
+        console.log(`⭐ Featured events this week: ${featuredWeekEvents.length}`);
+
         // If no featured events, show upcoming events from this week
-        const displayEvents = featuredWeekEvents.length > 0 
-            ? featuredWeekEvents 
+        const displayEvents = featuredWeekEvents.length > 0
+            ? featuredWeekEvents
             : futureEvents
                 .filter(event => {
                     const eventDate = window.parseEventDate ? window.parseEventDate(event.date) : new Date(event.date);
                     return eventDate >= now && eventDate <= nextWeek;
                 })
                 .slice(0, 6);
+
+        console.log(`✅ Displaying ${displayEvents.length} events in Featured This Week`);
+        if (displayEvents.length > 0) {
+            console.log('First event:', displayEvents[0].name || displayEvents[0].eventname);
+        }
 
         console.log(`🔥 Featured This Week: ${displayEvents.length} events`);
         populateEventContainer(container, displayEvents, 'No featured events this week', 6);

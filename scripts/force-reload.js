@@ -62,7 +62,7 @@ async function forceLoadEvents() {
         try {
             console.log('🔄 Loading events from Google Sheets API...');
             const cacheBuster = Date.now();
-            const apiUrl = config.GOOGLE_APPS_SCRIPT_URL + '?action=getEvents&t=' + cacheBuster;
+            const apiUrl = config.GOOGLE_APPS_SCRIPT_URL + '?t=' + cacheBuster;
 
             // Use fetchWithTimeout to prevent hanging
             const response = await fetchWithTimeout(apiUrl, {
@@ -250,7 +250,7 @@ function setupAutoRefresh() {
 
             try {
                 const cacheBuster = Date.now();
-                const apiUrl = config.GOOGLE_APPS_SCRIPT_URL + '?action=getEvents&t=' + cacheBuster;
+                const apiUrl = config.GOOGLE_APPS_SCRIPT_URL + '?t=' + cacheBuster;
 
                 // Use fetchWithTimeout for auto-refresh as well
                 const response = await fetchWithTimeout(apiUrl, {

@@ -49,18 +49,8 @@ let eventsData = window.eventsData;
 // This script just provides utility functions
 
 // Date utility functions are now in date-utils.js
-// Keeping these for backwards compatibility
-function formatDate(dateString) {
-    return window.formatDate ? window.formatDate(dateString) : dateString;
-}
-
-function formatTime(timeString) {
-    return window.formatTime ? window.formatTime(timeString) : timeString;
-}
-
-function getTodayDateString() {
-    return window.getTodayDateString ? window.getTodayDateString() : new Date().toISOString().split('T')[0];
-}
+// These are loaded from date-utils.js and available on window object
+// No need for wrapper functions - date-utils.js is always loaded first
 
 // HTML escape function to prevent XSS
 function escapeHtml(text) {
@@ -330,7 +320,7 @@ function createEventCard(event) {
         }
     }
 
-    const dateText = document.createTextNode(`${formatDate(date)} at ${formatTime(time)}`);
+    const dateText = document.createTextNode(`${window.formatDate(date)} at ${window.formatTime(time)}`);
     eventDateSpan.appendChild(dateText);
 
     const eventTitle = document.createElement('h3');
@@ -459,7 +449,7 @@ function createEventCard(event) {
     shareContainer.style.cssText = 'margin-top: 12px; display: flex; gap: 8px; flex-wrap: wrap;';
     
     const shareUrl = encodeURIComponent(window.location.origin + window.location.pathname + '?event=' + (event.id || event.eventid || ''));
-    const shareText = encodeURIComponent(`${name} - ${formatDate(date)} at ${location}`);
+    const shareText = encodeURIComponent(`${name} - ${window.formatDate(date)} at ${location}`);
     
     // Twitter share
     const twitterShare = document.createElement('a');

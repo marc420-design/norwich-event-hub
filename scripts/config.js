@@ -12,8 +12,8 @@
  */
 
 const APP_CONFIG = {
-    // Google Apps Script Web App URL - ✅ CONFIGURED (Version 14 - Clean deployment!)
-    GOOGLE_APPS_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbwz2jUvP7FL6mwQdGm9infs9g31iaOFwqrXlgqDX5lKR8LSHatkkWMTV5z2sbhTKzA/exec',
+    // Google Apps Script Web App URL - ✅ CONFIGURED (Version 8 - CLI Deployed)
+    GOOGLE_APPS_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbwUqbC7ZkAqO5w0POhRd_hBDBPrZDKV0I_K43lmdKbLrL0rjAAoEYwgZpc_xuzs1x0M/exec',
 
     // Google Sheet ID - ✅ CONFIGURED
     GOOGLE_SHEET_ID: '1wdh2VOlZ8gp0hwFpFV6cVpDDmaMxGs48eCDqoFFZTcU',

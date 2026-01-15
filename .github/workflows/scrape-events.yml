@@ -1,83 +1,62 @@
-name: AI Event Scraper
+name: Scrape Real-Time Events
 
-# Schedule: Run once daily
 on:
+  # Run automatically every day at 6 AM UTC
   schedule:
-    # Runs at 06:00 UTC daily (1am EST / 10pm PST)
     - cron: '0 6 * * *'
-  
-  # Allow manual triggering
-  workflow_dispatch:
-    inputs:
-      force_run:
-        description: 'Force run even if recently executed'
-        required: false
-        default: 'false'
 
-# Environment variables (use GitHub Secrets for sensitive values)
-env:
-  PYTHON_VERSION: '3.11'
+  # Allow manual trigger from GitHub Actions tab
+  workflow_dispatch:
+
+  # Run on push to main (for testing)
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - 'automation/**'
+      - '.github/workflows/scrape-events.yml'
 
 jobs:
   scrape-and-update:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: ${{ env.PYTHON_VERSION }}
+          python-version: '3.11'
           cache: 'pip'
 
       - name: Install dependencies
         run: |
-          cd automation
-          pip install -r requirements.txt
+          pip install requests beautifulsoup4 python-dotenv lxml
 
-      - name: Create credentials file
+      - name: Run event scraper
         run: |
           cd automation
-          echo '${{ secrets.GOOGLE_SHEETS_CREDENTIALS }}' > google-credentials.json
-
-      - name: Run AI Event Aggregator
+          python real-time-scraper.py
         env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
-          GOOGLE_SHEETS_CREDENTIALS: './google-credentials.json'
-          SCRAPE_DAYS_AHEAD: 365
-          MIN_QUALITY_SCORE: 50
-          AUTO_APPROVE_THRESHOLD: 60
-          NORWICH_RADIUS_KM: 15
-        run: |
-          cd automation
-          python ai-event-aggregator.py
-
-      - name: Save events to JSON (optional backup)
-        run: |
-          # If aggregator creates output file, commit it
-          if [ -f "automation/events_output.json" ]; then
-            cp automation/events_output.json data/latest-scraped-events.json
-            git config user.name "GitHub Actions Bot"
-            git config user.email "actions@github.com"
-            git add data/latest-scraped-events.json
-            git diff --quiet && git diff --staged --quiet || git commit -m "🤖 Auto-update: Scraped events $(date +'%Y-%m-%d %H:%M UTC')"
-            # Uncomment to push back to repo (optional):
-            # git push
-          fi
-
-      - name: Cleanup credentials
-        if: always()
-        run: |
-          rm -f automation/google-credentials.json
+          # Google Apps Script URL from config
+          GOOGLE_APPS_SCRIPT_URL: https://script.google.com/macros/s/AKfycbwUqbC7ZkAqO5w0POhRd_hBDBPrZDKV0I_K43lmdKbLrL0rjAAoEYwgZpc_xuzs1x0M/exec
 
       - name: Summary
         run: |
-          echo "✅ Event scraping complete!"
-          echo "Events have been uploaded to Google Sheets"
-          echo "Google Sheet ID: ${{ secrets.GOOGLE_SHEET_ID }}"
+          echo "✅ Event scraping completed successfully!"
+          echo "📊 New events have been posted to Google Sheets"
+          echo "🔍 Check your admin dashboard to review pending events"
+          echo "🌐 Admin: https://norwicheventshub.com/admin"
+
+  # Optional: Notify on failure
+  notify-on-failure:
+    runs-on: ubuntu-latest
+    needs: scrape-and-update
+    if: failure()
+    steps:
+      - name: Notification
+        run: |
+          echo "❌ Event scraping failed!"
+          echo "Check the logs above for details"

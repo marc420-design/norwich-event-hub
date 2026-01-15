@@ -17,12 +17,8 @@ function fetchWithTimeout(url, options = {}, timeout = 10000) {
 
 // Force reload events from Google Sheets API or fallback to local JSON
 async function forceLoadEvents() {
-    // CRITICAL: Load local JSON immediately as fallback (don't wait for config)
-    // This ensures events always load within 2 seconds
-    let localLoadPromise = loadFromLocalJSON().catch(err => {
-        console.warn('Local JSON load failed, will retry:', err);
-        return [];
-    });
+    // FIXED: Don't pre-load local JSON - prioritize API data for real-time updates
+    // Only use local JSON if API genuinely fails
 
     // Wait for config to be available (max 1 second - reduced from 2)
     await new Promise(resolve => {
@@ -105,19 +101,11 @@ async function forceLoadEvents() {
                     }
                 }));
 
-                // If no events, try fallback but don't wait for it
+                // FIXED: Accept empty array as valid - don't fallback to old static data
+                // This ensures real-time data is always shown (even if empty)
                 if (result.events.length === 0) {
-                    console.warn('⚠️ API returned no events, trying local JSON fallback...');
-                    loadFromLocalJSON().catch(err => {
-                        console.error('Fallback also failed:', err);
-                        // Trigger error event
-                        window.dispatchEvent(new CustomEvent('eventsLoadError', {
-                            detail: {
-                                message: 'No events available. Please try again later or submit an event.',
-                                source: 'api'
-                            }
-                        }));
-                    });
+                    console.warn('⚠️ API returned no events - this is valid real-time data');
+                    console.log('💡 Events may be pending approval or no upcoming events exist');
                 }
 
                 return result.events || [];
@@ -154,16 +142,11 @@ async function forceLoadEvents() {
             }
         }
     } else {
-        // Use local JSON file - CRITICAL: Always load immediately
-        console.log('🔄 Using local storage mode...');
-        // Return the promise we already started (or start a new one if it failed)
-        try {
-            return await localLoadPromise;
-        } catch (err) {
-            // If the initial promise failed, try again
-            console.warn('Initial local load failed, retrying...');
-            return await loadFromLocalJSON();
-        }
+        // FIXED: Only use local JSON if USE_LOCAL_STORAGE is explicitly true
+        // This is for development/offline mode only
+        console.log('🔄 Using local storage mode (development/offline only)...');
+        console.warn('⚠️ Real-time data disabled - enable by setting USE_LOCAL_STORAGE: false in config.js');
+        return await loadFromLocalJSON();
     }
 }
 

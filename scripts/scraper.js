@@ -180,65 +180,61 @@ async function scrapeEvents() {
     const status = document.getElementById('scraperStatus');
     const list = document.getElementById('scrapedEventsList');
 
-    progress.style.display = 'block';
-    status.style.display = 'none';
+    // REAL-TIME SCRAPING INSTRUCTIONS
+    // The Python scraper needs to run server-side for security and to avoid CORS
 
-    try {
-        // Fetch REAL pending events from API
-        const response = await fetch(APP_CONFIG.GOOGLE_APPS_SCRIPT_URL + '?action=getAllEvents');
-        const data = await response.json();
+    progress.style.display = 'none';
+    status.style.display = 'block';
 
-        if (data.success) {
-            // Filter for pending events only
-            scrapedEvents = (data.events || [])
-                .filter(e => e.status && e.status.toLowerCase() === 'pending')
-                .map(e => ({
-                    name: e.eventname || e.name || '',
-                    date: e.date || e.eventdate || '',
-                    time: e.time || '19:00',
-                    location: e.location || '',
-                    category: e.category || 'Mixed',
-                    description: e.description || '',
-                    price: e.price || 'See website',
-                    ticketLink: e.ticketlink || e.ticketLink || '',
-                    source: e.promotername || 'Unknown',
-                    eventId: e.eventid || e.eventId || '',
-                    flyer: e.imageurl || e.image || '',
-                    vibe: e.vibe || 'Commercial',
-                    crowd: e.crowd || 'All ages',
-                    bestFor: e.bestFor || 'Everyone'
-                }));
+    status.innerHTML = `
+        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 2rem; border-radius: 12px; margin-bottom: 2rem;">
+            <h3 style="margin: 0 0 1rem 0; font-size: 1.5rem;">🤖 Real-Time Event Scraper</h3>
+            <p style="margin: 0 0 1rem 0; opacity: 0.95;">To fetch REAL events from ticket platforms and venue websites, run the automated scraper:</p>
 
-            progress.style.display = 'none';
-            status.style.display = 'block';
+            <div style="background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 8px; font-family: monospace; margin: 1rem 0;">
+                <strong>Windows:</strong><br>
+                <code style="color: #FFD700;">cd automation && python real-time-scraper.py</code><br><br>
+                <strong>Or use the quick script:</strong><br>
+                <code style="color: #FFD700;">run-scraper.bat</code>
+            </div>
 
-            if (scrapedEvents.length > 0) {
-                status.innerHTML = `
-                    <strong>✅ Found ${scrapedEvents.length} pending events</strong><br>
-                    Review and approve events below. Events will go live on your website after approval.
-                `;
-            } else {
-                status.innerHTML = `
-                    <strong>ℹ️ No pending events found</strong><br>
-                    Run <code>python automation/live-web-scraper.py</code> to discover new events from Norwich venues.
-                `;
-            }
+            <p style="margin: 1rem 0 0 0; font-size: 0.9rem; opacity: 0.9;">
+                ✅ Scraped events will be posted directly to Google Sheets<br>
+                ✅ They'll appear in your "Pending" tab for review<br>
+                ✅ Approve the ones you want to publish<br>
+                ✅ Automated daily scraping via GitHub Actions (see below)
+            </p>
+        </div>
 
-            renderScrapedEvents();
-        } else {
-            throw new Error(data.message || 'Failed to load events');
-        }
+        <div style="background: #f0f8ff; border-left: 4px solid #3AB8FF; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
+            <h4 style="margin: 0 0 1rem 0; color: #2563eb;">📅 Setup Automated Daily Scraping</h4>
+            <p style="margin: 0 0 0.5rem 0; color: #1e40af;">Your GitHub Action is ready! It will scrape events automatically every day at 6 AM.</p>
+            <p style="margin: 0; color: #475569; font-size: 0.9rem;">
+                Check: <code>.github/workflows/scrape-events.yml</code><br>
+                Events will flow automatically: Scraper → Google Sheets → Your Website (real-time)
+            </p>
+        </div>
 
-    } catch (error) {
-        progress.style.display = 'none';
-        status.style.display = 'block';
-        status.innerHTML = `
-            <strong>❌ Error loading events</strong><br>
-            ${error.message}<br>
-            <small>Make sure your Google Apps Script is deployed correctly.</small>
-        `;
-        console.error('Scraper error:', error);
-    }
+        <div style="text-align: center; padding: 1rem;">
+            <button onclick="closeScraperModal()" style="padding: 0.75rem 2rem; background: #3AB8FF; color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; margin-right: 1rem;">
+                Got It!
+            </button>
+            <a href="https://github.com/${getGithubRepo()}/actions" target="_blank" style="padding: 0.75rem 2rem; background: #6B46C1; color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block;">
+                View GitHub Actions
+            </a>
+        </div>
+    `;
+
+    // Optional: Show demo events if user wants to see the UI
+    // Uncomment the line below to show mock events for UI demonstration
+    // scrapedEvents = generateMockEvents();
+    // renderScrapedEvents();
+}
+
+// Helper to get GitHub repo from current URL or config
+function getGithubRepo() {
+    // Try to extract from deployment or return placeholder
+    return 'your-username/norwich-event-hub';
 }
 
 function generateMockEvents() {

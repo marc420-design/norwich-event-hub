@@ -180,55 +180,90 @@ async function scrapeEvents() {
     const status = document.getElementById('scraperStatus');
     const list = document.getElementById('scrapedEventsList');
 
-    // REAL-TIME SCRAPING INSTRUCTIONS
-    // The Python scraper needs to run server-side for security and to avoid CORS
-
-    progress.style.display = 'none';
+    // Show loading state
+    progress.style.display = 'block';
     status.style.display = 'block';
+    status.innerHTML = '<p style="text-align: center; padding: 2rem; color: #666;">🤖 Scraping events from ticket platforms...</p>';
+    list.innerHTML = '';
 
-    status.innerHTML = `
-        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 2rem; border-radius: 12px; margin-bottom: 2rem;">
-            <h3 style="margin: 0 0 1rem 0; font-size: 1.5rem;">🤖 Real-Time Event Scraper</h3>
-            <p style="margin: 0 0 1rem 0; opacity: 0.95;">To fetch REAL events from ticket platforms and venue websites, run the automated scraper:</p>
+    try {
+        // Call the Cloudflare Pages Function to scrape events
+        const response = await fetch('/scrape-events', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
 
-            <div style="background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 8px; font-family: monospace; margin: 1rem 0;">
-                <strong>Windows:</strong><br>
-                <code style="color: #FFD700;">cd automation && python real-time-scraper.py</code><br><br>
-                <strong>Or use the quick script:</strong><br>
-                <code style="color: #FFD700;">run-scraper.bat</code>
+        const data = await response.json();
+
+        // Hide loading
+        progress.style.display = 'none';
+
+        if (data.success && data.events && data.events.length > 0) {
+            // Store scraped events in global array
+            scrapedEvents = data.events;
+
+            // Show success message with stats
+            status.innerHTML = `
+                <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem; text-align: center;">
+                    <h3 style="margin: 0 0 0.5rem 0;">✅ Found ${data.stats.total} Events!</h3>
+                    <p style="margin: 0; opacity: 0.9; font-size: 0.9rem;">
+                        ${Object.entries(data.stats.bySource).map(([source, count]) =>
+                            count > 0 ? `${source}: ${count}` : ''
+                        ).filter(Boolean).join(' • ')}
+                    </p>
+                    <p style="margin: 0.5rem 0 0 0; opacity: 0.8; font-size: 0.85rem;">
+                        Scraped in ${(data.stats.duration / 1000).toFixed(1)}s
+                    </p>
+                </div>
+            `;
+
+            // Render the events using existing function
+            renderScrapedEvents();
+
+        } else if (data.success && data.events.length === 0) {
+            // No events found
+            status.innerHTML = `
+                <div style="background: #fef3c7; border-left: 4px solid #f59e0b; padding: 1.5rem; border-radius: 8px;">
+                    <h4 style="margin: 0 0 0.5rem 0; color: #92400e;">⚠️ No Events Found</h4>
+                    <p style="margin: 0; color: #78350f;">
+                        The scraper didn't find any new events at this time. Try again later or check the source websites manually.
+                    </p>
+                </div>
+            `;
+        } else {
+            // Error occurred
+            throw new Error(data.message || 'Failed to scrape events');
+        }
+
+    } catch (error) {
+        console.error('Scraping error:', error);
+
+        // Hide loading
+        progress.style.display = 'none';
+
+        // Show error with fallback instructions
+        status.innerHTML = `
+            <div style="background: #fee2e2; border-left: 4px solid #ef4444; padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                <h4 style="margin: 0 0 0.5rem 0; color: #991b1b;">❌ Scraping Failed</h4>
+                <p style="margin: 0 0 1rem 0; color: #7f1d1d;">
+                    ${error.message || 'Unable to connect to scraping service'}
+                </p>
             </div>
 
-            <p style="margin: 1rem 0 0 0; font-size: 0.9rem; opacity: 0.9;">
-                ✅ Scraped events will be posted directly to Google Sheets<br>
-                ✅ They'll appear in your "Pending" tab for review<br>
-                ✅ Approve the ones you want to publish<br>
-                ✅ Automated daily scraping via GitHub Actions (see below)
-            </p>
-        </div>
-
-        <div style="background: #f0f8ff; border-left: 4px solid #3AB8FF; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
-            <h4 style="margin: 0 0 1rem 0; color: #2563eb;">📅 Setup Automated Daily Scraping</h4>
-            <p style="margin: 0 0 0.5rem 0; color: #1e40af;">Your GitHub Action is ready! It will scrape events automatically every day at 6 AM.</p>
-            <p style="margin: 0; color: #475569; font-size: 0.9rem;">
-                Check: <code>.github/workflows/scrape-events.yml</code><br>
-                Events will flow automatically: Scraper → Google Sheets → Your Website (real-time)
-            </p>
-        </div>
-
-        <div style="text-align: center; padding: 1rem;">
-            <button onclick="closeScraperModal()" style="padding: 0.75rem 2rem; background: #3AB8FF; color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; margin-right: 1rem;">
-                Got It!
-            </button>
-            <a href="https://github.com/${getGithubRepo()}/actions" target="_blank" style="padding: 0.75rem 2rem; background: #6B46C1; color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block;">
-                View GitHub Actions
-            </a>
-        </div>
-    `;
-
-    // Optional: Show demo events if user wants to see the UI
-    // Uncomment the line below to show mock events for UI demonstration
-    // scrapedEvents = generateMockEvents();
-    // renderScrapedEvents();
+            <div style="background: #f0f8ff; border-left: 4px solid #3AB8FF; padding: 1.5rem; border-radius: 8px;">
+                <h4 style="margin: 0 0 1rem 0; color: #2563eb;">💡 Alternative: Run Python Scraper</h4>
+                <p style="margin: 0 0 0.5rem 0; color: #1e40af;">You can run the Python scraper manually:</p>
+                <div style="background: rgba(0,0,0,0.05); padding: 1rem; border-radius: 8px; font-family: monospace; margin: 1rem 0;">
+                    <code style="color: #1e40af;">run-scraper.bat</code>
+                </div>
+                <p style="margin: 0; color: #475569; font-size: 0.9rem;">
+                    Events will be posted to Google Sheets and appear in your Pending tab.
+                </p>
+            </div>
+        `;
+    }
 }
 
 // Helper to get GitHub repo from current URL or config

@@ -13,7 +13,7 @@
 
 const APP_CONFIG = {
     // Google Apps Script Web App URL - ✅ CONFIGURED (Version 9 - CLI Deployed)
-    GOOGLE_APPS_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbzkMEodkc2MbX11CvST83HhXBy0WcLMUHCvFOjbwhKfS1wC2MAapEsNGQZiArFPKTK3/exec',
+    GOOGLE_APPS_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbz3eV1FnzzihDKv1Mx8rPD7I55oJK2sFFVRDt6a1DC9PSu49VPIdm7Iu00rsfT55S2z/exec',
 
     // Google Sheet ID - ✅ CONFIGURED
     GOOGLE_SHEET_ID: '1wdh2VOlZ8gp0hwFpFV6cVpDDmaMxGs48eCDqoFFZTcU',

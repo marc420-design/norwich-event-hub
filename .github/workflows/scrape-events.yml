@@ -33,19 +33,35 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install requests beautifulsoup4 python-dotenv lxml
+          pip install google-generativeai requests beautifulsoup4 gspread oauth2client python-dateutil python-dotenv lxml
 
-      - name: Run event scraper
+      - name: Setup Google credentials
         run: |
           cd automation
-          python real-time-scraper.py
+          echo '${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}' > google-credentials.json
+        if: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON != '' }}
+
+      - name: Run AI event aggregator
+        run: |
+          cd automation
+          python ai-event-aggregator.py
         env:
-          # Google Apps Script URL from config
-          GOOGLE_APPS_SCRIPT_URL: https://script.google.com/macros/s/AKfycbwUqbC7ZkAqO5w0POhRd_hBDBPrZDKV0I_K43lmdKbLrL0rjAAoEYwgZpc_xuzs1x0M/exec
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_SERVICE_ACCOUNT_JSON: google-credentials.json
+          MIN_QUALITY_SCORE: 50
+          AUTO_APPROVE_THRESHOLD: 80
+          NORWICH_RADIUS_KM: 15
+
+      - name: Cleanup credentials
+        if: always()
+        run: |
+          cd automation
+          rm -f google-credentials.json
 
       - name: Summary
         run: |
-          echo "✅ Event scraping completed successfully!"
+          echo "✅ AI event scraping completed successfully!"
           echo "📊 New events have been posted to Google Sheets"
           echo "🔍 Check your admin dashboard to review pending events"
           echo "🌐 Admin: https://norwicheventshub.com/admin"

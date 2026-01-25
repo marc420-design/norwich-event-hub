@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "npx serve .",
     "build": "echo 'Static site - ready for Cloudflare Pages deployment'",
-    "deploy": "echo 'Deploy to Cloudflare Pages: wrangler pages publish .'"
+    "deploy": "echo 'Deploy to Cloudflare Pages: wrangler pages publish .'",
+    "test": "echo no tests"
   },
   "keywords": [
     "norwich",

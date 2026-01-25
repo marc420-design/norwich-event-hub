@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,27 +12,9 @@
     <link rel="stylesheet" href="styles/enhanced.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
-    <script>
-        // Simple password protection (temporary solution until Cloudflare Access is properly configured)
-        (function() {
-            const ADMIN_EMAIL = 'nr1family420@gmail.com';
-            const ADMIN_PASSWORD = 'NorwichEvents2026!'; // Change this to your preferred password
-            const isAuthenticated = sessionStorage.getItem('admin_auth') === 'true';
-            
-            if (!isAuthenticated) {
-                const enteredPassword = prompt('Enter admin password to access dashboard:');
-                if (enteredPassword !== ADMIN_PASSWORD) {
-                    alert('Access denied. Incorrect password.');
-                    window.location.href = '/';
-                    return;
-                }
-                sessionStorage.setItem('admin_auth', 'true');
-                console.log('Admin authenticated');
-            }
-        })();
-    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
 
     <style>
         body {
@@ -238,14 +221,45 @@
             letter-spacing: 0.5px;
         }
 
-        .badge-nightlife { background: #667eea; color: white; }
-        .badge-gigs { background: #f093fb; color: white; }
-        .badge-theatre { background: #4facfe; color: white; }
-        .badge-sports { background: #43e97b; color: white; }
-        .badge-markets { background: #fa709a; color: white; }
-        .badge-community { background: #30cfd0; color: white; }
-        .badge-culture { background: #a8edea; color: #333; }
-        .badge-free { background: #ff9a9e; color: white; }
+        .badge-nightlife {
+            background: #667eea;
+            color: white;
+        }
+
+        .badge-gigs {
+            background: #f093fb;
+            color: white;
+        }
+
+        .badge-theatre {
+            background: #4facfe;
+            color: white;
+        }
+
+        .badge-sports {
+            background: #43e97b;
+            color: white;
+        }
+
+        .badge-markets {
+            background: #fa709a;
+            color: white;
+        }
+
+        .badge-community {
+            background: #30cfd0;
+            color: white;
+        }
+
+        .badge-culture {
+            background: #a8edea;
+            color: #333;
+        }
+
+        .badge-free {
+            background: #ff9a9e;
+            color: white;
+        }
 
         .status-badge {
             display: inline-block;
@@ -493,8 +507,13 @@
         }
 
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         .loading::after {
@@ -503,9 +522,20 @@
         }
 
         @keyframes dots {
-            0%, 20% { content: '.'; }
-            40% { content: '..'; }
-            60%, 100% { content: '...'; }
+
+            0%,
+            20% {
+                content: '.';
+            }
+
+            40% {
+                content: '..';
+            }
+
+            60%,
+            100% {
+                content: '...';
+            }
         }
 
         .empty-state {
@@ -546,6 +576,7 @@
                 transform: translateY(100px);
                 opacity: 0;
             }
+
             to {
                 transform: translateY(0);
                 opacity: 1;
@@ -568,7 +599,42 @@
         }
     </style>
 </head>
+
 <body>
+    <!-- Admin login overlay (hidden when sessionStorage.admin_auth is set) -->
+    <div id="admin-login-overlay"
+        style="position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);display:flex;align-items:center;justify-content:center;z-index:99999;">
+        <div
+            style="background:white;padding:2rem;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.3);max-width:380px;width:90%;">
+            <h2 style="margin:0 0 1rem 0;color:#333;">Admin sign in</h2>
+            <form id="admin-login-form">
+                <input type="password" id="admin-password" placeholder="Password" autocomplete="current-password"
+                    style="width:100%;padding:0.75rem;margin-bottom:0.5rem;border:2px solid #e0e0e0;border-radius:8px;font-size:1rem;box-sizing:border-box;" />
+                <div id="admin-login-error"
+                    style="color:#E53935;font-size:0.9rem;margin-bottom:0.75rem;min-height:1.2em;"></div>
+                <button type="submit" id="admin-login-submit"
+                    style="width:100%;padding:0.75rem 1.5rem;background:linear-gradient(135deg, #3AB8FF 0%, #234F32 100%);color:white;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-size:1rem;">Sign
+                    in</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        (function () {
+            var ADMIN_PASSWORD = 'NorwichEvents2026!';
+            function hideOverlay() { var el = document.getElementById('admin-login-overlay'); if (el) el.style.display = 'none'; }
+            function showError(msg) { var el = document.getElementById('admin-login-error'); if (el) el.textContent = msg; }
+            if (sessionStorage.getItem('admin_auth') === 'true') { hideOverlay(); return; }
+            document.getElementById('admin-login-form').addEventListener('submit', function (e) {
+                e.preventDefault();
+                var p = (document.getElementById('admin-password') || {}).value || '';
+                if (p !== ADMIN_PASSWORD) { showError('Access denied. Incorrect password.'); return; }
+                sessionStorage.setItem('admin_auth', 'true');
+                showError('');
+                hideOverlay();
+            });
+        })();
+    </script>
+
     <div class="admin-container">
         <div class="admin-header">
             <h1>🎯 Admin Dashboard</h1>
@@ -631,8 +697,9 @@
         </div>
     </div>
 
-    <script defer src="scripts/config.js?v=20260113g"></script>
-    <script defer src="scripts/admin.js?v=20260113g"></script>
-    <script defer src="scripts/scraper.js?v=20260113g"></script>
+    <script defer src="scripts/config.js?v=20260125c"></script>
+    <script defer src="scripts/admin.js?v=20260125c"></script>
+    <script defer src="scripts/scraper.js?v=20260125c"></script>
 </body>
+
 </html>

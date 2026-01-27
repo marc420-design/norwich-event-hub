@@ -69,20 +69,27 @@ class EventAggregator:
             logger.info("Using OpenAI (primary)")
         elif self.gemini_api_key:
             genai.configure(api_key=self.gemini_api_key)
-            # Try different model name formats for Gemini 1.5
+            # Try different model name formats for Gemini
+            # Note: google.generativeai package is deprecated, but still functional
             try:
-                # Try without models/ prefix first
-                self.model = genai.GenerativeModel('gemini-1.5-flash-001')
-                logger.info("Using Google Gemini AI (gemini-1.5-flash-001)")
-            except:
+                # Primary: Try experimental 2.0 (most likely to work)
+                self.model = genai.GenerativeModel('gemini-2.0-flash-exp')
+                logger.info("Using Google Gemini AI (gemini-2.0-flash-exp)")
+            except Exception as e:
+                logger.warning(f"gemini-2.0-flash-exp not available: {e}")
                 try:
-                    # Try 2.0 flash
-                    self.model = genai.GenerativeModel('gemini-2.0-flash-exp')
-                    logger.info("Using Google Gemini AI (gemini-2.0-flash-exp)")
-                except:
-                    # Fallback to older stable version
-                    self.model = genai.GenerativeModel('gemini-1.5-pro')
-                    logger.info("Using Google Gemini AI (gemini-1.5-pro fallback)")
+                    # Fallback 1: Try 1.5 flash without version suffix
+                    self.model = genai.GenerativeModel('gemini-1.5-flash')
+                    logger.info("Using Google Gemini AI (gemini-1.5-flash)")
+                except Exception as e:
+                    logger.warning(f"gemini-1.5-flash not available: {e}")
+                    try:
+                        # Fallback 2: Try Pro model
+                        self.model = genai.GenerativeModel('gemini-1.5-pro')
+                        logger.info("Using Google Gemini AI (gemini-1.5-pro)")
+                    except Exception as e:
+                        logger.error(f"All Gemini models failed: {e}")
+                        raise ValueError("No working Gemini model available")
             self.ai_provider = 'Gemini'
         else:
             raise ValueError("Either GEMINI_API_KEY or OPENAI_API_KEY environment variable required")

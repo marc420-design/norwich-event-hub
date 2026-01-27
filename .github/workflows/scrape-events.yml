@@ -39,7 +39,6 @@ jobs:
         run: |
           cd automation
           echo '${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}' > google-credentials.json
-        if: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON != '' }}
 
       - name: Run AI event aggregator
         run: |
@@ -52,7 +51,6 @@ jobs:
           GOOGLE_SERVICE_ACCOUNT_JSON: google-credentials.json
           MIN_QUALITY_SCORE: 50
           AUTO_APPROVE_THRESHOLD: 80
-             OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           NORWICH_RADIUS_KM: 15
 
       - name: Cleanup credentials

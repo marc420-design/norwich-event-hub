@@ -33,7 +33,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install google-generativeai requests beautifulsoup4 gspread oauth2client python-dateutil python-dotenv lxml
+          pip install google-generativeai openai requests beautifulsoup4 gspread oauth2client python-dateutil python-dotenv lxml
 
       - name: Setup Google credentials
         run: |
@@ -46,6 +46,7 @@ jobs:
           cd automation
           python ai-event-aggregator.py
         env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
           GOOGLE_SERVICE_ACCOUNT_JSON: google-credentials.json

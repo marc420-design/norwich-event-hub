@@ -583,18 +583,178 @@
             }
         }
 
+        /* Scraper Button */
+        .scraper-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        .scraper-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+        }
+
+        .scraper-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Loading Spinner */
+        .spinner {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Three-button System */
+        .event-actions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 8px;
+            min-width: 150px;
+        }
+
+        .btn-reject {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+        }
+
+        .btn-reject:hover {
+            background: #dc2626;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
+        }
+
+        .btn-approve {
+            background: #10b981;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+        }
+
+        .btn-approve:hover {
+            background: #059669;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-editors-choice {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 8px rgba(251, 191, 36, 0.3);
+            font-size: 0.9rem;
+        }
+
+        .btn-editors-choice:hover {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(251, 191, 36, 0.4);
+        }
+
+        /* Editor's Choice Badge */
+        .editors-choice-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-left: 8px;
+            box-shadow: 0 2px 8px rgba(251, 191, 36, 0.3);
+            vertical-align: middle;
+        }
+
+        /* Toast Notifications */
+        .toast-notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #1f2937;
+            color: white;
+            padding: 16px 24px;
+            border-radius: 8px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            z-index: 10000;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            max-width: 400px;
+            font-weight: 500;
+        }
+
+        .toast-notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast-success {
+            background: #10b981;
+        }
+
+        .toast-error {
+            background: #ef4444;
+        }
+
+        .toast-info {
+            background: #3b82f6;
+        }
+
         @media (max-width: 768px) {
             .admin-event-card {
                 grid-template-columns: 1fr;
             }
 
-            .event-actions {
-                flex-direction: row;
+            .event-actions,
+            .event-actions-grid {
+                grid-template-columns: 1fr;
             }
 
             .event-meta {
                 flex-direction: column;
                 gap: 0.5rem;
+            }
+
+            .scraper-btn {
+                width: 100%;
+                margin-top: 1rem;
             }
         }
     </style>
@@ -637,8 +797,17 @@
 
     <div class="admin-container">
         <div class="admin-header">
-            <h1>🎯 Admin Dashboard</h1>
-            <p>Manage event submissions and approvals</p>
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                <div>
+                    <h1>🎯 Admin Dashboard</h1>
+                    <p>Manage event submissions and approvals</p>
+                </div>
+                <div>
+                    <button id="manual-scraper-btn" class="scraper-btn" onclick="triggerManualScraper()">
+                        🤖 Run Scraper Now
+                    </button>
+                </div>
+            </div>
         </div>
 
         <div class="admin-stats">
@@ -697,9 +866,9 @@
         </div>
     </div>
 
-    <script defer src="scripts/config.js?v=20260125c"></script>
-    <script defer src="scripts/admin.js?v=20260125c"></script>
-    <script defer src="scripts/scraper.js?v=20260125c"></script>
+    <script defer src="scripts/config.js?v=20260125d"></script>
+    <script defer src="scripts/admin.js?v=20260125d"></script>
+    <script defer src="scripts/scraper.js?v=20260125d"></script>
 </body>
 
 </html>

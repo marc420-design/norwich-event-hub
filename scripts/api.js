@@ -10,10 +10,10 @@ const API_CONFIG = typeof APP_CONFIG !== 'undefined' ? {
     USE_LOCAL_STORAGE: APP_CONFIG.USE_LOCAL_STORAGE
 } : {
     // Default configuration (for development)
-    SUBMISSION_URL: 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL',
-    EVENTS_URL: 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL',
-    SHEETS_API_KEY: 'YOUR_GOOGLE_SHEETS_API_KEY',
-    SHEET_ID: 'YOUR_GOOGLE_SHEET_ID',
+    SUBMISSION_URL: 'https://script.google.com/macros/s/AKfycbwUqbC7ZkAqO5w0POhRd_hBDBPrZDKV0I_K43lmdKbLrL0rjAAoEYwgZpc_xuzs1x0M/exec',
+    EVENTS_URL: 'https://script.google.com/macros/s/AKfycbwUqbC7ZkAqO5w0POhRd_hBDBPrZDKV0I_K43lmdKbLrL0rjAAoEYwgZpc_xuzs1x0M/exec',
+    SHEETS_API_KEY: '', // Not required when using Web App
+    SHEET_ID: '1wdh2VOlZ8gp0hwFpFV6cVpDDmaMxGs48eCDqoFFZTcU',
     USE_LOCAL_STORAGE: true
 };
 
@@ -31,7 +31,7 @@ async function submitEventToAPI(eventData) {
                 },
                 body: JSON.stringify(eventData)
             });
-            
+
             const result = await response.json();
             return result;
         } catch (error) {
@@ -39,12 +39,12 @@ async function submitEventToAPI(eventData) {
             throw error;
         }
     }
-    
+
     // Fallback to local storage for development
     if (API_CONFIG.USE_LOCAL_STORAGE) {
         return submitEventToLocalStorage(eventData);
     }
-    
+
     throw new Error('No API configuration available');
 }
 
@@ -57,10 +57,10 @@ async function getEventsFromAPI(filters = {}) {
         try {
             const queryParams = new URLSearchParams(filters);
             const url = `${API_CONFIG.EVENTS_URL}?${queryParams}`;
-            
+
             const response = await fetch(url);
             const result = await response.json();
-            
+
             if (result.success && result.events) {
                 return result.events;
             }
@@ -70,12 +70,12 @@ async function getEventsFromAPI(filters = {}) {
             return getEventsFromLocalStorage();
         }
     }
-    
+
     // Fallback to local storage
     if (API_CONFIG.USE_LOCAL_STORAGE) {
         return getEventsFromLocalStorage(filters);
     }
-    
+
     return [];
 }
 

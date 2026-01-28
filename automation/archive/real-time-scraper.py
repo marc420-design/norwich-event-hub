@@ -40,51 +40,108 @@ class RealTimeEventScraper:
         self.events = []
     
     def scrape_skiddle(self) -> List[Dict]:
-        """Scrape real events from Skiddle Norwich"""
-        logger.info("🎫 Scraping Skiddle Norwich...")
+        """Scrape real events from Skiddle Norwich (Next 3 Months)"""
+        logger.info("🎫 Scraping Skiddle Norwich (Next 90 Days)...")
         events = []
         
         try:
-            url = "https://www.skiddle.com/whats-on/Norwich/"
-            response = self.session.get(url, timeout=10)
+            # Calculate date range
+            start_date = datetime.now().strftime('%Y-%m-%d')
+            end_date = (datetime.now() + timedelta(days=90)).strftime('%Y-%m-%d')
+            
+            # URL with date range filter
+            url = f"https://www.skiddle.com/whats-on/Norwich/?radius=10&fromDate={start_date}&toDate={end_date}&hidecancelled=1"
+            logger.info(f"  🔗 Queries: {url}")
+            
+            response = self.session.get(url, timeout=15)
             
             if response.status_code == 200:
                 soup = BeautifulSoup(response.content, 'html.parser')
                 
-                # Find event cards (Skiddle structure)
-                event_cards = soup.find_all('div', class_='CardGrid_card')
+                # Find event links using Regex (more robust than CSS classes)
+                # Matches: /whats-on/Norwich/Venue-Name/Event-Name/Event-ID/
+                event_links = soup.find_all('a', href=re.compile(r'/whats-on/Norwich/.*?/.*?/\d+/'))
                 
-                for card in event_cards[:10]:  # Limit to 10 events
+                logger.info(f"  👀 Found {len(event_links)} potential event links")
+                
+                # Deduplicate by URL
+                seen_urls = set()
+                
+                for link in event_links[:50]:
                     try:
-                        # Extract real event data
-                        title_elem = card.find('h3', class_='EventCard_title') or card.find('a', class_='EventCard_link')
-                        venue_elem = card.find('span', class_='EventCard_venue') or card.find('div', class_='EventCard_venue')
-                        date_elem = card.find('time') or card.find('span', class_='EventCard_date')
-                        link_elem = card.find('a', href=True)
+                        href = link['href']
+                        if href in seen_urls:
+                            continue
+                        seen_urls.add(href)
                         
-                        if title_elem and venue_elem:
+                        full_url = 'https://www.skiddle.com' + href
+                        
+                        # Extract info from stricture
+                        # Usually the link wraps the whole card or title
+                        # Try to find text content
+                        
+                        text_content = link.get_text(" ", strip=True)
+                        if not text_content:
+                            continue
+                            
+                        # Extract Name (usually at the start or in an H3 inside)
+                        name_elem = link.find('h3')
+                        name = name_elem.get_text(strip=True) if name_elem else ""
+                        
+                        # If no H3, try to parse text (risky but better than nothing)
+                        if not name:
+                            # Crude heuristic: Split by newlines or common separators?
+                            # For now, let's use the first chunk of text
+                            parts = text_content.split(" - ")
+                            if len(parts) > 0:
+                                name = parts[0]
+                        
+                        # Find Date
+                        # Look for a time tag or text matching date pattern
+                        date_str = ""
+                        date_elem = link.find('time')
+                        if date_elem:
+                            date_str = date_elem.get('datetime', '') or date_elem.get_text(strip=True)
+                        else:
+                            # Search text for months
+                            months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+                            for month in months:
+                                if month in text_content:
+                                    # Try to grab the surrounding text
+                                    match = re.search(r'\d{1,2}(?:st|nd|rd|th)?\s+' + month, text_content)
+                                    if match:
+                                        date_str = match.group(0)
+                                        break
+                        
+                        # Location - often found in text if not explicit
+                        location = "Norwich"
+                        # Try to extract venue from URL: /Norwich/Venue-Name/
+                        url_parts = href.split('/')
+                        if len(url_parts) >= 4:
+                            venue_slug = url_parts[3].replace('-', ' ')
+                            location = f"{venue_slug.title()}, Norwich"
+
+                        if name and len(name) > 3:
                             event = {
-                                'name': title_elem.get_text(strip=True),
-                                'location': venue_elem.get_text(strip=True) + ", Norwich",
-                                'date': self.parse_date(date_elem.get_text(strip=True) if date_elem else ''),
-                                'time': '19:00',  # Default, will be refined
+                                'name': name,
+                                'location': location,
+                                'date': self.parse_date(date_str),
+                                'time': '19:00',
                                 'category': 'Nightlife',
                                 'source': 'Skiddle',
-                                'ticketLink': 'https://www.skiddle.com' + link_elem['href'] if link_elem else url,
-                                'description': f"Event at {venue_elem.get_text(strip=True)} in Norwich.",
+                                'ticketLink': full_url,
+                                'description': f"Event at {location}. Found on Skiddle.",
                                 'price': 'Check website',
                                 'vibe': 'Commercial',
                                 'crowd': '18-30',
                                 'bestFor': 'Night out'
                             }
                             
-                            # Only add if we have valid data
-                            if event['name'] and event['date']:
-                                events.append(event)
-                                logger.info(f"  ✓ Found: {event['name']}")
+                            events.append(event)
+                            logger.info(f"  ✓ Found: {event['name']} ({event['date']})")
                     
                     except Exception as e:
-                        logger.debug(f"  ⚠ Skipped event: {e}")
+                        logger.debug(f"  ⚠ Skipped link: {e}")
                         continue
                 
                 logger.info(f"  ✅ Scraped {len(events)} events from Skiddle")
@@ -419,10 +476,10 @@ class RealTimeEventScraper:
 
 def main():
     """Main execution"""
-    # Get API URL
+    # Get API URL - UPDATED TO NEW CRASH-FREE VERSION
     api_url = os.environ.get('NORWICH_API_URL')
     if not api_url:
-        api_url = "https://script.google.com/macros/s/AKfycbzZBuNCIP-kO3llZAo0w64z-GSWIxcH7TKrcQ12gm7GAgjkan9Z-4vTEmk_SNDkWpLpbg/exec"
+        api_url = "https://script.google.com/macros/s/AKfycbz3eV1FnzzihDKv1Mx8rPD7I55oJK2sFFVRDt6a1DC9PSu49VPIdm7Iu00rsfT55S2z/exec"
     
     # Initialize scraper
     scraper = RealTimeEventScraper(api_url)

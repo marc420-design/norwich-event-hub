@@ -25,6 +25,21 @@ const SHEET_ID = '1wdh2VOlZ8gp0hwFpFV6cVpDDmaMxGs48eCDqoFFZTcU';
  */
 function doOptions(e) {
   const output = ContentService.createTextOutput('');
+  output.setMimeType(ContentService.MimeType.JSON);
+
+  // Add CORS headers
+  const headers = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization, Cache-Control, Pragma',
+    'Access-Control-Max-Age': '86400'
+  };
+
+  // Set headers
+  Object.keys(headers).forEach(key => {
+    output.addHeader(key, headers[key]);
+  });
+
   return output;
 }
 
@@ -114,21 +129,31 @@ function doPost(e) {
     // Send confirmation email
     sendConfirmationEmail(data, eventId);
 
-    // Return success response
+    // Return success response with CORS headers
     const output = ContentService.createTextOutput(JSON.stringify({
       success: true,
       message: 'Event submitted successfully',
       eventId: eventId
     })).setMimeType(ContentService.MimeType.JSON);
 
+    // Add CORS headers
+    output.addHeader('Access-Control-Allow-Origin', '*');
+    output.addHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+    output.addHeader('Access-Control-Allow-Headers', 'Content-Type');
+
     return output;
 
   } catch (error) {
-    // Return error response
+    // Return error response with CORS headers
     const output = ContentService.createTextOutput(JSON.stringify({
       success: false,
       message: 'Error submitting event: ' + error.toString()
     })).setMimeType(ContentService.MimeType.JSON);
+
+    // Add CORS headers
+    output.addHeader('Access-Control-Allow-Origin', '*');
+    output.addHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+    output.addHeader('Access-Control-Allow-Headers', 'Content-Type');
 
     return output;
   }
@@ -156,6 +181,11 @@ function doGet(e) {
         success: false,
         message: 'Sheet not found'
       })).setMimeType(ContentService.MimeType.JSON);
+
+      // Add CORS headers
+      output.addHeader('Access-Control-Allow-Origin', '*');
+      output.addHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+      output.addHeader('Access-Control-Allow-Headers', 'Content-Type');
 
       return output;
     }
@@ -202,6 +232,11 @@ function doGet(e) {
       lastUpdated: new Date().toISOString()
     })).setMimeType(ContentService.MimeType.JSON);
 
+    // Add CORS headers
+    output.addHeader('Access-Control-Allow-Origin', '*');
+    output.addHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+    output.addHeader('Access-Control-Allow-Headers', 'Content-Type');
+
     return output;
 
   } catch (error) {
@@ -209,6 +244,11 @@ function doGet(e) {
       success: false,
       message: 'Error retrieving events: ' + error.toString()
     })).setMimeType(ContentService.MimeType.JSON);
+
+    // Add CORS headers
+    output.addHeader('Access-Control-Allow-Origin', '*');
+    output.addHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+    output.addHeader('Access-Control-Allow-Headers', 'Content-Type');
 
     return output;
   }
@@ -227,6 +267,11 @@ function getAllEvents() {
         success: false,
         message: 'Sheet not found'
       })).setMimeType(ContentService.MimeType.JSON);
+
+      // Add CORS headers
+      output.addHeader('Access-Control-Allow-Origin', '*');
+      output.addHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+      output.addHeader('Access-Control-Allow-Headers', 'Content-Type');
 
       return output;
     }
@@ -271,6 +316,11 @@ function getAllEvents() {
       lastUpdated: new Date().toISOString()
     })).setMimeType(ContentService.MimeType.JSON);
 
+    // Add CORS headers
+    output.addHeader('Access-Control-Allow-Origin', '*');
+    output.addHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+    output.addHeader('Access-Control-Allow-Headers', 'Content-Type');
+
     return output;
 
   } catch (error) {
@@ -278,6 +328,11 @@ function getAllEvents() {
       success: false,
       message: 'Error retrieving events: ' + error.toString()
     })).setMimeType(ContentService.MimeType.JSON);
+
+    // Add CORS headers
+    output.addHeader('Access-Control-Allow-Origin', '*');
+    output.addHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+    output.addHeader('Access-Control-Allow-Headers', 'Content-Type');
 
     return output;
   }
@@ -395,6 +450,11 @@ function updateEventStatus(eventId, newStatus, editorsChoice) {
         success: false,
         message: 'Sheet not found'
       })).setMimeType(ContentService.MimeType.JSON);
+
+      // Add CORS headers
+      output.addHeader('Access-Control-Allow-Origin', '*');
+      output.addHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+      output.addHeader('Access-Control-Allow-Headers', 'Content-Type');
 
       return output;
     }

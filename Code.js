@@ -21,6 +21,14 @@ const EMAIL_FROM = 'events@norwicheventshub.com';
 const SHEET_ID = '1wdh2VOlZ8gp0hwFpFV6cVpDDmaMxGs48eCDqoFFZTcU';
 
 /**
+ * Handle OPTIONS request (CORS preflight)
+ */
+function doOptions(e) {
+  const output = ContentService.createTextOutput('');
+  return output;
+}
+
+/**
  * Handle POST request from event submission form or admin actions
  */
 function doPost(e) {
@@ -29,14 +37,19 @@ function doPost(e) {
 
     // Check if this is an admin action
     if (data.action === 'updateStatus') {
-      return updateEventStatus(data.eventId, data.status);
+      return updateEventStatus(data.eventId, data.status, data.editorsChoice);
+    }
+
+    // Check if this is a manual scraper trigger
+    if (data.action === 'triggerScraper') {
+      return triggerGitHubScraper(data.githubToken);
     }
 
     // Otherwise, treat as event submission
     // Get the spreadsheet by ID (required for web app deployments)
     const ss = SpreadsheetApp.openById(SHEET_ID);
     let sheet = ss.getSheetByName(SHEET_NAME);
-    
+
     // Create sheet if it doesn't exist
     if (!sheet) {
       sheet = ss.insertSheet(SHEET_NAME);
@@ -59,18 +72,19 @@ function doPost(e) {
         'Promoter Email',
         'Promoter Phone',
         'Status',
-        'Event ID'
+        'Event ID',
+        'Editor\'s Choice'
       ]);
       // Format header row
-      const headerRange = sheet.getRange(1, 1, 1, 18);
+      const headerRange = sheet.getRange(1, 1, 1, 19);
       headerRange.setFontWeight('bold');
       headerRange.setBackground('#3AB8FF');
       headerRange.setFontColor('#FFFFFF');
     }
-    
+
     // Generate unique event ID
     const eventId = generateEventId();
-    
+
     // Prepare row data
     const rowData = [
       new Date(), // Timestamp
@@ -90,28 +104,33 @@ function doPost(e) {
       data.promoterEmail || '',
       data.promoterPhone || '',
       'Pending', // Status
-      eventId
+      eventId,
+      data.editorsChoice || 'No' // Editor's Choice (default: No)
     ];
-    
+
     // Append row to sheet
     sheet.appendRow(rowData);
-    
+
     // Send confirmation email
     sendConfirmationEmail(data, eventId);
-    
+
     // Return success response
-    return ContentService.createTextOutput(JSON.stringify({
+    const output = ContentService.createTextOutput(JSON.stringify({
       success: true,
       message: 'Event submitted successfully',
       eventId: eventId
     })).setMimeType(ContentService.MimeType.JSON);
-    
+
+    return output;
+
   } catch (error) {
     // Return error response
-    return ContentService.createTextOutput(JSON.stringify({
+    const output = ContentService.createTextOutput(JSON.stringify({
       success: false,
       message: 'Error submitting event: ' + error.toString()
     })).setMimeType(ContentService.MimeType.JSON);
+
+    return output;
   }
 }
 
@@ -133,10 +152,12 @@ function doGet(e) {
     const sheet = ss.getSheetByName(SHEET_NAME);
 
     if (!sheet) {
-      return ContentService.createTextOutput(JSON.stringify({
+      const output = ContentService.createTextOutput(JSON.stringify({
         success: false,
         message: 'Sheet not found'
       })).setMimeType(ContentService.MimeType.JSON);
+
+      return output;
     }
 
     const data = sheet.getDataRange().getValues();
@@ -175,16 +196,21 @@ function doGet(e) {
       }
     }
 
-    return ContentService.createTextOutput(JSON.stringify({
+    const output = ContentService.createTextOutput(JSON.stringify({
       success: true,
-      events: events
+      events: events,
+      lastUpdated: new Date().toISOString()
     })).setMimeType(ContentService.MimeType.JSON);
 
+    return output;
+
   } catch (error) {
-    return ContentService.createTextOutput(JSON.stringify({
+    const output = ContentService.createTextOutput(JSON.stringify({
       success: false,
       message: 'Error retrieving events: ' + error.toString()
     })).setMimeType(ContentService.MimeType.JSON);
+
+    return output;
   }
 }
 
@@ -197,10 +223,12 @@ function getAllEvents() {
     const sheet = ss.getSheetByName(SHEET_NAME);
 
     if (!sheet) {
-      return ContentService.createTextOutput(JSON.stringify({
+      const output = ContentService.createTextOutput(JSON.stringify({
         success: false,
         message: 'Sheet not found'
       })).setMimeType(ContentService.MimeType.JSON);
+
+      return output;
     }
 
     const data = sheet.getDataRange().getValues();
@@ -237,16 +265,21 @@ function getAllEvents() {
       events.push(event);
     }
 
-    return ContentService.createTextOutput(JSON.stringify({
+    const output = ContentService.createTextOutput(JSON.stringify({
       success: true,
-      events: events
+      events: events,
+      lastUpdated: new Date().toISOString()
     })).setMimeType(ContentService.MimeType.JSON);
 
+    return output;
+
   } catch (error) {
-    return ContentService.createTextOutput(JSON.stringify({
+    const output = ContentService.createTextOutput(JSON.stringify({
       success: false,
       message: 'Error retrieving events: ' + error.toString()
     })).setMimeType(ContentService.MimeType.JSON);
+
+    return output;
   }
 }
 
@@ -283,7 +316,7 @@ If you have any questions, please contact us at submit@norwicheventshub.com
 Best regards,
 Norwich Event Hub Team
   `;
-  
+
   try {
     MailApp.sendEmail({
       to: data.promoterEmail,
@@ -302,17 +335,17 @@ Norwich Event Hub Team
 function approveEvent(eventId) {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   const sheet = ss.getSheetByName(SHEET_NAME);
-  
+
   if (!sheet) return;
-  
+
   const data = sheet.getDataRange().getValues();
   const eventIdColumn = 12; // Column M (0-indexed)
-  
+
   for (let i = 1; i < data.length; i++) {
     if (data[i][eventIdColumn] === eventId) {
       const statusColumn = 11; // Column L
       sheet.getRange(i + 1, statusColumn + 1).setValue('Approved');
-      
+
       // Send approval email
       const promoterEmail = data[i][9]; // Column J
       sendApprovalEmail(promoterEmail, data[i][1]); // Event name
@@ -352,16 +385,18 @@ Norwich Event Hub Team
 /**
  * Update event status (Approve/Reject) - called from admin dashboard
  */
-function updateEventStatus(eventId, newStatus) {
+function updateEventStatus(eventId, newStatus, editorsChoice) {
   try {
     const ss = SpreadsheetApp.openById(SHEET_ID);
     const sheet = ss.getSheetByName(SHEET_NAME);
 
     if (!sheet) {
-      return ContentService.createTextOutput(JSON.stringify({
+      const output = ContentService.createTextOutput(JSON.stringify({
         success: false,
         message: 'Sheet not found'
       })).setMimeType(ContentService.MimeType.JSON);
+
+      return output;
     }
 
     const data = sheet.getDataRange().getValues();
@@ -370,14 +405,17 @@ function updateEventStatus(eventId, newStatus) {
     // Find the column indices
     const eventIdColumn = headers.indexOf('Event ID');
     const statusColumn = headers.indexOf('Status');
+    const editorsChoiceColumn = headers.indexOf('Editor\'s Choice');
     const promoterEmailColumn = headers.indexOf('Promoter Email');
     const eventNameColumn = headers.indexOf('Event Name');
 
     if (eventIdColumn === -1 || statusColumn === -1) {
-      return ContentService.createTextOutput(JSON.stringify({
+      const output = ContentService.createTextOutput(JSON.stringify({
         success: false,
         message: 'Required columns not found in sheet'
       })).setMimeType(ContentService.MimeType.JSON);
+
+      return output;
     }
 
     // Find the event row
@@ -386,33 +424,91 @@ function updateEventStatus(eventId, newStatus) {
         // Update status
         sheet.getRange(i + 1, statusColumn + 1).setValue(newStatus);
 
+        // Update Editor's Choice if provided
+        if (editorsChoice !== undefined && editorsChoiceColumn !== -1) {
+          sheet.getRange(i + 1, editorsChoiceColumn + 1).setValue(editorsChoice ? 'Yes' : 'No');
+        }
+
         // Send approval email if approved
         if (newStatus.toLowerCase() === 'approved' && promoterEmailColumn !== -1) {
           const promoterEmail = data[i][promoterEmailColumn];
           const eventName = data[i][eventNameColumn];
           if (promoterEmail) {
-            sendApprovalEmail(promoterEmail, eventName);
+            sendApprovalEmail(promoterEmail, eventName, editorsChoice);
           }
         }
 
-        return ContentService.createTextOutput(JSON.stringify({
+        const output = ContentService.createTextOutput(JSON.stringify({
           success: true,
           message: 'Event status updated successfully'
         })).setMimeType(ContentService.MimeType.JSON);
+
+        return output;
       }
     }
 
     // Event not found
-    return ContentService.createTextOutput(JSON.stringify({
+    const output = ContentService.createTextOutput(JSON.stringify({
       success: false,
       message: 'Event not found'
     })).setMimeType(ContentService.MimeType.JSON);
 
+    return output;
+
   } catch (error) {
-    return ContentService.createTextOutput(JSON.stringify({
+    const output = ContentService.createTextOutput(JSON.stringify({
       success: false,
       message: 'Error updating event status: ' + error.toString()
     })).setMimeType(ContentService.MimeType.JSON);
+
+    return output;
   }
 }
 
+/**
+ * Trigger GitHub Actions scraper workflow
+ * Requires a GitHub Personal Access Token with workflow permissions
+ */
+function triggerGitHubScraper(githubToken) {
+  try {
+    // GitHub repository details
+    const owner = 'marc420-design';
+    const repo = 'norwich-event-hub';
+    const workflowId = 'scrape-events.yml';
+
+    // GitHub API URL
+    const url = `https://api.github.com/repos/${owner}/${repo}/actions/workflows/${workflowId}/dispatches`;
+
+    // Prepare the request
+    const options = {
+      method: 'post',
+      headers: {
+        'Authorization': `Bearer ${githubToken}`,
+        'Accept': 'application/vnd.github.v3+json',
+        'Content-Type': 'application/json'
+      },
+      payload: JSON.stringify({
+        ref: 'master' // Branch to run the workflow on
+      })
+    };
+
+    // Make the API call
+    const response = UrlFetchApp.fetch(url, options);
+
+    const output = ContentService.createTextOutput(JSON.stringify({
+      success: true,
+      message: 'Scraper workflow triggered successfully',
+      status: response.getResponseCode()
+    })).setMimeType(ContentService.MimeType.JSON);
+
+    return output;
+
+  } catch (error) {
+    const output = ContentService.createTextOutput(JSON.stringify({
+      success: false,
+      message: 'Error triggering scraper: ' + error.toString()
+    })).setMimeType(ContentService.MimeType.JSON);
+
+    return output;
+  }
+}

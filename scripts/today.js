@@ -1,6 +1,6 @@
 // Today's Events Page JavaScript
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Set today's date
     const todayDateElement = document.getElementById('todayDate');
     if (todayDateElement) {
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Filter functionality
     const filterButtons = document.querySelectorAll('.filter-btn');
     filterButtons.forEach(button => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             // Update active state
             filterButtons.forEach(btn => btn.classList.remove('active'));
             this.classList.add('active');
@@ -26,13 +26,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Auto-reload events when updated
-    window.addEventListener('eventsUpdated', function(e) {
+    window.addEventListener('eventsUpdated', function (e) {
         console.log('🔄 Events updated, reloading today\'s events...', e.detail);
         loadTodayEvents();
     });
-    
+
     // Listen for error events
-    window.addEventListener('eventsLoadError', function(e) {
+    window.addEventListener('eventsLoadError', function (e) {
         console.error('Events load error:', e.detail);
         const eventsContainer = document.getElementById('todayEvents');
         if (eventsContainer) {
@@ -65,7 +65,7 @@ async function loadTodayEvents() {
             // Wait for events with 12 second timeout
             await Promise.race([
                 window.eventsLoadedPromise,
-                new Promise((_, reject) => 
+                new Promise((_, reject) =>
                     setTimeout(() => reject(new Error('Timeout: Events took too long to load')), 12000)
                 )
             ]);
@@ -82,10 +82,11 @@ async function loadTodayEvents() {
         todayEvents = (window.eventsData || []).filter(event => {
             return event.date && window.isToday && window.isToday(event.date);
         });
+        const today = window.getTodayDateString ? window.getTodayDateString() : new Date().toISOString().split('T')[0];
         console.log(`📅 Today (${today}): Found ${todayEvents.length} events from ${window.eventsData?.length || 0} total`);
-        
+
         eventsContainer.innerHTML = '';
-        
+
         if (todayEvents.length === 0) {
             eventsContainer.innerHTML = `
                 <div class="event-card placeholder">
@@ -99,7 +100,7 @@ async function loadTodayEvents() {
             `;
             return;
         }
-        
+
         todayEvents.forEach(event => {
             const card = createEventCard(event);
             eventsContainer.appendChild(card);
@@ -126,7 +127,7 @@ function filterEvents(category) {
     const today = getTodayDateString();
     const eventsContainer = document.getElementById('todayEvents');
     const cards = eventsContainer.querySelectorAll('.event-card');
-    
+
     cards.forEach(card => {
         if (category === 'all' || card.dataset.category === category) {
             card.style.display = 'block';

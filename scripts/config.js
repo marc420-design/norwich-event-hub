@@ -12,8 +12,8 @@
  */
 
 const APP_CONFIG = {
-    // Google Apps Script Web App URL - ✅ CONFIGURED (Version 9 - CLI Deployed)
-    GOOGLE_APPS_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbzJYRMb1k4oTC63u0XhCQRa67Y2KXkx7fT-TbwUqgFP4r7JDKS0pAgemewXQZMLZkwHIw/exec',
+    // Google Apps Script Web App URL - ✅ CONFIGURED (Version 31 - Emergency Fix Feb 10, 2026)
+    GOOGLE_APPS_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbzNcW9XXg_t7pzIKKqrPio-B5oXbJJw0Fq6w4VYMp4LTgxe6PD4V4yNw_inEIDMO7u6/exec',
 
     // Google Sheet ID - ✅ CONFIGURED
     GOOGLE_SHEET_ID: '1wdh2VOlZ8gp0hwFpFV6cVpDDmaMxGs48eCDqoFFZTcU',

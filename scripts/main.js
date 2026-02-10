@@ -1,38 +1,38 @@
 // Main JavaScript - Navigation and Common Functions
 
 // Mobile Menu Toggle
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const navMenu = document.querySelector('.nav-menu');
-    
+
     if (mobileMenuToggle && navMenu) {
-        mobileMenuToggle.addEventListener('click', function() {
+        mobileMenuToggle.addEventListener('click', function () {
             navMenu.classList.toggle('active');
         });
     }
-    
+
     // Close mobile menu when clicking outside
-    document.addEventListener('click', function(event) {
+    document.addEventListener('click', function (event) {
         if (!event.target.closest('.navbar')) {
             if (navMenu) navMenu.classList.remove('active');
         }
     });
-    
+
     // Add fade-in animation to sections
     const sections = document.querySelectorAll('section');
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     };
-    
-    const observer = new IntersectionObserver(function(entries) {
+
+    const observer = new IntersectionObserver(function (entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('fade-in');
             }
         });
     }, observerOptions);
-    
+
     sections.forEach(section => {
         observer.observe(section);
     });
@@ -181,7 +181,7 @@ function createEventCard(event) {
     }
 
     // Make card clickable to event detail page
-    card.addEventListener('click', function(e) {
+    card.addEventListener('click', function (e) {
         // Don't navigate if clicking on links or buttons
         if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON' || e.target.closest('a') || e.target.closest('button')) {
             return;
@@ -234,7 +234,7 @@ function createEventCard(event) {
     if (urgencyInfo.urgencyBadge) {
         const urgencyBadge = document.createElement('span');
         urgencyBadge.className = `urgency-badge urgency-${urgencyInfo.urgencyLevel}`;
-        
+
         // Enhanced styling for better visibility
         const isImmediate = urgencyInfo.urgencyLevel === 'immediate' || urgencyInfo.urgencyLevel === 'today';
         const badgeStyle = isImmediate ? `
@@ -264,11 +264,11 @@ function createEventCard(event) {
             text-transform: uppercase;
             letter-spacing: 0.5px;
         `;
-        
+
         urgencyBadge.style.cssText = badgeStyle;
         urgencyBadge.textContent = urgencyInfo.urgencyBadge;
         eventDateSpan.appendChild(urgencyBadge);
-        
+
         // Add countdown timer for events starting soon (<6 hours)
         if (urgencyInfo.urgencyLevel === 'immediate' && time) {
             const countdownSpan = document.createElement('span');
@@ -280,7 +280,7 @@ function createEventCard(event) {
                 font-weight: 600;
                 color: ${urgencyInfo.badgeColor};
             `;
-            
+
             // Calculate and update countdown
             const updateCountdown = () => {
                 const eventDate = window.parseEventDate ? window.parseEventDate(date) : new Date(date);
@@ -293,7 +293,7 @@ function createEventCard(event) {
                 const now = new Date();
                 const msUntilEvent = eventDate - now;
                 const hoursUntilEvent = msUntilEvent / (1000 * 60 * 60);
-                
+
                 if (hoursUntilEvent > 0 && hoursUntilEvent <= 6) {
                     const hours = Math.floor(hoursUntilEvent);
                     const minutes = Math.floor((hoursUntilEvent - hours) * 60);
@@ -302,7 +302,7 @@ function createEventCard(event) {
                     countdownSpan.textContent = '';
                 }
             };
-            
+
             updateCountdown();
             const countdownInterval = setInterval(() => {
                 updateCountdown();
@@ -318,7 +318,7 @@ function createEventCard(event) {
                     countdownSpan.textContent = '';
                 }
             }, 60000); // Update every minute
-            
+
             eventDateSpan.appendChild(countdownSpan);
         }
     }
@@ -447,10 +447,10 @@ function createEventCard(event) {
     const shareContainer = document.createElement('div');
     shareContainer.className = 'event-share';
     shareContainer.style.cssText = 'margin-top: 12px; display: flex; gap: 8px; flex-wrap: wrap;';
-    
+
     const shareUrl = encodeURIComponent(window.location.origin + window.location.pathname + '?event=' + (event.id || event.eventid || ''));
     const shareText = encodeURIComponent(`${name} - ${window.formatDate(date)} at ${location}`);
-    
+
     // Twitter share
     const twitterShare = document.createElement('a');
     twitterShare.href = `https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareText}`;
@@ -460,7 +460,7 @@ function createEventCard(event) {
     twitterShare.style.cssText = 'display: inline-flex; align-items: center; gap: 4px; padding: 6px 12px; background: #1DA1F2; color: white; border-radius: 4px; text-decoration: none; font-size: 13px;';
     twitterShare.innerHTML = '🐦 Share';
     twitterShare.title = 'Share on Twitter';
-    
+
     // Facebook share
     const facebookShare = document.createElement('a');
     facebookShare.href = `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`;
@@ -470,14 +470,14 @@ function createEventCard(event) {
     facebookShare.style.cssText = 'display: inline-flex; align-items: center; gap: 4px; padding: 6px 12px; background: #1877F2; color: white; border-radius: 4px; text-decoration: none; font-size: 13px;';
     facebookShare.innerHTML = '📘 Share';
     facebookShare.title = 'Share on Facebook';
-    
+
     // Copy link
     const copyLink = document.createElement('button');
     copyLink.className = 'share-button';
     copyLink.style.cssText = 'display: inline-flex; align-items: center; gap: 4px; padding: 6px 12px; background: #666; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 13px;';
     copyLink.innerHTML = '🔗 Copy Link';
     copyLink.title = 'Copy event link';
-    copyLink.onclick = function(e) {
+    copyLink.onclick = function (e) {
         e.preventDefault();
         e.stopPropagation();
         const urlToCopy = window.location.origin + window.location.pathname + '?event=' + (event.id || event.eventid || '');
@@ -493,17 +493,51 @@ function createEventCard(event) {
             alert('Could not copy link. Please copy manually: ' + urlToCopy);
         });
     };
-    
+
     shareContainer.appendChild(twitterShare);
     shareContainer.appendChild(facebookShare);
     shareContainer.appendChild(copyLink);
+
+    // Add to Calendar Button
+    try {
+        const calStartDate = date.replace(/-/g, '') + (time ? 'T' + time.replace(/:/g, '') + '00' : '');
+        // Default to one hour duration if time provided, or next day if all day
+        let calEndDate = '';
+        if (time) {
+            const startHour = parseInt(time.split(':')[0]);
+            const endHour = (startHour + 2) % 24; // 2 hours duration
+            const endHourStr = endHour.toString().padStart(2, '0');
+            calEndDate = date.replace(/-/g, '') + 'T' + endHourStr + time.split(':')[1] + '00';
+        } else {
+            // Next day for all day event
+            const nextDay = new Date(date);
+            nextDay.setDate(nextDay.getDate() + 1);
+            calEndDate = nextDay.toISOString().split('T')[0].replace(/-/g, '');
+        }
+
+        const googleCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(name)}&dates=${calStartDate}/${calEndDate}&details=${encodeURIComponent(description + '\n\nFull details: ' + window.location.origin + window.location.pathname + '?event=' + eventId)}&location=${encodeURIComponent(location)}`;
+
+        const calButton = document.createElement('a');
+        calButton.href = googleCalUrl;
+        calButton.target = '_blank';
+        calButton.rel = 'noopener noreferrer';
+        calButton.className = 'share-button';
+        calButton.style.cssText = 'display: inline-flex; align-items: center; gap: 4px; padding: 6px 12px; background: #fff; color: #333; border: 1px solid #ddd; border-radius: 4px; text-decoration: none; font-size: 13px; margin-left: auto;'; // margin-left: auto pushes it to the right
+        calButton.innerHTML = '📅 Add to Cal';
+        calButton.title = 'Add to Google Calendar';
+
+        shareContainer.appendChild(calButton);
+    } catch (e) {
+        console.warn('Error creating calendar link', e);
+    }
+
     eventContentDiv.appendChild(shareContainer);
 
     // Add Schema.org structured data
     if (typeof document !== 'undefined') {
         const schemaScript = document.createElement('script');
         schemaScript.type = 'application/ld+json';
-        
+
         // Parse date and time
         let startDate = '';
         if (date) {
@@ -517,7 +551,7 @@ function createEventCard(event) {
                 startDate = `${year}-${month}-${day}T00:00:00`;
             }
         }
-        
+
         const schemaData = {
             "@context": "https://schema.org",
             "@type": "Event",
@@ -537,7 +571,7 @@ function createEventCard(event) {
             "eventStatus": "https://schema.org/EventScheduled",
             "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode"
         };
-        
+
         if (ticketLink) {
             schemaData.offers = {
                 "@type": "Offer",
@@ -547,7 +581,7 @@ function createEventCard(event) {
                 "availability": "https://schema.org/InStock"
             };
         }
-        
+
         schemaScript.textContent = JSON.stringify(schemaData);
         card.appendChild(schemaScript);
     }

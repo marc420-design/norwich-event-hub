@@ -20,5 +20,8 @@
   "license": "MIT",
   "dependencies": {
     "googleapis": "^169.0.0"
+  },
+  "devDependencies": {
+    "wrangler": "^4.64.0"
   }
 }

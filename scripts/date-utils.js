@@ -64,12 +64,13 @@ function formatDate(dateString) {
  * Format time for display
  */
 function formatTime(timeString) {
-    if (!timeString) return '';
+    if (!timeString || timeString.toUpperCase() === 'TBA') return '';
 
     try {
-        // Handle full ISO timestamp
+        // Handle full ISO timestamp (e.g. 2026-04-28T19:30:00)
         if (timeString.includes('T')) {
             const date = new Date(timeString);
+            if (isNaN(date.getTime())) return '';
             const hours = date.getHours();
             const minutes = String(date.getMinutes()).padStart(2, '0');
             const ampm = hours >= 12 ? 'PM' : 'AM';
@@ -77,15 +78,23 @@ function formatTime(timeString) {
             return `${displayHour}:${minutes} ${ampm}`;
         }
 
-        // Handle HH:MM format
-        const [hours, minutes] = timeString.split(':');
-        const hour = parseInt(hours);
-        const ampm = hour >= 12 ? 'PM' : 'AM';
-        const displayHour = hour % 12 || 12;
-        return `${displayHour}:${minutes} ${ampm}`;
+        // Handle HH:MM or HH:MM:SS format
+        if (timeString.includes(':')) {
+            const parts = timeString.split(':');
+            const hours = parseInt(parts[0]);
+            const minutes = parts[1] ? parts[1].substring(0, 2) : '00';
+            
+            if (isNaN(hours)) return '';
+            
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            const displayHour = hours % 12 || 12;
+            return `${displayHour}:${minutes} ${ampm}`;
+        }
+
+        return timeString; // Return as-is if no colon or T found
     } catch (error) {
         console.error('Failed to parse time:', timeString, error);
-        return timeString;
+        return '';
     }
 }
 

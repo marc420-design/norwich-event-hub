@@ -6,17 +6,16 @@ import json
 import os
 from datetime import datetime
 
-import google.generativeai as genai
+from google import genai
 
-_model = None
+_client = None
 
 
-def get_model():
-    global _model
-    if _model is None:
-        genai.configure(api_key=os.environ["GEMINI_API_KEY"])
-        _model = genai.GenerativeModel("gemini-1.5-flash")
-    return _model
+def get_client():
+    global _client
+    if _client is None:
+        _client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
+    return _client
 
 
 TODAY = datetime.utcnow().strftime("%Y-%m-%d")
@@ -68,7 +67,10 @@ def normalise_with_gemini(text: str, source_url: str, source_name: str) -> list[
     )
 
     try:
-        resp = get_model().generate_content(prompt)
+        resp = get_client().models.generate_content(
+            model="gemini-2.0-flash",
+            contents=prompt,
+        )
         raw = resp.text.strip()
 
         # Strip any accidental markdown fences

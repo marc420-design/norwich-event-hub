@@ -1,6 +1,7 @@
 """
 Gemini AI event normaliser.
 Sends cleaned page text to Gemini Flash and gets back a structured list of events.
+Tries multiple model names in order so the first available one is used.
 """
 import json
 import os
@@ -9,6 +10,17 @@ from datetime import datetime
 from google import genai
 
 _client = None
+_working_model = None
+
+# Try newest → oldest until one works for this API key
+CANDIDATE_MODELS = [
+    "gemini-2.5-flash-preview-05-20",
+    "gemini-2.5-flash",
+    "gemini-2.0-flash-lite",
+    "gemini-2.0-flash-exp",
+    "gemini-1.5-flash-latest",
+    "gemini-1.5-flash",
+]
 
 
 def get_client():
@@ -16,6 +28,23 @@ def get_client():
     if _client is None:
         _client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
     return _client
+
+
+def get_working_model() -> str:
+    """Try candidate models with a tiny test prompt and return the first that works."""
+    global _working_model
+    if _working_model:
+        return _working_model
+    client = get_client()
+    for model in CANDIDATE_MODELS:
+        try:
+            client.models.generate_content(model=model, contents="Reply with the word OK")
+            _working_model = model
+            print(f"[MODEL] Using Gemini model: {model}")
+            return model
+        except Exception as e:
+            print(f"[MODEL] {model} unavailable: {e}")
+    raise RuntimeError("No working Gemini model found for this API key.")
 
 
 TODAY = datetime.utcnow().strftime("%Y-%m-%d")
@@ -52,11 +81,10 @@ URL: {source_url}
 
 
 def normalise_with_gemini(text: str, source_url: str, source_name: str) -> list[dict]:
-    """Send page text to Gemini Flash and return a list of parsed event dicts."""
+    """Send page text to Gemini and return a list of parsed event dicts."""
     if not text or len(text.strip()) < 100:
         return []
 
-    # Trim to token budget
     trimmed = text[:8000]
 
     prompt = PROMPT_TEMPLATE.format(
@@ -67,10 +95,8 @@ def normalise_with_gemini(text: str, source_url: str, source_name: str) -> list[
     )
 
     try:
-        resp = get_client().models.generate_content(
-            model="gemini-2.0-flash",
-            contents=prompt,
-        )
+        model = get_working_model()
+        resp = get_client().models.generate_content(model=model, contents=prompt)
         raw = resp.text.strip()
 
         # Strip any accidental markdown fences
@@ -98,6 +124,9 @@ def normalise_with_gemini(text: str, source_url: str, source_name: str) -> list[
     except json.JSONDecodeError as err:
         print(f"[WARN] {source_name}: JSON parse error — {err}")
         return []
+    except RuntimeError as err:
+        print(f"[ERROR] {err}")
+        raise
     except Exception as err:
         print(f"[WARN] {source_name}: Gemini failed — {err}")
         return []

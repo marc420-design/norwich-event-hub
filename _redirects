@@ -1,13 +1,4 @@
-# Cloudflare Pages Redirects
-# Redirect www to non-www (optional - customize as needed)
-
-# Force HTTPS (Cloudflare handles this automatically, but good to be explicit)
-http://norwicheventshub.com/* https://norwicheventshub.com/:splat 301!
-http://www.norwicheventshub.com/* https://norwicheventshub.com/:splat 301!
-
-# Redirect www to non-www
-https://www.norwicheventshub.com/* https://norwicheventshub.com/:splat 301!
-
-# Admin page routing (handled by middleware and direct access to admin.html)
-# /admin /admin.html 200 (Removed to prevent loops)
-
+# Temporarily disabled redirects to fix ERR_TOO_MANY_REDIRECTS
+# http://norwicheventshub.com/* https://norwicheventshub.com/:splat 301!
+# http://www.norwicheventshub.com/* https://norwicheventshub.com/:splat 301!
+# https://www.norwicheventshub.com/* https://norwicheventshub.com/:splat 301!

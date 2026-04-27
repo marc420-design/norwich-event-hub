@@ -1,4 +1,4 @@
-botasaurus
+requests
 google-generativeai
 beautifulsoup4
 lxml

@@ -3,7 +3,6 @@ name: Daily Event Scrape (Botasaurus + Claude AI)
 # Runs every morning at 7am UTC (8am BST) to catch overnight additions
 # Also runnable manually from the GitHub Actions tab for testing
 on:
-  # Run automatically every Monday at 6 AM UTC
   schedule:
     - cron: '0 7 * * *'
   workflow_dispatch:
@@ -25,19 +24,10 @@ jobs:
           python-version: '3.11'
           cache: pip
 
-      # Botasaurus browser mode uses Chromium — install it first
-      - name: Install Google Chrome
-        run: |
-          wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-          sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" \
-            >> /etc/apt/sources.list.d/google.list'
-          sudo apt-get update -qq
-          sudo apt-get install -y google-chrome-stable
-
       - name: Install Python dependencies
         run: pip install -r automation/botasaurus_scraper/requirements.txt
 
-      - name: Run Botasaurus scraper
+      - name: Run scraper
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: python automation/botasaurus_scraper/main.py

@@ -97,6 +97,23 @@
         </div>
     </section>
 
+    <!-- AI Freshness Indicator -->
+    <div id="freshness-bar" style="display:none; text-align:center; font-size:0.75rem; color:#888; padding:6px 0 4px; background:rgba(58,184,255,0.04); border-bottom:1px solid rgba(58,184,255,0.1);">
+      Events updated: <span id="last-updated-time">–</span>
+      &nbsp;<span style="background:rgba(58,184,255,0.15); color:#3AB8FF; font-size:0.65rem; padding:2px 8px; border-radius:10px; border:1px solid rgba(58,184,255,0.3);">AI Discovered</span>
+    </div>
+    <script>
+    window.addEventListener('eventsMetadata', function(e) {
+      var bar = document.getElementById('freshness-bar');
+      var ts  = document.getElementById('last-updated-time');
+      if (bar && ts && e.detail.generated_at) {
+        var d = new Date(e.detail.generated_at);
+        ts.textContent = d.toLocaleDateString('en-GB', {day:'numeric', month:'short', hour:'2-digit', minute:'2-digit'});
+        bar.style.display = 'block';
+      }
+    });
+    </script>
+
     <!-- Featured This Week -->
     <section class="featured-events section-featured-week" style="background: linear-gradient(135deg, rgba(58, 184, 255, 0.05) 0%, rgba(43, 122, 71, 0.05) 100%);">
         <div class="container">
@@ -416,6 +433,7 @@
     
     <script src="scripts/config.js?v=20260113f"></script>
     <script defer src="scripts/date-utils.js?v=20260113f"></script>
+    <script defer src="scripts/agent-bridge.js?v=20260201"></script>
     <script defer src="scripts/force-reload.js?v=20260113f"></script>
     <script defer src="scripts/main.js?v=20260113f"></script>
     <script defer src="scripts/api.js?v=20260113f"></script>

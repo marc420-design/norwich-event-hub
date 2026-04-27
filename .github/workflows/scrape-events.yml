@@ -1,83 +1,71 @@
-name: AI Event Scraper
+name: Daily Event Scrape (Botasaurus + Claude AI)
 
-# Schedule: Run once daily
+# Runs every morning at 7am UTC (8am BST) to catch overnight additions
+# Also runnable manually from the GitHub Actions tab for testing
 on:
   schedule:
-    # Runs at 06:00 UTC daily (1am EST / 10pm PST)
-    - cron: '0 6 * * *'
-  
-  # Allow manual triggering
+    - cron: '0 7 * * *'
   workflow_dispatch:
-    inputs:
-      force_run:
-        description: 'Force run even if recently executed'
-        required: false
-        default: 'false'
 
-# Environment variables (use GitHub Secrets for sensitive values)
-env:
-  PYTHON_VERSION: '3.11'
+permissions:
+  contents: write   # needed to commit exports/events.json back to the repo
 
 jobs:
-  scrape-and-update:
+  scrape:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Set up Python
+      - name: Set up Python 3.11
         uses: actions/setup-python@v5
         with:
-          python-version: ${{ env.PYTHON_VERSION }}
-          cache: 'pip'
+          python-version: '3.11'
+          cache: pip
 
-      - name: Install dependencies
+      # Botasaurus browser mode uses Chromium — install it first
+      - name: Install Google Chrome
         run: |
-          cd automation
-          pip install -r requirements.txt
+          wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+          sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" \
+            >> /etc/apt/sources.list.d/google.list'
+          sudo apt-get update -qq
+          sudo apt-get install -y google-chrome-stable
 
-      - name: Create credentials file
-        run: |
-          cd automation
-          echo '${{ secrets.GOOGLE_SHEETS_CREDENTIALS }}' > google-credentials.json
+      - name: Install Python dependencies
+        run: pip install -r automation/botasaurus_scraper/requirements.txt
 
-      - name: Run AI Event Aggregator
+      - name: Run Botasaurus scraper
         env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
-          GOOGLE_SHEETS_CREDENTIALS: './google-credentials.json'
-          SCRAPE_DAYS_AHEAD: 365
-          MIN_QUALITY_SCORE: 50
-          AUTO_APPROVE_THRESHOLD: 60
-          NORWICH_RADIUS_KM: 15
-        run: |
-          cd automation
-          python ai-event-aggregator.py
+        run: python automation/botasaurus_scraper/main.py
 
-      - name: Save events to JSON (optional backup)
+      # Only commit if we got a meaningful number of events.
+      # If all sources fail, keep the previous exports/events.json intact.
+      - name: Commit fresh events.json (if sufficient events found)
         run: |
-          # If aggregator creates output file, commit it
-          if [ -f "automation/events_output.json" ]; then
-            cp automation/events_output.json data/latest-scraped-events.json
-            git config user.name "GitHub Actions Bot"
-            git config user.email "actions@github.com"
-            git add data/latest-scraped-events.json
-            git diff --quiet && git diff --staged --quiet || git commit -m "🤖 Auto-update: Scraped events $(date +'%Y-%m-%d %H:%M UTC')"
-            # Uncomment to push back to repo (optional):
-            # git push
+          COUNT=$(python -c "
+          import json, sys
+          try:
+              d = json.load(open('exports/events.json'))
+              print(d.get('count', 0))
+          except Exception:
+              print(0)
+          " 2>/dev/null || echo "0")
+
+          echo "Events found: $COUNT"
+
+          if [ "$COUNT" -gt "5" ]; then
+            git config user.name  "Norwich Events Bot"
+            git config user.email "bot@norwicheventshub.com"
+            git add exports/events.json
+            git diff --staged --quiet \
+              || git commit -m "chore: daily event refresh $(date -u +'%Y-%m-%d %H:%M UTC') — ${COUNT} events"
+            git push
+            echo "✓ Committed and pushed $COUNT events"
+          else
+            echo "⚠ Only $COUNT events found — keeping previous exports/events.json"
           fi
-
-      - name: Cleanup credentials
-        if: always()
-        run: |
-          rm -f automation/google-credentials.json
-
-      - name: Summary
-        run: |
-          echo "✅ Event scraping complete!"
-          echo "Events have been uploaded to Google Sheets"
-          echo "Google Sheet ID: ${{ secrets.GOOGLE_SHEET_ID }}"

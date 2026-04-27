@@ -1,0 +1,4 @@
+botasaurus
+google-generativeai
+beautifulsoup4
+lxml

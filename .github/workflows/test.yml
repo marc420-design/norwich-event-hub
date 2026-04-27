@@ -1,0 +1,45 @@
+# Builder Loop — CI test gate
+# Runs on push/PR; fails if tests fail.
+# Node: npm ci, then npm run test:ci (if exists) or npm run test.
+# Python: pip install -r requirements.txt, pytest.
+
+name: Test
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Node tests
+        if: hashFiles('package.json') != ''
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: npm ci and test
+        if: hashFiles('package.json') != ''
+        run: |
+          if [ -f package-lock.json ]; then npm ci; else npm install; fi
+          npm run test:ci 2>/dev/null || npm run test
+
+      - name: Python tests
+        if: hashFiles('requirements.txt') != ''
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: pip install and pytest
+        if: hashFiles('requirements.txt') != ''
+        run: |
+          pip install -r requirements.txt
+          pip install pytest
+          python -m pytest

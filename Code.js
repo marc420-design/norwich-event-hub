@@ -21,6 +21,29 @@ const EMAIL_FROM = 'events@norwicheventshub.com';
 const SHEET_ID = '1wdh2VOlZ8gp0hwFpFV6cVpDDmaMxGs48eCDqoFFZTcU';
 
 /**
+ * Handle OPTIONS request (CORS preflight)
+ */
+function doOptions(e) {
+  const output = ContentService.createTextOutput('');
+  output.setMimeType(ContentService.MimeType.JSON);
+
+  // Add CORS headers
+  const headers = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization, Cache-Control, Pragma',
+    'Access-Control-Max-Age': '86400'
+  };
+
+  // Set headers
+  Object.keys(headers).forEach(key => {
+    output.addHeader(key, headers[key]);
+  });
+
+  return output;
+}
+
+/**
  * Handle POST request from event submission form or admin actions
  */
 function doPost(e) {
@@ -29,14 +52,19 @@ function doPost(e) {
 
     // Check if this is an admin action
     if (data.action === 'updateStatus') {
-      return updateEventStatus(data.eventId, data.status);
+      return updateEventStatus(data.eventId, data.status, data.editorsChoice);
+    }
+
+    // Check if this is a manual scraper trigger
+    if (data.action === 'triggerScraper') {
+      return triggerGitHubScraper(data.githubToken);
     }
 
     // Otherwise, treat as event submission
     // Get the spreadsheet by ID (required for web app deployments)
     const ss = SpreadsheetApp.openById(SHEET_ID);
     let sheet = ss.getSheetByName(SHEET_NAME);
-    
+
     // Create sheet if it doesn't exist
     if (!sheet) {
       sheet = ss.insertSheet(SHEET_NAME);
@@ -59,360 +87,309 @@ function doPost(e) {
         'Promoter Email',
         'Promoter Phone',
         'Status',
-        'Event ID'
+        'Event ID',
+        'Editor\'s Choice'
       ]);
       // Format header row
-      const headerRange = sheet.getRange(1, 1, 1, 18);
+      const headerRange = sheet.getRange(1, 1, 1, 19);
       headerRange.setFontWeight('bold');
       headerRange.setBackground('#3AB8FF');
       headerRange.setFontColor('#FFFFFF');
     }
-    
+
     // Generate unique event ID
-    const eventId = generateEventId();
-    
-    // Prepare row data
-    const rowData = [
-      new Date(), // Timestamp
-      data.name || '',
+    const timestamp = new Date().toISOString().split('T')[0].replace(/-/g, '');
+    const lastRow = sheet.getLastRow();
+    const eventId = 'EVT-' + timestamp + '-' + (lastRow + 1);
+
+    // Append data to sheet
+    sheet.appendRow([
+      new Date(),
+      data.eventname || data.name || '',
       data.date || '',
       data.time || '',
       data.location || '',
       data.category || '',
       data.description || '',
-      data.ticketLink || '',
+      data.ticketlink || data.ticketLink || '',
       data.price || '',
-      data.imageUrl || '', // Image URL (uploaded separately)
+      data.imageurl || data.image || '',
       data.vibe || '',
-      data.crowdType || '',
-      data.bestFor || '',
-      data.promoterName || '',
-      data.promoterEmail || '',
-      data.promoterPhone || '',
-      'Pending', // Status
-      eventId
-    ];
-    
-    // Append row to sheet
-    sheet.appendRow(rowData);
-    
-    // Send confirmation email
-    sendConfirmationEmail(data, eventId);
-    
+      data.crowdtype || '',
+      data.bestfor || '',
+      data.promotername || '',
+      data.promoteremail || '',
+      data.promoterphone || '',
+      'Pending',  // Default status
+      eventId,
+      false  // Editor's Choice default
+    ]);
+
+    // Send notification email (optional)
+    try {
+      const subject = 'New Event Submission: ' + (data.eventname || data.name);
+      const body = `
+New event submitted to Norwich Event Hub:
+
+Event: ${data.eventname || data.name}
+Date: ${data.date}
+Time: ${data.time}
+Location: ${data.location}
+Category: ${data.category}
+
+Description: ${data.description}
+
+Ticket Link: ${data.ticketlink || data.ticketLink}
+Price: ${data.price}
+
+Promoter: ${data.promotername}
+Email: ${data.promoteremail}
+Phone: ${data.promoterphone}
+
+Event ID: ${eventId}
+Status: Pending Review
+
+---
+Review and approve this event at: https://norwicheventshub.com/admin
+      `;
+
+      MailApp.sendEmail(EMAIL_TO, subject, body);
+    } catch (error) {
+      // Email sending is optional, don't fail the whole request
+      console.error('Failed to send notification email:', error);
+    }
+
     // Return success response
-    return ContentService.createTextOutput(JSON.stringify({
+    const output = ContentService.createTextOutput(JSON.stringify({
       success: true,
-      message: 'Event submitted successfully',
-      eventId: eventId
-    })).setMimeType(ContentService.MimeType.JSON);
-    
+      eventId: eventId,
+      message: 'Event submitted successfully! Our team will review it shortly.'
+    }));
+    output.setMimeType(ContentService.MimeType.JSON);
+
+    // Add CORS headers
+    output.addHeader('Access-Control-Allow-Origin', '*');
+    output.addHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+    output.addHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+    return output;
+
   } catch (error) {
     // Return error response
-    return ContentService.createTextOutput(JSON.stringify({
+    const output = ContentService.createTextOutput(JSON.stringify({
       success: false,
       message: 'Error submitting event: ' + error.toString()
-    })).setMimeType(ContentService.MimeType.JSON);
+    }));
+    output.setMimeType(ContentService.MimeType.JSON);
+
+    // Add CORS headers even for errors
+    output.addHeader('Access-Control-Allow-Origin', '*');
+    output.addHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+    output.addHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+    return output;
   }
 }
 
 /**
- * Handle GET request (for retrieving events)
+ * Handle GET request - Return all events
  */
 function doGet(e) {
   try {
-    const params = e.parameter || {};
-    const action = params.action;
-
-    // If action is getAllEvents, return all events including pending (for admin)
-    if (action === 'getAllEvents') {
-      return getAllEvents();
-    }
-
-    // Default: return only approved events (for public site)
     const ss = SpreadsheetApp.openById(SHEET_ID);
     const sheet = ss.getSheetByName(SHEET_NAME);
 
     if (!sheet) {
-      return ContentService.createTextOutput(JSON.stringify({
+      return createJsonResponse({
         success: false,
-        message: 'Sheet not found'
-      })).setMimeType(ContentService.MimeType.JSON);
+        message: 'Sheet not found',
+        events: []
+      });
     }
 
+    // Get all data
     const data = sheet.getDataRange().getValues();
     const headers = data[0];
-    const events = [];
+    const rows = data.slice(1);
 
-    // Convert rows to objects (skip header row)
-    for (let i = 1; i < data.length; i++) {
+    // Convert to array of objects
+    const events = rows.map(row => {
       const event = {};
       headers.forEach((header, index) => {
-        event[header.toLowerCase().replace(/\s+/g, '')] = data[i][index];
+        // Normalize header names
+        let key = header.toLowerCase().replace(/['\s]/g, '');
+        if (key === 'eventname') key = 'name';
+        if (key === 'ticketlink') key = 'ticketLink';
+        if (key === 'imageurl') key = 'image';
+        if (key === 'eventid') key = 'id';
+        if (key === 'editorschoice') key = 'featured';
+
+        event[key] = row[index];
       });
+      return event;
+    }).filter(event => {
+      // Only return approved events with future dates
+      if (event.status !== 'Approved') return false;
 
-      // Normalize field names for frontend compatibility
-      if (event.eventname) {
-        event.name = event.eventname;
+      // Check if event date is in the future
+      try {
+        const eventDate = new Date(event.date);
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        return eventDate >= today;
+      } catch (e) {
+        return false;
       }
-      if (event.ticketlink) {
-        event.ticketLink = event.ticketlink;
-      }
-      if (event.eventdate) {
-        event.date = event.eventdate;
-      }
-      if (event.imageurl) {
-        event.image = event.imageurl;
-      }
+    });
 
-      // Check for AI-discovered events based on ID
-      if (event.eventid && String(event.eventid).startsWith('AI-')) {
-        event.isAiDiscovered = true;
-      }
+    // Sort by date (earliest first)
+    events.sort((a, b) => {
+      const dateA = new Date(a.date);
+      const dateB = new Date(b.date);
+      return dateA - dateB;
+    });
 
-      // Only return approved events
-      if (event.status && event.status.toLowerCase() === 'approved') {
-        events.push(event);
-      }
-    }
-
-    return ContentService.createTextOutput(JSON.stringify({
+    return createJsonResponse({
       success: true,
-      events: events
-    })).setMimeType(ContentService.MimeType.JSON);
+      events: events,
+      total: events.length,
+      lastUpdated: new Date().toISOString()
+    });
 
   } catch (error) {
-    return ContentService.createTextOutput(JSON.stringify({
+    return createJsonResponse({
       success: false,
-      message: 'Error retrieving events: ' + error.toString()
-    })).setMimeType(ContentService.MimeType.JSON);
+      message: 'Error fetching events: ' + error.toString(),
+      events: []
+    });
   }
 }
 
 /**
- * Get ALL events (including pending) - for admin dashboard
+ * Update event status (Approved/Pending/Rejected)
  */
-function getAllEvents() {
+function updateEventStatus(eventId, status, editorsChoice) {
   try {
     const ss = SpreadsheetApp.openById(SHEET_ID);
     const sheet = ss.getSheetByName(SHEET_NAME);
 
     if (!sheet) {
-      return ContentService.createTextOutput(JSON.stringify({
+      return createJsonResponse({
         success: false,
         message: 'Sheet not found'
-      })).setMimeType(ContentService.MimeType.JSON);
-    }
-
-    const data = sheet.getDataRange().getValues();
-    const headers = data[0];
-    const events = [];
-
-    // Convert rows to objects (skip header row)
-    for (let i = 1; i < data.length; i++) {
-      const event = {};
-      headers.forEach((header, index) => {
-        event[header.toLowerCase().replace(/\s+/g, '')] = data[i][index];
       });
-
-      // Normalize field names for frontend compatibility
-      if (event.eventname) {
-        event.name = event.eventname;
-      }
-      if (event.ticketlink) {
-        event.ticketLink = event.ticketlink;
-      }
-      if (event.eventdate) {
-        event.date = event.eventdate;
-      }
-      if (event.imageurl) {
-        event.image = event.imageurl;
-      }
-
-      // Check for AI-discovered events based on ID
-      if (event.eventid && String(event.eventid).startsWith('AI-')) {
-        event.isAiDiscovered = true;
-      }
-
-      // Return ALL events (don't filter by status)
-      events.push(event);
     }
 
-    return ContentService.createTextOutput(JSON.stringify({
-      success: true,
-      events: events
-    })).setMimeType(ContentService.MimeType.JSON);
-
-  } catch (error) {
-    return ContentService.createTextOutput(JSON.stringify({
-      success: false,
-      message: 'Error retrieving events: ' + error.toString()
-    })).setMimeType(ContentService.MimeType.JSON);
-  }
-}
-
-/**
- * Generate unique event ID
- */
-function generateEventId() {
-  const timestamp = Date.now();
-  const random = Math.floor(Math.random() * 1000);
-  return 'NEH-' + timestamp + '-' + random;
-}
-
-/**
- * Send confirmation email to promoter
- */
-function sendConfirmationEmail(data, eventId) {
-  const subject = 'Event Submission Received - Norwich Event Hub';
-  const body = `
-Thank you for submitting your event to Norwich Event Hub!
-
-Event Details:
-- Event Name: ${data.name}
-- Date: ${data.date}
-- Time: ${data.time}
-- Location: ${data.location}
-- Category: ${data.category}
-
-Your event has been received and is pending review. You will receive another email once your event has been approved and published.
-
-Event ID: ${eventId}
-
-If you have any questions, please contact us at submit@norwicheventshub.com
-
-Best regards,
-Norwich Event Hub Team
-  `;
-  
-  try {
-    MailApp.sendEmail({
-      to: data.promoterEmail,
-      subject: subject,
-      body: body,
-      name: 'Norwich Event Hub'
-    });
-  } catch (error) {
-    Logger.log('Error sending email: ' + error.toString());
-  }
-}
-
-/**
- * Manual function to approve an event (can be triggered from sheet)
- */
-function approveEvent(eventId) {
-  const ss = SpreadsheetApp.getActiveSpreadsheet();
-  const sheet = ss.getSheetByName(SHEET_NAME);
-  
-  if (!sheet) return;
-  
-  const data = sheet.getDataRange().getValues();
-  const eventIdColumn = 12; // Column M (0-indexed)
-  
-  for (let i = 1; i < data.length; i++) {
-    if (data[i][eventIdColumn] === eventId) {
-      const statusColumn = 11; // Column L
-      sheet.getRange(i + 1, statusColumn + 1).setValue('Approved');
-      
-      // Send approval email
-      const promoterEmail = data[i][9]; // Column J
-      sendApprovalEmail(promoterEmail, data[i][1]); // Event name
-      break;
-    }
-  }
-}
-
-/**
- * Send approval email
- */
-function sendApprovalEmail(email, eventName) {
-  const subject = 'Your Event Has Been Approved - Norwich Event Hub';
-  const body = `
-Great news! Your event "${eventName}" has been approved and is now live on Norwich Event Hub!
-
-You can view it at: https://norwicheventshub.com/directory.html
-
-Thank you for being part of the Norwich event community!
-
-Best regards,
-Norwich Event Hub Team
-  `;
-
-  try {
-    MailApp.sendEmail({
-      to: email,
-      subject: subject,
-      body: body,
-      name: 'Norwich Event Hub'
-    });
-  } catch (error) {
-    Logger.log('Error sending approval email: ' + error.toString());
-  }
-}
-
-/**
- * Update event status (Approve/Reject) - called from admin dashboard
- */
-function updateEventStatus(eventId, newStatus) {
-  try {
-    const ss = SpreadsheetApp.openById(SHEET_ID);
-    const sheet = ss.getSheetByName(SHEET_NAME);
-
-    if (!sheet) {
-      return ContentService.createTextOutput(JSON.stringify({
-        success: false,
-        message: 'Sheet not found'
-      })).setMimeType(ContentService.MimeType.JSON);
-    }
-
+    // Find the event by ID
     const data = sheet.getDataRange().getValues();
     const headers = data[0];
+    const eventIdCol = headers.indexOf('Event ID');
+    const statusCol = headers.indexOf('Status');
+    const editorsChoiceCol = headers.indexOf('Editor\'s Choice');
 
-    // Find the column indices
-    const eventIdColumn = headers.indexOf('Event ID');
-    const statusColumn = headers.indexOf('Status');
-    const promoterEmailColumn = headers.indexOf('Promoter Email');
-    const eventNameColumn = headers.indexOf('Event Name');
-
-    if (eventIdColumn === -1 || statusColumn === -1) {
-      return ContentService.createTextOutput(JSON.stringify({
+    if (eventIdCol === -1 || statusCol === -1) {
+      return createJsonResponse({
         success: false,
-        message: 'Required columns not found in sheet'
-      })).setMimeType(ContentService.MimeType.JSON);
+        message: 'Required columns not found'
+      });
     }
 
-    // Find the event row
+    // Find the row
     for (let i = 1; i < data.length; i++) {
-      if (data[i][eventIdColumn] === eventId) {
+      if (data[i][eventIdCol] === eventId) {
         // Update status
-        sheet.getRange(i + 1, statusColumn + 1).setValue(newStatus);
+        sheet.getRange(i + 1, statusCol + 1).setValue(status);
 
-        // Send approval email if approved
-        if (newStatus.toLowerCase() === 'approved' && promoterEmailColumn !== -1) {
-          const promoterEmail = data[i][promoterEmailColumn];
-          const eventName = data[i][eventNameColumn];
-          if (promoterEmail) {
-            sendApprovalEmail(promoterEmail, eventName);
-          }
+        // Update Editor's Choice if column exists
+        if (editorsChoiceCol !== -1 && editorsChoice !== undefined) {
+          sheet.getRange(i + 1, editorsChoiceCol + 1).setValue(editorsChoice);
         }
 
-        return ContentService.createTextOutput(JSON.stringify({
+        return createJsonResponse({
           success: true,
           message: 'Event status updated successfully'
-        })).setMimeType(ContentService.MimeType.JSON);
+        });
       }
     }
 
-    // Event not found
-    return ContentService.createTextOutput(JSON.stringify({
+    return createJsonResponse({
       success: false,
       message: 'Event not found'
-    })).setMimeType(ContentService.MimeType.JSON);
+    });
 
   } catch (error) {
-    return ContentService.createTextOutput(JSON.stringify({
+    return createJsonResponse({
       success: false,
       message: 'Error updating event status: ' + error.toString()
-    })).setMimeType(ContentService.MimeType.JSON);
+    });
   }
 }
 
+/**
+ * Trigger GitHub Actions scraper workflow
+ */
+function triggerGitHubScraper(githubToken) {
+  try {
+    if (!githubToken) {
+      return createJsonResponse({
+        success: false,
+        message: 'GitHub token required'
+      });
+    }
+
+    // GitHub API endpoint to trigger workflow
+    const owner = 'marc420-design';
+    const repo = 'norwich-event-hub';
+    const workflowId = 'scrape-events.yml';
+    const url = `https://api.github.com/repos/${owner}/${repo}/actions/workflows/${workflowId}/dispatches`;
+
+    const options = {
+      method: 'post',
+      headers: {
+        'Authorization': `Bearer ${githubToken}`,
+        'Accept': 'application/vnd.github.v3+json',
+        'Content-Type': 'application/json'
+      },
+      payload: JSON.stringify({
+        ref: 'master'
+      }),
+      muteHttpExceptions: true
+    };
+
+    const response = UrlFetchApp.fetch(url, options);
+    const responseCode = response.getResponseCode();
+
+    if (responseCode === 204) {
+      return createJsonResponse({
+        success: true,
+        message: 'Scraper triggered successfully! Check GitHub Actions for progress.'
+      });
+    } else {
+      return createJsonResponse({
+        success: false,
+        message: `GitHub API returned status ${responseCode}: ${response.getContentText()}`
+      });
+    }
+
+  } catch (error) {
+    return createJsonResponse({
+      success: false,
+      message: 'Error triggering scraper: ' + error.toString()
+    });
+  }
+}
+
+/**
+ * Helper function to create JSON response with CORS headers
+ */
+function createJsonResponse(data) {
+  const output = ContentService.createTextOutput(JSON.stringify(data));
+  output.setMimeType(ContentService.MimeType.JSON);
+
+  // Add CORS headers
+  output.addHeader('Access-Control-Allow-Origin', '*');
+  output.addHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  output.addHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  return output;
+}

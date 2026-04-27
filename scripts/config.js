@@ -12,8 +12,8 @@
  */
 
 const APP_CONFIG = {
-    // Google Apps Script Web App URL - ✅ CONFIGURED (Version 8 - CLI Deployed)
-    GOOGLE_APPS_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbwUqbC7ZkAqO5w0POhRd_hBDBPrZDKV0I_K43lmdKbLrL0rjAAoEYwgZpc_xuzs1x0M/exec',
+    // Google Apps Script Web App URL - ✅ CONFIGURED (Version 31 - Emergency Fix Feb 10, 2026)
+    GOOGLE_APPS_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbzNcW9XXg_t7pzIKKqrPio-B5oXbJJw0Fq6w4VYMp4LTgxe6PD4V4yNw_inEIDMO7u6/exec',
 
     // Google Sheet ID - ✅ CONFIGURED
     GOOGLE_SHEET_ID: '1wdh2VOlZ8gp0hwFpFV6cVpDDmaMxGs48eCDqoFFZTcU',
@@ -35,8 +35,8 @@ const APP_CONFIG = {
         tiktok: '@norwicheventshub'
     },
 
-    // Analytics configuration (optional)
-    // GA_MEASUREMENT_ID: 'G-XXXXXXXXXX',  // Uncomment and add your GA4 ID
+    // Analytics configuration
+    GA_MEASUREMENT_ID: 'G-K998PWHHE4',  // ✅ GA4 Configured - Norwich Event Hub
 
     // Newsletter configuration (optional)
     // NEWSLETTER_ENDPOINT: 'https://your-newsletter-service.com/api/subscribe',  // Uncomment and add endpoint

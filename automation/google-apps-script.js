@@ -30,7 +30,7 @@ function doPost(e) {
     // Get the spreadsheet by ID (required for web app deployments)
     const ss = SpreadsheetApp.openById(SHEET_ID);
     let sheet = ss.getSheetByName(SHEET_NAME);
-    
+
     // Create sheet if it doesn't exist
     if (!sheet) {
       sheet = ss.insertSheet(SHEET_NAME);
@@ -56,10 +56,10 @@ function doPost(e) {
       headerRange.setBackground('#3AB8FF');
       headerRange.setFontColor('#FFFFFF');
     }
-    
+
     // Generate unique event ID
     const eventId = generateEventId();
-    
+
     // Prepare row data
     const rowData = [
       new Date(), // Timestamp
@@ -76,20 +76,20 @@ function doPost(e) {
       'Pending', // Status
       eventId
     ];
-    
+
     // Append row to sheet
     sheet.appendRow(rowData);
-    
+
     // Send confirmation email
     sendConfirmationEmail(data, eventId);
-    
+
     // Return success response
     return ContentService.createTextOutput(JSON.stringify({
       success: true,
       message: 'Event submitted successfully',
       eventId: eventId
     })).setMimeType(ContentService.MimeType.JSON);
-    
+
   } catch (error) {
     // Return error response
     return ContentService.createTextOutput(JSON.stringify({
@@ -102,22 +102,26 @@ function doPost(e) {
 /**
  * Handle GET request (for testing or retrieving events)
  */
+/**
+ * Handle GET request (for testing or retrieving events)
+ */
 function doGet(e) {
   try {
     const ss = SpreadsheetApp.openById(SHEET_ID);
     const sheet = ss.getSheetByName(SHEET_NAME);
-    
+
     if (!sheet) {
       return ContentService.createTextOutput(JSON.stringify({
         success: false,
         message: 'Sheet not found'
       })).setMimeType(ContentService.MimeType.JSON);
     }
-    
+
     const data = sheet.getDataRange().getValues();
     const headers = data[0];
     const events = [];
-    
+    const action = e.parameter.action; // Get action parameter
+
     // Convert rows to objects (skip header row)
     for (let i = 1; i < data.length; i++) {
       const event = {};
@@ -125,36 +129,34 @@ function doGet(e) {
         event[header.toLowerCase().replace(/\s+/g, '')] = data[i][index];
       });
 
-      // Normalize field names for frontend compatibility
-      if (event.eventname) {
-        event.name = event.eventname;
-      }
-      if (event.ticketlink) {
-        event.ticketLink = event.ticketlink;
-      }
-      if (event.eventdate) {
-        event.date = event.eventdate;
-      }
-      if (event.imageurl) {
-        event.image = event.imageurl;
-      }
+      // Normalize field names
+      if (event.eventname) event.name = event.eventname;
+      if (event.ticketlink) event.ticketLink = event.ticketlink;
+      if (event.eventdate) event.date = event.eventdate;
+      if (event.imageurl) event.image = event.imageurl;
 
       // Check for AI-discovered events based on ID
-      if (event.eventid && String(event.eventid).startsWith('AI-')) {
+      if (event.eventid && String(event.eventid).startsWith('NEH-')) {
         event.isAiDiscovered = true;
       }
 
-      // Only return approved events
-      if (event.status && event.status.toLowerCase() === 'approved') {
+      // LOGIC CHANGE:
+      // If action is 'getAllEvents', return EVERYTHING (for Admin).
+      // Otherwise, return ONLY 'Approved' (for Public Site).
+      if (action === 'getAllEvents') {
         events.push(event);
+      } else {
+        if (event.status && event.status.toLowerCase() === 'approved') {
+          events.push(event);
+        }
       }
     }
-    
+
     return ContentService.createTextOutput(JSON.stringify({
       success: true,
       events: events
     })).setMimeType(ContentService.MimeType.JSON);
-    
+
   } catch (error) {
     return ContentService.createTextOutput(JSON.stringify({
       success: false,
@@ -196,7 +198,7 @@ If you have any questions, please contact us at submit@norwicheventshub.com
 Best regards,
 Norwich Event Hub Team
   `;
-  
+
   try {
     MailApp.sendEmail({
       to: data.promoterEmail,
@@ -215,17 +217,17 @@ Norwich Event Hub Team
 function approveEvent(eventId) {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   const sheet = ss.getSheetByName(SHEET_NAME);
-  
+
   if (!sheet) return;
-  
+
   const data = sheet.getDataRange().getValues();
   const eventIdColumn = 12; // Column M (0-indexed)
-  
+
   for (let i = 1; i < data.length; i++) {
     if (data[i][eventIdColumn] === eventId) {
       const statusColumn = 11; // Column L
       sheet.getRange(i + 1, statusColumn + 1).setValue('Approved');
-      
+
       // Send approval email
       const promoterEmail = data[i][9]; // Column J
       sendApprovalEmail(promoterEmail, data[i][1]); // Event name
@@ -249,7 +251,7 @@ Thank you for being part of the Norwich event community!
 Best regards,
 Norwich Event Hub Team
   `;
-  
+
   try {
     MailApp.sendEmail({
       to: email,

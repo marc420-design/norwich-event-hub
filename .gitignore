@@ -83,3 +83,8 @@ get-service-account-email.bat
 run-ai-aggregator.bat
 run-ai-aggregator.sh
 
+# Builder Loop derived state
+.verify.ok
+PLAN.hash
+ACCEPTANCE.hash
+

@@ -180,65 +180,96 @@ async function scrapeEvents() {
     const status = document.getElementById('scraperStatus');
     const list = document.getElementById('scrapedEventsList');
 
+    // Show loading state
     progress.style.display = 'block';
-    status.style.display = 'none';
+    status.style.display = 'block';
+    status.innerHTML = '<p style="text-align: center; padding: 2rem; color: #666;">🤖 Scraping events from ticket platforms...</p>';
+    list.innerHTML = '';
 
     try {
-        // Fetch REAL pending events from API
-        const response = await fetch(APP_CONFIG.GOOGLE_APPS_SCRIPT_URL + '?action=getAllEvents');
+        // Call the Cloudflare Pages Function to scrape events
+        const response = await fetch('/scrape-events', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
         const data = await response.json();
 
-        if (data.success) {
-            // Filter for pending events only
-            scrapedEvents = (data.events || [])
-                .filter(e => e.status && e.status.toLowerCase() === 'pending')
-                .map(e => ({
-                    name: e.eventname || e.name || '',
-                    date: e.date || e.eventdate || '',
-                    time: e.time || '19:00',
-                    location: e.location || '',
-                    category: e.category || 'Mixed',
-                    description: e.description || '',
-                    price: e.price || 'See website',
-                    ticketLink: e.ticketlink || e.ticketLink || '',
-                    source: e.promotername || 'Unknown',
-                    eventId: e.eventid || e.eventId || '',
-                    flyer: e.imageurl || e.image || '',
-                    vibe: e.vibe || 'Commercial',
-                    crowd: e.crowd || 'All ages',
-                    bestFor: e.bestFor || 'Everyone'
-                }));
+        // Hide loading
+        progress.style.display = 'none';
 
-            progress.style.display = 'none';
-            status.style.display = 'block';
+        if (data.success && data.events && data.events.length > 0) {
+            // Store scraped events in global array
+            scrapedEvents = data.events;
 
-            if (scrapedEvents.length > 0) {
-                status.innerHTML = `
-                    <strong>✅ Found ${scrapedEvents.length} pending events</strong><br>
-                    Review and approve events below. Events will go live on your website after approval.
-                `;
-            } else {
-                status.innerHTML = `
-                    <strong>ℹ️ No pending events found</strong><br>
-                    Run <code>python automation/live-web-scraper.py</code> to discover new events from Norwich venues.
-                `;
-            }
+            // Show success message with stats
+            status.innerHTML = `
+                <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem; text-align: center;">
+                    <h3 style="margin: 0 0 0.5rem 0;">✅ Found ${data.stats.total} Events!</h3>
+                    <p style="margin: 0; opacity: 0.9; font-size: 0.9rem;">
+                        ${Object.entries(data.stats.bySource).map(([source, count]) =>
+                            count > 0 ? `${source}: ${count}` : ''
+                        ).filter(Boolean).join(' • ')}
+                    </p>
+                    <p style="margin: 0.5rem 0 0 0; opacity: 0.8; font-size: 0.85rem;">
+                        Scraped in ${(data.stats.duration / 1000).toFixed(1)}s
+                    </p>
+                </div>
+            `;
 
+            // Render the events using existing function
             renderScrapedEvents();
+
+        } else if (data.success && data.events.length === 0) {
+            // No events found
+            status.innerHTML = `
+                <div style="background: #fef3c7; border-left: 4px solid #f59e0b; padding: 1.5rem; border-radius: 8px;">
+                    <h4 style="margin: 0 0 0.5rem 0; color: #92400e;">⚠️ No Events Found</h4>
+                    <p style="margin: 0; color: #78350f;">
+                        The scraper didn't find any new events at this time. Try again later or check the source websites manually.
+                    </p>
+                </div>
+            `;
         } else {
-            throw new Error(data.message || 'Failed to load events');
+            // Error occurred
+            throw new Error(data.message || 'Failed to scrape events');
         }
 
     } catch (error) {
+        console.error('Scraping error:', error);
+
+        // Hide loading
         progress.style.display = 'none';
-        status.style.display = 'block';
+
+        // Show error with fallback instructions
         status.innerHTML = `
-            <strong>❌ Error loading events</strong><br>
-            ${error.message}<br>
-            <small>Make sure your Google Apps Script is deployed correctly.</small>
+            <div style="background: #fee2e2; border-left: 4px solid #ef4444; padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                <h4 style="margin: 0 0 0.5rem 0; color: #991b1b;">❌ Scraping Failed</h4>
+                <p style="margin: 0 0 1rem 0; color: #7f1d1d;">
+                    ${error.message || 'Unable to connect to scraping service'}
+                </p>
+            </div>
+
+            <div style="background: #f0f8ff; border-left: 4px solid #3AB8FF; padding: 1.5rem; border-radius: 8px;">
+                <h4 style="margin: 0 0 1rem 0; color: #2563eb;">💡 Alternative: Run Python Scraper</h4>
+                <p style="margin: 0 0 0.5rem 0; color: #1e40af;">You can run the Python scraper manually:</p>
+                <div style="background: rgba(0,0,0,0.05); padding: 1rem; border-radius: 8px; font-family: monospace; margin: 1rem 0;">
+                    <code style="color: #1e40af;">run-scraper.bat</code>
+                </div>
+                <p style="margin: 0; color: #475569; font-size: 0.9rem;">
+                    Events will be posted to Google Sheets and appear in your Pending tab.
+                </p>
+            </div>
         `;
-        console.error('Scraper error:', error);
     }
+}
+
+// Helper to get GitHub repo from current URL or config
+function getGithubRepo() {
+    // Try to extract from deployment or return placeholder
+    return 'your-username/norwich-event-hub';
 }
 
 function generateMockEvents() {

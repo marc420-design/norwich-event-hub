@@ -1,0 +1,17 @@
+﻿Found 16 deployments.
+- AKfycbw00dkJwOHz0V0g7_-fpgzZukO5U5jtEM_M-zzpVZY @HEAD 
+- AKfycbx-8qBgJLHSv99sU4m8ZoKtAdgnXWOQIGnGYJLjfVNXWR8tI0UAi0IFtWmgoLufEXjQ @10 - Clean deployment via CLI
+- AKfycbyNsL4yhMoQ32pDfRLvOXcmuNBsZthIbxVYQBqBuv9YspG1ZcBfFHN9ZCxhD-Vp1bVV @18 - Add field normalization for frontend compatibility
+- AKfycbwz2jUvP7FL6mwQdGm9infs9g31iaOFwqrXlgqDX5lKR8LSHatkkWMTV5z2sbhTKzA @20 - Fix: Use openById for web app context + field normalization
+- AKfycbzkMEodkc2MbX11CvST83HhXBy0WcLMUHCvFOjbwhKfS1wC2MAapEsNGQZiArFPKTK3 @28 
+- AKfycbyPZEGqmvDV_cJqNqGtkibUcxyPM3k24xx4HfCw7ZD6GzDmbYvNQ0rX5Z4BwthONc24 @2 - events in norwich
+- AKfycbwVxZOtEnhfwj0vbMIbqoP-es7ZSVhFN5xcUnaxJ0z7hEIhf5JU8WPI7tg8N3mOrP81 @23 - Added CORS headers for real-time event loading
+- AKfycbynfVYX8sUsCSn9a0QbGhspOZhG2o4Zelr8CwZZ1RQP_emiiezPD1VtYqiRc2wMoMb4 @7 - Sheet ID fix - real-time data
+- AKfycbz3eV1FnzzihDKv1Mx8rPD7I55oJK2sFFVRDt6a1DC9PSu49VPIdm7Iu00rsfT55S2z @29 
+- AKfycbzLQYFEGzLGI7CkUtHFwqGzI3NbqtGN_nQB3Vw9FVYN-_qPC5ggQCkitleeHqtXFN8 @26 
+- AKfycbzaPHO4zJwhsjHOc5qvVVIOyXORx1IfLaAJGY3rJY9pETv_IYShFPDOJglRHhUaS7zk @11 - Clean deployment - remove duplicate files
+- AKfycbxVAO5F0VPVvapWkX8abpJwCrQHyXkszn89zCm4TB2kK7NItjFcz-oBefTA6MRsE5f9 @1 - Norwich Event Hub API v1
+- AKfycbwUqbC7ZkAqO5w0POhRd_hBDBPrZDKV0I_K43lmdKbLrL0rjAAoEYwgZpc_xuzs1x0M @24 - CORS headers added for real-time events
+- AKfycbwZYX3spRjTejHMeBFHrNh9K1sJXFaMlgOLs8qPv0CRHxN6oM2r-h1nqDWabniyQsFz @27 
+- AKfycbyWMP6Nx-zcsu-d0GayKez1j4qn9b3f1GhkCjcREH457kjroDfzvgfiDMS143KWQhJb @25 - Added CORS headers for real-time loading
+- AKfycbwf5RT8xXX03sYEsSf5w8mAe_34-cAjJuAYkoxQtNoImFOTtfMgbDxFDc-aQuiCUIbJ @13 - Clean deployment - only Code.js

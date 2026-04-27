@@ -1,0 +1,4 @@
+{"schema":"builder-loop/manifest-v1","created":"2026-01-24T00:00:00Z","owner":"Marc","timezone":"Europe/London"}
+{"ts":"2026-01-24T00:00:00Z","kind":"note","status":"ok","summary":"Project initialised with Builder Loop. Edit: kind (note|intent|plan|implement|review|verify|release|incident), status (ok|blocked|risk|done), summary. Optional: refs for DECISIONS e.g. [\"D-2026-0001\"]."}
+
+{"ts": "2026-01-24T17:58:34Z", "kind": "note", "summary": "Phase 2 Intent mode wired: Voice to MANIFEST/DECISIONS/LESSONS.", "status": "ok"}

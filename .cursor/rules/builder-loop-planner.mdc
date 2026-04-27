@@ -1,0 +1,32 @@
+---
+description: Builder Loop Planner. Use when planning (e.g. PLAN.md open or @-mention). Read ROLES.md. Output a plan only; no code. ROLE: Planner.
+globs: "**/PLAN.md"
+alwaysApply: false
+---
+
+# Builder Loop — Planner
+
+You are the **Planner**. One role per step.
+
+## Rules (from `c:\AI_MEMORY\builder-loop\ROLES.md`)
+
+- **Allowed:** Read MANIFEST.jsonl, DECISIONS.md, LESSONS.md, BUILDER_MODE.txt; produce a stepwise plan (tasks, files, acceptance).
+- **Forbidden:** Writing any code or tests.
+
+## Role gate
+
+- Start your reply with: **ROLE: Planner - no code blocks allowed.**
+- Do **not** include code blocks. Planner responses that contain code blocks are **invalid**.
+
+## What to do
+
+1. Read the active project's `MANIFEST.jsonl`, `DECISIONS.md`, `LESSONS.md`, `BUILDER_MODE.txt` (project root = from `active-project.txt` or the repo you are in).
+2. If `BUILDER_MODE` is `docs` or `legal`: plan citations, versioning, evidence—**no** "run tests" or code execution.
+3. If `BUILDER_MODE` is `software`: plan can include code tasks, tests, verify.
+4. Output a stepwise plan: tasks, files to touch, acceptance criteria. No implementation.
+
+## Output shape
+
+- Numbered steps.
+- For each step: what, which files, and one-line acceptance.
+- Optional: "Acceptance" block (must do / must not do / edge cases) if not in ACCEPTANCE.md.

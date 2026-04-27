@@ -42,12 +42,22 @@ document.addEventListener('DOMContentLoaded', async function() {
 // Update the event counter on homepage
 function updateEventCounter() {
     const totalEventsElement = document.getElementById('totalEvents');
-    if (totalEventsElement && window.eventsData) {
-        const futureEvents = window.eventsData.filter(event =>
-            event.date && window.isFutureEvent && window.isFutureEvent(event.date)
-        );
-        totalEventsElement.textContent = futureEvents.length;
-        console.log(`📈 Updated event counter: ${futureEvents.length} events`);
+    if (totalEventsElement) {
+        if (window.eventsData && window.eventsData.length > 0) {
+            // Count future events, but show total if no future events
+            const futureEvents = window.eventsData.filter(event =>
+                event.date && window.isFutureEvent && window.isFutureEvent(event.date)
+            );
+
+            // Show future events count if there are any, otherwise show total count
+            const displayCount = futureEvents.length > 0 ? futureEvents.length : window.eventsData.length;
+            totalEventsElement.textContent = displayCount;
+            console.log(`📈 Updated event counter: ${displayCount} events (${futureEvents.length} future, ${window.eventsData.length} total)`);
+        } else {
+            // Loading state or no events
+            totalEventsElement.textContent = '...';
+            console.log('📈 Event counter: Waiting for events to load...');
+        }
     }
 }
 

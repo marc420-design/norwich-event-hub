@@ -1,9 +1,19 @@
-// Force reload events data - clears cache and reloads
+// Force reload events data - with smart caching
 // Initialize window.eventsData immediately
 window.eventsData = window.eventsData || [];
 
-// Clear old localStorage on page load to force fresh data
-localStorage.removeItem('norwichEvents');
+// Smart cache management: Only clear if cache is older than 1 hour
+const CACHE_TTL = 3600000; // 1 hour in milliseconds
+const cachedTimestamp = localStorage.getItem('norwichEvents_timestamp');
+const cacheAge = cachedTimestamp ? Date.now() - parseInt(cachedTimestamp) : CACHE_TTL + 1;
+
+if (cacheAge > CACHE_TTL) {
+    console.log('🗑️ Cache expired, clearing old data');
+    localStorage.removeItem('norwichEvents');
+    localStorage.removeItem('norwichEvents_timestamp');
+} else {
+    console.log(`✅ Cache still valid (${Math.round(cacheAge / 1000 / 60)} minutes old)`);
+}
 
 // Helper function to add timeout to fetch requests
 function fetchWithTimeout(url, options = {}, timeout = 10000) {
@@ -17,12 +27,8 @@ function fetchWithTimeout(url, options = {}, timeout = 10000) {
 
 // Force reload events from Google Sheets API or fallback to local JSON
 async function forceLoadEvents() {
-    // CRITICAL: Load local JSON immediately as fallback (don't wait for config)
-    // This ensures events always load within 2 seconds
-    let localLoadPromise = loadFromLocalJSON().catch(err => {
-        console.warn('Local JSON load failed, will retry:', err);
-        return [];
-    });
+    // FIXED: Don't pre-load local JSON - prioritize API data for real-time updates
+    // Only use local JSON if API genuinely fails
 
     // Wait for config to be available (max 1 second - reduced from 2)
     await new Promise(resolve => {
@@ -84,8 +90,9 @@ async function forceLoadEvents() {
                 // Set global eventsData (even if empty array)
                 window.eventsData = result.events || [];
 
-                // Save to localStorage for offline access
+                // Save to localStorage for offline access with timestamp
                 localStorage.setItem('norwichEvents', JSON.stringify(result.events || []));
+                localStorage.setItem('norwichEvents_timestamp', Date.now().toString());
 
                 if (result.events.length > 0) {
                     console.log(`✅ Loaded ${result.events.length} events from Google Sheets API`);
@@ -105,19 +112,11 @@ async function forceLoadEvents() {
                     }
                 }));
 
-                // If no events, try fallback but don't wait for it
+                // FIXED: Accept empty array as valid - don't fallback to old static data
+                // This ensures real-time data is always shown (even if empty)
                 if (result.events.length === 0) {
-                    console.warn('⚠️ API returned no events, trying local JSON fallback...');
-                    loadFromLocalJSON().catch(err => {
-                        console.error('Fallback also failed:', err);
-                        // Trigger error event
-                        window.dispatchEvent(new CustomEvent('eventsLoadError', {
-                            detail: {
-                                message: 'No events available. Please try again later or submit an event.',
-                                source: 'api'
-                            }
-                        }));
-                    });
+                    console.warn('⚠️ API returned no events - this is valid real-time data');
+                    console.log('💡 Events may be pending approval or no upcoming events exist');
                 }
 
                 return result.events || [];
@@ -128,7 +127,7 @@ async function forceLoadEvents() {
         } catch (error) {
             console.error('❌ Failed to load from Google Sheets API:', error);
             console.log('⚠️ Falling back to local JSON file...');
-            
+
             // Trigger error event for UI to handle
             window.dispatchEvent(new CustomEvent('eventsLoadError', {
                 detail: {
@@ -137,7 +136,7 @@ async function forceLoadEvents() {
                     willRetry: true
                 }
             }));
-            
+
             try {
                 return await loadFromLocalJSON();
             } catch (fallbackError) {
@@ -154,16 +153,11 @@ async function forceLoadEvents() {
             }
         }
     } else {
-        // Use local JSON file - CRITICAL: Always load immediately
-        console.log('🔄 Using local storage mode...');
-        // Return the promise we already started (or start a new one if it failed)
-        try {
-            return await localLoadPromise;
-        } catch (err) {
-            // If the initial promise failed, try again
-            console.warn('Initial local load failed, retrying...');
-            return await loadFromLocalJSON();
-        }
+        // FIXED: Only use local JSON if USE_LOCAL_STORAGE is explicitly true
+        // This is for development/offline mode only
+        console.log('🔄 Using local storage mode (development/offline only)...');
+        console.warn('⚠️ Real-time data disabled - enable by setting USE_LOCAL_STORAGE: false in config.js');
+        return await loadFromLocalJSON();
     }
 }
 
@@ -174,7 +168,7 @@ async function loadFromLocalJSON() {
         // Aggressive cache busting with multiple parameters
         const cacheBuster = Date.now() + Math.random();
         const jsonUrl = 'data/sample-events.json?v=' + cacheBuster + '&nocache=' + Date.now();
-        
+
         // CRITICAL: Reduced timeout to 2 seconds for faster fallback
         const response = await fetchWithTimeout(jsonUrl, {
             cache: 'no-store',
@@ -195,8 +189,9 @@ async function loadFromLocalJSON() {
             // Set global eventsData
             window.eventsData = data.events || [];
 
-            // Save to localStorage
+            // Save to localStorage with timestamp
             localStorage.setItem('norwichEvents', JSON.stringify(data.events || []));
+            localStorage.setItem('norwichEvents_timestamp', Date.now().toString());
 
             if (data.events.length > 0) {
                 console.log(`✅ Loaded ${data.events.length} events from local JSON`);
@@ -272,6 +267,7 @@ function setupAutoRefresh() {
                         if (newCount !== oldCount) {
                             window.eventsData = result.events || [];
                             localStorage.setItem('norwichEvents', JSON.stringify(result.events || []));
+                            localStorage.setItem('norwichEvents_timestamp', Date.now().toString());
 
                             console.log(`✨ New events detected! ${oldCount} → ${newCount}`);
 

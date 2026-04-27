@@ -3,10 +3,8 @@
 let allEvents = [];
 let currentFilter = 'pending';
 
-// GitHub Personal Access Token for manual scraper trigger
-// Create at: https://github.com/settings/tokens (scope: workflow)
-// IMPORTANT: Replace with your actual token
-const GITHUB_TOKEN = 'YOUR_GITHUB_TOKEN_HERE';
+// NOTE: GitHub Actions are triggered securely via /api/trigger-scraper
+// This avoids exposing Personal Access Tokens in client-side code.
 
 document.addEventListener('DOMContentLoaded', function () {
     loadEvents();
@@ -289,21 +287,15 @@ async function rejectEvent(eventId) {
 }
 
 /**
- * Trigger manual scraper run via GitHub Actions
+ * Trigger manual scraper run via secure Cloudflare Function
  */
 async function triggerManualScraper() {
-    if (!GITHUB_TOKEN || GITHUB_TOKEN === 'YOUR_GITHUB_TOKEN_HERE') {
-        showToast('❌ GitHub token not configured. See admin.js line 8', 'error');
-        return;
-    }
-
     const confirmRun = confirm(
         '🤖 Trigger manual scraper run?\n\n' +
         'This will:\n' +
         '• Scrape events from all sources\n' +
-        '• Process with OpenAI AI\n' +
-        '• Add to Google Sheets (Pending status)\n' +
-        '• Cost ~$0.02-0.05 in API fees\n\n' +
+        '• Process with AI\n' +
+        '• Add to Google Sheets (Pending status)\n\n' +
         'Continue?'
     );
 
@@ -317,30 +309,27 @@ async function triggerManualScraper() {
             scraperBtn.innerHTML = '<span class="spinner"></span> Running Scraper...';
         }
 
-        showToast('⏳ Triggering scraper workflow...', 'info');
+        showToast('⏳ Triggering scraper workflow via secure bridge...', 'info');
 
-        const response = await fetch(APP_CONFIG.GOOGLE_APPS_SCRIPT_URL, {
+        // Call our new Cloudflare Function instead of GitHub directly
+        const response = await fetch('/trigger-scraper', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                action: 'triggerScraper',
-                githubToken: GITHUB_TOKEN
-            })
+            }
         });
 
         const data = await response.json();
 
         if (data.success) {
-            showToast('✅ Scraper workflow started! Opening GitHub Actions...', 'success');
+            showToast('✅ Scraper workflow started successfully!', 'success');
 
-            // Open GitHub Actions in new tab
-            setTimeout(() => {
+            // Optionally open GitHub Actions in new tab (if user wants to monitor)
+            if (confirm('✅ Workflow triggered! Would you like to view the progress on GitHub Actions?')) {
                 window.open('https://github.com/marc420-design/norwich-event-hub/actions', '_blank');
-            }, 1500);
+            }
 
-            // Reload events after 45 seconds (workflow takes ~2-3 min total)
+            // Reload events after a delay
             showToast('📊 Events will reload in 45 seconds...', 'info');
             setTimeout(async () => {
                 await loadEvents();

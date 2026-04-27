@@ -5,14 +5,19 @@
 
 /* CSS Variables - Brand Colors */
 :root {
-    --color-black: #000000;
+    --color-black: #0A0A0B;
     --color-electric-blue: #3AB8FF;
-    --color-gold: #D6A72B;
+    --color-gold: #FFD700;
     --color-forest-green: #234F32;
     --color-white: #FFFFFF;
-    --color-gray-light: #F5F5F5;
-    --color-gray-medium: #CCCCCC;
-    --color-gray-dark: #666666;
+    --color-gray-light: #F8F9FA;
+    --color-gray-medium: #E2E8F0;
+    --color-gray-dark: #4A5568;
+    
+    /* Premium Palette Extensions */
+    --color-deep-blue: #1A365D;
+    --color-soft-gray: #718096;
+    --color-bg-dark: #0F172A;
     
     /* Fonts */
     --font-headline: 'Montserrat', sans-serif;
@@ -27,7 +32,11 @@
     --spacing-xl: 4rem;
     
     /* Container */
-    --container-max-width: 1200px;
+    --container-max-width: 1280px;
+    
+    /* Shadows */
+    --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-premium: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
 /* Reset & Base Styles */
@@ -35,6 +44,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* Smooth Scrolling */
@@ -46,7 +57,7 @@ html {
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(10px);
     }
     to {
         opacity: 1;
@@ -55,18 +66,18 @@ html {
 }
 
 .fade-in {
-    animation: fadeIn 0.5s ease-out;
+    animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Loading Spinner */
 .loading-spinner {
     display: inline-block;
-    width: 40px;
-    height: 40px;
-    border: 4px solid var(--color-gray-medium);
+    width: 32px;
+    height: 32px;
+    border: 3px solid var(--color-gray-medium);
     border-top-color: var(--color-electric-blue);
     border-radius: 50%;
-    animation: spin 1s linear infinite;
+    animation: spin 0.8s linear infinite;
 }
 
 @keyframes spin {
@@ -79,6 +90,7 @@ body {
     line-height: 1.6;
     color: var(--color-black);
     background-color: var(--color-white);
+    overflow-x: hidden;
 }
 
 .container {
@@ -93,14 +105,15 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: var(--spacing-sm);
+    letter-spacing: -0.02em;
 }
 
 h1 {
-    font-size: 3rem;
+    font-size: clamp(2.5rem, 5vw, 4rem);
 }
 
 h2 {
-    font-size: 2.5rem;
+    font-size: clamp(2rem, 4vw, 3rem);
     font-family: var(--font-subheading);
     letter-spacing: 2px;
 }
@@ -111,12 +124,13 @@ h3 {
 
 p {
     margin-bottom: var(--spacing-sm);
+    color: var(--color-gray-dark);
 }
 
 a {
     color: var(--color-electric-blue);
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 a:hover {
@@ -125,12 +139,14 @@ a:hover {
 
 /* Navigation */
 .navbar {
-    background-color: var(--color-black);
+    background-color: rgba(10, 10, 11, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     padding: var(--spacing-sm) 0;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .navbar .container {
@@ -143,41 +159,38 @@ a:hover {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: var(--spacing-xs);
+    gap: var(--spacing-sm);
     color: var(--color-white);
     font-family: var(--font-subheading);
     font-size: 1.5rem;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
 }
 
 .logo-image {
-    height: 40px;
+    height: 48px;
     width: auto;
-    max-width: 120px;
+    max-width: 140px;
     object-fit: contain;
-    border-radius: 4px;
+    border-radius: 8px;
     display: block;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
 @media (max-width: 768px) {
     .logo-image {
-        height: 32px;
-        max-width: 100px;
-    }
-    
-    .logo {
-        font-size: 1.2rem;
+        height: 36px;
     }
 }
 
 .logo-text {
     color: var(--color-electric-blue);
-    text-shadow: 0 0 10px rgba(58, 184, 255, 0.5);
+    font-weight: 700;
 }
 
 .logo-subtext {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--color-gold);
+    opacity: 0.9;
 }
 
 .nav-menu {
@@ -187,17 +200,32 @@ a:hover {
 }
 
 .nav-menu a {
-    color: var(--color-white);
-    font-weight: 500;
-    padding: var(--spacing-xs) var(--spacing-sm);
-    border-bottom: 2px solid transparent;
-    transition: all 0.3s ease;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: var(--spacing-xs) 0;
+    position: relative;
+}
+
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-electric-blue);
+    transition: width 0.3s ease;
+}
+
+.nav-menu a:hover::after,
+.nav-menu a.active::after {
+    width: 100%;
 }
 
 .nav-menu a:hover,
 .nav-menu a.active {
     color: var(--color-electric-blue);
-    border-bottom-color: var(--color-electric-blue);
 }
 
 .mobile-menu-toggle {

@@ -234,7 +234,7 @@ function createEventCard(event) {
     const location = event.location || 'Location TBA';
     const description = event.description || '';
     const category = event.category || 'general';
-    const eventId = event.id || event.eventid;
+    const eventId = event.id || event.eventid || event.slug || `${event.name || ''}|${event.date || ''}`;
     const detailUrl = getEventDetailUrl(event);
     const eventImage = getEventImageDetails(event);
     const imageUrl = eventImage.imageUrl;
@@ -244,9 +244,7 @@ function createEventCard(event) {
     const priceText = event.price || (event.isFree ? 'Free' : '');
 
     card.dataset.category = escapeHtml(category);
-    if (eventId) {
-        card.dataset.eventId = String(eventId);
-    }
+    card.dataset.eventId = String(eventId);
 
     // Make card clickable to event detail page
     card.addEventListener('click', function (e) {

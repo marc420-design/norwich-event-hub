@@ -95,7 +95,11 @@ function renderDirectoryEmptyState(container) {
 
 function findEventByCard(card) {
     const eventId = card.dataset.eventId;
-    return (window.eventsData || []).find(event => String(event.id) === String(eventId) || String(event.slug) === String(eventId));
+    if (!eventId) return undefined;
+    return (window.eventsData || []).find(event => {
+        const id = event.id || event.eventid || event.slug || `${event.name || ''}|${event.date || ''}`;
+        return String(id) === String(eventId);
+    });
 }
 
 function applyFilters() {

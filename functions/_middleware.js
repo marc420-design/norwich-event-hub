@@ -22,17 +22,23 @@ export async function onRequest(context) {
     if (isProtected) {
         const authHeader = request.headers.get('Authorization');
 
-        // FORCE credentials to bypass any potential dashboard typos
-        const username = 'admin';
-        const password = 'NorwichEvents2026!';
+        const username = env.ADMIN_USERNAME;
+        const password = env.ADMIN_PASSWORD;
+        const precomputedToken = env.ADMIN_BASIC_AUTH_TOKEN;
+        const expectedAuth = precomputedToken
+            ? `Basic ${precomputedToken}`
+            : (username && password ? `Basic ${btoa(`${username}:${password}`)}` : null);
 
-        // Create the expected Base64 string
-        const expectedAuth = `Basic ${btoa(`${username}:${password}`)}`;
-        
-        // ADD A SECONDARY SIMPLE PASSWORD just in case the first one is tricky to type
-        const simpleAuth = `Basic ${btoa('admin:norwich123')}`;
+        if (!expectedAuth) {
+            return new Response('Admin authentication is not configured.', {
+                status: 500,
+                headers: {
+                    'Content-Type': 'text/plain'
+                }
+            });
+        }
 
-        if (!authHeader || (authHeader !== expectedAuth && authHeader !== simpleAuth)) {
+        if (!authHeader || authHeader !== expectedAuth) {
             return new Response('Unauthorized', {
                 status: 401,
                 headers: {

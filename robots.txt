@@ -1,6 +1,9 @@
 # robots.txt for Norwich Event Hub
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /admin.html
+Disallow: /trigger-scraper
 Disallow: /test-*.html
 Disallow: /debug*.html
 Sitemap: https://norwicheventshub.com/sitemap.xml

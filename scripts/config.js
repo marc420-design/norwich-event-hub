@@ -43,6 +43,12 @@ const APP_CONFIG = {
 
     // Cloudflare Turnstile (spam protection) - optional
     // TURNSTILE_SITE_KEY: 'your-site-key'  // Uncomment and add your site key
+
+    // Admin client-side password hash (SHA-256 of admin password)
+    // Generate in browser console: crypto.subtle.digest('SHA-256', new TextEncoder().encode('yourpassword'))
+    //   .then(b => Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,'0')).join(''))
+    // Leave empty to bypass client-side check (relies on Cloudflare middleware only)
+    ADMIN_PW_HASH: ''
 };
 
 // Make config available globally

@@ -1,26 +1,21 @@
-// Admin Dashboard JavaScript
-
 let allEvents = [];
 let currentFilter = 'pending';
 
-// NOTE: GitHub Actions are triggered securely via /api/trigger-scraper
-// This avoids exposing Personal Access Tokens in client-side code.
+const REVIEW_QUEUE_STATUSES = new Set(['pending', 'needs_review', 'needs_link', 'needs_flyer', 'duplicate', 'error']);
+const REJECTED_STATUSES = new Set(['rejected', 'declined']);
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
     loadEvents();
     setupFilterTabs();
 });
 
 function setupFilterTabs() {
     const tabs = document.querySelectorAll('.filter-tab');
-    tabs.forEach(tab => {
-        tab.addEventListener('click', function () {
-            // Update active state
-            tabs.forEach(t => t.classList.remove('active'));
-            this.classList.add('active');
-
-            // Update filter
-            currentFilter = this.dataset.filter;
+    tabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+            tabs.forEach((item) => item.classList.remove('active'));
+            tab.classList.add('active');
+            currentFilter = tab.dataset.filter;
             renderEvents();
         });
     });
@@ -31,52 +26,35 @@ async function loadEvents() {
     eventsList.innerHTML = '<div class="loading">Loading events... (Connecting to database)</div>';
 
     try {
-        console.log('Fetching events from:', APP_CONFIG.GOOGLE_APPS_SCRIPT_URL);
-
-        // Fetch all events from Google Sheets
-        // Use 'no-cors' mode is NOT an option for JSON, but we expect CORS headers from Google
-        const response = await fetch(APP_CONFIG.GOOGLE_APPS_SCRIPT_URL + '?action=getAllEvents');
-
+        const response = await fetch(`${APP_CONFIG.GOOGLE_APPS_SCRIPT_URL}?action=getAllEvents`);
         if (!response.ok) {
             throw new Error(`HTTP Error: ${response.status}`);
         }
 
         const data = await response.json();
-
-        if (data.success) {
-            console.log('Events loaded successfully:', data.events.length);
-            allEvents = data.events || [];
-            updateStats();
-            renderEvents();
-        } else {
+        if (!data.success) {
             throw new Error(data.message || 'API returned failure');
         }
+
+        allEvents = data.events || [];
+        updateStats();
+        renderEvents();
     } catch (error) {
         console.error('CRITICAL ERROR loading events:', error);
-
-        // Detailed error for user
         eventsList.innerHTML = `
             <div class="empty-state" style="background: #fee2e2; border: 2px solid #ef4444; color: #7f1d1d;">
-                <h3 style="color: #991b1b;">⚠️ Connection Failed</h3>
+                <h3 style="color: #991b1b;">Connection Failed</h3>
                 <p><strong>Error:</strong> ${error.message}</p>
-                <div style="text-align: left; margin: 1rem auto; max-width: 500px; background: white; padding: 1rem; border-radius: 4px;">
-                    <p><strong>Troubleshooting:</strong></p>
-                    <ol>
-                        <li><strong>Hard Refresh:</strong> Press Ctrl+F5 (Windows) or Cmd+Shift+R (Mac).</li>
-                        <li><strong>Ad Blockers:</strong> Disable ad blockers or extensions for this site.</li>
-                        <li><strong>Backend Script:</strong> You may need to <a href="clasp_deployment_guide.md" target="_blank">Redeploy the App Script</a>.</li>
-                    </ol>
-                </div>
-                <button onclick="loadEvents()" class="admin-btn btn-view">🔄 Retry Connection</button>
+                <button onclick="loadEvents()" class="admin-btn btn-view">Retry Connection</button>
             </div>
         `;
     }
 }
 
 function updateStats() {
-    const pending = allEvents.filter(e => e.status && e.status.toLowerCase() === 'pending').length;
-    const approved = allEvents.filter(e => e.status && e.status.toLowerCase() === 'approved').length;
-    const rejected = allEvents.filter(e => e.status && (e.status.toLowerCase() === 'rejected' || e.status.toLowerCase() === 'declined')).length;
+    const pending = allEvents.filter((event) => REVIEW_QUEUE_STATUSES.has((event.status || '').toLowerCase())).length;
+    const approved = allEvents.filter((event) => (event.status || '').toLowerCase() === 'approved').length;
+    const rejected = allEvents.filter((event) => REJECTED_STATUSES.has((event.status || '').toLowerCase())).length;
 
     document.getElementById('totalEvents').textContent = allEvents.length;
     document.getElementById('pendingEvents').textContent = pending;
@@ -86,25 +64,13 @@ function updateStats() {
 
 function renderEvents() {
     const eventsList = document.getElementById('eventsList');
-
-    // Filter events based on current filter
     let filteredEvents = allEvents;
+
     if (currentFilter !== 'all') {
-        filteredEvents = allEvents.filter(event => {
-            const status = (event.status || '').toLowerCase();
-            if (currentFilter === 'rejected') {
-                return status === 'rejected' || status === 'declined';
-            }
-            return status === currentFilter;
-        });
+        filteredEvents = allEvents.filter((event) => matchesFilter((event.status || '').toLowerCase(), currentFilter));
     }
 
-    // Sort by timestamp (newest first)
-    filteredEvents.sort((a, b) => {
-        const dateA = new Date(a.timestamp || 0);
-        const dateB = new Date(b.timestamp || 0);
-        return dateB - dateA;
-    });
+    filteredEvents.sort((a, b) => new Date(b.timestamp || 0) - new Date(a.timestamp || 0));
 
     if (filteredEvents.length === 0) {
         eventsList.innerHTML = `
@@ -117,10 +83,19 @@ function renderEvents() {
     }
 
     eventsList.innerHTML = '';
-    filteredEvents.forEach(event => {
-        const card = createEventCard(event);
-        eventsList.appendChild(card);
+    filteredEvents.forEach((event) => {
+        eventsList.appendChild(createEventCard(event));
     });
+}
+
+function matchesFilter(status, filter) {
+    if (filter === 'pending') {
+        return REVIEW_QUEUE_STATUSES.has(status);
+    }
+    if (filter === 'rejected') {
+        return REJECTED_STATUSES.has(status);
+    }
+    return status === filter;
 }
 
 function createEventCard(event) {
@@ -128,20 +103,17 @@ function createEventCard(event) {
     card.className = 'admin-event-card';
 
     const status = (event.status || 'pending').toLowerCase();
-    const statusClass = status === 'approved' ? 'status-approved' :
-        (status === 'rejected' || status === 'declined') ? 'status-rejected' :
-            'status-pending';
-
+    const statusClass = getStatusClass(status);
     const category = event.category || 'general';
     const categoryClass = `badge-${category}`;
-
     const isEditorsChoice = event.editorschoice === 'Yes' || event.editorschoice === true;
+    const eventId = escapeHtml(event.eventid || event.id || '');
 
     card.innerHTML = `
         <div class="event-info">
             <h3>
                 ${escapeHtml(event.name || event.eventname || 'Untitled Event')}
-                ${isEditorsChoice ? '<span class="editors-choice-badge">⭐ EDITOR\'S CHOICE</span>' : ''}
+                ${isEditorsChoice ? "<span class=\"editors-choice-badge\">EDITOR'S CHOICE</span>" : ''}
             </h3>
             <div class="event-meta">
                 <div class="event-meta-item">
@@ -150,53 +122,31 @@ function createEventCard(event) {
                 <div class="event-meta-item">
                     <span class="status-badge ${statusClass}">${escapeHtml(status)}</span>
                 </div>
-                <div class="event-meta-item">
-                    📅 ${formatDate(event.date || event.eventdate)}
-                </div>
-                <div class="event-meta-item">
-                    ⏰ ${event.time || 'TBA'}
-                </div>
-                <div class="event-meta-item">
-                    📍 ${escapeHtml(event.location || 'TBA')}
-                </div>
+                <div class="event-meta-item">${formatDate(event.date || event.eventdate)}</div>
+                <div class="event-meta-item">${event.time || 'TBA'}</div>
+                <div class="event-meta-item">${escapeHtml(event.location || 'TBA')}</div>
             </div>
             <p class="event-description">${escapeHtml(event.description || 'No description provided')}</p>
             <div class="event-meta">
-                ${event.promotername ? `<div class="event-meta-item">👤 ${escapeHtml(event.promotername)}</div>` : ''}
-                ${event.promoteremail ? `<div class="event-meta-item">📧 ${escapeHtml(event.promoteremail)}</div>` : ''}
-                ${event.ticketlink || event.ticketLink ? `<div class="event-meta-item">🎟️ <a href="${escapeHtml(event.ticketlink || event.ticketLink)}" target="_blank">Tickets</a></div>` : ''}
-                ${event.timestamp ? `<div class="event-meta-item">🕐 Submitted ${formatTimestamp(event.timestamp)}</div>` : ''}
+                ${event.promotername ? `<div class="event-meta-item">${escapeHtml(event.promotername)}</div>` : ''}
+                ${event.promoteremail ? `<div class="event-meta-item">${escapeHtml(event.promoteremail)}</div>` : ''}
+                ${event.ticketlink || event.ticketLink ? `<div class="event-meta-item"><a href="${escapeHtml(event.ticketlink || event.ticketLink)}" target="_blank">Tickets</a></div>` : ''}
+                ${event.timestamp ? `<div class="event-meta-item">Submitted ${formatTimestamp(event.timestamp)}</div>` : ''}
             </div>
         </div>
-        <div class="event-actions-grid" data-event-id="${escapeHtml(event.eventid || event.id || '')}">
-            ${status === 'pending' ? `
-                <button class="btn-reject" onclick="rejectEvent('${escapeHtml(event.eventid || event.id || '')}')">
-                    ❌ Reject
-                </button>
-                <button class="btn-approve" onclick="approveEvent('${escapeHtml(event.eventid || event.id || '')}', false)">
-                    ✅ Approve
-                </button>
-                <button class="btn-editors-choice" onclick="approveEvent('${escapeHtml(event.eventid || event.id || '')}', true)">
-                    ⭐ Editor's Choice
-                </button>
+        <div class="event-actions-grid" data-event-id="${eventId}">
+            ${REVIEW_QUEUE_STATUSES.has(status) ? `
+                <button class="btn-reject" onclick="rejectEvent('${eventId}')">Reject</button>
+                <button class="btn-approve" onclick="approveEvent('${eventId}', false)">Approve</button>
+                <button class="btn-editors-choice" onclick="approveEvent('${eventId}', true)">Editor's Choice</button>
             ` : ''}
             ${status === 'approved' ? `
-                <button class="btn-reject" onclick="rejectEvent('${escapeHtml(event.eventid || event.id || '')}')">
-                    ❌ Unapprove
-                </button>
-                ${!isEditorsChoice ? `
-                <button class="btn-editors-choice" onclick="approveEvent('${escapeHtml(event.eventid || event.id || '')}', true)">
-                    ⭐ Make Editor's Choice
-                </button>
-                ` : ''}
+                <button class="btn-reject" onclick="rejectEvent('${eventId}')">Unapprove</button>
+                ${!isEditorsChoice ? `<button class="btn-editors-choice" onclick="approveEvent('${eventId}', true)">Make Editor's Choice</button>` : ''}
             ` : ''}
-            ${status === 'rejected' || status === 'declined' ? `
-                <button class="btn-approve" onclick="approveEvent('${escapeHtml(event.eventid || event.id || '')}', false)">
-                    ✅ Approve
-                </button>
-                <button class="btn-editors-choice" onclick="approveEvent('${escapeHtml(event.eventid || event.id || '')}', true)">
-                    ⭐ Editor's Choice
-                </button>
+            ${REJECTED_STATUSES.has(status) ? `
+                <button class="btn-approve" onclick="approveEvent('${eventId}', false)">Approve</button>
+                <button class="btn-editors-choice" onclick="approveEvent('${eventId}', true)">Editor's Choice</button>
             ` : ''}
         </div>
     `;
@@ -204,16 +154,24 @@ function createEventCard(event) {
     return card;
 }
 
-/**
- * Approve event and optionally mark as Editor's Choice
- * @param {string} eventId - Event ID
- * @param {boolean} editorsChoice - Whether to mark as Editor's Choice
- */
-async function approveEvent(eventId, editorsChoice = false) {
-    const message = editorsChoice
-        ? '⭐ Approve this event as Editor\'s Choice?'
-        : '✅ Approve this event?';
+function getStatusClass(status) {
+    if (status === 'approved') {
+        return 'status-approved';
+    }
+    if (REJECTED_STATUSES.has(status)) {
+        return 'status-rejected';
+    }
+    if (status === 'error') {
+        return 'status-error';
+    }
+    if (status === 'needs_link' || status === 'needs_flyer') {
+        return 'status-warning';
+    }
+    return 'status-pending';
+}
 
+async function approveEvent(eventId, editorsChoice = false) {
+    const message = editorsChoice ? "Approve this event as Editor's Choice?" : 'Approve this event?';
     if (!confirm(message)) {
         return;
     }
@@ -221,156 +179,111 @@ async function approveEvent(eventId, editorsChoice = false) {
     try {
         const response = await fetch(APP_CONFIG.GOOGLE_APPS_SCRIPT_URL, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 action: 'updateStatus',
-                eventId: eventId,
+                eventId,
                 status: 'Approved',
-                editorsChoice: editorsChoice
-            })
+                editorsChoice,
+            }),
         });
 
         const data = await response.json();
-
-        if (data.success) {
-            const successMessage = editorsChoice
-                ? '⭐ Event approved as Editor\'s Choice!'
-                : '✅ Event approved successfully!';
-            showToast(successMessage, 'success');
-            await loadEvents(); // Reload events
-        } else {
+        if (!data.success) {
             throw new Error(data.message || 'Failed to approve event');
         }
+
+        showToast(editorsChoice ? "Event approved as Editor's Choice." : 'Event approved successfully.', 'success');
+        await loadEvents();
     } catch (error) {
         console.error('Error approving event:', error);
-        showToast('Error approving event: ' + error.message, 'error');
+        showToast(`Error approving event: ${error.message}`, 'error');
     }
 }
 
-/**
- * Reject event
- * @param {string} eventId - Event ID
- */
 async function rejectEvent(eventId) {
-    if (!confirm('❌ Reject this event?')) {
+    if (!confirm('Reject this event?')) {
         return;
     }
 
     try {
         const response = await fetch(APP_CONFIG.GOOGLE_APPS_SCRIPT_URL, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 action: 'updateStatus',
-                eventId: eventId,
+                eventId,
                 status: 'Rejected',
-                editorsChoice: false
-            })
+                editorsChoice: false,
+            }),
         });
 
         const data = await response.json();
-
-        if (data.success) {
-            showToast('Event rejected', 'info');
-            await loadEvents(); // Reload events
-        } else {
+        if (!data.success) {
             throw new Error(data.message || 'Failed to reject event');
         }
+
+        showToast('Event rejected.', 'info');
+        await loadEvents();
     } catch (error) {
         console.error('Error rejecting event:', error);
-        showToast('Error rejecting event: ' + error.message, 'error');
+        showToast(`Error rejecting event: ${error.message}`, 'error');
     }
 }
 
-/**
- * Trigger manual scraper run via secure Cloudflare Function
- */
 async function triggerManualScraper() {
     const confirmRun = confirm(
-        '🤖 Trigger manual scraper run?\n\n' +
-        'This will:\n' +
-        '• Scrape events from all sources\n' +
-        '• Process with AI\n' +
-        '• Add to Google Sheets (Pending status)\n\n' +
-        'Continue?'
+        'Trigger manual scraper run?\n\nThis will scrape events from all sources and submit them into the review workflow.\n\nContinue?'
     );
+    if (!confirmRun) {
+        return;
+    }
 
-    if (!confirmRun) return;
+    const scraperBtn = document.getElementById('manual-scraper-btn');
 
     try {
-        // Show loading state
-        const scraperBtn = document.getElementById('manual-scraper-btn');
         if (scraperBtn) {
             scraperBtn.disabled = true;
-            scraperBtn.innerHTML = '<span class="spinner"></span> Running Scraper...';
+            scraperBtn.textContent = 'Running Scraper...';
         }
 
-        showToast('⏳ Triggering scraper workflow via secure bridge...', 'info');
+        showToast('Triggering scraper workflow via secure bridge...', 'info');
 
-        // Call our new Cloudflare Function instead of GitHub directly
         const response = await fetch('/trigger-scraper', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            }
+            headers: { 'Content-Type': 'application/json' },
         });
-
         const data = await response.json();
 
-        if (data.success) {
-            showToast('✅ Scraper workflow started successfully!', 'success');
-
-            // Optionally open GitHub Actions in new tab (if user wants to monitor)
-            if (confirm('✅ Workflow triggered! Would you like to view the progress on GitHub Actions?')) {
-                window.open('https://github.com/marc420-design/norwich-event-hub/actions', '_blank');
-            }
-
-            // Reload events after a delay
-            showToast('📊 Events will reload in 45 seconds...', 'info');
-            setTimeout(async () => {
-                await loadEvents();
-                showToast('🔄 Events reloaded - check Pending tab', 'info');
-            }, 45000);
-        } else {
+        if (!data.success) {
             throw new Error(data.message || 'Failed to trigger scraper');
         }
+
+        showToast('Scraper workflow started successfully.', 'success');
+        setTimeout(async () => {
+            await loadEvents();
+            showToast('Events reloaded. Check the review queue.', 'info');
+        }, 45000);
     } catch (error) {
         console.error('Error triggering scraper:', error);
-        showToast('❌ Error: ' + error.message, 'error');
+        showToast(`Error: ${error.message}`, 'error');
     } finally {
-        // Reset button state
-        const scraperBtn = document.getElementById('manual-scraper-btn');
         if (scraperBtn) {
             scraperBtn.disabled = false;
-            scraperBtn.innerHTML = '🤖 Run Scraper Now';
+            scraperBtn.textContent = 'Run Scraper Now';
         }
     }
 }
 
-/**
- * Show toast notification
- * @param {string} message - Toast message
- * @param {string} type - Toast type (success, error, info)
- */
 function showToast(message, type = 'success') {
-    // Remove existing toasts
-    const existingToasts = document.querySelectorAll('.toast-notification');
-    existingToasts.forEach(t => t.remove());
+    document.querySelectorAll('.toast-notification').forEach((toast) => toast.remove());
 
-    // Create new toast
     const toast = document.createElement('div');
     toast.className = `toast-notification toast-${type}`;
     toast.textContent = message;
     document.body.appendChild(toast);
 
-    // Show toast with animation
     setTimeout(() => toast.classList.add('show'), 100);
-
-    // Hide and remove toast
     setTimeout(() => {
         toast.classList.remove('show');
         setTimeout(() => toast.remove(), 300);
@@ -378,39 +291,47 @@ function showToast(message, type = 'success') {
 }
 
 function escapeHtml(text) {
-    if (!text) return '';
+    if (!text) {
+        return '';
+    }
     const div = document.createElement('div');
     div.textContent = text;
     return div.innerHTML;
 }
 
 function formatDate(dateString) {
-    if (!dateString) return 'TBA';
+    if (!dateString) {
+        return 'TBA';
+    }
     const date = new Date(dateString);
-    if (isNaN(date.getTime())) return dateString;
-
-    const options = { year: 'numeric', month: 'short', day: 'numeric' };
-    return date.toLocaleDateString('en-GB', options);
+    if (isNaN(date.getTime())) {
+        return dateString;
+    }
+    return date.toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' });
 }
 
 function formatTimestamp(timestamp) {
-    if (!timestamp) return '';
+    if (!timestamp) {
+        return '';
+    }
     const date = new Date(timestamp);
-    if (isNaN(date.getTime())) return '';
+    if (isNaN(date.getTime())) {
+        return '';
+    }
 
-    const now = new Date();
-    const diffMs = now - date;
+    const diffMs = Date.now() - date.getTime();
     const diffMins = Math.floor(diffMs / 60000);
     const diffHours = Math.floor(diffMs / 3600000);
     const diffDays = Math.floor(diffMs / 86400000);
 
     if (diffMins < 60) {
         return `${diffMins} min${diffMins !== 1 ? 's' : ''} ago`;
-    } else if (diffHours < 24) {
-        return `${diffHours} hour${diffHours !== 1 ? 's' : ''} ago`;
-    } else if (diffDays < 7) {
-        return `${diffDays} day${diffDays !== 1 ? 's' : ''} ago`;
-    } else {
-        return date.toLocaleDateString('en-GB');
     }
+    if (diffHours < 24) {
+        return `${diffHours} hour${diffHours !== 1 ? 's' : ''} ago`;
+    }
+    if (diffDays < 7) {
+        return `${diffDays} day${diffDays !== 1 ? 's' : ''} ago`;
+    }
+    return date.toLocaleDateString('en-GB');
 }

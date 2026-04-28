@@ -77,7 +77,7 @@
     <section class="page-header">
         <div class="container">
             <h1>Event Directory</h1>
-            <p>Browse all events happening in Norwich - <span id="eventCount">Loading...</span> events listed</p>
+            <p>Browse all events happening in Norwich - <span id="eventCount">...</span> events listed</p>
         </div>
     </section>
 
@@ -179,12 +179,8 @@
         <div class="container">
             <div class="events-grid" id="directoryEvents">
                 <!-- Events will be loaded dynamically -->
-                <div class="event-card placeholder">
-                    <div class="event-image"></div>
-                    <div class="event-content">
-                        <span class="event-date">Loading events...</span>
-                        <h3 class="event-title">Events directory coming soon</h3>
-                    </div>
+                <div id="directory-loading" style="text-align:center;padding:3rem;grid-column:1/-1;">
+                    <p style="color:#888;">Loading events directory...</p>
                 </div>
             </div>
             <div id="noResults" class="no-results" style="display: none;">
@@ -229,8 +225,6 @@
                             aria-label="Instagram">Instagram</a>
                         <a href="https://www.facebook.com/norwicheventshub" target="_blank" rel="noopener noreferrer"
                             aria-label="Facebook">Facebook</a>
-                        <a href="https://twitter.com/norwicheventshub" target="_blank" rel="noopener noreferrer"
-                            aria-label="Twitter">Twitter</a>
                         <a href="https://www.tiktok.com/@norwicheventshub" target="_blank" rel="noopener noreferrer"
                             aria-label="TikTok">TikTok</a>
                     </div>
@@ -254,7 +248,6 @@
         "sameAs": [
             "https://www.instagram.com/norwicheventshub",
             "https://www.facebook.com/norwicheventshub",
-            "https://twitter.com/norwicheventshub",
             "https://www.tiktok.com/@norwicheventshub"
         ]
     }
@@ -264,7 +257,6 @@
     <script defer src="scripts/date-utils.js?v=20260427"></script>
     <script defer src="scripts/agent-bridge.js?v=20260427"></script>
     <script defer src="scripts/main.js?v=20260427"></script>
-    <script defer src="scripts/api.js?v=20260427"></script>
     <script defer src="scripts/directory.js?v=20260427"></script>
 </body>
 </html>

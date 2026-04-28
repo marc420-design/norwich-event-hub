@@ -1,281 +1,132 @@
-// This Weekend Page - Bookmark-worthy page that auto-updates
+// This Weekend Page JavaScript
 
-document.addEventListener('DOMContentLoaded', async function() {
-    // Update date displays
+document.addEventListener('DOMContentLoaded', async function () {
     updateWeekendDates();
-    
-    // Load all weekend sections
-    await loadDontMissEvents();
-    await loadSaturdayEvents();
-    await loadSundayEvents();
-    await loadAllWeekendEvents();
-    
-    // Listen for error events
-    window.addEventListener('eventsLoadError', function(e) {
-        console.error('Events load error:', e.detail);
-        showErrorInContainer('dontMissEvents', e.detail);
-        showErrorInContainer('saturdayEvents', e.detail);
-        showErrorInContainer('sundayEvents', e.detail);
-        showErrorInContainer('allWeekendEvents', e.detail);
+
+    try {
+        if (window.eventsLoadedPromise) {
+            await Promise.race([
+                window.eventsLoadedPromise,
+                new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), 6000))
+            ]);
+        }
+    } catch (error) {
+        console.warn('Weekend events load timeout:', error);
+    }
+
+    renderWeekendPage();
+
+    window.addEventListener('eventsUpdated', renderWeekendPage);
+    window.addEventListener('eventsLoadError', function () {
+        renderWeekendError();
     });
 });
 
-function updateWeekendDates() {
+function getWeekendDateRange() {
     const now = new Date();
-    const dayOfWeek = now.getDay();
-    
-    // Calculate days until Saturday
-    const daysUntilSaturday = (6 - dayOfWeek + 7) % 7 || 7;
-    const nextSaturday = new Date(now);
-    nextSaturday.setDate(now.getDate() + daysUntilSaturday);
-    
-    const nextSunday = new Date(nextSaturday);
-    nextSunday.setDate(nextSaturday.getDate() + 1);
-    
-    // Format dates
-    const saturdayFormatted = nextSaturday.toLocaleDateString('en-GB', {
+    const saturday = new Date(now);
+    const daysUntilSaturday = (6 - saturday.getDay() + 7) % 7 || 7;
+    saturday.setDate(saturday.getDate() + daysUntilSaturday);
+    saturday.setHours(0, 0, 0, 0);
+
+    const sunday = new Date(saturday);
+    sunday.setDate(sunday.getDate() + 1);
+    sunday.setHours(23, 59, 59, 999);
+
+    return {
+        start: saturday,
+        end: sunday
+    };
+}
+
+function updateWeekendDates() {
+    const weekend = getWeekendDateRange();
+    const saturdayFormatted = weekend.start.toLocaleDateString('en-GB', {
         weekday: 'long',
         day: 'numeric',
         month: 'long'
     });
-    
-    const sundayFormatted = nextSunday.toLocaleDateString('en-GB', {
+    const sundayFormatted = weekend.end.toLocaleDateString('en-GB', {
         weekday: 'long',
         day: 'numeric',
         month: 'long'
     });
-    
-    // Update page elements
+
     const weekendDateRange = document.getElementById('weekendDateRange');
     const saturdayDate = document.getElementById('saturdayDate');
     const sundayDate = document.getElementById('sundayDate');
-    
-    if (weekendDateRange) {
-        weekendDateRange.textContent = `${saturdayFormatted} & ${sundayFormatted}`;
-    }
-    if (saturdayDate) {
-        saturdayDate.textContent = saturdayFormatted;
-    }
-    if (sundayDate) {
-        sundayDate.textContent = sundayFormatted;
-    }
+
+    if (weekendDateRange) weekendDateRange.textContent = `${saturdayFormatted} & ${sundayFormatted}`;
+    if (saturdayDate) saturdayDate.textContent = saturdayFormatted;
+    if (sundayDate) sundayDate.textContent = sundayFormatted;
 }
 
-function showErrorInContainer(containerId, errorDetail) {
-    const container = document.getElementById(containerId);
-    if (container) {
-        container.innerHTML = `
-            <div class="event-card placeholder">
-                <div class="event-content">
-                    <span class="event-date">Unable to load events</span>
-                    <h3 class="event-title">${errorDetail.message || 'Please try again later'}</h3>
-                </div>
-            </div>
-        `;
-    }
-}
-
-// Helper function to wait for events to load
-async function waitForEvents() {
-    if (window.eventsData && window.eventsData.length > 0) {
-        return true;
-    }
-
-    if (window.eventsLoadedPromise) {
-        try {
-            await Promise.race([
-                window.eventsLoadedPromise,
-                new Promise((_, reject) =>
-                    setTimeout(() => reject(new Error('Timeout')), 2000)
-                )
-            ]);
-            return true;
-        } catch (error) {
-            return window.eventsData && window.eventsData.length > 0;
-        }
-    }
-    
-    // Wait max 2 seconds
-    await new Promise(resolve => {
-        let attempts = 0;
-        const checkPromise = setInterval(() => {
-            attempts++;
-            if (window.eventsData && window.eventsData.length > 0) {
-                clearInterval(checkPromise);
-                resolve();
-            } else if (attempts >= 20) {
-                clearInterval(checkPromise);
-                resolve();
-            }
-        }, 100);
-    });
-    
-    return window.eventsData && window.eventsData.length > 0;
-}
-
-// Helper function to get future events sorted by date
-function getFutureEvents(allEvents) {
+function getWeekendEvents() {
+    const weekend = getWeekendDateRange();
+    const allEvents = Array.isArray(window.eventsData) ? window.eventsData : [];
     return allEvents
+        .filter(event => window.isApprovedFutureEvent ? window.isApprovedFutureEvent(event) : true)
         .filter(event => {
-            const isApproved = event.status && event.status.toLowerCase() === 'approved';
-            const hasDate = event.date;
-            const isFuture = hasDate && window.isFutureEvent && window.isFutureEvent(event.date);
-            return isApproved && isFuture;
+            const eventDate = window.parseEventDate ? window.parseEventDate(event.date) : new Date(event.date);
+            return eventDate >= weekend.start && eventDate <= weekend.end;
         })
-        .sort((a, b) => {
-            const dateA = window.parseEventDate ? window.parseEventDate(a.date) : new Date(a.date);
-            const dateB = window.parseEventDate ? window.parseEventDate(b.date) : new Date(b.date);
-            return dateA - dateB;
+        .sort((left, right) => {
+            const leftDate = window.parseEventDate ? window.parseEventDate(left.date) : new Date(left.date);
+            const rightDate = window.parseEventDate ? window.parseEventDate(right.date) : new Date(right.date);
+            return leftDate - rightDate;
         });
 }
 
-// Helper function to populate a container with events
-function populateEventContainer(container, events, emptyMessage = 'No events listed for this weekend yet.') {
-    container.innerHTML = '';
+function renderWeekendPage() {
+    const weekendEvents = getWeekendEvents();
+    const saturdayEvents = weekendEvents.filter(event => {
+        const eventDate = window.parseEventDate ? window.parseEventDate(event.date) : new Date(event.date);
+        return eventDate.getDay() === 6;
+    });
+    const sundayEvents = weekendEvents.filter(event => {
+        const eventDate = window.parseEventDate ? window.parseEventDate(event.date) : new Date(event.date);
+        return eventDate.getDay() === 0;
+    });
+    const featuredEvents = weekendEvents.filter(event => event.featured || event.editorsChoice).slice(0, 6);
 
-    if (events.length === 0) {
+    populateEventContainer('dontMissEvents', featuredEvents, 'No featured events this weekend yet.');
+    populateEventContainer('saturdayEvents', saturdayEvents, 'No events listed for Saturday yet.');
+    populateEventContainer('sundayEvents', sundayEvents, 'No events listed for Sunday yet.');
+    populateEventContainer('allWeekendEvents', weekendEvents, 'No events listed for this weekend yet. Browse all upcoming events or submit one.');
+}
+
+function populateEventContainer(containerId, events, emptyMessage) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    container.innerHTML = '';
+    if (!events.length) {
         container.innerHTML = `
             <div class="empty-state" style="text-align: center; padding: 2rem; background: #f9fafb; border-radius: 8px; border: 1px dashed #ddd; width: 100%; grid-column: 1/-1;">
                 <p style="color: #666; margin-bottom: 1rem;">${emptyMessage}</p>
-                <a href="directory.html" class="btn btn-secondary">Browse all upcoming events</a>
+                <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+                    <a href="directory.html" class="btn btn-secondary">Browse all upcoming events</a>
+                    <a href="submit.html" class="btn btn-primary">Submit Event</a>
+                </div>
             </div>
         `;
         return;
     }
 
     events.forEach(event => {
-        const card = createEventCard(event);
-        container.appendChild(card);
+        container.appendChild(createEventCard(event));
     });
 }
 
-// Get weekend date range
-function getWeekendDateRange() {
-    const now = new Date();
-    const dayOfWeek = now.getDay();
-    const daysUntilSaturday = (6 - dayOfWeek + 7) % 7 || 7;
-    const nextSaturday = new Date(now);
-    nextSaturday.setDate(now.getDate() + daysUntilSaturday);
-    nextSaturday.setHours(0, 0, 0, 0);
+function renderWeekendError() {
+    ['dontMissEvents', 'saturdayEvents', 'sundayEvents', 'allWeekendEvents'].forEach(containerId => {
+        const container = document.getElementById(containerId);
+        if (!container) return;
 
-    const nextSunday = new Date(nextSaturday);
-    nextSunday.setDate(nextSaturday.getDate() + 1);
-    nextSunday.setHours(23, 59, 59, 999);
-
-    return { start: nextSaturday, end: nextSunday };
+        container.innerHTML = `
+            <div class="error-state" style="text-align: center; padding: 3rem; grid-column: 1/-1;">
+                <p style="color: #E53935; font-size: 1.2rem;">We’re having trouble loading events right now. Please try again shortly.</p>
+            </div>
+        `;
+    });
 }
-
-// Load Don't Miss events (high priority or featured)
-async function loadDontMissEvents() {
-    const container = document.getElementById('dontMissEvents');
-    if (!container) return;
-
-    await waitForEvents();
-
-    try {
-        const allEvents = window.eventsData || [];
-        const futureEvents = getFutureEvents(allEvents);
-        const { start, end } = getWeekendDateRange();
-
-        const dontMissEvents = futureEvents
-            .filter(event => {
-                const eventDate = window.parseEventDate ? window.parseEventDate(event.date) : new Date(event.date);
-                const isInWeekend = eventDate >= start && eventDate <= end;
-                const isPriority = event.priority === 'high' || event.featured;
-                return isInWeekend && isPriority;
-            })
-            .slice(0, 6);
-
-        console.log(`🔥 Don't Miss: ${dontMissEvents.length} events`);
-        populateEventContainer(container, dontMissEvents, 'No featured events this weekend', 6);
-    } catch (error) {
-        console.error('Error loading don\'t miss events:', error);
-        showErrorInContainer('dontMissEvents', { message: 'Something went wrong' });
-    }
-}
-
-// Load Saturday events
-async function loadSaturdayEvents() {
-    const container = document.getElementById('saturdayEvents');
-    if (!container) return;
-
-    await waitForEvents();
-
-    try {
-        const allEvents = window.eventsData || [];
-        const futureEvents = getFutureEvents(allEvents);
-        const { start } = getWeekendDateRange();
-        const saturdayEnd = new Date(start);
-        saturdayEnd.setHours(23, 59, 59, 999);
-
-        const saturdayEvents = futureEvents
-            .filter(event => {
-                const eventDate = window.parseEventDate ? window.parseEventDate(event.date) : new Date(event.date);
-                return eventDate >= start && eventDate <= saturdayEnd;
-            })
-            .slice(0, 12);
-
-        console.log(`📅 Saturday: ${saturdayEvents.length} events`);
-        populateEventContainer(container, saturdayEvents, 'No events on Saturday', 12);
-    } catch (error) {
-        console.error('Error loading Saturday events:', error);
-        showErrorInContainer('saturdayEvents', { message: 'Something went wrong' });
-    }
-}
-
-// Load Sunday events
-async function loadSundayEvents() {
-    const container = document.getElementById('sundayEvents');
-    if (!container) return;
-
-    await waitForEvents();
-
-    try {
-        const allEvents = window.eventsData || [];
-        const futureEvents = getFutureEvents(allEvents);
-        const { end } = getWeekendDateRange();
-        const sundayStart = new Date(end);
-        sundayStart.setHours(0, 0, 0, 0);
-
-        const sundayEvents = futureEvents
-            .filter(event => {
-                const eventDate = window.parseEventDate ? window.parseEventDate(event.date) : new Date(event.date);
-                return eventDate >= sundayStart && eventDate <= end;
-            })
-            .slice(0, 12);
-
-        console.log(`📅 Sunday: ${sundayEvents.length} events`);
-        populateEventContainer(container, sundayEvents, 'No events on Sunday', 12);
-    } catch (error) {
-        console.error('Error loading Sunday events:', error);
-        showErrorInContainer('sundayEvents', { message: 'Something went wrong' });
-    }
-}
-
-// Load all weekend events
-async function loadAllWeekendEvents() {
-    const container = document.getElementById('allWeekendEvents');
-    if (!container) return;
-
-    await waitForEvents();
-
-    try {
-        const allEvents = window.eventsData || [];
-        const futureEvents = getFutureEvents(allEvents);
-        const { start, end } = getWeekendDateRange();
-
-        const weekendEvents = futureEvents
-            .filter(event => {
-                const eventDate = window.parseEventDate ? window.parseEventDate(event.date) : new Date(event.date);
-                return eventDate >= start && eventDate <= end;
-            })
-            .slice(0, 18);
-
-        console.log(`🎉 All Weekend: ${weekendEvents.length} events`);
-        populateEventContainer(container, weekendEvents, 'No events this weekend', 18);
-    } catch (error) {
-        console.error('Error loading all weekend events:', error);
-        showErrorInContainer('allWeekendEvents', { message: 'Something went wrong' });
-    }
-}
-

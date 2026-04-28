@@ -12,7 +12,6 @@ from google import genai
 _client = None
 _working_model = None
 
-# Try newest → oldest until one works for this API key
 CANDIDATE_MODELS = [
     "gemini-2.5-flash-preview-05-20",
     "gemini-2.5-flash",
@@ -31,7 +30,6 @@ def get_client():
 
 
 def get_working_model() -> str:
-    """Try candidate models with a tiny test prompt and return the first that works."""
     global _working_model
     if _working_model:
         return _working_model
@@ -42,15 +40,15 @@ def get_working_model() -> str:
             _working_model = model
             print(f"[MODEL] Using Gemini model: {model}")
             return model
-        except Exception as e:
-            print(f"[MODEL] {model} unavailable: {e}")
+        except Exception as error:
+            print(f"[MODEL] {model} unavailable: {error}")
     raise RuntimeError("No working Gemini model found for this API key.")
 
 
 TODAY = datetime.utcnow().strftime("%Y-%m-%d")
 
 PROMPT_TEMPLATE = """You are an event data extractor for Norwich, UK.
-Extract ALL events from the webpage text below and return ONLY a valid JSON array — no markdown, no explanation.
+Extract ALL events from the webpage text below and return ONLY a valid JSON array with no markdown and no explanation.
 
 Each event object must use this exact shape:
 {{
@@ -62,6 +60,7 @@ Each event object must use this exact shape:
   "address": "string or null",
   "description": "string",
   "ticket_url": "string or null",
+  "official_url": "string or null",
   "image_url": "string or null",
   "price": "string e.g. Free / £10 / £5-£15",
   "category": "one of: nightlife | gigs | theatre | markets | exhibitions | festivals | workshops | community | sports | culture | comedy | family | general",
@@ -71,6 +70,9 @@ Each event object must use this exact shape:
 Rules:
 - Only include FUTURE events (today is {today}). Skip anything before this date.
 - Never invent or hallucinate data. If a field is genuinely unknown, use null.
+- Prefer a direct event or ticket page in "ticket_url" when present.
+- Use "official_url" for the best venue page or canonical event page when no ticket link is available.
+- The "venue" field should be the named venue, not just "Norwich", unless the source genuinely gives no better venue.
 - If no events are found, return an empty array: []
 - Return ONLY the JSON array, starting with [ and ending with ]
 
@@ -85,21 +87,18 @@ def normalise_with_gemini(text: str, source_url: str, source_name: str) -> list[
     if not text or len(text.strip()) < 100:
         return []
 
-    trimmed = text[:8000]
-
     prompt = PROMPT_TEMPLATE.format(
         today=TODAY,
         source_name=source_name,
         source_url=source_url,
-        text=trimmed,
+        text=text[:8000],
     )
 
     try:
         model = get_working_model()
-        resp = get_client().models.generate_content(model=model, contents=prompt)
-        raw = resp.text.strip()
+        response = get_client().models.generate_content(model=model, contents=prompt)
+        raw = response.text.strip()
 
-        # Strip any accidental markdown fences
         if raw.startswith("```"):
             raw = raw.split("```")[1]
             if raw.startswith("json"):
@@ -111,22 +110,21 @@ def normalise_with_gemini(text: str, source_url: str, source_name: str) -> list[
             print(f"[WARN] {source_name}: Gemini returned non-list")
             return []
 
-        # Stamp provenance on every event
-        for e in events:
-            e["source"] = source_name
-            e["source_url"] = source_url
-            e["isAiDiscovered"] = True
-            e["status"] = "approved"
+        for event in events:
+            event["source"] = source_name
+            event["source_url"] = source_url
+            event["isAiDiscovered"] = True
+            event["status"] = "pending"
 
         print(f"[OK]   {source_name}: {len(events)} events extracted")
         return events
 
-    except json.JSONDecodeError as err:
-        print(f"[WARN] {source_name}: JSON parse error — {err}")
+    except json.JSONDecodeError as error:
+        print(f"[WARN] {source_name}: JSON parse error - {error}")
         return []
-    except RuntimeError as err:
-        print(f"[ERROR] {err}")
+    except RuntimeError as error:
+        print(f"[ERROR] {error}")
         raise
-    except Exception as err:
-        print(f"[WARN] {source_name}: Gemini failed — {err}")
+    except Exception as error:
+        print(f"[WARN] {source_name}: Gemini failed - {error}")
         return []

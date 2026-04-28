@@ -1,24 +1,27 @@
 """
-Norwich Events Hub — Events scraper
-Scrapes 20+ Norwich event sources, normalises with Gemini AI, exports events.json.
+Norwich Events Hub scraper.
+Scrapes Norwich event sources, normalises with Gemini AI, and exports canonical events.json.
 
 Usage:
     cd automation/botasaurus_scraper
     GEMINI_API_KEY=xxx python main.py
 """
-import sys
-import os
-import time
 import concurrent.futures
+import json
+import os
+import pathlib
+import sys
+import time
+from datetime import datetime
 
 import requests
 from bs4 import BeautifulSoup
 
 sys.path.insert(0, os.path.dirname(__file__))
 
-from sources import SOURCES
-from normaliser import normalise_with_gemini
 from exporter import deduplicate_and_export
+from normaliser import normalise_with_gemini
+from sources import SOURCES
 
 
 HEADERS = {
@@ -33,7 +36,7 @@ HEADERS = {
 
 
 def _clean_html(html: str) -> str:
-    """Strip nav/footer/scripts and return readable text (max 8000 chars)."""
+    """Strip nav/footer/scripts and return readable text."""
     soup = BeautifulSoup(html, "lxml")
     for tag in soup(["nav", "footer", "script", "style", "aside", "header"]):
         tag.decompose()
@@ -44,28 +47,29 @@ def scrape_source(source: dict) -> dict | None:
     """Scrape a single source with requests + retries."""
     url = source["url"]
     name = source["name"]
+
     for attempt in range(3):
         try:
-            resp = requests.get(url, headers=HEADERS, timeout=25, allow_redirects=True)
-            if resp.status_code == 200:
-                text = _clean_html(resp.text)
+            response = requests.get(url, headers=HEADERS, timeout=25, allow_redirects=True)
+            if response.status_code == 200:
+                text = _clean_html(response.text)
                 if len(text) > 200:
                     print(f"[OK]   {name}: {len(text)} chars")
                     return {"source": name, "url": url, "text": text}
-                else:
-                    print(f"[SKIP] {name}: too little content ({len(text)} chars)")
-                    return None
-            else:
-                print(f"[HTTP] {name}: status {resp.status_code}")
-                if attempt < 2:
-                    time.sleep(2)
+                print(f"[SKIP] {name}: too little content ({len(text)} chars)")
+                return None
+
+            print(f"[HTTP] {name}: status {response.status_code}")
+            if attempt < 2:
+                time.sleep(2)
         except requests.exceptions.Timeout:
             print(f"[TIMEOUT] {name} (attempt {attempt + 1})")
             if attempt < 2:
                 time.sleep(3)
-        except Exception as err:
-            print(f"[FAIL] {name}: {err}")
+        except Exception as error:
+            print(f"[FAIL] {name}: {error}")
             return None
+
     print(f"[GIVE UP] {name}: all attempts failed")
     return None
 
@@ -77,14 +81,13 @@ def main() -> None:
 
     start_time = datetime.now()
     run_id = start_time.strftime("%Y-%m-%d-%H%M")
-    
+
     print(f"\n=== Norwich Events Scraper (Run: {run_id}) ===")
     print(f"Sources: {len(SOURCES)}\n")
 
-    # 1. Scrape all sources in parallel (max 8 at once)
     raw_results: list[dict] = []
     with concurrent.futures.ThreadPoolExecutor(max_workers=8) as executor:
-        futures = {executor.submit(scrape_source, s): s for s in SOURCES}
+        futures = {executor.submit(scrape_source, source): source for source in SOURCES}
         for future in concurrent.futures.as_completed(futures):
             result = future.result()
             if result:
@@ -96,26 +99,23 @@ def main() -> None:
         print("[ERROR] No sources scraped. Exiting.")
         sys.exit(1)
 
-    # 2. Normalise with Gemini AI
     all_events: list[dict] = []
     errors = 0
-    for i, raw in enumerate(raw_results, 1):
+    for index, raw in enumerate(raw_results, 1):
         try:
-            print(f"[AI] Normalising {i}/{len(raw_results)}: {raw['source']}")
+            print(f"[AI] Normalising {index}/{len(raw_results)}: {raw['source']}")
             events = normalise_with_gemini(raw["text"], raw["url"], raw["source"])
             all_events.extend(events)
-            if i < len(raw_results):
+            if index < len(raw_results):
                 time.sleep(0.5)
-        except Exception as e:
-            print(f"[AI ERROR] {raw['source']}: {e}")
+        except Exception as error:
+            print(f"[AI ERROR] {raw['source']}: {error}")
             errors += 1
 
     print(f"\n--- Gemini extracted {len(all_events)} raw events ---\n")
 
-    # 3. Deduplicate and export
-    count = deduplicate_and_export(all_events)
-    
-    # 4. Save Run Log
+    export_stats = deduplicate_and_export(all_events)
+
     end_time = datetime.now()
     log = {
         "run_id": run_id,
@@ -125,27 +125,28 @@ def main() -> None:
         "sources_total": len(SOURCES),
         "sources_scraped": len(raw_results),
         "raw_events_extracted": len(all_events),
-        "unique_events_exported": count,
+        "valid_events": export_stats["valid_events"],
+        "approved_exports": export_stats["approved_exports"],
+        "review_queue": export_stats["review_queue"],
+        "duplicates": export_stats["duplicates"],
+        "skipped": export_stats["skipped"],
         "errors": errors,
-        "status": "completed" if count > 0 else "failed"
+        "status": "completed" if export_stats["approved_exports"] > 0 else "failed",
     }
-    
+
     log_dir = pathlib.Path(__file__).resolve().parent.parent.parent / "exports" / "logs"
     log_dir.mkdir(parents=True, exist_ok=True)
-    (log_dir / f"run-{run_id}.json").write_text(json.dumps(log, indent=2))
-    
-    # Update latest-run.json
-    (log_dir / "latest-run.json").write_text(json.dumps(log, indent=2))
+    (log_dir / f"run-{run_id}.json").write_text(json.dumps(log, indent=2), encoding="utf-8")
+    (log_dir / "latest-run.json").write_text(json.dumps(log, indent=2), encoding="utf-8")
 
-    if count == 0:
-        print("[WARN] No events exported — check source scraping and Gemini responses.")
+    if export_stats["approved_exports"] == 0:
+        print("[WARN] No approved events exported - check source extraction, venue/link coverage, and review queue.")
         sys.exit(1)
-    else:
-        print(f"\n✓ Done. {count} events written to exports/events.json")
-        print(f"✓ Log written to exports/logs/run-{run_id}.json")
+
+    print(f"\nDone. {export_stats['approved_exports']} events written to exports/events.json")
+    print(f"Review queue: {export_stats['review_queue']} events written to exports/logs/scraper-review-queue.json")
+    print(f"Log written to exports/logs/run-{run_id}.json")
 
 
 if __name__ == "__main__":
-    from datetime import datetime
-    import pathlib
     main()

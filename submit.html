@@ -83,7 +83,7 @@
                 </div>
                 <div class="benefit-item">
                     <span class="benefit-icon">✓</span>
-                    <span>Reach thousands</span>
+                    <span>Reach local Norwich event-goers</span>
                 </div>
                 <div class="benefit-item">
                     <span class="benefit-icon">✓</span>
@@ -109,8 +109,9 @@
                             <input type="date" id="eventDate" name="eventDate" required>
                         </div>
                         <div class="form-group">
-                            <label for="eventTime">Time *</label>
-                            <input type="time" id="eventTime" name="eventTime" required>
+                            <label for="eventTime">Time</label>
+                            <input type="time" id="eventTime" name="eventTime">
+                            <small>Leave blank if time is not yet confirmed (will show as "Time TBC")</small>
                         </div>
                     </div>
 
@@ -152,19 +153,19 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="eventFlyer">Event Flyer / Image *</label>
-                        <input type="file" id="eventFlyer" name="eventFlyer" accept="image/*" required>
-                        <small>Required - Upload a flyer or promotional image (JPG, PNG, max 5MB)</small>
+                        <label for="eventFlyer">Event Flyer / Image</label>
+                        <input type="file" id="eventFlyer" name="eventFlyer" accept="image/*">
+                        <small>No flyer yet? Upload a logo, poster, or event image. We can still review it. (JPG, PNG, max 5MB)</small>
                     </div>
 
                     <div class="form-divider">
-                        <h3>📋 Event Snapshot (Help users find the right event)</h3>
+                        <h3>📋 Event Snapshot <span style="font-weight:400;font-size:0.9rem;">(Optional — helps users find the right event)</span></h3>
                     </div>
 
                     <div class="form-group">
-                        <label for="eventVibe">Event Vibe *</label>
-                        <select id="eventVibe" name="eventVibe" required>
-                            <option value="">Select the event vibe</option>
+                        <label for="eventVibe">Event Vibe</label>
+                        <select id="eventVibe" name="eventVibe">
+                            <option value="">Select the event vibe (optional)</option>
                             <option value="Underground">Underground - Alternative, edgy, niche audience</option>
                             <option value="Commercial">Commercial - Mainstream, broad appeal</option>
                             <option value="Chill">Chill - Relaxed, laid-back atmosphere</option>
@@ -173,14 +174,14 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="crowdType">Crowd Type *</label>
-                        <input type="text" id="crowdType" name="crowdType" required placeholder="e.g., Students, families, 25-40 professionals, electronic music fans">
+                        <label for="crowdType">Crowd Type</label>
+                        <input type="text" id="crowdType" name="crowdType" placeholder="e.g., Students, families, 25-40 professionals, electronic music fans">
                         <small>Describe the expected audience (age, interests, demographics)</small>
                     </div>
 
                     <div class="form-group">
-                        <label for="bestFor">Best For *</label>
-                        <input type="text" id="bestFor" name="bestFor" required placeholder="e.g., Dancers, Students, Families, Ravers, 30+">
+                        <label for="bestFor">Best For</label>
+                        <input type="text" id="bestFor" name="bestFor" placeholder="e.g., Dancers, Students, Families, Ravers, 30+">
                         <small>Who would enjoy this event most? (separate with commas)</small>
                     </div>
 
@@ -219,7 +220,7 @@
                         <h3>🎯 Why Submit Here?</h3>
                         <p><strong>Free listing viewed by locals & visitors — published within 24h!</strong></p>
                         <ul>
-                            <li>✓ Reach thousands of Norwich residents and visitors</li>
+                            <li>✓ Reach local Norwich residents and visitors looking for events</li>
                             <li>✓ Free for promoters — no hidden costs</li>
                             <li>✓ Quick approval — events reviewed within 24 hours</li>
                             <li>✓ Quality listings get more engagement</li>
@@ -238,7 +239,7 @@
                     <h3>📋 Submission Guidelines</h3>
                     <ul>
                         <li>✓ All events must be happening in Norwich</li>
-                        <li>✓ <strong>High-quality flyer/image required</strong> (makes your event stand out)</li>
+                        <li>✓ <strong>High-quality flyer/image recommended</strong> (makes your event stand out — you can still submit without one)</li>
                         <li>✓ <strong>Ticket or info link required</strong> (helps attendees find tickets)</li>
                         <li>✓ Events will be reviewed before publication</li>
                         <li>✓ You'll receive a confirmation email once approved</li>
@@ -298,7 +299,6 @@
                     <div class="social-links">
                         <a href="https://www.instagram.com/norwicheventshub" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
                         <a href="https://www.facebook.com/norwicheventshub" target="_blank" rel="noopener noreferrer" aria-label="Facebook">Facebook</a>
-                        <a href="https://twitter.com/norwicheventshub" target="_blank" rel="noopener noreferrer" aria-label="Twitter">Twitter</a>
                         <a href="https://www.tiktok.com/@norwicheventshub" target="_blank" rel="noopener noreferrer" aria-label="TikTok">TikTok</a>
                     </div>
                 </div>
@@ -321,7 +321,6 @@
         "sameAs": [
             "https://www.instagram.com/norwicheventshub",
             "https://www.facebook.com/norwicheventshub",
-            "https://twitter.com/norwicheventshub",
             "https://www.tiktok.com/@norwicheventshub"
         ]
     }

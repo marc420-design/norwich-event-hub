@@ -1,73 +1,112 @@
-// Venues Directory Script
-
-document.addEventListener('DOMContentLoaded', async function() {
+document.addEventListener('DOMContentLoaded', async () => {
     const venuesGrid = document.getElementById('venuesGrid');
     const loadingEl = document.getElementById('loadingVenues');
 
-    // Wait for events to load
-    if (window.eventsLoadedPromise) {
-        await window.eventsLoadedPromise;
-    } else {
-        await new Promise(resolve => setTimeout(resolve, 500));
-        if (!window.eventsData) {
-            await initializeEvents();
-        }
-    }
-
-    const allEvents = window.eventsData || [];
-
-    if (allEvents.length === 0) {
-        loadingEl.innerHTML = '<p>No venues found.</p>';
+    if (!venuesGrid || !loadingEl) {
         return;
     }
 
-    // Extract unique venues
-    const venuesMap = new Map();
+    try {
+        const allEvents = typeof window.getPublicEvents === 'function'
+            ? await window.getPublicEvents()
+            : (window.eventsData || []);
 
-    allEvents.forEach(event => {
-        if (!event.location) return;
+        const publicEvents = allEvents.filter((event) =>
+            window.isApprovedFutureEvent ? window.isApprovedFutureEvent(event) : true
+        );
 
-        const venueName = event.location.trim();
-        
-        if (!venuesMap.has(venueName)) {
-            venuesMap.set(venueName, {
-                name: venueName,
-                address: event.address || 'Norwich',
-                eventCount: 0,
-                nextEventDate: null
-            });
-        }
+        const venuesMap = new Map();
 
-        const venue = venuesMap.get(venueName);
-        venue.eventCount++;
-        
-        // Track next event date
-        if (event.date) {
-            const eventDate = new Date(event.date);
-            if (!venue.nextEventDate || eventDate < venue.nextEventDate) {
-                // Only consider future events for "next event" if possible, or just sorting logic
-                // For now, simple logic
-                if (eventDate >= new Date().setHours(0,0,0,0)) {
-                    venue.nextEventDate = eventDate;
-                }
+        publicEvents.forEach((event) => {
+            if (!event.location || event.location === 'Venue TBA') {
+                return;
             }
+
+            const venueName = event.location.trim();
+            const venueKey = venueName.toLowerCase();
+            const eventDate = window.parseEventDate ? window.parseEventDate(event.date) : new Date(event.date);
+
+            if (!venuesMap.has(venueKey)) {
+                venuesMap.set(venueKey, {
+                    name: venueName,
+                    address: event.address || 'Norwich',
+                    eventCount: 0,
+                    nextEventDate: null
+                });
+            }
+
+            const venue = venuesMap.get(venueKey);
+            venue.eventCount += 1;
+
+            if (event.date && (!venue.nextEventDate || eventDate < venue.nextEventDate)) {
+                venue.nextEventDate = eventDate;
+            }
+        });
+
+        const venues = Array.from(venuesMap.values()).sort((a, b) => {
+            if (b.eventCount !== a.eventCount) {
+                return b.eventCount - a.eventCount;
+            }
+            return a.name.localeCompare(b.name);
+        });
+
+        loadingEl.style.display = 'none';
+
+        if (venues.length === 0) {
+            renderStarterVenues(venuesGrid);
+        } else {
+            renderVenues(venues, venuesGrid);
         }
-    });
-
-    // Convert to array and sort
-    const venues = Array.from(venuesMap.values()).sort((a, b) => {
-        // Sort by number of events (descending), then name
-        if (b.eventCount !== a.eventCount) return b.eventCount - a.eventCount;
-        return a.name.localeCompare(b.name);
-    });
-
-    loadingEl.style.display = 'none';
-    renderVenues(venues, venuesGrid);
+    } catch (error) {
+        console.error('Unable to load venues:', error);
+        loadingEl.style.display = 'none';
+        renderStarterVenues(venuesGrid);
+    }
 });
 
-function renderVenues(venues, container) {
-    container.innerHTML = venues.map(venue => {
+const STARTER_VENUES = [
+    { name: 'The Forum', address: 'Millennium Plain, Norwich NR2 1TF', url: 'https://www.theforumnorwich.co.uk' },
+    { name: 'Norwich Arts Centre', address: 'St Benedicts Street, Norwich NR2 4PG', url: 'https://www.norwichartscentre.co.uk' },
+    { name: 'UEA Waterfront', address: 'University of East Anglia, Norwich NR4 7TJ', url: 'https://www.uea.su/venues/waterfront' },
+    { name: 'Theatre Royal Norwich', address: 'Theatre Street, Norwich NR2 1RL', url: 'https://www.theatreroyalnorwich.co.uk' },
+    { name: 'Norwich Playhouse', address: '42-58 St Georges Street, Norwich NR3 1AB', url: 'https://www.norwichplayhouse.co.uk' },
+    { name: 'Epic Studios', address: 'Magdalen Street, Norwich NR3 1JE', url: 'https://www.epicstudios.co.uk' },
+    { name: 'The Brickmakers', address: 'Sprowston Road, Norwich NR3 4JR', url: 'https://www.brickmakers.co.uk' },
+    { name: 'Carrow Road', address: 'Norwich City Football Club, Norwich NR1 1JE', url: 'https://www.canaries.co.uk' },
+];
+
+function renderStarterVenues(container) {
+    container.innerHTML = STARTER_VENUES.map((venue) => {
         const encodedName = encodeURIComponent(venue.name);
+        return `
+        <article class="venue-card">
+            <div class="venue-card-header">
+                <h2 class="venue-card-title">${venue.name}</h2>
+            </div>
+            <div class="venue-card-body">
+                <div class="venue-card-address">
+                    <span>📍</span>
+                    <span>${venue.address}</span>
+                </div>
+                <div style="margin-top:0.5rem;">
+                    <a href="${venue.url}" target="_blank" rel="noopener noreferrer" style="color:#3AB8FF;font-size:0.9rem;">Visit venue website →</a>
+                </div>
+            </div>
+            <div class="venue-card-footer">
+                <a href="venue-detail.html?name=${encodedName}" class="btn btn-outline btn-full">View Details & Events</a>
+            </div>
+        </article>
+        `;
+    }).join('');
+}
+
+function renderVenues(venues, container) {
+    container.innerHTML = venues.map((venue) => {
+        const encodedName = encodeURIComponent(venue.name);
+        const nextEvent = venue.nextEventDate
+            ? formatDate(getDateString(venue.nextEventDate))
+            : '';
+
         return `
         <article class="venue-card">
             <div class="venue-card-header">
@@ -81,9 +120,9 @@ function renderVenues(venues, container) {
                 <div class="venue-event-count">
                     ${venue.eventCount} Upcoming Event${venue.eventCount !== 1 ? 's' : ''}
                 </div>
-                ${venue.nextEventDate ? `
+                ${nextEvent ? `
                 <div style="font-size:0.9rem; color:#666;">
-                    Next event: ${venue.nextEventDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })}
+                    Next event: ${nextEvent}
                 </div>
                 ` : ''}
             </div>

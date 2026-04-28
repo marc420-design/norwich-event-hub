@@ -38,15 +38,13 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-// Event Data Structure - Use window.eventsData set by force-reload.js
-// This ensures all scripts share the same data
+// Event Data Structure - shared across page scripts
 window.eventsData = window.eventsData || [];
 
 // Alias for compatibility
 let eventsData = window.eventsData;
 
-// Note: Events are loaded by force-reload.js
-// This script just provides utility functions
+// Events are loaded by agent-bridge.js.
 
 // Date utility functions are now in date-utils.js
 // These are loaded from date-utils.js and available on window object
@@ -73,6 +71,75 @@ function sanitizeUrl(url) {
         // Invalid URL
     }
     return '';
+}
+
+function escapeAttribute(value) {
+    return escapeHtml(String(value || ''));
+}
+
+function isApprovedFutureEvent(event) {
+    if (!event || !event.date) return false;
+    const status = String(event.status || '').toLowerCase();
+    return status === 'approved' && window.isFutureEvent && window.isFutureEvent(event.date);
+}
+
+function getEventDetailUrl(event) {
+    const identifier = event && (event.slug || event.id || event.eventid);
+    if (!identifier) return 'event-detail.html';
+    return `event-detail.html?id=${encodeURIComponent(String(identifier))}`;
+}
+
+function getEventShareUrl(event) {
+    return window.location.origin + '/' + getEventDetailUrl(event);
+}
+
+function choosePrimaryUrl(event) {
+    if (window.chooseBestEventUrl) {
+        return window.chooseBestEventUrl(event);
+    }
+
+    return sanitizeUrl(
+        event.primaryUrl ||
+        event.ticketLink ||
+        event.ticketlink ||
+        event.ticket_url ||
+        event.officialUrl ||
+        event.official_url ||
+        event.sourceUrl ||
+        event.source_url
+    );
+}
+
+function getEventImageDetails(event) {
+    const imageUrl = window.chooseBestImage ? window.chooseBestImage(event) : sanitizeUrl(event.image || '');
+    const fallbackKey = window.getCategoryFallbackKey
+        ? window.getCategoryFallbackKey(event.category || 'general')
+        : 'norwich';
+
+    return {
+        imageUrl,
+        fallbackKey
+    };
+}
+
+function getCategoryFallbackStyle(categoryKey) {
+    const styles = {
+        nightlife: 'linear-gradient(135deg, #3b1c5a 0%, #8b5cf6 100%)',
+        music: 'linear-gradient(135deg, #0f766e 0%, #22c55e 100%)',
+        stage: 'linear-gradient(135deg, #7f1d1d 0%, #f97316 100%)',
+        market: 'linear-gradient(135deg, #92400e 0%, #facc15 100%)',
+        family: 'linear-gradient(135deg, #0f172a 0%, #38bdf8 100%)',
+        sport: 'linear-gradient(135deg, #14532d 0%, #84cc16 100%)',
+        arts: 'linear-gradient(135deg, #1d4ed8 0%, #f472b6 100%)',
+        norwich: 'linear-gradient(135deg, #1e3a8a 0%, #2B7A47 100%)'
+    };
+
+    return styles[categoryKey] || styles.norwich;
+}
+
+function formatEventTimeLabel(time) {
+    const formatted = window.formatTime ? window.formatTime(time) : '';
+    return formatted || 'Time TBC';
 }
 
 // Calculate urgency for an event based on date/time
@@ -167,17 +234,18 @@ function createEventCard(event) {
     const location = event.location || 'Location TBA';
     const description = event.description || '';
     const category = event.category || 'general';
-    const ticketLink = event.ticketLink || event.ticketlink || '';
-    const image = event.image || event.imageurl || '';
     const eventId = event.id || event.eventid;
-
-    // Sanitize URLs at the top so they're available throughout the function
-    const imageUrl = sanitizeUrl(image);
-    const ticketUrl = sanitizeUrl(ticketLink);
+    const detailUrl = getEventDetailUrl(event);
+    const eventImage = getEventImageDetails(event);
+    const imageUrl = eventImage.imageUrl;
+    const fallbackStyle = getCategoryFallbackStyle(eventImage.fallbackKey);
+    const primaryUrl = choosePrimaryUrl(event);
+    const ticketUrl = sanitizeUrl(event.ticketLink || event.ticketlink || event.ticket_url || '');
+    const priceText = event.price || (event.isFree ? 'Free' : '');
 
     card.dataset.category = escapeHtml(category);
     if (eventId) {
-        card.dataset.eventId = eventId;
+        card.dataset.eventId = String(eventId);
     }
 
     // Make card clickable to event detail page
@@ -186,29 +254,8 @@ function createEventCard(event) {
         if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON' || e.target.closest('a') || e.target.closest('button')) {
             return;
         }
-        if (eventId) {
-            window.location.href = `event-detail.html?id=${eventId}`;
-        }
+        window.location.href = detailUrl;
     });
-
-    // Get category-specific gradient or image
-    const categoryGradients = {
-        'nightlife': 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-        'gigs': 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-        'theatre': 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
-        'sports': 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
-        'markets': 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
-        'community': 'linear-gradient(135deg, #30cfd0 0%, #330867 100%)',
-        'culture': 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
-        'free': 'linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)',
-        'default': 'linear-gradient(135deg, var(--color-electric-blue), var(--color-forest-green))'
-    };
-
-    // Use sanitized image URL or category gradient
-    const categoryGradient = categoryGradients[category] || categoryGradients['default'];
-    const imageStyle = imageUrl
-        ? `background-image: url('${imageUrl}')`
-        : `background: ${categoryGradient}`;
 
     // Create elements safely to prevent XSS
     const eventImageDiv = document.createElement('div');
@@ -219,7 +266,8 @@ function createEventCard(event) {
         eventImageDiv.dataset.bgImage = imageUrl;
         eventImageDiv.classList.add('lazy-bg');
     } else {
-        eventImageDiv.style.cssText = imageStyle;
+        eventImageDiv.style.background = fallbackStyle;
+        eventImageDiv.innerHTML = `<span style="display:inline-flex;align-items:flex-end;height:100%;padding:1rem;color:white;font-weight:700;text-transform:capitalize;">${escapeAttribute(eventImage.fallbackKey)}</span>`;
     }
 
     const eventContentDiv = document.createElement('div');
@@ -323,7 +371,7 @@ function createEventCard(event) {
         }
     }
 
-    const dateText = document.createTextNode(`${window.formatDate(date)} at ${window.formatTime(time)}`);
+    const dateText = document.createTextNode(`${window.formatDate(date)} · ${formatEventTimeLabel(time)}`);
     eventDateSpan.appendChild(dateText);
 
     const eventTitle = document.createElement('h3');
@@ -423,6 +471,11 @@ function createEventCard(event) {
     eventLocationP.className = 'event-location';
     eventLocationP.textContent = `📍 ${location}`;
 
+    const eventMetaP = document.createElement('p');
+    eventMetaP.className = 'event-description';
+    eventMetaP.style.marginBottom = '0.5rem';
+    eventMetaP.textContent = [category ? category.charAt(0).toUpperCase() + category.slice(1) : '', priceText].filter(Boolean).join(' · ');
+
     const eventDescriptionP = document.createElement('p');
     eventDescriptionP.className = 'event-description';
     eventDescriptionP.textContent = description;
@@ -430,11 +483,20 @@ function createEventCard(event) {
     eventContentDiv.appendChild(eventDateSpan);
     eventContentDiv.appendChild(eventTitle);
     eventContentDiv.appendChild(eventLocationP);
+    if (eventMetaP.textContent) {
+        eventContentDiv.appendChild(eventMetaP);
+    }
     eventContentDiv.appendChild(eventDescriptionP);
 
-    // Add primary CTA link based on priority
-    const primaryUrl = ticketUrl || sanitizeUrl(event.officialUrl || event.official_url || event.sourceUrl || event.source_url);
-    const linkText = ticketUrl ? 'Tickets →' : 'More Info →';
+    const actions = document.createElement('div');
+    actions.className = 'event-actions';
+    actions.style.cssText = 'display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:0.75rem;';
+
+    const detailsLink = document.createElement('a');
+    detailsLink.href = detailUrl;
+    detailsLink.className = 'event-link';
+    detailsLink.textContent = 'Details';
+    actions.appendChild(detailsLink);
 
     if (primaryUrl) {
         const ctaLink = document.createElement('a');
@@ -442,16 +504,19 @@ function createEventCard(event) {
         ctaLink.target = '_blank';
         ctaLink.rel = 'noopener noreferrer';
         ctaLink.className = 'event-link';
-        ctaLink.textContent = linkText;
-        eventContentDiv.appendChild(ctaLink);
+        ctaLink.textContent = primaryUrl === ticketUrl ? 'Tickets' : 'More Info';
+        actions.appendChild(ctaLink);
     }
+
+    eventContentDiv.appendChild(actions);
 
     // Add social share buttons
     const shareContainer = document.createElement('div');
     shareContainer.className = 'event-share';
     shareContainer.style.cssText = 'margin-top: 12px; display: flex; gap: 8px; flex-wrap: wrap;';
 
-    const shareUrl = encodeURIComponent(window.location.origin + window.location.pathname + '?event=' + (event.id || event.eventid || ''));
+    const shareDestination = getEventShareUrl(event);
+    const shareUrl = encodeURIComponent(shareDestination);
     const shareText = encodeURIComponent(`${name} - ${window.formatDate(date)} at ${location}`);
 
     // Twitter share
@@ -483,7 +548,7 @@ function createEventCard(event) {
     copyLink.onclick = function (e) {
         e.preventDefault();
         e.stopPropagation();
-        const urlToCopy = window.location.origin + window.location.pathname + '?event=' + (event.id || event.eventid || '');
+        const urlToCopy = shareDestination;
         navigator.clipboard.writeText(urlToCopy).then(() => {
             const originalText = copyLink.innerHTML;
             copyLink.innerHTML = '✓ Copied!';
@@ -506,7 +571,7 @@ function createEventCard(event) {
         const calStartDate = date.replace(/-/g, '') + (time ? 'T' + time.replace(/:/g, '') + '00' : '');
         // Default to one hour duration if time provided, or next day if all day
         let calEndDate = '';
-        if (time) {
+        if (time && time !== 'Time TBC') {
             const startHour = parseInt(time.split(':')[0]);
             const endHour = (startHour + 2) % 24; // 2 hours duration
             const endHourStr = endHour.toString().padStart(2, '0');
@@ -518,7 +583,7 @@ function createEventCard(event) {
             calEndDate = nextDay.toISOString().split('T')[0].replace(/-/g, '');
         }
 
-        const googleCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(name)}&dates=${calStartDate}/${calEndDate}&details=${encodeURIComponent(description + '\n\nFull details: ' + window.location.origin + window.location.pathname + '?event=' + eventId)}&location=${encodeURIComponent(location)}`;
+        const googleCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(name)}&dates=${calStartDate}/${calEndDate}&details=${encodeURIComponent(description + '\n\nFull details: ' + shareDestination)}&location=${encodeURIComponent(location)}`;
 
         const calButton = document.createElement('a');
         calButton.href = googleCalUrl;
@@ -536,61 +601,26 @@ function createEventCard(event) {
 
     eventContentDiv.appendChild(shareContainer);
 
-    // Add Schema.org structured data
-    if (typeof document !== 'undefined') {
-        const schemaScript = document.createElement('script');
-        schemaScript.type = 'application/ld+json';
-
-        // Parse date and time
-        let startDate = '';
-        if (date) {
-            const dateStr = date.split('T')[0]; // Get date part if ISO format
-            const [year, month, day] = dateStr.split('-');
-            if (time) {
-                const timeStr = time.includes('T') ? time.split('T')[1].split('.')[0] : time;
-                const [hours, minutes] = timeStr.split(':');
-                startDate = `${year}-${month}-${day}T${hours || '00'}:${minutes || '00'}:00`;
-            } else {
-                startDate = `${year}-${month}-${day}T00:00:00`;
-            }
-        }
-
-        const schemaData = {
-            "@context": "https://schema.org",
-            "@type": "Event",
-            "name": escapeHtml(name),
-            "startDate": startDate || date,
-            "location": {
-                "@type": "Place",
-                "name": escapeHtml(location),
-                "address": {
-                    "@type": "PostalAddress",
-                    "addressLocality": "Norwich",
-                    "addressCountry": "GB"
-                }
-            },
-            "description": escapeHtml(description),
-            "image": imageUrl || undefined,
-            "eventStatus": "https://schema.org/EventScheduled",
-            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode"
-        };
-
-        if (ticketLink) {
-            schemaData.offers = {
-                "@type": "Offer",
-                "url": ticketUrl,
-                "price": "0",
-                "priceCurrency": "GBP",
-                "availability": "https://schema.org/InStock"
-            };
-        }
-
-        schemaScript.textContent = JSON.stringify(schemaData);
-        card.appendChild(schemaScript);
-    }
-
+    // SEO: Add JSON-LD Structured Data for this event
+    const jsonLd = document.createElement("script");
+    jsonLd.type = "application/ld+json";
+    jsonLd.textContent = JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "name": name,
+        "startDate": date + (time ? 'T' + time : ''),
+        "location": {
+            "@type": "Place",
+            "name": location
+        },
+        "description": description || name,
+        "image": imageUrl || ("https://norwicheventshub.com/assets/logo-image.jpg"),
+        "url": shareDestination
+    });
+    
     card.appendChild(eventImageDiv);
     card.appendChild(eventContentDiv);
+    card.appendChild(jsonLd);
 
     return card;
 }
@@ -634,14 +664,18 @@ if (typeof window !== 'undefined' && 'IntersectionObserver' in window) {
     window.addEventListener('eventsUpdated', observeLazyBackgrounds);
 }
 
+if (typeof window !== 'undefined') {
+    window.isApprovedFutureEvent = isApprovedFutureEvent;
+    window.getEventDetailUrl = getEventDetailUrl;
+    window.getEventShareUrl = getEventShareUrl;
+}
+
 // Export for use in other scripts
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = {
         eventsData,
-        formatDate,
-        formatTime,
-        getTodayDateString,
-        createEventCard
+        createEventCard,
+        isApprovedFutureEvent
     };
 }
 

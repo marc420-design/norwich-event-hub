@@ -1,121 +1,97 @@
 // Event Detail Page JavaScript
 
-document.addEventListener('DOMContentLoaded', async function() {
-    // Get event ID from URL
+document.addEventListener('DOMContentLoaded', async function () {
     const urlParams = new URLSearchParams(window.location.search);
-    const eventId = urlParams.get('id');
+    const eventIdentifier = urlParams.get('id');
 
-    if (!eventId) {
-        showError('No event ID provided');
+    if (!eventIdentifier) {
+        showError('No event ID provided.');
         return;
     }
 
-    // Wait for events to load
-    if (window.eventsLoadedPromise) {
-        await window.eventsLoadedPromise;
+    try {
+        if (window.eventsLoadedPromise) {
+            await window.eventsLoadedPromise;
+        }
+
+        const event = findEventByIdentifier(eventIdentifier);
+        if (!event) {
+            showError('Event not found.');
+            return;
+        }
+
+        displayEventDetail(event);
+        loadRelatedEvents(event);
+        updatePageMetadata(event);
+        startCountdownTimer(event);
+    } catch (error) {
+        console.error('Error loading event detail:', error);
+        showError('We’re having trouble loading this event right now. Please try again shortly.');
     }
-
-    // Find the event
-    const event = (window.eventsData || []).find(e => e.id === parseInt(eventId));
-
-    if (!event) {
-        showError('Event not found');
-        return;
-    }
-
-    // Display event details
-    displayEventDetail(event);
-
-    // Load related events
-    loadRelatedEvents(event);
-
-    // Update page metadata
-    updatePageMetadata(event);
-    
-    // Start countdown timer if event is soon
-    startCountdownTimer(event);
 });
+
+function findEventByIdentifier(identifier) {
+    const id = String(identifier);
+    return (window.eventsData || []).find(event => String(event.id) === id || String(event.slug) === id);
+}
 
 function displayEventDetail(event) {
     const container = document.getElementById('eventDetailContent');
+    const eventDate = event.date ? (window.parseEventDate ? window.parseEventDate(event.date) : new Date(event.date)) : null;
+    const formattedDate = event.date ? window.formatDate(event.date) : 'Date TBA';
+    const formattedTime = event.time && event.time !== 'Time TBC' ? window.formatTime(event.time) : 'Time TBC';
+    const primaryUrl = window.chooseBestEventUrl ? window.chooseBestEventUrl(event) : '';
+    const imageUrl = window.chooseBestImage ? window.chooseBestImage(event) : '';
+    const fallbackLabel = window.getCategoryFallbackKey ? window.getCategoryFallbackKey(event.category || 'general') : 'norwich';
+    const priceText = event.price || (event.isFree ? 'Free' : 'See website');
 
-    // Format date
-    const now = new Date();
-    const eventDate = event.date ? new Date(event.date) : null;
-    const formattedDate = eventDate ? eventDate.toLocaleDateString('en-GB', {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-    }) : 'Date TBA';
-
-    const formattedTime = eventDate ? eventDate.toLocaleTimeString('en-GB', {
-        hour: '2-digit',
-        minute: '2-digit'
-    }) : '';
-
-    // Determine price display
-    const priceDisplay = !event.price || event.price === 'Free' || event.price === '0'
-        ? 'Free Event'
-        : `£${event.price}`;
-
-    // Category badge color
-    const categoryColors = {
-        'nightlife': '#FF6B9D',
-        'gigs': '#9B59B6',
-        'theatre': '#E74C3C',
-        'culture': '#F39C12',
-        'community': '#2ECC71',
-        'markets': '#3498DB',
-        'sports': '#E67E22',
-        'free': '#27AE60'
-    };
-    const categoryColor = categoryColors[event.category] || '#3AB8FF';
-
-    // Build event detail HTML
     container.innerHTML = `
         <div class="event-detail-header">
             <a href="directory.html" class="back-link">← Back to Events</a>
-            <div class="event-detail-badge" style="background-color: ${categoryColor}">
-                ${event.category ? event.category.charAt(0).toUpperCase() + event.category.slice(1) : 'Event'}
-            </div>
+            <div class="event-detail-badge">${escapeHtml(event.category || 'Event')}</div>
         </div>
 
         <div class="event-detail-main">
             <div class="event-detail-image">
-                ${event.image
-                    ? `<img src="${event.image}" alt="${event.name || 'Event'}" onerror="this.src='assets/placeholder-event.jpg'">`
-                    : '<div class="event-image-placeholder"></div>'
+                ${imageUrl
+                    ? `<img src="${escapeHtml(imageUrl)}" alt="${escapeHtml(event.name || 'Event')}" onerror="this.closest('.event-detail-image').innerHTML='<div class=&quot;event-image-placeholder&quot;>${escapeHtml(fallbackLabel)}</div>'">`
+                    : `<div class="event-image-placeholder">${escapeHtml(fallbackLabel)}</div>`
                 }
             </div>
 
             <div class="event-detail-info">
-                <h1 class="event-detail-title">${event.name || 'Untitled Event'}</h1>
+                <h1 class="event-detail-title">${escapeHtml(event.name || 'Untitled Event')}</h1>
 
                 <div class="event-detail-meta">
                     <div class="meta-item">
                         <span class="meta-icon">📅</span>
                         <div>
                             <strong>Date</strong>
-                            <p>${formattedDate}${formattedTime ? ' at ' + formattedTime : ''}</p>
+                            <p>${escapeHtml(formattedDate)}</p>
                         </div>
                     </div>
 
-                    ${event.location ? `
+                    <div class="meta-item">
+                        <span class="meta-icon">⏰</span>
+                        <div>
+                            <strong>Time</strong>
+                            <p>${escapeHtml(formattedTime)}</p>
+                        </div>
+                    </div>
+
                     <div class="meta-item">
                         <span class="meta-icon">📍</span>
                         <div>
-                            <strong>Location</strong>
-                            <p>${event.location}</p>
+                            <strong>Venue</strong>
+                            <p>${escapeHtml(event.location || event.venue || 'Venue TBC')}</p>
                         </div>
                     </div>
-                    ` : ''}
 
                     <div class="meta-item">
                         <span class="meta-icon">💰</span>
                         <div>
                             <strong>Price</strong>
-                            <p>${priceDisplay}</p>
+                            <p>${escapeHtml(priceText)}</p>
                         </div>
                     </div>
                 </div>
@@ -123,46 +99,11 @@ function displayEventDetail(event) {
                 ${event.description ? `
                 <div class="event-detail-description">
                     <h2>About This Event</h2>
-                    <p>${event.description}</p>
+                    <p>${escapeHtml(event.description)}</p>
                 </div>
                 ` : ''}
 
-                ${(event.vibe || event.crowdType || event.bestFor || event.category) ? `
-                <div class="event-snapshot">
-                    <h3>📋 Event Snapshot</h3>
-                    <p class="snapshot-intro">Quick info to help you decide if this event is for you</p>
-                    <div class="snapshot-grid">
-                        ${event.category ? `
-                        <div class="snapshot-item">
-                            <div class="snapshot-label">Genre</div>
-                            <div class="snapshot-value">${event.category.charAt(0).toUpperCase() + event.category.slice(1)}</div>
-                        </div>
-                        ` : ''}
-                        ${event.vibe ? `
-                        <div class="snapshot-item">
-                            <div class="snapshot-label">Vibe</div>
-                            <div class="snapshot-value">
-                                <span class="vibe-badge vibe-${event.vibe.toLowerCase()}">${event.vibe}</span>
-                            </div>
-                        </div>
-                        ` : ''}
-                        ${event.crowdType ? `
-                        <div class="snapshot-item snapshot-full">
-                            <div class="snapshot-label">Crowd Type</div>
-                            <div class="snapshot-value">${event.crowdType}</div>
-                        </div>
-                        ` : ''}
-                        ${event.bestFor ? `
-                        <div class="snapshot-item snapshot-full">
-                            <div class="snapshot-label">Best For</div>
-                            <div class="snapshot-value">${event.bestFor}</div>
-                        </div>
-                        ` : ''}
-                    </div>
-                </div>
-                ` : ''}
-                
-                ${eventDate && eventDate > now ? `
+                ${eventDate && eventDate > new Date() ? `
                 <div class="event-countdown" id="eventCountdown" style="display: none;">
                     <h3>⏰ Event Starts In</h3>
                     <div class="countdown-display" id="countdownDisplay"></div>
@@ -170,31 +111,18 @@ function displayEventDetail(event) {
                 ` : ''}
 
                 <div class="event-detail-actions">
-                    ${event.ticketLink ? `
-                    <a href="${event.ticketLink}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-large">
-                        Get Tickets
-                    </a>
-                    ` : ''}
-                    <button onclick="addToCalendar(${event.id})" class="btn btn-secondary btn-large">
-                        Add to Calendar
-                    </button>
+                    <a href="${escapeHtml(getEventDetailUrl(event))}" class="btn btn-secondary btn-large">Copyable Event Page</a>
+                    ${primaryUrl ? `<a href="${escapeHtml(primaryUrl)}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-large">${primaryUrl === (event.ticketLink || '') ? 'Tickets' : 'More Info'}</a>` : ''}
+                    <button onclick="addToCalendar('${escapeJs(event.id)}')" class="btn btn-secondary btn-large">Add to Calendar</button>
                 </div>
 
                 <div class="event-share">
                     <h3>Share This Event</h3>
                     <div class="share-buttons">
-                        <button onclick="shareWhatsApp(${event.id})" class="share-btn share-whatsapp">
-                            WhatsApp
-                        </button>
-                        <button onclick="shareTwitter(${event.id})" class="share-btn share-twitter">
-                            Twitter
-                        </button>
-                        <button onclick="shareFacebook(${event.id})" class="share-btn share-facebook">
-                            Facebook
-                        </button>
-                        <button onclick="copyLink(${event.id})" class="share-btn share-copy">
-                            Copy Link
-                        </button>
+                        <button onclick="shareWhatsApp('${escapeJs(event.id)}')" class="share-btn share-whatsapp">WhatsApp</button>
+                        <button onclick="shareTwitter('${escapeJs(event.id)}')" class="share-btn share-twitter">Twitter</button>
+                        <button onclick="shareFacebook('${escapeJs(event.id)}')" class="share-btn share-facebook">Facebook</button>
+                        <button onclick="copyLink('${escapeJs(event.id)}')" class="share-btn share-copy">Copy Link</button>
                     </div>
                 </div>
             </div>
@@ -204,87 +132,66 @@ function displayEventDetail(event) {
 
 function loadRelatedEvents(currentEvent) {
     const container = document.getElementById('relatedEvents');
-    const allEvents = window.eventsData || [];
-
-    // Find related events (same category, excluding current event)
-    const relatedEvents = allEvents
-        .filter(e => e.id !== currentEvent.id && e.category === currentEvent.category)
+    const relatedEvents = (window.eventsData || [])
+        .filter(event => event.id !== currentEvent.id && event.category === currentEvent.category)
         .slice(0, 3);
 
-    // If less than 3, fill with other events
-    if (relatedEvents.length < 3) {
-        const otherEvents = allEvents
-            .filter(e => e.id !== currentEvent.id && !relatedEvents.includes(e))
-            .slice(0, 3 - relatedEvents.length);
-        relatedEvents.push(...otherEvents);
-    }
-
-    if (relatedEvents.length === 0) {
-        container.innerHTML = '<p>No related events found</p>';
+    if (!relatedEvents.length) {
+        container.innerHTML = '<p>No related events found.</p>';
         return;
     }
 
     container.innerHTML = '';
     relatedEvents.forEach(event => {
-        const card = createEventCard(event);
-        container.appendChild(card);
+        container.appendChild(createEventCard(event));
     });
 }
 
 function updatePageMetadata(event) {
-    // Update page title
+    const eventUrl = `https://norwicheventshub.com/${getEventDetailUrl(event)}`;
+    const imageUrl = window.chooseBestImage ? window.chooseBestImage(event) : '';
+    const primaryUrl = window.chooseBestEventUrl ? window.chooseBestEventUrl(event) : '';
+    const formattedTime = event.time && event.time !== 'Time TBC' ? event.time : '00:00';
+
     document.getElementById('pageTitle').textContent = `${event.name || 'Event'} - Norwich Event Hub`;
 
-    // Update meta description
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
         metaDesc.content = event.description || `${event.name} at ${event.location || 'Norwich'}`;
     }
 
-    // Update Open Graph meta tags
-    const eventUrl = `https://norwicheventshub.com/event-detail.html?id=${event.id}`;
-
     updateOrCreateMeta('property', 'og:title', event.name || 'Event');
     updateOrCreateMeta('property', 'og:description', event.description || '');
     updateOrCreateMeta('property', 'og:url', eventUrl);
-    updateOrCreateMeta('property', 'og:image', event.image || 'https://norwicheventshub.com/assets/logo-image.jpg');
-
-    // Update Twitter meta tags
+    updateOrCreateMeta('property', 'og:image', imageUrl || 'https://norwicheventshub.com/assets/logo-image.jpg');
     updateOrCreateMeta('name', 'twitter:title', event.name || 'Event');
     updateOrCreateMeta('name', 'twitter:description', event.description || '');
-    updateOrCreateMeta('name', 'twitter:image', event.image || 'https://norwicheventshub.com/assets/logo-image.jpg');
+    updateOrCreateMeta('name', 'twitter:image', imageUrl || 'https://norwicheventshub.com/assets/logo-image.jpg');
 
-    // Update Schema.org markup
-    const eventDate = event.date ? new Date(event.date) : null;
+    const startDate = event.date ? `${event.date}T${formattedTime}:00+01:00` : '';
     const schema = {
-        "@context": "https://schema.org",
-        "@type": "Event",
-        "name": event.name || "Event",
-        "description": event.description || "",
-        "startDate": eventDate ? eventDate.toISOString() : "",
-        "location": {
-            "@type": "Place",
-            "name": event.location || "Norwich",
-            "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Norwich",
-                "addressCountry": "GB"
+        '@context': 'https://schema.org',
+        '@type': 'Event',
+        name: event.name || 'Event',
+        description: event.description || '',
+        startDate: startDate,
+        location: {
+            '@type': 'Place',
+            name: event.location || 'Norwich',
+            address: {
+                '@type': 'PostalAddress',
+                addressLocality: 'Norwich',
+                addressCountry: 'GB'
             }
         },
-        "image": event.image || "https://norwicheventshub.com/assets/logo-image.jpg",
-        "organizer": {
-            "@type": "Organization",
-            "name": "Norwich Event Hub",
-            "url": "https://norwicheventshub.com"
-        }
+        image: imageUrl ? [imageUrl] : undefined
     };
 
-    if (event.price && event.price !== 'Free' && event.price !== '0') {
+    if (primaryUrl) {
         schema.offers = {
-            "@type": "Offer",
-            "price": event.price,
-            "priceCurrency": "GBP",
-            "url": event.ticketLink || eventUrl
+            '@type': 'Offer',
+            url: primaryUrl,
+            priceCurrency: 'GBP'
         };
     }
 
@@ -306,45 +213,45 @@ function showError(message) {
     container.innerHTML = `
         <div class="error-message">
             <h2>Oops!</h2>
-            <p>${message}</p>
+            <p>${escapeHtml(message)}</p>
             <a href="directory.html" class="btn btn-primary">Browse All Events</a>
         </div>
     `;
 }
 
-// Social sharing functions
+function getEventPageUrl(eventId) {
+    const event = findEventByIdentifier(eventId);
+    return event ? `${window.location.origin}/${getEventDetailUrl(event)}` : `${window.location.origin}/event-detail.html`;
+}
+
 function shareWhatsApp(eventId) {
-    const event = (window.eventsData || []).find(e => e.id === eventId);
+    const event = findEventByIdentifier(eventId);
     if (!event) return;
 
-    const url = `${window.location.origin}/event-detail.html?id=${eventId}`;
+    const url = getEventPageUrl(eventId);
     const text = `Check out this event: ${event.name || 'Event'} at ${event.location || 'Norwich'}`;
-    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`;
-    window.open(whatsappUrl, '_blank');
+    window.open(`https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`, '_blank');
 }
 
 function shareTwitter(eventId) {
-    const event = (window.eventsData || []).find(e => e.id === eventId);
+    const event = findEventByIdentifier(eventId);
     if (!event) return;
 
-    const url = `${window.location.origin}/event-detail.html?id=${eventId}`;
+    const url = getEventPageUrl(eventId);
     const text = `${event.name || 'Event'} at ${event.location || 'Norwich'}`;
-    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
-    window.open(twitterUrl, '_blank');
+    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank');
 }
 
 function shareFacebook(eventId) {
-    const url = `${window.location.origin}/event-detail.html?id=${eventId}`;
-    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
-    window.open(facebookUrl, '_blank');
+    const url = getEventPageUrl(eventId);
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
 }
 
 function copyLink(eventId) {
-    const url = `${window.location.origin}/event-detail.html?id=${eventId}`;
+    const url = getEventPageUrl(eventId);
     const btn = document.querySelector('.share-copy');
-    
+
     navigator.clipboard.writeText(url).then(() => {
-        // Show success message
         if (btn) {
             const originalText = btn.textContent;
             btn.textContent = 'Copied!';
@@ -363,102 +270,99 @@ function copyLink(eventId) {
 function startCountdownTimer(event) {
     const countdownContainer = document.getElementById('eventCountdown');
     const countdownDisplay = document.getElementById('countdownDisplay');
-    
     if (!countdownContainer || !countdownDisplay || !event.date) return;
-    
+
     const eventDate = window.parseEventDate ? window.parseEventDate(event.date) : new Date(event.date);
-    if (event.time) {
+    if (event.time && event.time !== 'Time TBC') {
         const timeParts = event.time.split(':');
         if (timeParts.length >= 2) {
-            eventDate.setHours(parseInt(timeParts[0]), parseInt(timeParts[1]), 0, 0);
+            eventDate.setHours(parseInt(timeParts[0], 10), parseInt(timeParts[1], 10), 0, 0);
         }
     }
-    
-    const now = new Date();
-    const msUntilEvent = eventDate - now;
-    const hoursUntilEvent = msUntilEvent / (1000 * 60 * 60);
-    
-    // Only show countdown if event is within 24 hours
-    if (hoursUntilEvent > 0 && hoursUntilEvent <= 24) {
-        countdownContainer.style.display = 'block';
-        
-        const updateCountdown = () => {
-            const now = new Date();
-            const msUntilEvent = eventDate - now;
-            
-            if (msUntilEvent <= 0) {
-                countdownDisplay.textContent = 'Event has started!';
-                return;
-            }
-            
-            const hours = Math.floor(msUntilEvent / (1000 * 60 * 60));
-            const minutes = Math.floor((msUntilEvent % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((msUntilEvent % (1000 * 60)) / 1000);
-            
-            countdownDisplay.innerHTML = `
-                <div class="countdown-unit">
-                    <span class="countdown-number">${hours}</span>
-                    <span class="countdown-label">Hours</span>
-                </div>
-                <div class="countdown-unit">
-                    <span class="countdown-number">${minutes}</span>
-                    <span class="countdown-label">Minutes</span>
-                </div>
-                <div class="countdown-unit">
-                    <span class="countdown-number">${seconds}</span>
-                    <span class="countdown-label">Seconds</span>
-                </div>
-            `;
-        };
-        
+
+    const hoursUntilEvent = (eventDate - new Date()) / (1000 * 60 * 60);
+    if (hoursUntilEvent <= 0 || hoursUntilEvent > 24) return;
+
+    countdownContainer.style.display = 'block';
+
+    const updateCountdown = () => {
+        const msUntilEvent = eventDate - new Date();
+        if (msUntilEvent <= 0) {
+            countdownDisplay.textContent = 'Event has started!';
+            return;
+        }
+
+        const hours = Math.floor(msUntilEvent / (1000 * 60 * 60));
+        const minutes = Math.floor((msUntilEvent % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((msUntilEvent % (1000 * 60)) / 1000);
+        countdownDisplay.innerHTML = `
+            <div class="countdown-unit"><span class="countdown-number">${hours}</span><span class="countdown-label">Hours</span></div>
+            <div class="countdown-unit"><span class="countdown-number">${minutes}</span><span class="countdown-label">Minutes</span></div>
+            <div class="countdown-unit"><span class="countdown-number">${seconds}</span><span class="countdown-label">Seconds</span></div>
+        `;
+    };
+
+    updateCountdown();
+    const countdownInterval = setInterval(() => {
         updateCountdown();
-        const countdownInterval = setInterval(() => {
-            updateCountdown();
-            const now = new Date();
-            if (eventDate <= now) {
-                clearInterval(countdownInterval);
-                countdownDisplay.textContent = 'Event has started!';
-            }
-        }, 1000);
-    }
+        if (eventDate <= new Date()) {
+            clearInterval(countdownInterval);
+        }
+    }, 1000);
 }
 
 function addToCalendar(eventId) {
-    const event = (window.eventsData || []).find(e => e.id === eventId);
+    const event = findEventByIdentifier(eventId);
     if (!event || !event.date) {
         alert('Event date not available');
         return;
     }
 
-    const eventDate = new Date(event.date);
+    const eventDate = window.parseEventDate ? window.parseEventDate(event.date) : new Date(event.date);
+    if (event.time && event.time !== 'Time TBC') {
+        const timeParts = event.time.split(':');
+        if (timeParts.length >= 2) {
+            eventDate.setHours(parseInt(timeParts[0], 10), parseInt(timeParts[1], 10), 0, 0);
+        }
+    }
 
-    // Format for .ics file
-    const startDate = eventDate.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
-    const endDate = new Date(eventDate.getTime() + 2 * 60 * 60 * 1000).toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z'; // +2 hours
+    const endDate = new Date(eventDate.getTime() + 2 * 60 * 60 * 1000);
+    const startStamp = eventDate.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+    const endStamp = endDate.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+    const url = getEventPageUrl(eventId);
 
     const icsContent = `BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//Norwich Event Hub//EN
 BEGIN:VEVENT
-UID:${eventId}@norwicheventshub.com
-DTSTAMP:${startDate}
-DTSTART:${startDate}
-DTEND:${endDate}
+UID:${event.id}@norwicheventshub.com
+DTSTAMP:${startStamp}
+DTSTART:${startStamp}
+DTEND:${endStamp}
 SUMMARY:${event.name || 'Event'}
 DESCRIPTION:${event.description || ''}
 LOCATION:${event.location || 'Norwich'}
-URL:${window.location.origin}/event-detail.html?id=${eventId}
+URL:${url}
 END:VEVENT
 END:VCALENDAR`;
 
-    // Create download link
     const blob = new Blob([icsContent], { type: 'text/calendar' });
-    const url = URL.createObjectURL(blob);
+    const blobUrl = URL.createObjectURL(blob);
     const link = document.createElement('a');
-    link.href = url;
-    link.download = `${(event.name || 'event').replace(/[^a-z0-9]/gi, '-').toLowerCase()}.ics`;
+    link.href = blobUrl;
+    link.download = `${(event.slug || event.name || 'event').replace(/[^a-z0-9-]/gi, '-').toLowerCase()}.ics`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-    URL.revokeObjectURL(url);
+    URL.revokeObjectURL(blobUrl);
+}
+
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text || '';
+    return div.innerHTML;
+}
+
+function escapeJs(text) {
+    return String(text || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
 }

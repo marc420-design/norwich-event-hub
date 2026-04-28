@@ -59,26 +59,23 @@ async function loadTodayEvents() {
 
     eventsContainer.innerHTML = '<div class="event-card placeholder"><div class="event-content"><span class="event-date">Loading...</span></div></div>';
 
-    // Wait for events to load first (with timeout)
+    // Wait for events to load first (with 5-second timeout)
     if (window.eventsLoadedPromise) {
         try {
-            // Wait for events with 12 second timeout
             await Promise.race([
                 window.eventsLoadedPromise,
                 new Promise((_, reject) =>
-                    setTimeout(() => reject(new Error('Timeout: Events took too long to load')), 12000)
+                    setTimeout(() => reject(new Error('Timeout: Events took too long to load')), 5000)
                 )
             ]);
         } catch (error) {
             console.error('Events load timeout:', error);
-            // Error event should have been triggered by force-reload.js
         }
     }
 
     try {
         let todayEvents = [];
 
-        // Use isToday utility for proper date matching across all formats
         todayEvents = (window.eventsData || []).filter(event => {
             return event.date && window.isToday && window.isToday(event.date);
         });
@@ -92,8 +89,12 @@ async function loadTodayEvents() {
                 <div class="event-card placeholder">
                     <div class="event-image"></div>
                     <div class="event-content">
-                        <span class="event-date">No events found for today</span>
-                        <h3 class="event-title">Check back soon or submit your event!</h3>
+                        <span class="event-date">No events listed for today yet</span>
+                        <h3 class="event-title">Looking for something soon?</h3>
+                        <p style="margin: 0.5rem 0; color: rgba(255,255,255,0.7);">
+                            <a href="this-weekend.html" style="color: var(--color-electric-blue, #3AB8FF);">View this weekend's events</a>
+                            or <a href="directory.html" style="color: var(--color-electric-blue, #3AB8FF);">browse the full directory</a>.
+                        </p>
                         <a href="submit.html" class="event-link">Submit an Event →</a>
                     </div>
                 </div>
@@ -112,11 +113,8 @@ async function loadTodayEvents() {
                 <div class="event-image"></div>
                 <div class="event-content">
                     <span class="event-date">Unable to load events</span>
-                    <h3 class="event-title">Something went wrong</h3>
-                    <p style="margin-top: 10px; color: #666;">
-                        We're having trouble loading today's events. Please try refreshing the page.
-                    </p>
-                    <a href="submit.html" class="event-link" style="margin-top: 15px; display: inline-block;">Submit an Event →</a>
+                    <h3 class="event-title">We're having trouble loading events right now. Please try again shortly.</h3>
+                    <a href="directory.html" class="event-link" style="margin-top: 15px; display: inline-block;">Browse Full Directory →</a>
                 </div>
             </div>
         `;

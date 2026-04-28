@@ -53,19 +53,24 @@ async function loadDirectoryEvents() {
     try {
         let allEvents = [];
 
-        // Use the loaded events data - Show ALL events
-        allEvents = (window.eventsData || []);
-        console.log(`📊 Loaded ${allEvents.length} events from window.eventsData`);
-        
+        // Show only approved future events
+        const todayStr = new Date().toISOString().split('T')[0];
+        allEvents = (window.eventsData || []).filter(e => {
+            const status = (e.status || '').toLowerCase();
+            const dateStr = e.date ? String(e.date).substring(0, 10) : '';
+            return status === 'approved' && dateStr >= todayStr;
+        });
+        console.log(`📊 Loaded ${allEvents.length} approved future events for directory`);
+
         eventsContainer.innerHTML = '';
-        
+
         if (allEvents.length === 0) {
             eventsContainer.innerHTML = `
                 <div class="event-card placeholder">
                     <div class="event-image"></div>
                     <div class="event-content">
-                        <span class="event-date">No events found</span>
-                        <h3 class="event-title">Events directory coming soon</h3>
+                        <span class="event-date">No events found yet</span>
+                        <h3 class="event-title">Check back soon or submit yours!</h3>
                         <a href="submit.html" class="event-link">Submit an Event →</a>
                     </div>
                 </div>
@@ -97,8 +102,8 @@ async function loadDirectoryEvents() {
             <div class="event-card placeholder">
                 <div class="event-image"></div>
                 <div class="event-content">
-                    <span class="event-date">Error loading events</span>
-                    <h3 class="event-title">Please try again later</h3>
+                    <span class="event-date">Unable to load events</span>
+                    <h3 class="event-title">We're having trouble loading events right now. Please try again shortly.</h3>
                 </div>
             </div>
         `;

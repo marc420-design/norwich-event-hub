@@ -87,39 +87,39 @@ async function forceLoadEvents() {
             const result = await response.json();
 
             if (result.success && result.events) {
-                // Set global eventsData (even if empty array)
-                window.eventsData = result.events || [];
+                // Filter to only approved future events from the API
+                const apiEvents = filterApprovedFutureEvents(result.events || []);
 
-                // Save to localStorage for offline access with timestamp
-                localStorage.setItem('norwichEvents', JSON.stringify(result.events || []));
-                localStorage.setItem('norwichEvents_timestamp', Date.now().toString());
-
-                if (result.events.length > 0) {
-                    console.log(`✅ Loaded ${result.events.length} events from Google Sheets API`);
-                    console.log(`📊 Sample event:`, result.events[0]);
-                    console.log(`🕐 Last updated:`, result.lastUpdated || 'N/A');
-                } else {
-                    console.warn('⚠️ API returned success but no events');
+                // If the API returned events but none are approved future events,
+                // fall back to scraper exports which have real data
+                if (apiEvents.length === 0 && (result.events || []).length > 0) {
+                    console.warn('⚠️ API returned events but none are approved future events, trying exports...');
+                    return await loadFromLocalJSON();
                 }
 
-                // Trigger event to notify other scripts (even if empty)
+                window.eventsData = apiEvents;
+
+                localStorage.setItem('norwichEvents', JSON.stringify(apiEvents));
+                localStorage.setItem('norwichEvents_timestamp', Date.now().toString());
+
+                if (apiEvents.length > 0) {
+                    console.log(`✅ Loaded ${apiEvents.length} approved future events from Google Sheets API`);
+                    console.log(`🕐 Last updated:`, result.lastUpdated || 'N/A');
+                } else {
+                    console.warn('⚠️ API returned success but no approved future events — trying fallback');
+                    return await loadFromLocalJSON();
+                }
+
                 window.dispatchEvent(new CustomEvent('eventsLoaded', {
                     detail: {
-                        count: result.events.length || 0,
+                        count: apiEvents.length,
                         source: 'api',
                         lastUpdated: result.lastUpdated,
                         success: true
                     }
                 }));
 
-                // FIXED: Accept empty array as valid - don't fallback to old static data
-                // This ensures real-time data is always shown (even if empty)
-                if (result.events.length === 0) {
-                    console.warn('⚠️ API returned no events - this is valid real-time data');
-                    console.log('💡 Events may be pending approval or no upcoming events exist');
-                }
-
-                return result.events || [];
+                return apiEvents;
             } else {
                 console.warn('⚠️ API returned unexpected format, falling back to local JSON');
                 return await loadFromLocalJSON();
@@ -161,15 +161,61 @@ async function forceLoadEvents() {
     }
 }
 
+// Filter events to only show approved future events
+function filterApprovedFutureEvents(events) {
+    const todayStr = new Date().toISOString().split('T')[0];
+    return events.filter(e => {
+        const status = (e.status || '').toLowerCase();
+        const dateStr = e.date ? String(e.date).substring(0, 10) : '';
+        return status === 'approved' && dateStr >= todayStr;
+    });
+}
+
+// Load from scraper exports (exports/events.json — real scraped future events)
+async function loadFromExports() {
+    try {
+        console.log('📦 Loading events from scraper exports...');
+        const cacheBuster = Date.now();
+        const response = await fetchWithTimeout(
+            'exports/events.json?v=' + cacheBuster,
+            { cache: 'no-store', headers: { 'Cache-Control': 'no-cache, no-store, must-revalidate' } },
+            5000
+        );
+
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+        const data = await response.json();
+        const rawEvents = data.events || [];
+        const events = filterApprovedFutureEvents(rawEvents);
+
+        window.eventsData = events;
+        localStorage.setItem('norwichEvents', JSON.stringify(events));
+        localStorage.setItem('norwichEvents_timestamp', Date.now().toString());
+
+        console.log(`✅ Loaded ${events.length} approved future events from exports (${rawEvents.length} raw)`);
+
+        window.dispatchEvent(new CustomEvent('eventsLoaded', {
+            detail: { count: events.length, source: 'exports', success: true }
+        }));
+
+        return events;
+    } catch (error) {
+        console.error('❌ Failed to load from exports:', error);
+        return null; // null signals caller to try next fallback
+    }
+}
+
 // Fallback function to load from local JSON file
 async function loadFromLocalJSON() {
+    // First try the scraper exports which have real future events
+    const exportsEvents = await loadFromExports();
+    if (exportsEvents !== null) return exportsEvents;
+
     try {
         console.log('📁 Loading events from local JSON file...');
-        // Aggressive cache busting with multiple parameters
         const cacheBuster = Date.now() + Math.random();
         const jsonUrl = 'data/sample-events.json?v=' + cacheBuster + '&nocache=' + Date.now();
 
-        // CRITICAL: Reduced timeout to 2 seconds for faster fallback
         const response = await fetchWithTimeout(jsonUrl, {
             cache: 'no-store',
             headers: {
@@ -177,7 +223,7 @@ async function loadFromLocalJSON() {
                 'Pragma': 'no-cache',
                 'Expires': '0'
             }
-        }, 2000); // 2 second timeout for local file - CRITICAL for fast loading
+        }, 2000);
 
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -186,37 +232,23 @@ async function loadFromLocalJSON() {
         const data = await response.json();
 
         if (data && data.events) {
-            // Set global eventsData
-            window.eventsData = data.events || [];
+            const events = filterApprovedFutureEvents(data.events);
+            window.eventsData = events;
 
-            // Save to localStorage with timestamp
-            localStorage.setItem('norwichEvents', JSON.stringify(data.events || []));
+            localStorage.setItem('norwichEvents', JSON.stringify(events));
             localStorage.setItem('norwichEvents_timestamp', Date.now().toString());
 
-            if (data.events.length > 0) {
-                console.log(`✅ Loaded ${data.events.length} events from local JSON`);
-                console.log(`📊 Sample event:`, data.events[0]);
-            } else {
-                console.warn('⚠️ Local JSON contains no events');
-            }
+            console.log(`✅ Loaded ${events.length} events from local JSON`);
 
-            // Trigger event to notify other scripts
             window.dispatchEvent(new CustomEvent('eventsLoaded', {
-                detail: {
-                    count: data.events.length || 0,
-                    source: 'local',
-                    success: true
-                }
+                detail: { count: events.length, source: 'local', success: true }
             }));
 
-            return data.events || [];
+            return events;
         } else {
             console.error('❌ No events in JSON data');
             window.dispatchEvent(new CustomEvent('eventsLoadError', {
-                detail: {
-                    message: 'No events found in data file',
-                    source: 'local'
-                }
+                detail: { message: 'No events found in data file', source: 'local' }
             }));
             return [];
         }

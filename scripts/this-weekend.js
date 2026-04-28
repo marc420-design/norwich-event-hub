@@ -68,7 +68,7 @@ function showErrorInContainer(containerId, errorDetail) {
             <div class="event-card placeholder">
                 <div class="event-content">
                     <span class="event-date">Unable to load events</span>
-                    <h3 class="event-title">${errorDetail.message || 'Please try again later'}</h3>
+                    <h3 class="event-title">We're having trouble loading events right now. Please try again shortly.</h3>
                 </div>
             </div>
         `;
@@ -133,8 +133,11 @@ function populateEventContainer(container, events, emptyMessage = 'No events yet
             <div class="event-card placeholder">
                 <div class="event-content">
                     <span class="event-date">${emptyMessage}</span>
-                    <h3 class="event-title">Check back soon or submit your event!</h3>
-                    <a href="submit.html" class="event-link">Submit an Event →</a>
+                    <h3 class="event-title">Nothing listed here yet</h3>
+                    <p style="margin: 0.5rem 0; color: rgba(255,255,255,0.7);">
+                        <a href="directory.html" style="color: var(--color-electric-blue, #3AB8FF);">Browse all upcoming events</a>
+                        or <a href="submit.html" style="color: var(--color-electric-blue, #3AB8FF);">submit one</a>.
+                    </p>
                 </div>
             </div>
         `;

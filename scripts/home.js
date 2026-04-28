@@ -42,23 +42,13 @@ document.addEventListener('DOMContentLoaded', async function() {
 // Update the event counter on homepage
 function updateEventCounter() {
     const totalEventsElement = document.getElementById('totalEvents');
-    if (totalEventsElement) {
-        if (window.eventsData && window.eventsData.length > 0) {
-            // Count future events, but show total if no future events
-            const futureEvents = window.eventsData.filter(event =>
-                event.date && window.isFutureEvent && window.isFutureEvent(event.date)
-            );
+    if (!totalEventsElement) return;
 
-            // Show future events count if there are any, otherwise show total count
-            const displayCount = futureEvents.length > 0 ? futureEvents.length : window.eventsData.length;
-            totalEventsElement.textContent = displayCount;
-            console.log(`📈 Updated event counter: ${displayCount} events (${futureEvents.length} future, ${window.eventsData.length} total)`);
-        } else {
-            // Loading state or no events
-            totalEventsElement.textContent = '...';
-            console.log('📈 Event counter: Waiting for events to load...');
-        }
-    }
+    const futureEvents = (window.eventsData || []).filter(event =>
+        event.date && window.isFutureEvent && window.isFutureEvent(event.date)
+    );
+    totalEventsElement.textContent = futureEvents.length;
+    console.log(`📈 Updated event counter: ${futureEvents.length} future events`);
 }
 
 function showErrorInContainer(containerId, errorDetail) {
@@ -147,25 +137,17 @@ function getFutureEvents(allEvents) {
 
 // Helper function to populate a container with events
 function populateEventContainer(container, events, emptyMessage = 'No events yet', maxEvents = 6) {
-    container.innerHTML = '';
-
-    // CRITICAL: Limit to max events per section (homepage restructure requirement)
+    const section = container.closest('section');
     const displayEvents = events.slice(0, maxEvents);
 
     if (displayEvents.length === 0) {
-        container.innerHTML = `
-            <div class="event-card placeholder">
-                <div class="event-image"></div>
-                <div class="event-content">
-                    <span class="event-date">${emptyMessage}</span>
-                    <h3 class="event-title">Check back soon or submit your event!</h3>
-                    <a href="submit.html" class="event-link">Submit an Event →</a>
-                </div>
-            </div>
-        `;
+        // Hide the entire section rather than showing a placeholder card
+        if (section) section.style.display = 'none';
         return;
     }
 
+    if (section) section.style.display = '';
+    container.innerHTML = '';
     displayEvents.forEach(event => {
         const card = createEventCard(event);
         container.appendChild(card);

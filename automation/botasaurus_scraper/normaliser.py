@@ -111,12 +111,12 @@ def normalise_with_gemini(text: str, source_url: str, source_name: str) -> list[
             print(f"[WARN] {source_name}: Gemini returned non-list")
             return []
 
-        # Stamp provenance on every event
+        # Stamp provenance on every event; status=pending so admin review is required
         for e in events:
             e["source"] = source_name
             e["source_url"] = source_url
             e["isAiDiscovered"] = True
-            e["status"] = "approved"
+            e["status"] = "pending"
 
         print(f"[OK]   {source_name}: {len(events)} events extracted")
         return events

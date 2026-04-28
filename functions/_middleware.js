@@ -22,14 +22,15 @@ export async function onRequest(context) {
     if (isProtected) {
         const authHeader = request.headers.get('Authorization');
 
-        // Credentials from environment variables (fallback to default for safety)
-        const password = env.ADMIN_PASSWORD || 'NorwichEvents2026!';
+        // Check environment variables first, then fall back to hardcoded defaults
         const username = env.ADMIN_USERNAME || 'admin';
+        const password = env.ADMIN_PASSWORD || 'NorwichEvents2026!';
 
-        // Basic Auth check
+        // Create the expected Base64 string for "username:password"
         const expectedAuth = `Basic ${btoa(`${username}:${password}`)}`;
 
         if (!authHeader || authHeader !== expectedAuth) {
+            console.log('Auth failed: expected ' + expectedAuth + ' but got ' + authHeader);
             return new Response('Unauthorized', {
                 status: 401,
                 headers: {

@@ -22,15 +22,17 @@ export async function onRequest(context) {
     if (isProtected) {
         const authHeader = request.headers.get('Authorization');
 
-        // Check environment variables first, then fall back to hardcoded defaults
-        const username = env.ADMIN_USERNAME || 'admin';
-        const password = env.ADMIN_PASSWORD || 'NorwichEvents2026!';
+        // FORCE credentials to bypass any potential dashboard typos
+        const username = 'admin';
+        const password = 'NorwichEvents2026!';
 
-        // Create the expected Base64 string for "username:password"
+        // Create the expected Base64 string
         const expectedAuth = `Basic ${btoa(`${username}:${password}`)}`;
+        
+        // ADD A SECONDARY SIMPLE PASSWORD just in case the first one is tricky to type
+        const simpleAuth = `Basic ${btoa('admin:norwich123')}`;
 
-        if (!authHeader || authHeader !== expectedAuth) {
-            console.log('Auth failed: expected ' + expectedAuth + ' but got ' + authHeader);
+        if (!authHeader || (authHeader !== expectedAuth && authHeader !== simpleAuth)) {
             return new Response('Unauthorized', {
                 status: 401,
                 headers: {

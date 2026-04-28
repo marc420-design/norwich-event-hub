@@ -14,11 +14,9 @@
       "image": "",
       "category": "theatre",
       "tags": [
-        "theatre",
         "play",
-        "stage adaptation",
-        "racial injustice",
-        "childhood innocence"
+        "drama",
+        "adaptation"
       ],
       "source": "Visit Norwich",
       "sourceUrl": "https://www.visitnorwich.co.uk/whats-on/",
@@ -42,7 +40,6 @@
       "tags": [
         "comedy",
         "radio",
-        "audience",
         "talk"
       ],
       "source": "Visit Norwich",
@@ -67,9 +64,7 @@
       "tags": [
         "music",
         "folk",
-        "roots",
-        "singer",
-        "Oysterband"
+        "roots"
       ],
       "source": "Visit Norwich",
       "sourceUrl": "https://www.visitnorwich.co.uk/whats-on/",
@@ -82,10 +77,10 @@
       "eventname": "Medieval Norwich walking tour – from the Normans to the Tudors",
       "date": "2026-04-29",
       "time": "TBA",
-      "location": "",
-      "venue": "",
+      "location": "Norwich",
+      "venue": "Norwich",
       "address": "",
-      "description": "Ticket £9. Book at Eventbrite. A walking tour celebrating Norwich Castle’s Royal Palace Reborn project. Unearth Norwich’s medieval past on this tour with Blue Badge…",
+      "description": "A walking tour celebrating Norwich Castle’s Royal Palace Reborn project. Unearth Norwich’s medieval past on this tour with Blue Badge…",
       "ticketLink": "",
       "price": "£9",
       "image": "",
@@ -94,7 +89,7 @@
         "walking tour",
         "history",
         "medieval",
-        "Norwich Castle"
+        "norwich castle"
       ],
       "source": "Visit Norwich",
       "sourceUrl": "https://www.visitnorwich.co.uk/whats-on/",
@@ -107,8 +102,8 @@
       "eventname": "From Faith to Faith – walking tour",
       "date": "2026-04-29",
       "time": "TBA",
-      "location": "",
-      "venue": "",
+      "location": "Norwich",
+      "venue": "Norwich",
       "address": "",
       "description": "Explore the legacy of the Reformation in the city",
       "ticketLink": "",
@@ -142,8 +137,7 @@
       "tags": [
         "music",
         "band",
-        "album",
-        "indie"
+        "album"
       ],
       "source": "Visit Norwich",
       "sourceUrl": "https://www.visitnorwich.co.uk/whats-on/",
@@ -156,8 +150,8 @@
       "eventname": "Norwich Weird & Wonderful Story Walk",
       "date": "2026-04-29",
       "time": "TBA",
-      "location": "",
-      "venue": "",
+      "location": "Norwich",
+      "venue": "Norwich",
       "address": "",
       "description": "Discover Norwich’s curious past on the Weird & Wonderful Story Walk! Join an expert storyteller as they reveal quirky tales, hidden spots, and eccentric characters…",
       "ticketLink": "",
@@ -166,10 +160,8 @@
       "category": "culture",
       "tags": [
         "walking tour",
-        "storytelling",
-        "history",
-        "Norwich",
-        "quirky"
+        "stories",
+        "history"
       ],
       "source": "Visit Norwich",
       "sourceUrl": "https://www.visitnorwich.co.uk/whats-on/",
@@ -193,8 +185,7 @@
       "tags": [
         "music",
         "drums",
-        "percussion",
-        "jazz"
+        "percussion"
       ],
       "source": "Visit Norwich",
       "sourceUrl": "https://www.visitnorwich.co.uk/whats-on/",
@@ -218,9 +209,7 @@
       "tags": [
         "literature",
         "authors",
-        "conversation",
-        "novels",
-        "reading"
+        "talk"
       ],
       "source": "Visit Norwich",
       "sourceUrl": "https://www.visitnorwich.co.uk/whats-on/",
@@ -240,11 +229,11 @@
       "ticketLink": "",
       "price": "£22-£30",
       "image": "",
-      "category": "general",
+      "category": "culture",
       "tags": [
-        "meet and greet",
-        "performance",
-        "talk"
+        "talk",
+        "personality",
+        "meet and greet"
       ],
       "source": "Visit Norwich",
       "sourceUrl": "https://www.visitnorwich.co.uk/whats-on/",
@@ -268,7 +257,7 @@
       "tags": [
         "music",
         "tribute band",
-        "Kate Bush"
+        "kate bush"
       ],
       "source": "Visit Norwich",
       "sourceUrl": "https://www.visitnorwich.co.uk/whats-on/",
@@ -291,15 +280,37 @@
       "category": "comedy",
       "tags": [
         "comedy",
-        "stand-up",
-        "comedy night",
-        "Paul Sinha",
-        "Kate Butch",
-        "Terry Alderton",
-        "Matt Richardson"
+        "stand up",
+        "paul sinha"
       ],
       "source": "Visit Norwich",
       "sourceUrl": "https://www.visitnorwich.co.uk/whats-on/",
+      "isAiDiscovered": true,
+      "status": "approved",
+      "featured": false
+    },
+    {
+      "name": "Legends Of Laughter Paul Sinha, Kate Butch, Terry Alderton",
+      "eventname": "Legends Of Laughter Paul Sinha, Kate Butch, Terry Alderton",
+      "date": "2026-04-30",
+      "time": "19:30",
+      "location": "The Halls",
+      "venue": "The Halls",
+      "address": "The Halls, Norwich",
+      "description": "Legends Of Laughter Paul Sinha, Kate Butch, Terry Alderton",
+      "ticketLink": "",
+      "price": "See website",
+      "image": "",
+      "category": "comedy",
+      "tags": [
+        "paul sinha",
+        "kate butch",
+        "terry alderton",
+        "stand-up",
+        "comedy show"
+      ],
+      "source": "Skiddle Norwich",
+      "sourceUrl": "https://www.skiddle.com/whats-on/Norwich/",
       "isAiDiscovered": true,
       "status": "approved",
       "featured": false
@@ -318,7 +329,9 @@
       "image": "",
       "category": "exhibitions",
       "tags": [
-        "art"
+        "art",
+        "exhibition",
+        "local artists"
       ],
       "source": "The Forum Norwich",
       "sourceUrl": "https://www.theforumnorwich.co.uk/whats-on",
@@ -334,7 +347,7 @@
       "location": "Norwich Cathedral",
       "venue": "Norwich Cathedral",
       "address": "",
-      "description": "",
+      "description": "Join us for a specialist tour exploring through turbulent times.",
       "ticketLink": "",
       "price": "See website",
       "image": "",
@@ -357,12 +370,13 @@
       "location": "Norwich Cathedral",
       "venue": "Norwich Cathedral",
       "address": "",
-      "description": "",
+      "description": "An event by NCCL focusing on language in Norwich churches.",
       "ticketLink": "",
       "price": "See website",
       "image": "",
       "category": "culture",
       "tags": [
+        "talk",
         "language",
         "churches"
       ],
@@ -387,8 +401,8 @@
       "category": "markets",
       "tags": [
         "records",
-        "music",
-        "fair"
+        "fair",
+        "music"
       ],
       "source": "The Forum Norwich",
       "sourceUrl": "https://www.theforumnorwich.co.uk/whats-on",
@@ -410,7 +424,9 @@
       "image": "",
       "category": "exhibitions",
       "tags": [
-        "art"
+        "art",
+        "exhibition",
+        "local artists"
       ],
       "source": "The Forum Norwich",
       "sourceUrl": "https://www.theforumnorwich.co.uk/whats-on",
@@ -433,6 +449,7 @@
       "category": "theatre",
       "tags": [
         "musical",
+        "theatre",
         "family friendly"
       ],
       "source": "The Forum Norwich",
@@ -449,15 +466,14 @@
       "location": "Norfolk Showground",
       "venue": "Norfolk Showground",
       "address": "",
-      "description": "A family fete taking place at the Outdoor Spaces of Norfolk Showground from May 2nd to May 3rd.",
+      "description": "Takes place in the Outdoor Spaces of the showground.",
       "ticketLink": "",
       "price": "See website",
       "image": "",
       "category": "family",
       "tags": [
         "fete",
-        "outdoor",
-        "family"
+        "outdoor"
       ],
       "source": "Norfolk Showground",
       "sourceUrl": "https://www.norfolkshowground.co.uk/events",
@@ -479,6 +495,7 @@
       "image": "",
       "category": "gigs",
       "tags": [
+        "channel one",
         "dub",
         "reggae",
         "sound system",
@@ -502,10 +519,11 @@
       "ticketLink": "",
       "price": "Free",
       "image": "",
-      "category": "general",
+      "category": "festivals",
       "tags": [
         "gaming",
-        "tabletop"
+        "tabletop games",
+        "community"
       ],
       "source": "The Forum Norwich",
       "sourceUrl": "https://www.theforumnorwich.co.uk/whats-on",
@@ -517,7 +535,7 @@
       "name": "Norfolk Deaf Festival: Sensory Creativity Day",
       "eventname": "Norfolk Deaf Festival: Sensory Creativity Day",
       "date": "2026-05-03",
-      "time": "10:00",
+      "time": "TBA",
       "location": "The Forum",
       "venue": "The Forum",
       "address": "",
@@ -529,6 +547,7 @@
       "tags": [
         "deaf",
         "creativity",
+        "workshops",
         "learning"
       ],
       "source": "The Forum Norwich",
@@ -549,7 +568,7 @@
       "ticketLink": "",
       "price": "Free",
       "image": "",
-      "category": "family",
+      "category": "families",
       "tags": [
         "family",
         "activities",
@@ -577,7 +596,7 @@
       "category": "markets",
       "tags": [
         "trading cards",
-        "gaming",
+        "games",
         "community"
       ],
       "source": "The Forum Norwich",
@@ -600,7 +619,9 @@
       "image": "",
       "category": "community",
       "tags": [
-        "screening",
+        "briefing",
+        "public",
+        "community",
         "learning"
       ],
       "source": "The Forum Norwich",
@@ -617,7 +638,7 @@
       "location": "Norwich Cathedral",
       "venue": "Norwich Cathedral",
       "address": "",
-      "description": "",
+      "description": "Join us for a specialist tour focusing on Julian of Norwich.",
       "ticketLink": "",
       "price": "See website",
       "image": "",
@@ -649,7 +670,8 @@
       "tags": [
         "charity",
         "learning",
-        "bereavement"
+        "bereavement",
+        "community"
       ],
       "source": "The Forum Norwich",
       "sourceUrl": "https://www.theforumnorwich.co.uk/whats-on",
@@ -671,7 +693,9 @@
       "image": "",
       "category": "exhibitions",
       "tags": [
-        "art"
+        "art",
+        "exhibition",
+        "local artists"
       ],
       "source": "The Forum Norwich",
       "sourceUrl": "https://www.theforumnorwich.co.uk/whats-on",
@@ -684,18 +708,17 @@
       "eventname": "Norfolk & Norwich Festival 2026",
       "date": "2026-05-08",
       "time": "TBA",
-      "location": "The Halls",
-      "venue": "The Halls",
+      "location": "The Halls, Norwich",
+      "venue": "The Halls, Norwich",
       "address": "St Andrew’s Plain, Norwich NR3 1AU",
-      "description": "The iconic Norfolk & Norwich Festival returns, utilising The Halls as a revitalised modern cultural space for concerts, community gatherings, exhibitions, celebrations, and standout performances.",
+      "description": "",
       "ticketLink": "",
       "price": "See website",
       "image": "",
       "category": "festivals",
       "tags": [
         "festival",
-        "culture",
-        "arts"
+        "culture"
       ],
       "source": "The Halls Norwich",
       "sourceUrl": "https://www.thehallsnorwich.co.uk/events",
@@ -711,13 +734,12 @@
       "location": "Norfolk Showground",
       "venue": "Norfolk Showground",
       "address": "",
-      "description": "A Race For Life event at the Outdoor Spaces of Norfolk Showground, running from May 9th to May 10th.",
+      "description": "Takes place in the Outdoor Spaces of the showground.",
       "ticketLink": "",
       "price": "See website",
       "image": "",
       "category": "sports",
       "tags": [
-        "race",
         "running",
         "charity",
         "outdoor"
@@ -768,10 +790,10 @@
       "image": "",
       "category": "exhibitions",
       "tags": [
-        "art",
         "exhibition",
-        "medieval",
-        "contemporary"
+        "history",
+        "contemporary art",
+        "medieval"
       ],
       "source": "Sainsbury Centre",
       "sourceUrl": "https://sainsburycentre.ac.uk/whats-on/",
@@ -793,7 +815,8 @@
       "image": "",
       "category": "festivals",
       "tags": [
-        "games"
+        "games",
+        "festival"
       ],
       "source": "The Forum Norwich",
       "sourceUrl": "https://www.theforumnorwich.co.uk/whats-on",
@@ -815,10 +838,11 @@
       "image": "",
       "category": "nightlife",
       "tags": [
-        "birthday",
+        "pams house",
+        "tidy trax",
+        "birthday bash",
         "clubbing",
-        "house",
-        "trance"
+        "house music"
       ],
       "source": "Skiddle Norwich",
       "sourceUrl": "https://www.skiddle.com/whats-on/Norwich/",
@@ -836,14 +860,14 @@
       "address": "",
       "description": "Kate Pickering presents her new spoken word performance based on her longstanding interest in English anchorite and mystical writer, Julian of Norwich.",
       "ticketLink": "",
-      "price": "See website",
+      "price": "See website for details",
       "image": "",
       "category": "theatre",
       "tags": [
         "spoken word",
         "performance",
-        "culture",
-        "Julian of Norwich"
+        "literature",
+        "culture"
       ],
       "source": "Sainsbury Centre",
       "sourceUrl": "https://sainsburycentre.ac.uk/whats-on/",
@@ -865,9 +889,11 @@
       "image": "",
       "category": "nightlife",
       "tags": [
-        "takeover",
-        "clubbing",
-        "electronic music"
+        "thirtyhertz",
+        "subshock",
+        "infrared",
+        "electronic music",
+        "clubbing"
       ],
       "source": "Skiddle Norwich",
       "sourceUrl": "https://www.skiddle.com/whats-on/Norwich/",
@@ -880,18 +906,17 @@
       "eventname": "Brew and Friends Makers Market",
       "date": "2026-05-30",
       "time": "TBA",
-      "location": "The Halls",
-      "venue": "The Halls",
+      "location": "The Halls, Norwich",
+      "venue": "The Halls, Norwich",
       "address": "St Andrew’s Plain, Norwich NR3 1AU",
-      "description": "A market featuring makers and their crafts.",
+      "description": "",
       "ticketLink": "",
       "price": "See website",
       "image": "",
       "category": "markets",
       "tags": [
         "market",
-        "crafts",
-        "local"
+        "craft"
       ],
       "source": "The Halls Norwich",
       "sourceUrl": "https://www.thehallsnorwich.co.uk/events",
@@ -916,8 +941,9 @@
         "r&b",
         "90s",
         "00s",
+        "outdoor festival",
         "music festival",
-        "outdoor"
+        "summer"
       ],
       "source": "Skiddle Norwich",
       "sourceUrl": "https://www.skiddle.com/whats-on/Norwich/",
@@ -930,18 +956,16 @@
       "eventname": "The Jerseys",
       "date": "2026-06-05",
       "time": "19:30",
-      "location": "The Halls",
-      "venue": "The Halls",
+      "location": "The Halls, Norwich",
+      "venue": "The Halls, Norwich",
       "address": "St Andrew’s Plain, Norwich NR3 1AU",
-      "description": "A performance by The Jerseys.",
+      "description": "",
       "ticketLink": "",
       "price": "See website",
       "image": "",
       "category": "gigs",
       "tags": [
-        "music",
-        "tribute act",
-        "performance"
+        "music"
       ],
       "source": "The Halls Norwich",
       "sourceUrl": "https://www.thehallsnorwich.co.uk/events",
@@ -965,7 +989,10 @@
       "tags": [
         "musicals",
         "disco",
-        "daytime"
+        "daytime disco",
+        "hamilton",
+        "grease",
+        "mamma mia"
       ],
       "source": "Skiddle Norwich",
       "sourceUrl": "https://www.skiddle.com/whats-on/Norwich/",
@@ -988,60 +1015,10 @@
       "category": "festivals",
       "tags": [
         "80s",
-        "tribute festival",
-        "outdoor",
+        "tribute",
+        "outdoor festival",
+        "music festival",
         "summer"
-      ],
-      "source": "Skiddle Norwich",
-      "sourceUrl": "https://www.skiddle.com/whats-on/Norwich/",
-      "isAiDiscovered": true,
-      "status": "approved",
-      "featured": false
-    },
-    {
-      "name": "Symphonic Ibiza Orchestra | Earlham Park Concert",
-      "eventname": "Symphonic Ibiza Orchestra | Earlham Park Concert",
-      "date": "2026-06-12",
-      "time": "17:00",
-      "location": "Earlham Park",
-      "venue": "Earlham Park",
-      "address": "Earlham Park, Norwich",
-      "description": "The Symphonic Ibiza Orchestra comes to Norwich! Prepare for an unforgettable night as a 40-piece orchestra performs the greatest Ibiza dance anthems",
-      "ticketLink": "",
-      "price": "See website",
-      "image": "",
-      "category": "gigs",
-      "tags": [
-        "orchestra",
-        "ibiza",
-        "dance anthems",
-        "live music"
-      ],
-      "source": "Skiddle Norwich",
-      "sourceUrl": "https://www.skiddle.com/whats-on/Norwich/",
-      "isAiDiscovered": true,
-      "status": "approved",
-      "featured": false
-    },
-    {
-      "name": "Special Kinda Madness: Norwich",
-      "eventname": "Special Kinda Madness: Norwich",
-      "date": "2026-06-13",
-      "time": "19:00",
-      "location": "The Adrian Flux Waterfront",
-      "venue": "The Adrian Flux Waterfront",
-      "address": "The Adrian Flux Waterfront, Norwich",
-      "description": "2 Bands ... 2-Tone ... 1 Fantastic Night. A Specials Tribute Band and a Madness Tribute Band, all on one stage. That's Special Kinda Madness.",
-      "ticketLink": "",
-      "price": "See website",
-      "image": "",
-      "category": "gigs",
-      "tags": [
-        "tribute band",
-        "2-tone",
-        "specials tribute",
-        "madness tribute",
-        "live music"
       ],
       "source": "Skiddle Norwich",
       "sourceUrl": "https://www.skiddle.com/whats-on/Norwich/",
@@ -1063,10 +1040,11 @@
       "image": "",
       "category": "festivals",
       "tags": [
-        "tribute festival",
+        "tribute acts",
         "music festival",
-        "outdoor",
-        "family"
+        "live music",
+        "family",
+        "outdoor festival"
       ],
       "source": "Skiddle Norwich",
       "sourceUrl": "https://www.skiddle.com/whats-on/Norwich/",
@@ -1082,16 +1060,14 @@
       "location": "Norfolk Showground",
       "venue": "Norfolk Showground",
       "address": "",
-      "description": "The Royal Norfolk Show at the Norfolk Events Centre, running from June 24th to June 25th.",
+      "description": "Takes place at the Norfolk Events Centre.",
       "ticketLink": "",
       "price": "See website",
       "image": "",
       "category": "festivals",
       "tags": [
-        "agriculture",
         "show",
-        "rural",
-        "community"
+        "agriculture"
       ],
       "source": "Norfolk Showground",
       "sourceUrl": "https://www.norfolkshowground.co.uk/events",
@@ -1114,6 +1090,7 @@
       "category": "festivals",
       "tags": [
         "deaf",
+        "festival",
         "community"
       ],
       "source": "The Forum Norwich",
@@ -1136,34 +1113,11 @@
       "image": "",
       "category": "festivals",
       "tags": [
+        "dnb",
         "drum and bass",
         "garage",
         "music festival",
-        "outdoor"
-      ],
-      "source": "Skiddle Norwich",
-      "sourceUrl": "https://www.skiddle.com/whats-on/Norwich/",
-      "isAiDiscovered": true,
-      "status": "approved",
-      "featured": false
-    },
-    {
-      "name": "THE WOMBATS Live in NORWICH",
-      "eventname": "THE WOMBATS Live in NORWICH",
-      "date": "2026-06-28",
-      "time": "14:00",
-      "location": "Earlham Park",
-      "venue": "Earlham Park",
-      "address": "Earlham Park, Norwich",
-      "description": "Join The Wombats at Earlham Park for a summer indie party packed with sing-along hits, high-energy vibes and feel-good festival anthems.",
-      "ticketLink": "",
-      "price": "See website",
-      "image": "",
-      "category": "gigs",
-      "tags": [
-        "indie",
-        "live music",
-        "band"
+        "outdoor festival"
       ],
       "source": "Skiddle Norwich",
       "sourceUrl": "https://www.skiddle.com/whats-on/Norwich/",
@@ -1176,19 +1130,17 @@
       "eventname": "Gin and Rum Festival",
       "date": "2026-07-04",
       "time": "TBA",
-      "location": "The Halls",
-      "venue": "The Halls",
+      "location": "The Halls, Norwich",
+      "venue": "The Halls, Norwich",
       "address": "St Andrew’s Plain, Norwich NR3 1AU",
-      "description": "A festival celebrating gin and rum.",
+      "description": "",
       "ticketLink": "",
       "price": "See website",
       "image": "",
       "category": "festivals",
       "tags": [
         "festival",
-        "drinks",
-        "gin",
-        "rum"
+        "food and drink"
       ],
       "source": "The Halls Norwich",
       "sourceUrl": "https://www.thehallsnorwich.co.uk/events",
@@ -1211,9 +1163,9 @@
       "category": "festivals",
       "tags": [
         "country music",
-        "outdoor",
-        "music festival",
-        "hoedown"
+        "outdoor festival",
+        "hoedown",
+        "day party"
       ],
       "source": "Skiddle Norwich",
       "sourceUrl": "https://www.skiddle.com/whats-on/Norwich/",
@@ -1229,15 +1181,15 @@
       "location": "Norfolk Showground",
       "venue": "Norfolk Showground",
       "address": "",
-      "description": "The Norfolk Garden Show at the Outdoor Spaces of Norfolk Showground, running from July 10th to July 12th.",
+      "description": "Takes place in the Outdoor Spaces of the showground.",
       "ticketLink": "",
       "price": "See website",
       "image": "",
       "category": "exhibitions",
       "tags": [
         "garden",
-        "outdoor",
-        "show"
+        "show",
+        "outdoor"
       ],
       "source": "Norfolk Showground",
       "sourceUrl": "https://www.norfolkshowground.co.uk/events",
@@ -1253,15 +1205,14 @@
       "location": "Norfolk Showground",
       "venue": "Norfolk Showground",
       "address": "",
-      "description": "A family-friendly Labyrinth Challenge Tour at the Outdoor Spaces of Norfolk Showground, running from July 11th to July 12th.",
+      "description": "Takes place in the Outdoor Spaces of the showground.",
       "ticketLink": "",
       "price": "See website",
       "image": "",
       "category": "family",
       "tags": [
         "challenge",
-        "outdoor",
-        "labyrinth"
+        "outdoor"
       ],
       "source": "Norfolk Showground",
       "sourceUrl": "https://www.norfolkshowground.co.uk/events",
@@ -1277,7 +1228,7 @@
       "location": "Norfolk Showground",
       "venue": "Norfolk Showground",
       "address": "",
-      "description": "The Norfolk Motorhome & Campervan Show at the Outdoor Spaces of Norfolk Showground, running from July 17th to July 19th.",
+      "description": "Takes place in the Outdoor Spaces of the showground.",
       "ticketLink": "",
       "price": "See website",
       "image": "",
@@ -1285,8 +1236,8 @@
       "tags": [
         "motorhome",
         "campervan",
-        "outdoor",
-        "show"
+        "show",
+        "outdoor"
       ],
       "source": "Norfolk Showground",
       "sourceUrl": "https://www.norfolkshowground.co.uk/events",
@@ -1308,9 +1259,14 @@
       "image": "",
       "category": "nightlife",
       "tags": [
-        "grime",
+        "p money",
+        "original sin",
+        "jamezy",
+        "harry shotta",
+        "foxy",
         "drum and bass",
-        "nightclub"
+        "grime",
+        "clubbing"
       ],
       "source": "Skiddle Norwich",
       "sourceUrl": "https://www.skiddle.com/whats-on/Norwich/",
@@ -1323,18 +1279,17 @@
       "eventname": "Lie Down and Listen",
       "date": "2026-07-25",
       "time": "TBA",
-      "location": "The Halls",
-      "venue": "The Halls",
+      "location": "The Halls, Norwich",
+      "venue": "The Halls, Norwich",
       "address": "St Andrew’s Plain, Norwich NR3 1AU",
-      "description": "An immersive listening experience.",
+      "description": "",
       "ticketLink": "",
       "price": "See website",
       "image": "",
       "category": "culture",
       "tags": [
-        "immersive",
-        "listening",
-        "experience"
+        "music",
+        "listening experience"
       ],
       "source": "The Halls Norwich",
       "sourceUrl": "https://www.thehallsnorwich.co.uk/events",
@@ -1350,18 +1305,18 @@
       "location": "Earlham Park",
       "venue": "Earlham Park",
       "address": "Earlham Park, Norwich",
-      "description": "A weekend of live entertainment, Thai boxing demonstrations, Food stalls, Thai beer and drinks, relaxing Thai massage and fun for all the",
+      "description": "A weekend of live entertainment, Thai boxing demonstrations, Food stalls, Thai beer and drinks, relaxing Thai massage and fun for all the family.",
       "ticketLink": "",
       "price": "See website",
       "image": "",
       "category": "festivals",
       "tags": [
-        "thai food",
-        "thai boxing",
-        "music",
+        "thai culture",
         "food festival",
-        "culture",
-        "family"
+        "music festival",
+        "thai boxing",
+        "family",
+        "culture"
       ],
       "source": "Skiddle Norwich",
       "sourceUrl": "https://www.skiddle.com/whats-on/Norwich/",
@@ -1384,33 +1339,10 @@
       "category": "festivals",
       "tags": [
         "90s",
-        "dance festival",
-        "outdoor",
+        "dance",
+        "outdoor festival",
+        "music festival",
         "summer"
-      ],
-      "source": "Skiddle Norwich",
-      "sourceUrl": "https://www.skiddle.com/whats-on/Norwich/",
-      "isAiDiscovered": true,
-      "status": "approved",
-      "featured": false
-    },
-    {
-      "name": "Luke Combs UK Tribute in NORWICH",
-      "eventname": "Luke Combs UK Tribute in NORWICH",
-      "date": "2026-09-06",
-      "time": "14:00",
-      "location": "EPIC STUDIOS",
-      "venue": "EPIC STUDIOS",
-      "address": "NORWICH EPIC STUDIOS",
-      "description": "NORWICH! Dust off your hats and boots, Luke Combs UK - the worlds leading Luke Combs tribute is coming to town for one fine night of country!",
-      "ticketLink": "",
-      "price": "See website",
-      "image": "",
-      "category": "gigs",
-      "tags": [
-        "country music",
-        "tribute act",
-        "live music"
       ],
       "source": "Skiddle Norwich",
       "sourceUrl": "https://www.skiddle.com/whats-on/Norwich/",
@@ -1432,7 +1364,8 @@
       "image": "",
       "category": "culture",
       "tags": [
-        "heritage"
+        "heritage",
+        "open day"
       ],
       "source": "The Forum Norwich",
       "sourceUrl": "https://www.theforumnorwich.co.uk/whats-on",
@@ -1456,31 +1389,8 @@
       "tags": [
         "country music",
         "hoedown",
-        "dance"
-      ],
-      "source": "Skiddle Norwich",
-      "sourceUrl": "https://www.skiddle.com/whats-on/Norwich/",
-      "isAiDiscovered": true,
-      "status": "approved",
-      "featured": false
-    },
-    {
-      "name": "Aladdinsane - The Sound & Vision of Bowie tribute: Norwich",
-      "eventname": "Aladdinsane - The Sound & Vision of Bowie tribute: Norwich",
-      "date": "2026-09-12",
-      "time": "19:30",
-      "location": "The Adrian Flux Waterfront",
-      "venue": "The Adrian Flux Waterfront",
-      "address": "The Adrian Flux Waterfront, Norwich",
-      "description": "Aladdinsane, The Sound & Vision of Bowie, widely acclaimed as the best Bowie tribute in the UK.",
-      "ticketLink": "",
-      "price": "See website",
-      "image": "",
-      "category": "gigs",
-      "tags": [
-        "david bowie",
-        "tribute act",
-        "live music"
+        "dance",
+        "day party"
       ],
       "source": "Skiddle Norwich",
       "sourceUrl": "https://www.skiddle.com/whats-on/Norwich/",
@@ -1493,19 +1403,18 @@
       "eventname": "Emilio Santoro as Elvis",
       "date": "2026-09-26",
       "time": "19:00",
-      "location": "The Halls",
-      "venue": "The Halls",
+      "location": "The Halls, Norwich",
+      "venue": "The Halls, Norwich",
       "address": "St Andrew’s Plain, Norwich NR3 1AU",
-      "description": "Emilio Santoro performs as Elvis.",
+      "description": "",
       "ticketLink": "",
       "price": "See website",
       "image": "",
       "category": "gigs",
       "tags": [
         "music",
-        "tribute act",
-        "elvis",
-        "performance"
+        "tribute",
+        "elvis"
       ],
       "source": "The Halls Norwich",
       "sourceUrl": "https://www.thehallsnorwich.co.uk/events",
@@ -1527,31 +1436,10 @@
       "image": "",
       "category": "nightlife",
       "tags": [
-        "balearic sounds",
-        "clubbing"
-      ],
-      "source": "Skiddle Norwich",
-      "sourceUrl": "https://www.skiddle.com/whats-on/Norwich/",
-      "isAiDiscovered": true,
-      "status": "approved",
-      "featured": false
-    },
-    {
-      "name": "The Tumbling Paddies",
-      "eventname": "The Tumbling Paddies",
-      "date": "2027-05-21",
-      "time": "19:00",
-      "location": "Epic Studios",
-      "venue": "Epic Studios",
-      "address": "Epic Studios, Norwich",
-      "description": "Irelands hottest band, The Tumbling Paddies are coming back to the UK. Songs include The Way I am, Pretty Girl and Closing Time.",
-      "ticketLink": "",
-      "price": "See website",
-      "image": "",
-      "category": "gigs",
-      "tags": [
-        "irish band",
-        "live music"
+        "chicane",
+        "balearic",
+        "electronic music",
+        "trance"
       ],
       "source": "Skiddle Norwich",
       "sourceUrl": "https://www.skiddle.com/whats-on/Norwich/",
@@ -1560,6 +1448,6 @@
       "featured": false
     }
   ],
-  "generated_at": "2026-04-27T18:26:47.817469",
-  "count": 64
+  "generated_at": "2026-04-28T07:55:38.626597",
+  "count": 59
 }

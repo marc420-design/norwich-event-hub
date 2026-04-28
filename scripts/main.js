@@ -432,15 +432,18 @@ function createEventCard(event) {
     eventContentDiv.appendChild(eventLocationP);
     eventContentDiv.appendChild(eventDescriptionP);
 
-    // Add ticket link if available
-    if (ticketUrl) {
-        const ticketLinkEl = document.createElement('a');
-        ticketLinkEl.href = ticketUrl;
-        ticketLinkEl.target = '_blank';
-        ticketLinkEl.rel = 'noopener noreferrer'; // Security: prevent window.opener access
-        ticketLinkEl.className = 'event-link';
-        ticketLinkEl.textContent = 'Get Tickets →';
-        eventContentDiv.appendChild(ticketLinkEl);
+    // Add primary CTA link based on priority
+    const primaryUrl = ticketUrl || sanitizeUrl(event.officialUrl || event.official_url || event.sourceUrl || event.source_url);
+    const linkText = ticketUrl ? 'Tickets →' : 'More Info →';
+
+    if (primaryUrl) {
+        const ctaLink = document.createElement('a');
+        ctaLink.href = primaryUrl;
+        ctaLink.target = '_blank';
+        ctaLink.rel = 'noopener noreferrer';
+        ctaLink.className = 'event-link';
+        ctaLink.textContent = linkText;
+        eventContentDiv.appendChild(ctaLink);
     }
 
     // Add social share buttons

@@ -43,7 +43,7 @@ async function loadDirectoryEvents() {
     const eventsContainer = document.getElementById('directoryEvents');
     if (!eventsContainer) return;
 
-    eventsContainer.innerHTML = '<div class="event-card placeholder"><div class="event-content"><span class="event-date">Loading...</span></div></div>';
+    eventsContainer.innerHTML = '<div class="loading-directory" style="text-align: center; padding: 3rem; grid-column: 1/-1;"><div class="spinner" style="margin: 0 auto 1rem;"></div><p>Loading events directory...</p></div>';
 
     // Wait for events to load first
     if (window.eventsLoadedPromise) {
@@ -51,22 +51,28 @@ async function loadDirectoryEvents() {
     }
 
     try {
-        let allEvents = [];
+        let allEvents = (window.eventsData || []);
+        
+        // Filter for approved and future events
+        const filteredEvents = allEvents.filter(event => {
+            const isApproved = event.status && event.status.toLowerCase() === 'approved';
+            const hasDate = event.date;
+            const isFuture = hasDate && window.isFutureEvent && window.isFutureEvent(event.date);
+            return isApproved && isFuture;
+        });
 
-        // Use the loaded events data - Show ALL events
-        allEvents = (window.eventsData || []);
-        console.log(`📊 Loaded ${allEvents.length} events from window.eventsData`);
+        console.log(`📊 Directory: ${filteredEvents.length} approved future events found out of ${allEvents.length} total.`);
         
         eventsContainer.innerHTML = '';
         
-        if (allEvents.length === 0) {
+        if (filteredEvents.length === 0) {
             eventsContainer.innerHTML = `
-                <div class="event-card placeholder">
-                    <div class="event-image"></div>
-                    <div class="event-content">
-                        <span class="event-date">No events found</span>
-                        <h3 class="event-title">Events directory coming soon</h3>
-                        <a href="submit.html" class="event-link">Submit an Event →</a>
+                <div class="empty-state" style="text-align: center; padding: 4rem 2rem; grid-column: 1/-1; background: #f9fafb; border-radius: 12px; border: 2px dashed #e5e7eb;">
+                    <h3 style="color: #333; margin-bottom: 1rem;">No events found yet.</h3>
+                    <p style="color: #666; margin-bottom: 2rem;">Check the full directory, this weekend’s events, or submit an event.</p>
+                    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                        <a href="this-weekend.html" class="btn btn-secondary">This Weekend</a>
+                        <a href="submit.html" class="btn btn-primary">Submit Event</a>
                     </div>
                 </div>
             `;
@@ -74,10 +80,14 @@ async function loadDirectoryEvents() {
         }
         
         // Sort events by date
-        const sortedEvents = [...allEvents].sort((a, b) => new Date(a.date) - new Date(b.date));
+        const sortedEvents = [...filteredEvents].sort((a, b) => {
+            const dateA = window.parseEventDate ? window.parseEventDate(a.date) : new Date(a.date);
+            const dateB = window.parseEventDate ? window.parseEventDate(b.date) : new Date(b.date);
+            return dateA - dateB;
+        });
         
-        // Update global eventsData for filtering
-        window.eventsData = sortedEvents;
+        // Update window.eventsData with sorted/filtered events for consistency
+        // Note: we keep the original window.eventsData for other filters
         
         sortedEvents.forEach(event => {
             const card = createEventCard(event);
@@ -94,12 +104,9 @@ async function loadDirectoryEvents() {
     } catch (error) {
         console.error('Error loading directory events:', error);
         eventsContainer.innerHTML = `
-            <div class="event-card placeholder">
-                <div class="event-image"></div>
-                <div class="event-content">
-                    <span class="event-date">Error loading events</span>
-                    <h3 class="event-title">Please try again later</h3>
-                </div>
+            <div class="error-state" style="text-align: center; padding: 3rem; grid-column: 1/-1;">
+                <p style="color: #E53935; font-size: 1.2rem;">We’re having trouble loading events right now. Please try again shortly.</p>
+                <button onclick="loadDirectoryEvents()" class="btn btn-secondary" style="margin-top: 1rem;">Retry</button>
             </div>
         `;
     }

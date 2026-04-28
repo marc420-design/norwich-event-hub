@@ -17,9 +17,10 @@
   // ──────────────────────────────────────────────────────────────
   // Configuration – edit these to match your deployment
   // ──────────────────────────────────────────────────────────────
+  var isLocal        = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
   var AGENT_API      = 'http://localhost:8000/api/v1';   // local dev
-  var EXPORTS_JSON   = '/exports/events.json';            // static export (Mode A)
-  var USE_AGENT_API  = true;   // set false to skip local API
+  var EXPORTS_JSON   = 'exports/events.json';             // static export (Mode A) - No leading slash for relative path
+  var USE_AGENT_API  = isLocal;   // ONLY use local API if on localhost to prevent production CSP errors
   var USE_EXPORTS    = true;   // set false to skip static JSON
   var CACHE_TTL_MS   = 5 * 60 * 1000; // 5 minutes client-side cache
 

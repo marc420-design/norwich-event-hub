@@ -341,16 +341,19 @@ function shareFacebook(eventId) {
 
 function copyLink(eventId) {
     const url = `${window.location.origin}/event-detail.html?id=${eventId}`;
+    const btn = document.querySelector('.share-copy');
+    
     navigator.clipboard.writeText(url).then(() => {
         // Show success message
-        const btn = event.target;
-        const originalText = btn.textContent;
-        btn.textContent = 'Copied!';
-        btn.style.backgroundColor = '#27AE60';
-        setTimeout(() => {
-            btn.textContent = originalText;
-            btn.style.backgroundColor = '';
-        }, 2000);
+        if (btn) {
+            const originalText = btn.textContent;
+            btn.textContent = 'Copied!';
+            btn.style.backgroundColor = '#27AE60';
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.style.backgroundColor = '';
+            }, 2000);
+        }
     }).catch(err => {
         console.error('Failed to copy link:', err);
         alert('Failed to copy link. Please copy manually: ' + url);

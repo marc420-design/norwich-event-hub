@@ -75,7 +75,10 @@ def main() -> None:
         print("[ERROR] GEMINI_API_KEY environment variable is not set.")
         sys.exit(1)
 
-    print(f"\n=== Norwich Events Scraper ===")
+    start_time = datetime.now()
+    run_id = start_time.strftime("%Y-%m-%d-%H%M")
+    
+    print(f"\n=== Norwich Events Scraper (Run: {run_id}) ===")
     print(f"Sources: {len(SOURCES)}\n")
 
     # 1. Scrape all sources in parallel (max 8 at once)
@@ -93,27 +96,56 @@ def main() -> None:
         print("[ERROR] No sources scraped. Exiting.")
         sys.exit(1)
 
-    # 2. Normalise with Gemini AI (sequential to respect rate limits)
+    # 2. Normalise with Gemini AI
     all_events: list[dict] = []
+    errors = 0
     for i, raw in enumerate(raw_results, 1):
-        print(f"[AI] Normalising {i}/{len(raw_results)}: {raw['source']}")
-        events = normalise_with_gemini(raw["text"], raw["url"], raw["source"])
-        all_events.extend(events)
-        # Small delay between API calls
-        if i < len(raw_results):
-            time.sleep(0.5)
+        try:
+            print(f"[AI] Normalising {i}/{len(raw_results)}: {raw['source']}")
+            events = normalise_with_gemini(raw["text"], raw["url"], raw["source"])
+            all_events.extend(events)
+            if i < len(raw_results):
+                time.sleep(0.5)
+        except Exception as e:
+            print(f"[AI ERROR] {raw['source']}: {e}")
+            errors += 1
 
     print(f"\n--- Gemini extracted {len(all_events)} raw events ---\n")
 
     # 3. Deduplicate and export
     count = deduplicate_and_export(all_events)
+    
+    # 4. Save Run Log
+    end_time = datetime.now()
+    log = {
+        "run_id": run_id,
+        "started_at": start_time.isoformat(),
+        "finished_at": end_time.isoformat(),
+        "duration_seconds": (end_time - start_time).total_seconds(),
+        "sources_total": len(SOURCES),
+        "sources_scraped": len(raw_results),
+        "raw_events_extracted": len(all_events),
+        "unique_events_exported": count,
+        "errors": errors,
+        "status": "completed" if count > 0 else "failed"
+    }
+    
+    log_dir = pathlib.Path(__file__).resolve().parent.parent.parent / "exports" / "logs"
+    log_dir.mkdir(parents=True, exist_ok=True)
+    (log_dir / f"run-{run_id}.json").write_text(json.dumps(log, indent=2))
+    
+    # Update latest-run.json
+    (log_dir / "latest-run.json").write_text(json.dumps(log, indent=2))
 
     if count == 0:
         print("[WARN] No events exported — check source scraping and Gemini responses.")
         sys.exit(1)
     else:
         print(f"\n✓ Done. {count} events written to exports/events.json")
+        print(f"✓ Log written to exports/logs/run-{run_id}.json")
 
 
 if __name__ == "__main__":
+    from datetime import datetime
+    import pathlib
     main()

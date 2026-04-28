@@ -22,11 +22,15 @@ def deduplicate_and_export(events: list[dict]) -> int:
         if e.get("title") and e.get("date") and str(e.get("date", ""))[:10] >= TODAY
     ]
 
-    # 2. Deduplicate by (normalised title, date)
+    # 2. Deduplicate by (normalised title, date, venue)
     seen: set = set()
     unique: list[dict] = []
     for e in valid:
-        key = (e["title"].strip().lower(), str(e["date"])[:10])
+        title = e.get("title", "").strip().lower()
+        date = str(e.get("date", ""))[:10]
+        venue = (e.get("venue") or e.get("location") or "").strip().lower()
+        
+        key = (title, date, venue)
         if key not in seen:
             seen.add(key)
             unique.append(_format_for_frontend(e))

@@ -116,7 +116,12 @@ async function waitForEvents() {
 // Helper function to get future events sorted by date
 function getFutureEvents(allEvents) {
     return allEvents
-        .filter(event => event.date && window.isFutureEvent && window.isFutureEvent(event.date))
+        .filter(event => {
+            const isApproved = event.status && event.status.toLowerCase() === 'approved';
+            const hasDate = event.date;
+            const isFuture = hasDate && window.isFutureEvent && window.isFutureEvent(event.date);
+            return isApproved && isFuture;
+        })
         .sort((a, b) => {
             const dateA = window.parseEventDate ? window.parseEventDate(a.date) : new Date(a.date);
             const dateB = window.parseEventDate ? window.parseEventDate(b.date) : new Date(b.date);
@@ -125,17 +130,14 @@ function getFutureEvents(allEvents) {
 }
 
 // Helper function to populate a container with events
-function populateEventContainer(container, events, emptyMessage = 'No events yet') {
+function populateEventContainer(container, events, emptyMessage = 'No events listed for this weekend yet.') {
     container.innerHTML = '';
 
     if (events.length === 0) {
         container.innerHTML = `
-            <div class="event-card placeholder">
-                <div class="event-content">
-                    <span class="event-date">${emptyMessage}</span>
-                    <h3 class="event-title">Check back soon or submit your event!</h3>
-                    <a href="submit.html" class="event-link">Submit an Event →</a>
-                </div>
+            <div class="empty-state" style="text-align: center; padding: 2rem; background: #f9fafb; border-radius: 8px; border: 1px dashed #ddd; width: 100%; grid-column: 1/-1;">
+                <p style="color: #666; margin-bottom: 1rem;">${emptyMessage}</p>
+                <a href="directory.html" class="btn btn-secondary">Browse all upcoming events</a>
             </div>
         `;
         return;

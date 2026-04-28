@@ -867,9 +867,6 @@
                 <button class="filter-tab" data-filter="rejected">Rejected</button>
                 <button class="filter-tab" data-filter="all">All</button>
             </div>
-            <button id="scrapeEventsBtn" class="scrape-btn">
-                🤖 Scrape Events
-            </button>
         </div>
 
         <div id="eventsList" class="events-list">
@@ -879,24 +876,6 @@
 
     <div id="toast" class="toast"></div>
 
-    <!-- Scraper Modal -->
-    <div id="scraperModal" class="scraper-modal">
-        <div class="scraper-modal-content">
-            <div class="scraper-header">
-                <h2>🤖 Event Scraper</h2>
-                <button class="scraper-close" onclick="closeScraperModal()">×</button>
-            </div>
-            <div class="scraper-body">
-                <div id="scraperStatus" class="scraper-status" style="display:none;"></div>
-                <div id="scraperProgress" class="scraper-progress" style="display:none;">
-                    <div class="spinner"></div>
-                    <p>Scraping events from sources...</p>
-                </div>
-                <div id="scrapedEventsList" class="scraped-events-list"></div>
-            </div>
-        </div>
-    </div>
-
     <script src="scripts/config.js?v=20260428"></script>
     <script>
     // Make ADMIN_PW_HASH available to the auth guard defined in <head>
@@ -905,7 +884,6 @@
     }
     </script>
     <script defer src="scripts/admin.js?v=20260428"></script>
-    <script defer src="scripts/scraper.js?v=20260428"></script>
 </body>
 
 </html>

@@ -23,7 +23,7 @@ def safe_first_image(images: list[str] | None) -> str:
     if not images:
         return ""
     for image in images:
-        if isinstance(image, str) and image.startswith(("http://", "https://")):
+        if isinstance(image, str) and image.startswith(("http://", "https://", "assets/")):
             return image
     return ""
 
@@ -55,8 +55,10 @@ def format_event_for_website(data: dict) -> dict | None:
 
     price = format_price(data)
     has_flyer = bool(image)
-    image_status = "available" if has_flyer else "fallback"
-    link_status = "verified" if primary_url else "missing"
+    image_status = data.get("image_status") or ("available" if has_flyer else "fallback")
+    link_status = data.get("link_status") or ("verified" if primary_url else "missing")
+    ticket_status = data.get("ticket_status") or ("verified" if ticket_url else "missing")
+    needs_flyer = bool(data.get("needs_flyer", not bool(image)))
     slug = f"{slugify(title)}-{quote(date)}"
 
     return {
@@ -83,6 +85,8 @@ def format_event_for_website(data: dict) -> dict | None:
         "hasFlyer": has_flyer,
         "imageStatus": image_status,
         "linkStatus": link_status,
+        "ticketStatus": ticket_status,
+        "needsFlyer": needs_flyer,
         "tags": data.get("tags", []),
         "featured": data.get("featured", False),
         "editorsChoice": data.get("editors_choice", False),

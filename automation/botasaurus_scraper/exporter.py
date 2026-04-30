@@ -4,7 +4,10 @@ Maps scraper output onto the shared public event contract used by agent-bridge.j
 """
 import json
 import pathlib
+from urllib.parse import urlparse
 from datetime import datetime
+
+import requests
 
 from agent.app.workers.export_format import format_event_for_website
 
@@ -33,9 +36,70 @@ TRUSTED_SOURCES = {
     "Sainsbury Centre",
 }
 
+VENUE_FALLBACK_IMAGES = {
+    "the waterfront": "assets/fallback-live-music.svg",
+    "norwich arts centre": "assets/fallback-culture.svg",
+    "the halls norwich": "assets/fallback-general.svg",
+    "the forum": "assets/fallback-markets.svg",
+    "norwich cathedral": "assets/fallback-culture.svg",
+}
+
+CATEGORY_FALLBACK_IMAGES = {
+    "nightlife": "assets/fallback-nightlife.svg",
+    "gigs": "assets/fallback-live-music.svg",
+    "music": "assets/fallback-live-music.svg",
+    "theatre": "assets/fallback-theatre.svg",
+    "markets": "assets/fallback-markets.svg",
+    "market": "assets/fallback-markets.svg",
+    "family": "assets/fallback-family.svg",
+    "sports": "assets/fallback-sports.svg",
+    "sport": "assets/fallback-sports.svg",
+    "culture": "assets/fallback-culture.svg",
+    "arts": "assets/fallback-culture.svg",
+}
+
+
+def _validate_url(url: str, *, timeout: int = 8) -> str:
+    if not url:
+        return "missing"
+    parsed = urlparse(url)
+    if parsed.scheme not in {"http", "https"} or not parsed.netloc:
+        return "broken"
+    try:
+        response = requests.head(url, allow_redirects=True, timeout=timeout)
+        if response.status_code >= 400 or response.status_code == 405:
+            response = requests.get(url, allow_redirects=True, timeout=timeout, stream=True)
+        return "verified" if response.status_code < 400 else "broken"
+    except Exception:
+        return "broken"
+
+
+def _resolve_fallback_image(venue_name: str, category: str) -> str:
+    venue_key = (venue_name or "").strip().lower()
+    if venue_key in VENUE_FALLBACK_IMAGES:
+        return VENUE_FALLBACK_IMAGES[venue_key]
+    return CATEGORY_FALLBACK_IMAGES.get((category or "").lower(), "assets/fallback-general.svg")
+
+
+def _mark_title_date_mismatch(events: list[dict]) -> None:
+    by_source_url: dict[str, tuple[str, str]] = {}
+    for event in events:
+        source_url = (event.get("source_url") or "").strip()
+        title = (event.get("title") or "").strip().lower()
+        date = (event.get("date") or "").strip()
+        if not source_url or not title or not date:
+            continue
+        existing = by_source_url.get(source_url)
+        if existing and existing != (title, date):
+            event["_title_date_mismatch"] = True
+        else:
+            by_source_url[source_url] = (title, date)
+
 
 def deduplicate_and_export(events: list[dict]) -> dict:
     """Deduplicate, validate, and write exports/events.json plus review logs."""
+    _mark_title_date_mismatch(events)
+
     valid = [
         event for event in events
         if event.get("title") and event.get("date") and str(event.get("date", ""))[:10] >= TODAY
@@ -147,6 +211,27 @@ def _adapt_scraper_event(event: dict) -> dict:
     start_datetime = f"{date}T{time or '00:00'}:00" if date else None
     end_datetime = f"{date}T{end_time}:00" if date and end_time else None
     primary_url = ticket_url or official_url or source_url
+    source_status = _validate_url(source_url)
+    ticket_status = _validate_url(ticket_url) if ticket_url else "missing"
+    image_status = _validate_url(image_url) if image_url else "missing"
+    needs_flyer = image_status != "verified"
+
+    resolved_image = image_url if image_status == "verified" else _resolve_fallback_image(venue_name, event.get("category") or "general")
+    resolved_image_status = image_status if image_status == "verified" else "fallback_assigned"
+
+    has_title_date_mismatch = bool(event.get("_title_date_mismatch"))
+    auto_approval_allowed = source_status == "verified" and not has_title_date_mismatch
+    # Scraped events are always queued for manual approval.
+    status = "pending_review"
+    review_notes = []
+    if source_status == "broken":
+        review_notes.append("broken_source_link")
+    if has_title_date_mismatch:
+        review_notes.append("title_date_mismatch")
+    if not auto_approval_allowed and not review_notes:
+        review_notes.append("manual_review_required")
+    if auto_approval_allowed and not review_notes:
+        review_notes.append("queued_for_approval")
 
     return {
         "id": event.get("id") or _build_event_id(title, date, venue_name),
@@ -158,15 +243,20 @@ def _adapt_scraper_event(event: dict) -> dict:
         "address": address,
         "source_url": source_url or primary_url,
         "ticket_url": ticket_url or official_url,
-        "images": [image_url] if image_url else [],
+        "images": [resolved_image] if resolved_image else [],
         "tags": event.get("tags") or [],
         "category": (event.get("category") or "general").lower(),
         "featured": bool(event.get("featured")),
         "editors_choice": bool(event.get("editorsChoice") or event.get("editors_choice")),
         "is_free": _is_free(event.get("price")),
         "age_restriction": event.get("age_restriction"),
-        "status": "approved" if source_name in TRUSTED_SOURCES else "pending",
+        "status": status,
         "source_name": source_name,
+        "link_status": source_status,
+        "ticket_status": ticket_status,
+        "image_status": resolved_image_status,
+        "needs_flyer": needs_flyer,
+        "review_notes": review_notes,
         "price_min": _extract_price_min(event.get("price")),
         "price_max": _extract_price_max(event.get("price")),
     }

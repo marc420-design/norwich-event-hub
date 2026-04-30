@@ -140,8 +140,9 @@ def main() -> None:
     (log_dir / "latest-run.json").write_text(json.dumps(log, indent=2), encoding="utf-8")
 
     if export_stats["approved_exports"] == 0:
-        print("[WARN] No approved events exported - check source extraction, venue/link coverage, and review queue.")
-        sys.exit(1)
+        print("[INFO] No events auto-published. All scraped events are queued for manual approval.")
+        print("Review queue file: exports/logs/scraper-review-queue.json")
+        return
 
     print(f"\nDone. {export_stats['approved_exports']} events written to exports/events.json")
     print(f"Review queue: {export_stats['review_queue']} events written to exports/logs/scraper-review-queue.json")

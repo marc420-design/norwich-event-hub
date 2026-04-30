@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     bindTodayFilters();
     loadTodayEvents();
 
+    window.addEventListener('eventsLoaded', () => loadTodayEvents());
     window.addEventListener('eventsUpdated', () => loadTodayEvents());
     window.addEventListener('eventsLoadError', (event) => renderTodayError(event.detail));
 });
@@ -36,8 +37,8 @@ async function loadTodayEvents() {
     eventsContainer.innerHTML = '<div class="loading-today" style="text-align: center; padding: 3rem;"><div class="spinner" style="margin: 0 auto 1rem;"></div><p>Checking today\'s events...</p></div>';
 
     try {
-        const allEvents = typeof window.getPublicEvents === 'function'
-            ? await window.getPublicEvents()
+        const allEvents = typeof window.getSafePublicEvents === 'function'
+            ? await window.getSafePublicEvents()
             : (window.eventsData || []);
 
         todayEvents = (allEvents || [])
@@ -112,7 +113,7 @@ function renderTodayError(detail = {}) {
     eventsContainer.innerHTML = `
         <div class="error-state" style="text-align: center; padding: 3rem;">
             <p style="color: #E53935; font-size: 1.2rem;">${detail.message || 'Unable to load events right now.'}</p>
-            <p style="margin-top: 0.75rem; color: #666;">Please try again shortly.</p>
+            <p style="margin-top: 0.75rem; color: #666;">No events listed for today yet. Check back soon, browse this weekend, or submit an event.</p>
             <button onclick="loadTodayEvents()" class="btn btn-secondary" style="margin-top: 1rem;">Retry</button>
         </div>
     `;

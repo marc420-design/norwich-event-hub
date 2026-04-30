@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+    window.addEventListener('eventsLoaded', loadDirectoryEvents);
     window.addEventListener('eventsUpdated', loadDirectoryEvents);
 });
 
@@ -44,11 +45,8 @@ async function loadDirectoryEvents() {
     eventsContainer.innerHTML = '<div class="loading-directory" style="text-align: center; padding: 3rem; grid-column: 1/-1;"><div class="spinner" style="margin: 0 auto 1rem;"></div><p>Loading events directory...</p></div>';
 
     try {
-        if (window.eventsLoadedPromise) {
-            await Promise.race([
-                window.eventsLoadedPromise,
-                new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), 6000))
-            ]);
+        if (typeof window.getSafePublicEvents === 'function') {
+            await window.getSafePublicEvents();
         }
 
         const events = getDirectoryEvents();
@@ -83,8 +81,8 @@ async function loadDirectoryEvents() {
 function renderDirectoryEmptyState(container) {
     container.innerHTML = `
         <div class="empty-state" style="text-align: center; padding: 4rem 2rem; grid-column: 1/-1; background: #f9fafb; border-radius: 12px; border: 2px dashed #e5e7eb;">
-            <h3 style="color: #333; margin-bottom: 1rem;">No events found yet.</h3>
-            <p style="color: #666; margin-bottom: 2rem;">Check the full directory, this weekend’s events, or submit an event.</p>
+            <h3 style="color: #333; margin-bottom: 1rem;">No events listed yet.</h3>
+            <p style="color: #666; margin-bottom: 2rem;">No events listed for today yet. Check back soon, browse this weekend, or submit an event.</p>
             <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
                 <a href="this-weekend.html" class="btn btn-secondary">This Weekend</a>
                 <a href="submit.html" class="btn btn-primary">Submit Event</a>
@@ -244,6 +242,9 @@ function updateEventCount(count) {
 function toggleNoResults(show) {
     const noResults = document.getElementById('noResults');
     if (noResults) {
+        if (show) {
+            noResults.innerHTML = '<p>No events listed for your current filters. Try clearing filters, browse this weekend, or <a href="submit.html">submit an event</a>.</p>';
+        }
         noResults.style.display = show ? 'block' : 'none';
     }
 }

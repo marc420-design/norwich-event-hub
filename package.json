@@ -4,10 +4,11 @@
   "description": "Norwich Event Hub - Independent city-wide digital platform for events in Norwich",
   "main": "index.html",
   "scripts": {
-    "dev": "npx serve .",
+    "dev": "npx --yes serve . --listen 4173 --no-clipboard",
     "build": "echo 'Static site - ready for Cloudflare Pages deployment'",
     "deploy": "echo 'Deploy to Cloudflare Pages: wrangler pages publish .'",
-    "test": "echo no tests"
+    "test": "echo no tests",
+    "verify": "node scripts/verify-exports.js"
   },
   "keywords": [
     "norwich",

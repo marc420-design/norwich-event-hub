@@ -30,6 +30,7 @@ jobs:
       - name: Run scraper
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          PYTHONPATH: ${{ github.workspace }}
         run: python automation/botasaurus_scraper/main.py
 
       # Only commit if we got a meaningful number of events.

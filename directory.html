@@ -82,8 +82,8 @@
     </section>
 
     <!-- AI Freshness Indicator -->
-    <div id="freshness-bar" style="display:none; text-align:center; font-size:0.75rem; color:#888; padding:6px 0 4px; background:rgba(58,184,255,0.04); border-bottom:1px solid rgba(58,184,255,0.1);">
-      Events updated: <span id="last-updated-time">–</span>
+    <div id="freshness-bar" style="display:block; text-align:center; font-size:0.75rem; color:#888; padding:6px 0 4px; background:rgba(58,184,255,0.04); border-bottom:1px solid rgba(58,184,255,0.1);">
+      <span id="last-updated-time">Events updated daily</span>
       &nbsp;<span style="background:rgba(58,184,255,0.15); color:#3AB8FF; font-size:0.65rem; padding:2px 8px; border-radius:10px; border:1px solid rgba(58,184,255,0.3);">AI Discovered</span>
     </div>
     <script>
@@ -92,7 +92,7 @@
       var ts  = document.getElementById('last-updated-time');
       if (bar && ts && e.detail.generated_at) {
         var d = new Date(e.detail.generated_at);
-        ts.textContent = d.toLocaleDateString('en-GB', {day:'numeric', month:'short', hour:'2-digit', minute:'2-digit'});
+        ts.textContent = 'Last updated: ' + d.toLocaleDateString('en-GB', {day:'numeric', month:'short', year:'numeric'});
         bar.style.display = 'block';
       }
     });
@@ -184,7 +184,7 @@
                 </div>
             </div>
             <div id="noResults" class="no-results" style="display: none;">
-                <p>No events found matching your filters. <a href="submit.html">Submit an event</a> to get started!</p>
+                <p>No events listed for your current filters. Try this weekend or <a href="submit.html">submit an event</a>.</p>
             </div>
         </div>
     </section>
@@ -213,9 +213,8 @@
                 <div class="footer-section">
                     <h4>Contact</h4>
                     <ul>
-                        <li><a href="mailto:info@norwicheventshub.com">info@norwicheventshub.com</a></li>
-                        <li><a href="mailto:submit@norwicheventshub.com">submit@norwicheventshub.com</a></li>
-                        <li><a href="mailto:press@norwicheventshub.com">press@norwicheventshub.com</a></li>
+                        <li><a href="mailto:hello@norwicheventshub.com">hello@norwicheventshub.com</a></li>
+                        <li><a href="mailto:events@norwicheventshub.com">events@norwicheventshub.com</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">

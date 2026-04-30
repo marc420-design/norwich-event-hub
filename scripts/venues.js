@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     try {
-        const allEvents = typeof window.getPublicEvents === 'function'
-            ? await window.getPublicEvents()
+        const allEvents = typeof window.getSafePublicEvents === 'function'
+            ? await window.getSafePublicEvents()
             : (window.eventsData || []);
 
         const publicEvents = allEvents.filter((event) =>
@@ -60,6 +60,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     } catch (error) {
         console.error('Unable to load venues:', error);
         loadingEl.style.display = 'none';
+        venuesGrid.innerHTML = `
+            <div class="empty-state" style="grid-column: 1/-1; text-align: center; padding: 2rem; background: #f9fafb; border-radius: 12px; border: 2px dashed #e5e7eb; margin-bottom: 1.5rem;">
+                <h3 style="margin-bottom: 0.5rem;">Venue listings are updating</h3>
+                <p style="color: #666;">We could not load live venue data right now, so we are showing trusted starter venues.</p>
+            </div>
+        `;
         renderStarterVenues(venuesGrid);
     }
 });

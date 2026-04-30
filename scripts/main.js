@@ -45,6 +45,68 @@ window.eventsData = window.eventsData || [];
 let eventsData = window.eventsData;
 
 // Events are loaded by agent-bridge.js.
+async function fetchExportsEventsFallback() {
+    const response = await fetch('exports/events.json', { cache: 'no-store' });
+    if (!response.ok) {
+        throw new Error(`exports/events.json HTTP ${response.status}`);
+    }
+
+    const payload = await response.json();
+    const rawEvents = Array.isArray(payload) ? payload : (payload.events || []);
+    if (!Array.isArray(rawEvents)) {
+        return [];
+    }
+
+    return rawEvents.map((event) => {
+        const name = event.name || event.title || event.eventname || '';
+        const date = event.date || (event.start_datetime ? String(event.start_datetime).slice(0, 10) : '');
+        const time = event.time || (event.start_datetime ? String(event.start_datetime).slice(11, 16) : '');
+        const venue = event.venue || event.location || event.venue_name || 'Venue TBA';
+        const sourceUrl = sanitizeUrl(event.sourceUrl || event.source_url || '');
+        const ticketLink = sanitizeUrl(event.ticketLink || event.ticketlink || event.ticket_url || '');
+        const officialUrl = sanitizeUrl(event.officialUrl || event.official_url || '');
+        const primaryUrl = sanitizeUrl(event.primaryUrl || ticketLink || officialUrl || sourceUrl);
+        const status = String(event.status || 'approved').toLowerCase();
+
+        return {
+            ...event,
+            id: event.id != null ? String(event.id) : (event.slug || `${name}|${date}`),
+            slug: event.slug || (name && date
+                ? `${name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}-${date}`
+                : undefined),
+            name,
+            eventname: name,
+            date,
+            time: time || 'TBA',
+            venue,
+            location: venue,
+            category: (event.category || 'general').toLowerCase(),
+            status,
+            sourceUrl,
+            ticketLink,
+            officialUrl,
+            primaryUrl,
+            isFree: Boolean(event.isFree || event.is_free || String(event.price || '').trim().toLowerCase() === 'free')
+        };
+    });
+}
+
+async function getSafePublicEvents() {
+    try {
+        const bridgeEvents = typeof window.getPublicEvents === 'function'
+            ? await window.getPublicEvents()
+            : (window.eventsData || []);
+        if (Array.isArray(bridgeEvents) && bridgeEvents.length > 0) {
+            return bridgeEvents;
+        }
+    } catch (error) {
+        console.warn('Bridge event loading failed, trying exports fallback:', error);
+    }
+
+    const fallbackEvents = await fetchExportsEventsFallback();
+    window.eventsData = fallbackEvents;
+    return fallbackEvents;
+}
 
 // Date utility functions are now in date-utils.js
 // These are loaded from date-utils.js and available on window object
@@ -666,6 +728,7 @@ if (typeof window !== 'undefined') {
     window.isApprovedFutureEvent = isApprovedFutureEvent;
     window.getEventDetailUrl = getEventDetailUrl;
     window.getEventShareUrl = getEventShareUrl;
+    window.getSafePublicEvents = getSafePublicEvents;
 }
 
 // Export for use in other scripts

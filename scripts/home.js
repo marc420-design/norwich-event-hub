@@ -2,8 +2,8 @@ let homepageEvents = [];
 
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        homepageEvents = typeof window.getPublicEvents === 'function'
-            ? await window.getPublicEvents()
+        homepageEvents = typeof window.getSafePublicEvents === 'function'
+            ? await window.getSafePublicEvents()
             : (window.eventsData || []);
 
         await Promise.all([
@@ -21,8 +21,17 @@ document.addEventListener('DOMContentLoaded', async () => {
         updateEventCounter();
     }
 
-    window.addEventListener('eventsLoaded', () => {
-        homepageEvents = window.eventsData || [];
+    window.addEventListener('eventsLoaded', async () => {
+        homepageEvents = typeof window.getSafePublicEvents === 'function'
+            ? await window.getSafePublicEvents()
+            : (window.eventsData || []);
+        updateEventCounter();
+    });
+
+    window.addEventListener('eventsUpdated', async () => {
+        homepageEvents = typeof window.getSafePublicEvents === 'function'
+            ? await window.getSafePublicEvents()
+            : (window.eventsData || []);
         updateEventCounter();
     });
 
@@ -88,17 +97,17 @@ function populateEventContainer(container, events, emptyMessage = 'No events yet
     const displayEvents = events.slice(0, maxEvents);
 
     if (displayEvents.length === 0) {
-        if (sectionId) {
-            const section = document.getElementById(sectionId);
-            if (section) {
-                section.style.display = 'none';
-            }
-        } else {
-            const section = container.closest('section');
-            if (section) {
-                section.style.display = 'none';
-            }
-        }
+        const section = sectionId ? document.getElementById(sectionId) : container.closest('section');
+        if (section) section.style.display = 'block';
+        container.innerHTML = `
+            <div class="empty-state" style="grid-column: 1/-1; text-align: center; padding: 2rem; background: #f9fafb; border-radius: 12px; border: 2px dashed #e5e7eb;">
+                <p style="color: #666; margin-bottom: 1rem;">${emptyMessage}</p>
+                <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+                    <a href="this-weekend.html" class="btn btn-secondary">This Weekend</a>
+                    <a href="submit.html" class="btn btn-primary">Submit Event</a>
+                </div>
+            </div>
+        `;
         return;
     }
 

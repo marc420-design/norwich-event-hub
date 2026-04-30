@@ -1,22 +1,14 @@
 // This Weekend Page JavaScript
 
+let weekendEventsCache = [];
+
 document.addEventListener('DOMContentLoaded', async function () {
     updateWeekendDates();
 
-    try {
-        if (window.eventsLoadedPromise) {
-            await Promise.race([
-                window.eventsLoadedPromise,
-                new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), 6000))
-            ]);
-        }
-    } catch (error) {
-        console.warn('Weekend events load timeout:', error);
-    }
+    await loadWeekendEvents();
 
-    renderWeekendPage();
-
-    window.addEventListener('eventsUpdated', renderWeekendPage);
+    window.addEventListener('eventsLoaded', loadWeekendEvents);
+    window.addEventListener('eventsUpdated', loadWeekendEvents);
     window.addEventListener('eventsLoadError', function () {
         renderWeekendError();
     });
@@ -63,8 +55,7 @@ function updateWeekendDates() {
 
 function getWeekendEvents() {
     const weekend = getWeekendDateRange();
-    const allEvents = Array.isArray(window.eventsData) ? window.eventsData : [];
-    return allEvents
+    return weekendEventsCache
         .filter(event => window.isApprovedFutureEvent ? window.isApprovedFutureEvent(event) : true)
         .filter(event => {
             const eventDate = window.parseEventDate ? window.parseEventDate(event.date) : new Date(event.date);
@@ -75,6 +66,19 @@ function getWeekendEvents() {
             const rightDate = window.parseEventDate ? window.parseEventDate(right.date) : new Date(right.date);
             return leftDate - rightDate;
         });
+}
+
+async function loadWeekendEvents() {
+    try {
+        const allEvents = typeof window.getSafePublicEvents === 'function'
+            ? await window.getSafePublicEvents()
+            : (window.eventsData || []);
+        weekendEventsCache = Array.isArray(allEvents) ? allEvents : [];
+        renderWeekendPage();
+    } catch (error) {
+        console.error('Weekend events failed to load:', error);
+        renderWeekendError();
+    }
 }
 
 function renderWeekendPage() {

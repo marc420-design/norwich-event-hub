@@ -33,9 +33,16 @@ jobs:
           PYTHONPATH: ${{ github.workspace }}
         run: python automation/botasaurus_scraper/main.py
 
-      # Only commit if we got a meaningful number of events.
-      # If all sources fail, keep the previous exports/events.json intact.
-      - name: Commit fresh events.json (if sufficient events found)
+      - name: Upload review queue artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: scraper-review-queue
+          path: exports/logs/scraper-review-queue.json
+          if-no-files-found: warn
+          retention-days: 14
+
+      # Commit queue output every run; only update events.json when sufficient events were found.
+      - name: Commit scraper outputs
         run: |
           COUNT=$(python -c "
           import json, sys
@@ -48,14 +55,17 @@ jobs:
 
           echo "Events found: $COUNT"
 
+          git config user.name  "Norwich Events Bot"
+          git config user.email "bot@norwicheventshub.com"
+          git add exports/logs/scraper-review-queue.json
+
           if [ "$COUNT" -gt "5" ]; then
-            git config user.name  "Norwich Events Bot"
-            git config user.email "bot@norwicheventshub.com"
             git add exports/events.json
-            git diff --staged --quiet \
-              || git commit -m "chore: daily event refresh $(date -u +'%Y-%m-%d %H:%M UTC') — ${COUNT} events"
-            git push
-            echo "✓ Committed and pushed $COUNT events"
+            COMMIT_MSG="chore: daily event refresh $(date -u +'%Y-%m-%d %H:%M UTC') — ${COUNT} events + review queue"
           else
+            COMMIT_MSG="chore: update scraper review queue $(date -u +'%Y-%m-%d %H:%M UTC')"
             echo "⚠ Only $COUNT events found — keeping previous exports/events.json"
           fi
+
+          git diff --staged --quiet || git commit -m "$COMMIT_MSG"
+          git push

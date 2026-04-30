@@ -27,7 +27,7 @@
       "tags": [
         "wildlife",
         "family",
-        "free"
+        "activities"
       ],
       "featured": false,
       "editorsChoice": false,
@@ -37,17 +37,17 @@
       "source": "Visit Norwich"
     },
     {
-      "id": "scraper-a-family-affair:-yvvette-edwards-&-ashle-2026-04-30-venue",
+      "id": "scraper-a-family-affair:-yvvette-edwards-&-ashle-2026-04-30-norwich",
       "slug": "a-family-affair-yvvette-edwards-ashley-hickson-lovence-2026-04-30",
-      "fingerprint": "a family affair: yvvette edwards & ashley hickson-lovence|2026-04-30|venue tba",
+      "fingerprint": "a family affair: yvvette edwards & ashley hickson-lovence|2026-04-30|norwich",
       "name": "A Family Affair: Yvvette Edwards & Ashley Hickson-Lovence",
       "eventname": "A Family Affair: Yvvette Edwards & Ashley Hickson-Lovence",
       "date": "2026-04-30",
       "time": "00:00",
       "endDate": null,
       "endTime": null,
-      "venue": "Venue TBA",
-      "location": "Venue TBA",
+      "venue": "Norwich",
+      "location": "Norwich",
       "address": null,
       "category": "culture",
       "description": "In this warm, open conversation, novelists Yvvette Edwards and Ashley Hickson-Lovence come together to share insights into the beating heart of their latest novels.",
@@ -61,9 +61,9 @@
       "imageStatus": "fallback",
       "linkStatus": "verified",
       "tags": [
+        "talk",
         "literature",
-        "conversation",
-        "novelists"
+        "authors"
       ],
       "featured": false,
       "editorsChoice": false,
@@ -73,17 +73,17 @@
       "source": "Visit Norwich"
     },
     {
-      "id": "scraper-cloudbusting-–-the-music-of-kate-bush-2026-04-30-venue",
+      "id": "scraper-cloudbusting-–-the-music-of-kate-bush-2026-04-30-norwich",
       "slug": "cloudbusting-the-music-of-kate-bush-2026-04-30",
-      "fingerprint": "cloudbusting – the music of kate bush|2026-04-30|venue tba",
+      "fingerprint": "cloudbusting – the music of kate bush|2026-04-30|norwich",
       "name": "Cloudbusting – The Music of Kate Bush",
       "eventname": "Cloudbusting – The Music of Kate Bush",
       "date": "2026-04-30",
       "time": "00:00",
       "endDate": null,
       "endTime": null,
-      "venue": "Venue TBA",
-      "location": "Venue TBA",
+      "venue": "Norwich",
+      "location": "Norwich",
       "address": null,
       "category": "gigs",
       "description": "Cloudbusting are the longest running and most universally celebrated tribute to the music of Kate Bush.",
@@ -97,9 +97,8 @@
       "imageStatus": "fallback",
       "linkStatus": "verified",
       "tags": [
-        "music",
         "tribute",
-        "kate bush"
+        "music"
       ],
       "featured": false,
       "editorsChoice": false,
@@ -122,7 +121,7 @@
       "location": "The Norwich Halls",
       "address": null,
       "category": "comedy",
-      "description": "Paul Sinha, Kate Butch, Terry Alderton, Matt Richardson on 30 Apr 2026. Get ready for a top-tier city centre comedy night as two of Norfolk’s leading LOCAL comedy promoters “Red Card Comedy” and “Shaft of Wit” join…",
+      "description": "Paul Sinha, Kate Butch, Terry Alderton, Matt Richardson. Get ready for a top-tier city centre comedy night as two of Norfolk’s leading LOCAL comedy promoters “Red Card Comedy” and “Shaft of Wit” join…",
       "ticketLink": "",
       "officialUrl": "",
       "sourceUrl": "https://www.visitnorwich.co.uk/whats-on/",
@@ -133,11 +132,11 @@
       "imageStatus": "fallback",
       "linkStatus": "verified",
       "tags": [
-        "comedy",
-        "city centre",
-        "paul sinha",
-        "red card comedy",
-        "shaft of wit"
+        "comedy night",
+        "Paul Sinha",
+        "Kate Butch",
+        "Terry Alderton",
+        "Matt Richardson"
       ],
       "featured": false,
       "editorsChoice": false,
@@ -147,17 +146,17 @@
       "source": "Visit Norwich"
     },
     {
-      "id": "scraper-geoff-norcott:-basic-bloke-2-–-there’s-n-2026-04-30-venue",
+      "id": "scraper-geoff-norcott:-basic-bloke-2-–-there’s-n-2026-04-30-norwich",
       "slug": "geoff-norcott-basic-bloke-2-there-s-no-bloke-without-fire-2026-04-30",
-      "fingerprint": "geoff norcott: basic bloke 2 – there’s no bloke without fire|2026-04-30|venue tba",
+      "fingerprint": "geoff norcott: basic bloke 2 – there’s no bloke without fire|2026-04-30|norwich",
       "name": "Geoff Norcott: Basic Bloke 2 – There’s No Bloke Without Fire",
       "eventname": "Geoff Norcott: Basic Bloke 2 – There’s No Bloke Without Fire",
       "date": "2026-04-30",
       "time": "00:00",
       "endDate": null,
       "endTime": null,
-      "venue": "Venue TBA",
-      "location": "Venue TBA",
+      "venue": "Norwich",
+      "location": "Norwich",
       "address": null,
       "category": "comedy",
       "description": "Basic Bloke 2 – is Geoff’s first TOUR under a Labour government, so he’s got plenty to get off his chest! Geoff’s also taking advantage…",
@@ -171,9 +170,8 @@
       "imageStatus": "fallback",
       "linkStatus": "verified",
       "tags": [
-        "comedy",
-        "tour",
-        "politics"
+        "stand-up",
+        "tour"
       ],
       "featured": false,
       "editorsChoice": false,
@@ -183,17 +181,17 @@
       "source": "Visit Norwich"
     },
     {
-      "id": "scraper-andrew-frost:-the-greatest-card-magician-2026-04-30-venue",
+      "id": "scraper-andrew-frost:-the-greatest-card-magician-2026-04-30-norwich",
       "slug": "andrew-frost-the-greatest-card-magician-in-the-world-2026-04-30",
-      "fingerprint": "andrew frost: the greatest card magician in the world|2026-04-30|venue tba",
+      "fingerprint": "andrew frost: the greatest card magician in the world|2026-04-30|norwich",
       "name": "Andrew Frost: The Greatest Card Magician In The World",
       "eventname": "Andrew Frost: The Greatest Card Magician In The World",
       "date": "2026-04-30",
       "time": "00:00",
       "endDate": null,
       "endTime": null,
-      "venue": "Venue TBA",
-      "location": "Venue TBA",
+      "venue": "Norwich",
+      "location": "Norwich",
       "address": null,
       "category": "general",
       "description": "Andrew Frost has recently been described as the “Greatest Card Magician in the World”. Can he live up to the hype?",
@@ -208,7 +206,6 @@
       "linkStatus": "verified",
       "tags": [
         "magic",
-        "card magician",
         "performance"
       ],
       "featured": false,
@@ -219,20 +216,20 @@
       "source": "Visit Norwich"
     },
     {
-      "id": "scraper-an-evening-with-chris-page-2026-04-30-venue",
+      "id": "scraper-an-evening-with-chris-page-2026-04-30-norwich",
       "slug": "an-evening-with-chris-page-2026-04-30",
-      "fingerprint": "an evening with chris page|2026-04-30|venue tba",
+      "fingerprint": "an evening with chris page|2026-04-30|norwich",
       "name": "An Evening With Chris Page",
       "eventname": "An Evening With Chris Page",
       "date": "2026-04-30",
       "time": "19:30",
       "endDate": null,
       "endTime": null,
-      "venue": "Venue TBA",
-      "location": "Venue TBA",
+      "venue": "Norwich",
+      "location": "Norwich",
       "address": null,
       "category": "general",
-      "description": "An Evening with Chris Page Thursday 30th April, 730 Tickets: £30 VIP – a meet and greet from 6:30pm and photo opportunity £22 general entry…",
+      "description": "An Evening with Chris Page",
       "ticketLink": "",
       "officialUrl": "",
       "sourceUrl": "https://www.visitnorwich.co.uk/whats-on/",
@@ -243,7 +240,6 @@
       "imageStatus": "fallback",
       "linkStatus": "verified",
       "tags": [
-        "performance",
         "meet and greet"
       ],
       "featured": false,
@@ -278,9 +274,9 @@
       "imageStatus": "fallback",
       "linkStatus": "verified",
       "tags": [
-        "festival",
         "beer",
-        "craft beer"
+        "craft beer",
+        "festival"
       ],
       "featured": false,
       "editorsChoice": false,
@@ -290,17 +286,17 @@
       "source": "Visit Norwich"
     },
     {
-      "id": "scraper-there’s-a-monster-in-your-show-2026-05-01-venue",
+      "id": "scraper-there’s-a-monster-in-your-show-2026-05-01-norwich",
       "slug": "there-s-a-monster-in-your-show-2026-05-01",
-      "fingerprint": "there’s a monster in your show|2026-05-01|venue tba",
+      "fingerprint": "there’s a monster in your show|2026-05-01|norwich",
       "name": "There’s a Monster in Your Show",
       "eventname": "There’s a Monster in Your Show",
       "date": "2026-05-01",
       "time": "00:00",
       "endDate": null,
       "endTime": null,
-      "venue": "Venue TBA",
-      "location": "Venue TBA",
+      "venue": "Norwich",
+      "location": "Norwich",
       "address": null,
       "category": "family",
       "description": "There’s a Monster in Your Show… and he can’t wait to meet you! Tom Fletcher’s interactive adventures for big imaginations are leaping from page to…",
@@ -314,9 +310,9 @@
       "imageStatus": "fallback",
       "linkStatus": "verified",
       "tags": [
-        "family",
-        "children's show",
-        "interactive"
+        "children",
+        "interactive",
+        "show"
       ],
       "featured": false,
       "editorsChoice": false,
@@ -339,8 +335,8 @@
       "location": "The Forum",
       "address": null,
       "category": "exhibitions",
-      "description": "A group art exhibition showcasing creative talent from the Norwich area, featuring work from experienced practitioners as well as relative newcomers",
-      "ticketLink": "https://www.theforumnorwich.co.uk/whats-on",
+      "description": "A group art exhibition showcasing creative talent from the Norwich area, featuring work from experienced practitioners as well as relative newcomers.",
+      "ticketLink": "",
       "officialUrl": "",
       "sourceUrl": "https://www.theforumnorwich.co.uk/whats-on",
       "primaryUrl": "https://www.theforumnorwich.co.uk/whats-on",
@@ -351,8 +347,7 @@
       "linkStatus": "verified",
       "tags": [
         "art",
-        "exhibition",
-        "local artists"
+        "exhibition"
       ],
       "featured": false,
       "editorsChoice": false,
@@ -362,17 +357,17 @@
       "source": "The Forum Norwich"
     },
     {
-      "id": "scraper-ebi-presents:-the-woman-who-shot-people--2026-05-02-venue",
+      "id": "scraper-ebi-presents:-the-woman-who-shot-people--2026-05-02-norwich",
       "slug": "ebi-presents-the-woman-who-shot-people-too-much-2026-05-02",
-      "fingerprint": "ebi presents: the woman who shot people too much|2026-05-02|venue tba",
+      "fingerprint": "ebi presents: the woman who shot people too much|2026-05-02|norwich",
       "name": "EBI Presents: The Woman Who Shot People Too Much",
       "eventname": "EBI Presents: The Woman Who Shot People Too Much",
       "date": "2026-05-02",
       "time": "00:00",
       "endDate": null,
       "endTime": null,
-      "venue": "Venue TBA",
-      "location": "Venue TBA",
+      "venue": "Norwich",
+      "location": "Norwich",
       "address": null,
       "category": "theatre",
       "description": "Norwich’s greatest private detective, Mona Ravona, embarks on a thrilling adventure in THE film noir parody play. An original production from local comedy titans, the…",
@@ -386,10 +381,9 @@
       "imageStatus": "fallback",
       "linkStatus": "verified",
       "tags": [
-        "theatre",
+        "play",
         "comedy",
-        "film noir",
-        "play"
+        "noir"
       ],
       "featured": false,
       "editorsChoice": false,
@@ -412,7 +406,7 @@
       "location": "Norfolk Showground",
       "address": null,
       "category": "family",
-      "description": "A family fete held in outdoor spaces.",
+      "description": "",
       "ticketLink": "https://www.norfolkshowground.co.uk/events",
       "officialUrl": "",
       "sourceUrl": "https://www.norfolkshowground.co.uk/events",
@@ -424,9 +418,7 @@
       "linkStatus": "verified",
       "tags": [
         "fete",
-        "family",
-        "outdoor",
-        "community"
+        "outdoor"
       ],
       "featured": false,
       "editorsChoice": false,
@@ -449,7 +441,7 @@
       "location": "Norwich Cathedral",
       "address": null,
       "category": "culture",
-      "description": "Specialist Tour: From Agincourt to the Blitz.",
+      "description": "A specialist tour exploring history from Agincourt to the Blitz.",
       "ticketLink": "https://cathedral.org.uk/whats-on",
       "officialUrl": "",
       "sourceUrl": "https://cathedral.org.uk/whats-on",
@@ -484,7 +476,7 @@
       "location": "Norwich Cathedral",
       "address": null,
       "category": "community",
-      "description": "NCCL: Language in Norwich churches.",
+      "description": "An event by NCCL focusing on language in Norwich churches.",
       "ticketLink": "https://cathedral.org.uk/whats-on",
       "officialUrl": "",
       "sourceUrl": "https://cathedral.org.uk/whats-on",
@@ -497,7 +489,7 @@
       "tags": [
         "talk",
         "language",
-        "churches"
+        "history"
       ],
       "featured": false,
       "editorsChoice": false,
@@ -521,7 +513,7 @@
       "address": null,
       "category": "markets",
       "description": "One of the biggest events for record buyers in the UK presented by VIP Record Fairs.",
-      "ticketLink": "https://www.theforumnorwich.co.uk/whats-on",
+      "ticketLink": "",
       "officialUrl": "",
       "sourceUrl": "https://www.theforumnorwich.co.uk/whats-on",
       "primaryUrl": "https://www.theforumnorwich.co.uk/whats-on",
@@ -533,8 +525,7 @@
       "tags": [
         "records",
         "fair",
-        "music",
-        "collectables"
+        "music"
       ],
       "featured": false,
       "editorsChoice": false,
@@ -557,8 +548,8 @@
       "location": "The Forum",
       "address": null,
       "category": "exhibitions",
-      "description": "A group art exhibition showcasing creative talent from the Norwich area, featuring work from experienced practitioners as well as relative newcomers",
-      "ticketLink": "https://www.theforumnorwich.co.uk/whats-on",
+      "description": "A group art exhibition showcasing creative talent from the Norwich area, featuring work from experienced practitioners as well as relative newcomers.",
+      "ticketLink": "",
       "officialUrl": "",
       "sourceUrl": "https://www.theforumnorwich.co.uk/whats-on",
       "primaryUrl": "https://www.theforumnorwich.co.uk/whats-on",
@@ -569,8 +560,7 @@
       "linkStatus": "verified",
       "tags": [
         "art",
-        "exhibition",
-        "local artists"
+        "exhibition"
       ],
       "featured": false,
       "editorsChoice": false,
@@ -594,7 +584,7 @@
       "address": null,
       "category": "theatre",
       "description": "Enjoy this free showcase of the award-winning musical Catch Me If You Can.",
-      "ticketLink": "https://www.theforumnorwich.co.uk/whats-on",
+      "ticketLink": "",
       "officialUrl": "",
       "sourceUrl": "https://www.theforumnorwich.co.uk/whats-on",
       "primaryUrl": "https://www.theforumnorwich.co.uk/whats-on",
@@ -641,7 +631,6 @@
       "imageStatus": "fallback",
       "linkStatus": "verified",
       "tags": [
-        "music",
         "live music",
         "piano"
       ],
@@ -678,10 +667,9 @@
       "linkStatus": "verified",
       "tags": [
         "family",
-        "free",
         "activities",
-        "children",
-        "community"
+        "free",
+        "children"
       ],
       "featured": false,
       "editorsChoice": false,
@@ -691,11 +679,11 @@
       "source": "Sainsbury Centre"
     },
     {
-      "id": "scraper-diceni-norwich’s-annual-tabletop-gaming--2026-05-03-the-forum",
-      "slug": "diceni-norwich-s-annual-tabletop-gaming-show-2026-05-03",
-      "fingerprint": "diceni norwich’s annual tabletop gaming show|2026-05-03|the forum",
-      "name": "Diceni Norwich’s annual tabletop gaming show",
-      "eventname": "Diceni Norwich’s annual tabletop gaming show",
+      "id": "scraper-diceni-2026-05-03-the-forum",
+      "slug": "diceni-2026-05-03",
+      "fingerprint": "diceni|2026-05-03|the forum",
+      "name": "Diceni",
+      "eventname": "Diceni",
       "date": "2026-05-03",
       "time": "10:00",
       "endDate": "2026-05-03",
@@ -705,7 +693,7 @@
       "address": null,
       "category": "general",
       "description": "Norwich’s annual tabletop gaming show brought to you by the Aftermath Gaming Club.",
-      "ticketLink": "https://www.theforumnorwich.co.uk/whats-on",
+      "ticketLink": "",
       "officialUrl": "",
       "sourceUrl": "https://www.theforumnorwich.co.uk/whats-on",
       "primaryUrl": "https://www.theforumnorwich.co.uk/whats-on",
@@ -715,10 +703,8 @@
       "imageStatus": "fallback",
       "linkStatus": "verified",
       "tags": [
-        "tabletop games",
-        "gaming",
-        "community",
-        "show"
+        "tabletop gaming",
+        "gaming show"
       ],
       "featured": false,
       "editorsChoice": false,
@@ -729,10 +715,10 @@
     },
     {
       "id": "scraper-norfolk-deaf-festival:-sensory-creativit-2026-05-03-the-forum",
-      "slug": "norfolk-deaf-festival-sensory-creativity-day-2026-05-03",
-      "fingerprint": "norfolk deaf festival: sensory creativity day|2026-05-03|the forum",
-      "name": "Norfolk Deaf Festival: Sensory Creativity Day",
-      "eventname": "Norfolk Deaf Festival: Sensory Creativity Day",
+      "slug": "norfolk-deaf-festival-sensory-creativity-day-10am-session-2026-05-03",
+      "fingerprint": "norfolk deaf festival: sensory creativity day (10am session)|2026-05-03|the forum",
+      "name": "Norfolk Deaf Festival: Sensory Creativity Day (10am session)",
+      "eventname": "Norfolk Deaf Festival: Sensory Creativity Day (10am session)",
       "date": "2026-05-03",
       "time": "10:00",
       "endDate": null,
@@ -742,7 +728,7 @@
       "address": null,
       "category": "workshops",
       "description": "Norfolk Deaf Festival is hosting two inclusive creative workshops led by deafblind artists.",
-      "ticketLink": "https://www.theforumnorwich.co.uk/whats-on",
+      "ticketLink": "",
       "officialUrl": "",
       "sourceUrl": "https://www.theforumnorwich.co.uk/whats-on",
       "primaryUrl": "https://www.theforumnorwich.co.uk/whats-on",
@@ -752,12 +738,49 @@
       "imageStatus": "fallback",
       "linkStatus": "verified",
       "tags": [
-        "deaf",
-        "creative",
-        "workshops",
-        "learning",
-        "inclusive",
-        "sensory"
+        "deaf community",
+        "workshop",
+        "creativity",
+        "sensory",
+        "learning"
+      ],
+      "featured": false,
+      "editorsChoice": false,
+      "isFree": true,
+      "ageRestriction": null,
+      "status": "approved",
+      "source": "The Forum Norwich"
+    },
+    {
+      "id": "scraper-norfolk-deaf-festival:-sensory-creativit-2026-05-03-the-forum",
+      "slug": "norfolk-deaf-festival-sensory-creativity-day-1pm-session-2026-05-03",
+      "fingerprint": "norfolk deaf festival: sensory creativity day (1pm session)|2026-05-03|the forum",
+      "name": "Norfolk Deaf Festival: Sensory Creativity Day (1pm session)",
+      "eventname": "Norfolk Deaf Festival: Sensory Creativity Day (1pm session)",
+      "date": "2026-05-03",
+      "time": "13:0 ",
+      "endDate": null,
+      "endTime": null,
+      "venue": "The Forum",
+      "location": "The Forum",
+      "address": null,
+      "category": "workshops",
+      "description": "Norfolk Deaf Festival is hosting two inclusive creative workshops led by deafblind artists.",
+      "ticketLink": "",
+      "officialUrl": "",
+      "sourceUrl": "https://www.theforumnorwich.co.uk/whats-on",
+      "primaryUrl": "https://www.theforumnorwich.co.uk/whats-on",
+      "price": "Free",
+      "image": "",
+      "hasFlyer": false,
+      "imageStatus": "fallback",
+      "linkStatus": "verified",
+      "tags": [
+        "deaf community",
+        "workshop",
+        "creativity",
+        "sensory",
+        "learning"
       ],
       "featured": false,
       "editorsChoice": false,
@@ -781,7 +804,7 @@
       "address": null,
       "category": "markets",
       "description": "Bringing the Trading Card Game Community Together.",
-      "ticketLink": "https://www.theforumnorwich.co.uk/whats-on",
+      "ticketLink": "",
       "officialUrl": "",
       "sourceUrl": "https://www.theforumnorwich.co.uk/whats-on",
       "primaryUrl": "https://www.theforumnorwich.co.uk/whats-on",
@@ -792,8 +815,8 @@
       "linkStatus": "verified",
       "tags": [
         "trading cards",
-        "games",
-        "community",
+        "gaming",
+        "market",
         "fair"
       ],
       "featured": false,
@@ -818,7 +841,7 @@
       "address": null,
       "category": "community",
       "description": "Public screening of the People’s Emergency Briefing.",
-      "ticketLink": "https://www.theforumnorwich.co.uk/whats-on",
+      "ticketLink": "",
       "officialUrl": "",
       "sourceUrl": "https://www.theforumnorwich.co.uk/whats-on",
       "primaryUrl": "https://www.theforumnorwich.co.uk/whats-on",
@@ -829,9 +852,7 @@
       "linkStatus": "verified",
       "tags": [
         "briefing",
-        "public",
-        "screening",
-        "community",
+        "public screening",
         "environment"
       ],
       "featured": false,
@@ -855,7 +876,7 @@
       "location": "Norwich Cathedral",
       "address": null,
       "category": "culture",
-      "description": "Specialist Tour: Julian of Norwich.",
+      "description": "A specialist tour focusing on Julian of Norwich.",
       "ticketLink": "https://cathedral.org.uk/whats-on",
       "officialUrl": "",
       "sourceUrl": "https://cathedral.org.uk/whats-on",
@@ -868,7 +889,7 @@
       "tags": [
         "tour",
         "history",
-        "religious"
+        "religion"
       ],
       "featured": false,
       "editorsChoice": false,
@@ -892,7 +913,7 @@
       "address": null,
       "category": "community",
       "description": "Challenge your assumptions at this year's Dying Matters event.",
-      "ticketLink": "https://www.theforumnorwich.co.uk/whats-on",
+      "ticketLink": "",
       "officialUrl": "",
       "sourceUrl": "https://www.theforumnorwich.co.uk/whats-on",
       "primaryUrl": "https://www.theforumnorwich.co.uk/whats-on",
@@ -902,12 +923,10 @@
       "imageStatus": "fallback",
       "linkStatus": "verified",
       "tags": [
-        "death",
-        "dying",
         "bereavement",
-        "myth-busting",
-        "charity",
-        "learning"
+        "death",
+        "learning",
+        "charity"
       ],
       "featured": false,
       "editorsChoice": false,
@@ -930,7 +949,7 @@
       "location": "The Halls",
       "address": null,
       "category": "festivals",
-      "description": "Norwich's historic heart revitalised as a modern cultural space for everyone, ready for concerts, community gatherings, exhibitions, celebrations, and standout performances.",
+      "description": "The Norwich & Norfolk Festival is an annual arts festival running from 8 to 24 May 2026, featuring a range of performances and events.",
       "ticketLink": "https://www.thehallsnorwich.co.uk/events",
       "officialUrl": "",
       "sourceUrl": "https://www.thehallsnorwich.co.uk/events",
@@ -941,7 +960,9 @@
       "imageStatus": "fallback",
       "linkStatus": "verified",
       "tags": [
-        "festival"
+        "festival",
+        "arts",
+        "culture"
       ],
       "featured": false,
       "editorsChoice": false,
@@ -965,7 +986,7 @@
       "address": null,
       "category": "exhibitions",
       "description": "An exhibition of new selected works by members of Norfolk and Norwich Art Circle.",
-      "ticketLink": "https://www.theforumnorwich.co.uk/whats-on",
+      "ticketLink": "",
       "officialUrl": "",
       "sourceUrl": "https://www.theforumnorwich.co.uk/whats-on",
       "primaryUrl": "https://www.theforumnorwich.co.uk/whats-on",
@@ -976,8 +997,7 @@
       "linkStatus": "verified",
       "tags": [
         "art",
-        "exhibition",
-        "local artists"
+        "exhibition"
       ],
       "featured": false,
       "editorsChoice": false,
@@ -1000,7 +1020,7 @@
       "location": "Norfolk Showground",
       "address": null,
       "category": "sports",
-      "description": "A race event held in outdoor spaces.",
+      "description": "",
       "ticketLink": "https://www.norfolkshowground.co.uk/events",
       "officialUrl": "",
       "sourceUrl": "https://www.norfolkshowground.co.uk/events",
@@ -1013,8 +1033,7 @@
       "tags": [
         "race",
         "charity",
-        "outdoor",
-        "fitness"
+        "outdoor"
       ],
       "featured": false,
       "editorsChoice": false,
@@ -1037,7 +1056,7 @@
       "location": "Sainsbury Centre",
       "address": null,
       "category": "exhibitions",
-      "description": "Exploring the idea of routine and regulation, this exhibition reflects on the ‘rules’ that we live by today, through a dialogue between medieval experiments in a different way to live and modern reflections upon how life is organised. The exhibition runs until 4 October 2026.",
+      "description": "Exploring the idea of routine and regulation, this exhibition reflects on the ‘rules’ that we live by today, through a dialogue between medieval experiments in a different way to live and modern reflections upon how life is organised.",
       "ticketLink": "https://sainsburycentre.ac.uk/whats-on/",
       "officialUrl": "",
       "sourceUrl": "https://sainsburycentre.ac.uk/whats-on/",
@@ -1051,8 +1070,8 @@
         "exhibition",
         "art",
         "history",
-        "culture",
-        "philosophy"
+        "medieval",
+        "contemporary"
       ],
       "featured": false,
       "editorsChoice": false,
@@ -1075,7 +1094,7 @@
       "location": "Sainsbury Centre",
       "address": null,
       "category": "exhibitions",
-      "description": "Exploring the concept of play in human cultures, Play Power reflects on the broader significance of play and how this is integrated into our daily lives. Would we live a more meaningful life if play were a central focus of day-to-day living? The exhibition runs until 4 October 2026.",
+      "description": "Exploring the concept of play in human cultures, Play Power reflects on the broader significance of play and how this is integrated into our daily lives. Would we live a more meaningful life if play were a central focus of day-to-day living?",
       "ticketLink": "https://sainsburycentre.ac.uk/whats-on/",
       "officialUrl": "",
       "sourceUrl": "https://sainsburycentre.ac.uk/whats-on/",
@@ -1089,8 +1108,7 @@
         "exhibition",
         "culture",
         "play",
-        "philosophy",
-        "human behavior"
+        "human cultures"
       ],
       "featured": false,
       "editorsChoice": false,
@@ -1113,8 +1131,8 @@
       "location": "The Forum",
       "address": null,
       "category": "festivals",
-      "description": "",
-      "ticketLink": "https://www.theforumnorwich.co.uk/whats-on",
+      "description": "All day festival.",
+      "ticketLink": "",
       "officialUrl": "",
       "sourceUrl": "https://www.theforumnorwich.co.uk/whats-on",
       "primaryUrl": "https://www.theforumnorwich.co.uk/whats-on",
@@ -1124,7 +1142,7 @@
       "imageStatus": "fallback",
       "linkStatus": "verified",
       "tags": [
-        "games",
+        "gaming",
         "festival"
       ],
       "featured": false,
@@ -1147,7 +1165,7 @@
       "venue": "Sainsbury Centre",
       "location": "Sainsbury Centre",
       "address": null,
-      "category": "culture",
+      "category": "theatre",
       "description": "Kate Pickering presents her new spoken word performance based on her longstanding interest in English anchorite and mystical writer, Julian of Norwich.",
       "ticketLink": "https://sainsburycentre.ac.uk/whats-on/",
       "officialUrl": "",
@@ -1162,8 +1180,8 @@
         "spoken word",
         "performance",
         "literature",
-        "history",
-        "Julian of Norwich"
+        "Julian of Norwich",
+        "culture"
       ],
       "featured": false,
       "editorsChoice": false,
@@ -1186,7 +1204,7 @@
       "location": "The Halls",
       "address": null,
       "category": "markets",
-      "description": "A makers market featuring Brew and Friends.",
+      "description": "A market featuring local makers and their creations, taking place on 30 and 31 May 2026.",
       "ticketLink": "https://www.thehallsnorwich.co.uk/events",
       "officialUrl": "",
       "sourceUrl": "https://www.thehallsnorwich.co.uk/events",
@@ -1198,7 +1216,8 @@
       "linkStatus": "verified",
       "tags": [
         "market",
-        "makers"
+        "crafts",
+        "local"
       ],
       "featured": false,
       "editorsChoice": false,
@@ -1221,7 +1240,7 @@
       "location": "The Halls",
       "address": null,
       "category": "gigs",
-      "description": "Performance by The Jerseys.",
+      "description": "A live performance by The Jerseys.",
       "ticketLink": "https://www.thehallsnorwich.co.uk/events",
       "officialUrl": "",
       "sourceUrl": "https://www.thehallsnorwich.co.uk/events",
@@ -1243,44 +1262,6 @@
       "source": "The Halls Norwich"
     },
     {
-      "id": "scraper-big-sunday-2026-06-07-sainsbury-centre",
-      "slug": "big-sunday-2026-06-07",
-      "fingerprint": "big sunday|2026-06-07|sainsbury centre",
-      "name": "Big Sunday",
-      "eventname": "Big Sunday",
-      "date": "2026-06-07",
-      "time": "00:00",
-      "endDate": null,
-      "endTime": null,
-      "venue": "Sainsbury Centre",
-      "location": "Sainsbury Centre",
-      "address": null,
-      "category": "family",
-      "description": "Join us for fun free activities every first Sunday of each month. And there's no need to book.",
-      "ticketLink": "https://sainsburycentre.ac.uk/whats-on/",
-      "officialUrl": "",
-      "sourceUrl": "https://sainsburycentre.ac.uk/whats-on/",
-      "primaryUrl": "https://sainsburycentre.ac.uk/whats-on/",
-      "price": "Free",
-      "image": "",
-      "hasFlyer": false,
-      "imageStatus": "fallback",
-      "linkStatus": "verified",
-      "tags": [
-        "family",
-        "free",
-        "activities",
-        "children",
-        "community"
-      ],
-      "featured": false,
-      "editorsChoice": false,
-      "isFree": true,
-      "ageRestriction": null,
-      "status": "approved",
-      "source": "Sainsbury Centre"
-    },
-    {
       "id": "scraper-royal-norfolk-show-2026-06-24-norfolk-showground",
       "slug": "royal-norfolk-show-2026-06-24",
       "fingerprint": "royal norfolk show|2026-06-24|norfolk showground",
@@ -1294,7 +1275,7 @@
       "location": "Norfolk Showground",
       "address": null,
       "category": "festivals",
-      "description": "A major show held at the Norfolk Events Centre.",
+      "description": "",
       "ticketLink": "https://www.norfolkshowground.co.uk/events",
       "officialUrl": "",
       "sourceUrl": "https://www.norfolkshowground.co.uk/events",
@@ -1307,8 +1288,7 @@
       "tags": [
         "show",
         "agriculture",
-        "festival",
-        "rural"
+        "outdoor"
       ],
       "featured": false,
       "editorsChoice": false,
@@ -1331,8 +1311,8 @@
       "location": "The Atrium",
       "address": null,
       "category": "festivals",
-      "description": "",
-      "ticketLink": "https://www.theforumnorwich.co.uk/whats-on",
+      "description": "All day festival.",
+      "ticketLink": "",
       "officialUrl": "",
       "sourceUrl": "https://www.theforumnorwich.co.uk/whats-on",
       "primaryUrl": "https://www.theforumnorwich.co.uk/whats-on",
@@ -1342,9 +1322,8 @@
       "imageStatus": "fallback",
       "linkStatus": "verified",
       "tags": [
-        "deaf",
-        "festival",
-        "community"
+        "deaf community",
+        "festival"
       ],
       "featured": false,
       "editorsChoice": false,
@@ -1352,44 +1331,6 @@
       "ageRestriction": null,
       "status": "approved",
       "source": "The Forum Norwich"
-    },
-    {
-      "id": "scraper-big-sunday-2026-07-05-sainsbury-centre",
-      "slug": "big-sunday-2026-07-05",
-      "fingerprint": "big sunday|2026-07-05|sainsbury centre",
-      "name": "Big Sunday",
-      "eventname": "Big Sunday",
-      "date": "2026-07-05",
-      "time": "00:00",
-      "endDate": null,
-      "endTime": null,
-      "venue": "Sainsbury Centre",
-      "location": "Sainsbury Centre",
-      "address": null,
-      "category": "family",
-      "description": "Join us for fun free activities every first Sunday of each month. And there's no need to book.",
-      "ticketLink": "https://sainsburycentre.ac.uk/whats-on/",
-      "officialUrl": "",
-      "sourceUrl": "https://sainsburycentre.ac.uk/whats-on/",
-      "primaryUrl": "https://sainsburycentre.ac.uk/whats-on/",
-      "price": "Free",
-      "image": "",
-      "hasFlyer": false,
-      "imageStatus": "fallback",
-      "linkStatus": "verified",
-      "tags": [
-        "family",
-        "free",
-        "activities",
-        "children",
-        "community"
-      ],
-      "featured": false,
-      "editorsChoice": false,
-      "isFree": true,
-      "ageRestriction": null,
-      "status": "approved",
-      "source": "Sainsbury Centre"
     },
     {
       "id": "scraper-norfolk-garden-show-2026-07-10-norfolk-showground",
@@ -1404,8 +1345,8 @@
       "venue": "Norfolk Showground",
       "location": "Norfolk Showground",
       "address": null,
-      "category": "exhibitions",
-      "description": "A garden show held in outdoor spaces.",
+      "category": "general",
+      "description": "",
       "ticketLink": "https://www.norfolkshowground.co.uk/events",
       "officialUrl": "",
       "sourceUrl": "https://www.norfolkshowground.co.uk/events",
@@ -1418,8 +1359,7 @@
       "tags": [
         "garden",
         "show",
-        "outdoor",
-        "horticulture"
+        "outdoor"
       ],
       "featured": false,
       "editorsChoice": false,
@@ -1442,7 +1382,7 @@
       "location": "Norfolk Showground",
       "address": null,
       "category": "family",
-      "description": "A family-friendly labyrinth challenge tour held in outdoor spaces.",
+      "description": "",
       "ticketLink": "https://www.norfolkshowground.co.uk/events",
       "officialUrl": "",
       "sourceUrl": "https://www.norfolkshowground.co.uk/events",
@@ -1456,7 +1396,6 @@
         "labyrinth",
         "challenge",
         "tour",
-        "family",
         "outdoor"
       ],
       "featured": false,
@@ -1479,8 +1418,8 @@
       "venue": "Norfolk Showground",
       "location": "Norfolk Showground",
       "address": null,
-      "category": "exhibitions",
-      "description": "A fun motorhome and campervan show held in outdoor spaces.",
+      "category": "general",
+      "description": "",
       "ticketLink": "https://www.norfolkshowground.co.uk/events",
       "officialUrl": "",
       "sourceUrl": "https://www.norfolkshowground.co.uk/events",
@@ -1494,8 +1433,7 @@
         "motorhome",
         "campervan",
         "show",
-        "outdoor",
-        "travel"
+        "outdoor"
       ],
       "featured": false,
       "editorsChoice": false,
@@ -1517,8 +1455,8 @@
       "venue": "The Halls",
       "location": "The Halls",
       "address": null,
-      "category": "general",
-      "description": "",
+      "category": "culture",
+      "description": "An immersive listening experience taking place on 25 and 26 July 2026.",
       "ticketLink": "https://www.thehallsnorwich.co.uk/events",
       "officialUrl": "",
       "sourceUrl": "https://www.thehallsnorwich.co.uk/events",
@@ -1528,7 +1466,11 @@
       "hasFlyer": false,
       "imageStatus": "fallback",
       "linkStatus": "verified",
-      "tags": [],
+      "tags": [
+        "music",
+        "sound",
+        "experience"
+      ],
       "featured": false,
       "editorsChoice": false,
       "isFree": false,
@@ -1550,8 +1492,8 @@
       "location": "Across Norfolk",
       "address": null,
       "category": "culture",
-      "description": "",
-      "ticketLink": "https://www.theforumnorwich.co.uk/whats-on",
+      "description": "Explore heritage sites across Norfolk.",
+      "ticketLink": "",
       "officialUrl": "",
       "sourceUrl": "https://www.theforumnorwich.co.uk/whats-on",
       "primaryUrl": "https://www.theforumnorwich.co.uk/whats-on",
@@ -1562,7 +1504,7 @@
       "linkStatus": "verified",
       "tags": [
         "heritage",
-        "open day"
+        "open days"
       ],
       "featured": false,
       "editorsChoice": false,
@@ -1620,8 +1562,8 @@
       "venue": "The Halls",
       "location": "The Halls",
       "address": null,
-      "category": "general",
-      "description": "",
+      "category": "culture",
+      "description": "A show exploring the history of land and liberty with stories and songs.",
       "ticketLink": "https://www.thehallsnorwich.co.uk/events",
       "officialUrl": "",
       "sourceUrl": "https://www.thehallsnorwich.co.uk/events",
@@ -1631,7 +1573,12 @@
       "hasFlyer": false,
       "imageStatus": "fallback",
       "linkStatus": "verified",
-      "tags": [],
+      "tags": [
+        "talk",
+        "storytelling",
+        "history",
+        "music"
+      ],
       "featured": false,
       "editorsChoice": false,
       "isFree": false,
@@ -1640,6 +1587,6 @@
       "source": "The Halls Norwich"
     }
   ],
-  "generated_at": "2026-04-30T16:54:24.590418",
-  "count": 45
+  "generated_at": "2026-04-30T17:13:05.233113",
+  "count": 44
 }

@@ -1,14 +1,7 @@
 {
-  "generated_at": "2026-05-04T08:05:41.059769",
-  "count": 61,
+  "generated_at": "2026-05-05T07:51:05.843870",
+  "count": 68,
   "events": [
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Norwich Cathedral",
-      "title": "Bank Holiday Organ Concert: Christopher Too",
-      "fingerprint": "bank holiday organ concert: christopher too|2026-05-04|norwich cathedral"
-    },
     {
       "reason": "needs_review",
       "status": "pending_review",
@@ -26,9 +19,9 @@
     {
       "reason": "needs_review",
       "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "KJ-TCG Trading Card Show",
-      "fingerprint": "kj-tcg trading card show|2026-05-04|the forum"
+      "source": "Norwich Cathedral",
+      "title": "Mothers' Union 150th Anniversary Festival Service",
+      "fingerprint": "mothers' union 150th anniversary festival service|2026-05-07|norwich cathedral"
     },
     {
       "reason": "needs_review",
@@ -42,28 +35,28 @@
       "status": "pending_review",
       "source": "The Forum Norwich",
       "title": "Bounce and Rhyme: Storytime in The Gallery",
-      "fingerprint": "bounce and rhyme: storytime in the gallery|2026-05-06|the forum (the gallery)"
+      "fingerprint": "bounce and rhyme: storytime in the gallery|2026-05-06|the forum"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "The Forum Norwich",
       "title": "English Exchange in The Gallery",
-      "fingerprint": "english exchange in the gallery|2026-05-06|the forum (the gallery)"
+      "fingerprint": "english exchange in the gallery|2026-05-06|the forum"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "The Forum Norwich",
       "title": "Drop in and Draw in The Gallery",
-      "fingerprint": "drop in and draw in the gallery|2026-05-06|the forum (the gallery)"
+      "fingerprint": "drop in and draw in the gallery|2026-05-06|the forum"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "The Forum Norwich",
       "title": "Board Games for Adults in The Gallery",
-      "fingerprint": "board games for adults in the gallery|2026-05-06|the forum (the gallery)"
+      "fingerprint": "board games for adults in the gallery|2026-05-06|the forum"
     },
     {
       "reason": "needs_review",
@@ -91,7 +84,14 @@
       "status": "pending_review",
       "source": "The Forum Norwich",
       "title": "Bounce and Rhyme: Storytime in The Gallery",
-      "fingerprint": "bounce and rhyme: storytime in the gallery|2026-05-08|the forum (the gallery)"
+      "fingerprint": "bounce and rhyme: storytime in the gallery|2026-05-08|the forum"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Forum Norwich",
+      "title": "Colour Me Calm in The Gallery",
+      "fingerprint": "colour me calm in the gallery|2026-05-08|the forum"
     },
     {
       "reason": "needs_review",
@@ -118,36 +118,15 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Visit Norwich",
-      "title": "Shopping for History – Walking Tour",
-      "fingerprint": "shopping for history – walking tour|2026-05-04|norwich city centre"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Oasiz",
-      "fingerprint": "oasiz|2026-05-04|norwich"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Team Viking",
-      "fingerprint": "team viking|2026-05-04|norwich"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "QueerFest Pop-Up Norwich Market",
-      "fingerprint": "queerfest pop-up norwich market|2026-05-05|norwich market"
+      "title": "QueerFest Pop-Up",
+      "fingerprint": "queerfest pop-up|2026-05-05|norwich market"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Visit Norwich",
       "title": "Death on the Nile",
-      "fingerprint": "death on the nile|2026-05-05|norwich"
+      "fingerprint": "death on the nile|2026-05-05|venue tba"
     },
     {
       "reason": "needs_review",
@@ -168,14 +147,14 @@
       "status": "pending_review",
       "source": "Visit Norwich",
       "title": "Paul McCaffrey: What a Time to Be Alive",
-      "fingerprint": "paul mccaffrey: what a time to be alive|2026-05-06|norwich"
+      "fingerprint": "paul mccaffrey: what a time to be alive|2026-05-06|venue tba"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Visit Norwich",
       "title": "Norwich Weird & Wonderful Story Walk",
-      "fingerprint": "norwich weird & wonderful story walk|2026-05-06|norwich city centre"
+      "fingerprint": "norwich weird & wonderful story walk|2026-05-06|norwich"
     },
     {
       "reason": "needs_review",
@@ -189,14 +168,35 @@
       "status": "pending_review",
       "source": "Visit Norwich",
       "title": "May Win Club – Portugal Uncorked",
-      "fingerprint": "may win club – portugal uncorked|2026-05-07|norwich"
+      "fingerprint": "may win club – portugal uncorked|2026-05-07|venue tba"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Reflex Theatre presents Call Me John",
+      "fingerprint": "reflex theatre presents call me john|2026-05-07|venue tba"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Belle Chen",
+      "fingerprint": "belle chen|2026-05-07|venue tba"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Burnt Mill Brewery Tasting",
+      "fingerprint": "burnt mill brewery tasting|2026-05-07|beer hatch"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "The Halls Norwich",
-      "title": "Norfolk & Norwich Festival",
-      "fingerprint": "norfolk & norwich festival|2026-05-08|the halls"
+      "title": "Norfolk & Norwich Festival 2026",
+      "fingerprint": "norfolk & norwich festival 2026|2026-05-08|the halls"
     },
     {
       "reason": "needs_review",
@@ -236,48 +236,6 @@
     {
       "reason": "needs_review",
       "status": "pending_review",
-      "source": "Norfolk Showground",
-      "title": "Race For Life",
-      "fingerprint": "race for life|2026-05-09|norfolk showground"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Norfolk Showground",
-      "title": "Royal Norfolk Show",
-      "fingerprint": "royal norfolk show|2026-06-24|norfolk showground"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Norfolk Showground",
-      "title": "Norfolk Garden Show",
-      "fingerprint": "norfolk garden show|2026-07-10|norfolk showground"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Norfolk Showground",
-      "title": "Family The Labyrinth Challenge Tour",
-      "fingerprint": "family the labyrinth challenge tour|2026-07-11|norfolk showground"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Norfolk Showground",
-      "title": "Norfolk Motorhome & Campervan Show",
-      "fingerprint": "norfolk motorhome & campervan show|2026-07-17|norfolk showground"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Norfolk Showground",
-      "title": "Ink & Engines Fest",
-      "fingerprint": "ink & engines fest|2026-08-15|norfolk showground"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
       "source": "Skiddle Norwich",
       "title": "An Evening With Chicane - Norwich",
       "fingerprint": "an evening with chicane - norwich|2026-09-26|epic studios"
@@ -307,13 +265,6 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
-      "title": "RAW MATERIAL Presents - THE SHOCKWAVE - P MONEY + More",
-      "fingerprint": "raw material presents - the shockwave - p money + more|2026-07-18|kudos bar and nightclub"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Skiddle Norwich",
       "title": "The Greatest MUSICALS Daytime Disco - Norwich",
       "fingerprint": "the greatest musicals daytime disco - norwich|2026-06-06|be at one"
     },
@@ -321,8 +272,8 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
-      "title": "Reminiscence presents DuMonde - The 4th Birthday",
-      "fingerprint": "reminiscence presents dumonde - the 4th birthday|2026-05-15|kudos bar and nightclub"
+      "title": "RAW MATERIAL Presents - THE SHOCKWAVE - P MONEY + More",
+      "fingerprint": "raw material presents - the shockwave - p money + more|2026-07-18|kudos bar and nightclub"
     },
     {
       "reason": "needs_review",
@@ -330,6 +281,13 @@
       "source": "Skiddle Norwich",
       "title": "Poppy Moores iPod Norwich Pride",
       "fingerprint": "poppy moores ipod norwich pride|2026-07-25|deadwax norwich"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
+      "title": "Reminiscence presents DuMonde - The 4th Birthday",
+      "fingerprint": "reminiscence presents dumonde - the 4th birthday|2026-05-15|kudos bar and nightclub"
     },
     {
       "reason": "needs_review",
@@ -390,16 +348,107 @@
     {
       "reason": "needs_review",
       "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "Big Sunday",
-      "fingerprint": "big sunday|2026-06-07|sainsbury centre"
+      "source": "Skiddle Norwich",
+      "title": "Music Worldwide Drum Camp",
+      "fingerprint": "music worldwide drum camp|2026-09-03|hulver farm"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
+      "title": "Junction 42",
+      "fingerprint": "junction 42|2026-06-27|earlham park"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
+      "title": "R&B Lovers - Outdoor Festival Junkyard Norwich",
+      "fingerprint": "r&b lovers - outdoor festival junkyard norwich|2026-05-30|junkyard"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
+      "title": "Country Club - Outdoor Country Music Festival - Norwich",
+      "fingerprint": "country club - outdoor country music festival - norwich|2026-07-04|junkyard"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
+      "title": "Summer Outdoor 80s Tribute Festival - Junkyard Norwich",
+      "fingerprint": "summer outdoor 80s tribute festival - junkyard norwich|2026-06-06|junkyard market"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
+      "title": "Earlham Park Tribute Festival",
+      "fingerprint": "earlham park tribute festival|2026-06-13|earlham park"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
+      "title": "Summer 90s Outdoor Festival - Junkyard Norwich",
+      "fingerprint": "summer 90s outdoor festival - junkyard norwich|2026-08-15|junkyard market"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
+      "title": "Taste Of Thailand Music And Food Festival",
+      "fingerprint": "taste of thailand music and food festival|2026-07-25|earlham park"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Norfolk Showground",
+      "title": "Race For Life",
+      "fingerprint": "race for life|2026-05-09|norfolk showground"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Norfolk Showground",
+      "title": "Royal Norfolk Show",
+      "fingerprint": "royal norfolk show|2026-06-24|norfolk showground"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Norfolk Showground",
+      "title": "Norfolk Garden Show",
+      "fingerprint": "norfolk garden show|2026-07-10|norfolk showground"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Norfolk Showground",
+      "title": "The Labyrinth Challenge Tour",
+      "fingerprint": "the labyrinth challenge tour|2026-07-11|norfolk showground"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Norfolk Showground",
+      "title": "Norfolk Motorhome & Campervan Show",
+      "fingerprint": "norfolk motorhome & campervan show|2026-07-17|norfolk showground"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Norfolk Showground",
+      "title": "Ink & Engines Fest",
+      "fingerprint": "ink & engines fest|2026-08-15|norfolk showground"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Sainsbury Centre",
-      "title": "The Ruling of Mother Julian – The Anchorite Sees Kate Pickering",
-      "fingerprint": "the ruling of mother julian – the anchorite sees kate pickering|2026-05-23|sainsbury centre"
+      "title": "The Ruling of Mother Julian – The Anchorite Sees",
+      "fingerprint": "the ruling of mother julian – the anchorite sees|2026-05-23|sainsbury centre"
     },
     {
       "reason": "needs_review",

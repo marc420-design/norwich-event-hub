@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-13T08:09:27.767391",
-  "count": 74,
+  "generated_at": "2026-05-14T08:06:23.649116",
+  "count": 66,
   "events": [
     {
       "reason": "needs_review",
@@ -48,41 +48,6 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "The Forum Norwich",
-      "title": "Bounce and Rhyme: in The Gallery",
-      "fingerprint": "bounce and rhyme: in the gallery|2026-05-13|the gallery"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "Norfolk & Norwich Festival - From The Dunes",
-      "fingerprint": "norfolk & norwich festival - from the dunes|2026-05-13|the forum"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "Autism Just a Cuppa in The Gallery",
-      "fingerprint": "autism just a cuppa in the gallery|2026-05-13|the gallery"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "Drop in and Draw in The Gallery",
-      "fingerprint": "drop in and draw in the gallery|2026-05-13|the gallery"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "English Exchange in The Gallery",
-      "fingerprint": "english exchange in the gallery|2026-05-13|the gallery"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Forum Norwich",
       "title": "Hear for Norfolk & Age UK Norwich - Cuppa Care Events",
       "fingerprint": "hear for norfolk & age uk norwich - cuppa care events|2026-05-14|the forum"
     },
@@ -97,71 +62,71 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "The Forum Norwich",
-      "title": "Bounce and Rhyme: in The Gallery",
-      "fingerprint": "bounce and rhyme: in the gallery|2026-05-15|the gallery"
+      "title": "Bounce and Rhyme",
+      "fingerprint": "bounce and rhyme|2026-05-15|the gallery"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Like Mother, Like Daughter: Fran Fabriczki & Charlotte Mendelson",
-      "fingerprint": "like mother, like daughter: fran fabriczki & charlotte mendelson|2026-05-13|venue tba"
+      "source": "The Forum Norwich",
+      "title": "Norfolk & Norwich Festival - From The Dunes",
+      "fingerprint": "norfolk & norwich festival - from the dunes|2026-05-15|the forum"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Wolf",
-      "fingerprint": "wolf|2026-05-13|venue tba"
+      "source": "The Forum Norwich",
+      "title": "Colour Me Calm",
+      "fingerprint": "colour me calm|2026-05-15|the gallery"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Pavel Kolesnikov & Samson Tsoy",
-      "fingerprint": "pavel kolesnikov & samson tsoy|2026-05-13|st andrews hall"
+      "source": "The Forum Norwich",
+      "title": "Norwich Independent Book & Zine Fair",
+      "fingerprint": "norwich independent book & zine fair|2026-05-16|the forum"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Norwich Weird & Wonderful Story Walk",
-      "fingerprint": "norwich weird & wonderful story walk|2026-05-13|venue tba"
+      "source": "The Forum Norwich",
+      "title": "Scale New Heights for Sue Lambert Trust: Charity Abseil",
+      "fingerprint": "scale new heights for sue lambert trust: charity abseil|2026-05-16|the forum"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Visit Norwich",
       "title": "Elm Hill – Walking tour",
-      "fingerprint": "elm hill – walking tour|2026-05-14|elm hill"
+      "fingerprint": "elm hill – walking tour|2026-05-14|norwich"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Visit Norwich",
       "title": "The Tumbling Paddies",
-      "fingerprint": "the tumbling paddies|2026-05-14|venue tba"
+      "fingerprint": "the tumbling paddies|2026-05-14|norwich"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Visit Norwich",
-      "title": "Jim Davidson – Last Man Standing… Just!",
-      "fingerprint": "jim davidson – last man standing… just!|2026-05-14|venue tba"
+      "title": "Jim Davidson – Last Man Standing… Just Returning in 2026 with Last Man Standing … Just!",
+      "fingerprint": "jim davidson – last man standing… just returning in 2026 with last man standing … just!|2026-05-14|norwich"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Visit Norwich",
       "title": "Cowboy Junkies",
-      "fingerprint": "cowboy junkies|2026-05-14|venue tba"
+      "fingerprint": "cowboy junkies|2026-05-14|norwich"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Visit Norwich",
       "title": "Kenneth Pattengale",
-      "fingerprint": "kenneth pattengale|2026-05-14|venue tba"
+      "fingerprint": "kenneth pattengale|2026-05-14|norwich"
     },
     {
       "reason": "needs_review",
@@ -182,7 +147,42 @@
       "status": "pending_review",
       "source": "Visit Norwich",
       "title": "Murder Mystery Dinner",
-      "fingerprint": "murder mystery dinner|2026-05-15|venue tba"
+      "fingerprint": "murder mystery dinner|2026-05-15|norwich"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Crab and Lobster Festival Opening Concert",
+      "fingerprint": "crab and lobster festival opening concert|2026-05-15|norwich"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "The Big Bloom Variety Show",
+      "fingerprint": "the big bloom variety show|2026-05-15|norwich"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Brokentalkers: Bellow",
+      "fingerprint": "brokentalkers: bellow|2026-05-15|norwich"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Balimaya Project",
+      "fingerprint": "balimaya project|2026-05-15|norwich"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Halls Norwich",
+      "title": "Big Fish Little Fish 2-4 Hour Party People",
+      "fingerprint": "big fish little fish 2-4 hour party people|2026-07-10|the halls"
     },
     {
       "reason": "needs_review",
@@ -204,13 +204,6 @@
       "source": "The Halls Norwich",
       "title": "Lie Down and Listen",
       "fingerprint": "lie down and listen|2026-07-25|the halls"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Halls Norwich",
-      "title": "Emilio Santoro as Elvis",
-      "fingerprint": "emilio santoro as elvis|2026-09-26|the halls"
     },
     {
       "reason": "needs_review",
@@ -258,8 +251,8 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
-      "title": "Family Action Arena",
-      "fingerprint": "family action arena|2026-08-29|norfolk showground"
+      "title": "Action Arena",
+      "fingerprint": "action arena|2026-08-29|norfolk showground"
     },
     {
       "reason": "needs_review",
@@ -273,7 +266,14 @@
       "status": "pending_review",
       "source": "Skiddle Norwich",
       "title": "90s Baby Daytime Clubbing - With The Over 30s Club",
-      "fingerprint": "90s baby daytime clubbing - with the over 30s club|2026-05-30|above kerry's norwich"
+      "fingerprint": "90s baby daytime clubbing - with the over 30s club|2026-05-30|above kerry's"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
+      "title": "Mania U18: NORWICH + Special guest",
+      "fingerprint": "mania u18: norwich + special guest|2026-07-29|bar and beyond"
     },
     {
       "reason": "needs_review",
@@ -293,36 +293,22 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
+      "title": "Norwich we got 2 big artists M24 N Bigtobz both performing live",
+      "fingerprint": "norwich we got 2 big artists m24 n bigtobz both performing live|2026-05-16|mojos nightclub"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
+      "title": "Poppy Moores iPod Norwich Pride",
+      "fingerprint": "poppy moores ipod norwich pride|2026-07-25|deadwax"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
       "title": "RAW MATERIAL Presents - THE SHOCKWAVE - P MONEY + More",
       "fingerprint": "raw material presents - the shockwave - p money + more|2026-07-18|kudos bar and nightclub"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Skiddle Norwich",
-      "title": "Mania U18: NORWICH + Special guest",
-      "fingerprint": "mania u18: norwich + special guest|2026-07-29|bar and beyond norwich"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Skiddle Norwich",
-      "title": "The Greatest MUSICALS Daytime Disco - Norwich",
-      "fingerprint": "the greatest musicals daytime disco - norwich|2026-06-06|be at one"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Skiddle Norwich",
-      "title": "INTO THE VAULT - Vaulted Audio",
-      "fingerprint": "into the vault - vaulted audio|2026-07-24|kudos bar and nightclub"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Skiddle Norwich",
-      "title": "THE WOMBATS Live in NORWICH",
-      "fingerprint": "the wombats live in norwich|2026-06-28|earlham park"
     },
     {
       "reason": "needs_review",
@@ -342,11 +328,18 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
+      "title": "THE WOMBATS Live in NORWICH",
+      "fingerprint": "the wombats live in norwich|2026-06-28|earlham park"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
       "title": "Special Kinda Madness: Norwich",
       "fingerprint": "special kinda madness: norwich|2026-06-13|the adrian flux waterfront"
     },
     {
-      "reason": "duplicate",
+      "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
       "title": "Emilio Santoro as Elvis",
@@ -440,8 +433,8 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Sainsbury Centre",
-      "title": "Big Questions: What is the Meaning of Life?",
-      "fingerprint": "big questions: what is the meaning of life?|2026-05-16|sainsbury centre"
+      "title": "Big Questions What is the Meaning of Life?",
+      "fingerprint": "big questions what is the meaning of life?|2026-05-16|sainsbury centre"
     },
     {
       "reason": "needs_review",
@@ -470,55 +463,6 @@
       "source": "Sainsbury Centre",
       "title": "Joy Like Time",
       "fingerprint": "joy like time|2026-06-20|sainsbury centre"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "Ryan Gander",
-      "fingerprint": "ryan gander|2026-05-13|sainsbury centre"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "Sculpture Park",
-      "fingerprint": "sculpture park|2026-05-13|sainsbury centre"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "Free Daily Tour of the Living Area",
-      "fingerprint": "free daily tour of the living area|2026-05-13|sainsbury centre"
-    },
-    {
-      "reason": "duplicate",
-      "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "Free Daily Tour of the Living Area",
-      "fingerprint": "free daily tour of the living area|2026-05-13|sainsbury centre"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "Take One Tour of the Living Area",
-      "fingerprint": "take one tour of the living area|2026-05-13|sainsbury centre"
-    },
-    {
-      "reason": "duplicate",
-      "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "Take One Tour of the Living Area",
-      "fingerprint": "take one tour of the living area|2026-05-13|sainsbury centre"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "The Living Area",
-      "fingerprint": "the living area|2026-05-13|sainsbury centre"
     }
   ]
 }

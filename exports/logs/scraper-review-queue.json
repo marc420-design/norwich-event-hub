@@ -1,34 +1,27 @@
 {
-  "generated_at": "2026-05-22T08:19:31.582162",
+  "generated_at": "2026-05-23T07:57:15.201111",
   "count": 76,
   "events": [
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Norwich Cathedral",
+      "title": "Bank Holiday Organ Concert: Graham Thorpe",
+      "fingerprint": "bank holiday organ concert: graham thorpe|2026-05-25|norwich cathedral"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Norwich Cathedral",
+      "title": "Bereaved by Suicide Service",
+      "fingerprint": "bereaved by suicide service|2026-05-30|norwich cathedral"
+    },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "The Forum Norwich",
       "title": "Norwich Games Festival",
       "fingerprint": "norwich games festival|2026-05-23|the forum"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "TOASTies: Kids' Poetry Show featuring Simon Mole",
-      "fingerprint": "toasties: kids' poetry show featuring simon mole|2026-06-14|the auditorium"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "Norfolk Deaf Festival",
-      "fingerprint": "norfolk deaf festival|2026-06-26|the atrium"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "Heritage Open Days",
-      "fingerprint": "heritage open days|2026-09-11|across norfolk"
     },
     {
       "reason": "needs_review",
@@ -42,14 +35,14 @@
       "status": "pending_review",
       "source": "The Forum Norwich",
       "title": "Activities for D/deaf families at Norwich Games Festival",
-      "fingerprint": "activities for d/deaf families at norwich games festival|2026-05-26|the sunflower snug"
+      "fingerprint": "activities for d/deaf families at norwich games festival|2026-05-26|the sunflower snug, the forum"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "The Forum Norwich",
       "title": "Activities for D/deaf families at Norwich Games Festival",
-      "fingerprint": "activities for d/deaf families at norwich games festival|2026-05-28|the sunflower snug"
+      "fingerprint": "activities for d/deaf families at norwich games festival|2026-05-28|the sunflower snug, the forum"
     },
     {
       "reason": "needs_review",
@@ -89,135 +82,142 @@
     {
       "reason": "needs_review",
       "status": "pending_review",
-      "source": "Norwich Cathedral",
-      "title": "Bank Holiday Organ Concert: Graham Thorpe",
-      "fingerprint": "bank holiday organ concert: graham thorpe|2026-05-25|norwich cathedral"
+      "source": "The Forum Norwich",
+      "title": "Norfolk Scale Model Group Display",
+      "fingerprint": "norfolk scale model group display|2026-06-06|the forum"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
-      "source": "Norwich Cathedral",
-      "title": "Bereaved by Suicide Service",
-      "fingerprint": "bereaved by suicide service|2026-05-30|norwich cathedral"
+      "source": "The Forum Norwich",
+      "title": "TOASTies: Kids' Poetry Show featuring Simon Mole",
+      "fingerprint": "toasties: kids' poetry show featuring simon mole|2026-06-14|the auditorium, the forum"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Half Term Workshops & Events at The Cat House",
-      "fingerprint": "half term workshops & events at the cat house|2026-05-22|the cat house"
+      "source": "The Forum Norwich",
+      "title": "Norfolk Deaf Festival",
+      "fingerprint": "norfolk deaf festival|2026-06-26|the atrium, the forum"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Set Sail! with Robert Starling",
-      "fingerprint": "set sail! with robert starling|2026-05-22|venue tba"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Wild The World: Nature Writing with James Canton",
-      "fingerprint": "wild the world: nature writing with james canton|2026-05-22|venue tba"
+      "source": "The Forum Norwich",
+      "title": "Heritage Open Days",
+      "fingerprint": "heritage open days|2026-09-11|across norfolk"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Visit Norwich",
-      "title": "Writing the Family with Jyoti Patel",
-      "fingerprint": "writing the family with jyoti patel|2026-05-22|venue tba"
+      "title": "May Half Term Events in Norwich & Norfolk",
+      "fingerprint": "may half term events in norwich & norfolk|2026-05-23|norwich & norfolk"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Visit Norwich",
-      "title": "The Body in the Kitchen Garden: Vintage Cream Tea with Paula Sutton",
-      "fingerprint": "the body in the kitchen garden: vintage cream tea with paula sutton|2026-05-22|dragon hall"
+      "title": "Everything Goes!",
+      "fingerprint": "everything goes!|2026-05-23|venue tba"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Visit Norwich",
-      "title": "From the Floorboards: Georgia Shackleton",
-      "fingerprint": "from the floorboards: georgia shackleton|2026-05-22|venue tba"
+      "title": "Norwich Brick Show",
+      "fingerprint": "norwich brick show|2026-05-23|venue tba"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Visit Norwich",
-      "title": "Glorious Forms",
-      "fingerprint": "glorious forms|2026-05-22|venue tba"
+      "title": "May Half Term at Thursford’s Adventure Play Fair",
+      "fingerprint": "may half term at thursford’s adventure play fair|2026-05-23|thursford’s adventure play fair"
+    },
+    {
+      "reason": "duplicate",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Norwich Games Festival",
+      "fingerprint": "norwich games festival|2026-05-23|the forum"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Visit Norwich",
-      "title": "RICH HALL and Matt Richardson at The Norwich Puppet Theatre",
-      "fingerprint": "rich hall and matt richardson at the norwich puppet theatre|2026-05-22|the norwich puppet theatre"
+      "title": "The Given World: The Rural Uncanny with Melissa Harrison",
+      "fingerprint": "the given world: the rural uncanny with melissa harrison|2026-05-23|venue tba"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Visit Norwich",
-      "title": "Finding Home",
-      "fingerprint": "finding home|2026-05-22|venue tba"
+      "title": "Borrowed Voices, Living Seas: Lyric Writing with Georgia Shackleton",
+      "fingerprint": "borrowed voices, living seas: lyric writing with georgia shackleton|2026-05-23|venue tba"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Visit Norwich",
-      "title": "Natural Behaviour",
-      "fingerprint": "natural behaviour|2026-05-22|venue tba"
+      "title": "St Saviour’s Sessions",
+      "fingerprint": "st saviour’s sessions|2026-05-23|st saviour’s yard"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Visit Norwich",
-      "title": "Nubiyan Twist",
-      "fingerprint": "nubiyan twist|2026-05-22|venue tba"
+      "title": "The Harriet Martineau Lecture: Rachel Clarke",
+      "fingerprint": "the harriet martineau lecture: rachel clarke|2026-05-23|venue tba"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Visit Norwich",
-      "title": "Rich Hall Headlines Poringland Community Hall",
-      "fingerprint": "rich hall headlines poringland community hall|2026-05-22|poringland community hall"
+      "title": "Imagining The Future Through Poetry with Rishi Dastidar",
+      "fingerprint": "imagining the future through poetry with rishi dastidar|2026-05-23|venue tba"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Page Against the Machine",
+      "fingerprint": "page against the machine|2026-05-23|the book hive"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "The Halls Norwich",
       "title": "Big Fish Little Fish 2-4 Hour Party People",
-      "fingerprint": "big fish little fish 2-4 hour party people|2026-07-10|the halls, norwich"
+      "fingerprint": "big fish little fish 2-4 hour party people|2026-07-10|the halls"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "The Halls Norwich",
       "title": "Brew and Friends Makers Market",
-      "fingerprint": "brew and friends makers market|2026-05-30|the halls, norwich"
+      "fingerprint": "brew and friends makers market|2026-05-30|the halls"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "The Halls Norwich",
       "title": "The Jerseys",
-      "fingerprint": "the jerseys|2026-06-05|the halls, norwich"
+      "fingerprint": "the jerseys|2026-06-05|the halls"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "The Halls Norwich",
       "title": "Lie Down and Listen",
-      "fingerprint": "lie down and listen|2026-07-25|the halls, norwich"
+      "fingerprint": "lie down and listen|2026-07-25|the halls"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "The Halls Norwich",
       "title": "Three Acres and a Cow",
-      "fingerprint": "three acres and a cow|2026-10-21|the halls, norwich"
+      "fingerprint": "three acres and a cow|2026-10-21|the halls"
     },
     {
       "reason": "needs_review",
@@ -244,8 +244,8 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
-      "title": "Norfolk Motorhome & Campervan Show",
-      "fingerprint": "norfolk motorhome & campervan show|2026-07-17|outdoor spaces"
+      "title": "Fun Norfolk Motorhome & Campervan Show",
+      "fingerprint": "fun norfolk motorhome & campervan show|2026-07-17|outdoor spaces"
     },
     {
       "reason": "needs_review",
@@ -279,6 +279,13 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
+      "title": "Raver Tots Mini Fest Norwich",
+      "fingerprint": "raver tots mini fest norwich|2026-06-07|junkyard market"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
       "title": "RAW MATERIAL Presents - THE SHOCKWAVE - P MONEY + More",
       "fingerprint": "raw material presents - the shockwave - p money + more|2026-07-18|kudos bar and nightclub"
     },
@@ -286,8 +293,8 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
-      "title": "Raver Tots Mini Fest Norwich",
-      "fingerprint": "raver tots mini fest norwich|2026-06-07|junkyard market"
+      "title": "90s Baby Daytime Clubbing - With The Over 30s Club",
+      "fingerprint": "90s baby daytime clubbing - with the over 30s club|2026-05-30|above kerry's norwich"
     },
     {
       "reason": "needs_review",
@@ -309,13 +316,6 @@
       "source": "Skiddle Norwich",
       "title": "Poppy Moores iPod Norwich Pride",
       "fingerprint": "poppy moores ipod norwich pride|2026-07-25|deadwax norwich"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Skiddle Norwich",
-      "title": "Hoedown Showdown - Norwich, Be At One",
-      "fingerprint": "hoedown showdown - norwich, be at one|2026-09-12|be at one"
     },
     {
       "reason": "needs_review",
@@ -370,8 +370,8 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
-      "title": "A Country Night in Nashville",
-      "fingerprint": "a country night in nashville|2026-12-18|the halls"
+      "title": "New Kind Of Cramps: NORWICH",
+      "fingerprint": "new kind of cramps: norwich|2026-08-29|the adrian flux waterfront"
     },
     {
       "reason": "needs_review",
@@ -405,15 +405,15 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
-      "title": "Summer 90s Outdoor Festival - Junkyard Norwich",
-      "fingerprint": "summer 90s outdoor festival - junkyard norwich|2026-08-15|junkyard market"
+      "title": "Country Club - Outdoor Country Music Festival - Norwich",
+      "fingerprint": "country club - outdoor country music festival - norwich|2026-07-04|junkyard"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
-      "title": "Country Club - Outdoor Country Music Festival - Norwich",
-      "fingerprint": "country club - outdoor country music festival - norwich|2026-07-04|junkyard"
+      "title": "Summer 90s Outdoor Festival - Junkyard Norwich",
+      "fingerprint": "summer 90s outdoor festival - junkyard norwich|2026-08-15|junkyard market"
     },
     {
       "reason": "needs_review",
@@ -433,8 +433,22 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
-      "title": "Fawlty Towers Weekend",
-      "fingerprint": "fawlty towers weekend|2026-07-25|holiday inn norwich north by ihg"
+      "title": "Angry Boater Live in Norwich",
+      "fingerprint": "angry boater live in norwich|2026-09-26|the garage"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Sainsbury Centre",
+      "title": "Joy Like Time",
+      "fingerprint": "joy like time|2026-06-20|sainsbury centre"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Sainsbury Centre",
+      "title": "Tree of Life",
+      "fingerprint": "tree of life|2026-06-20|sainsbury centre"
     },
     {
       "reason": "needs_review",
@@ -468,8 +482,8 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Eventbrite Norwich",
-      "title": "Norwich Jollof (Duo) Cooking Class. (One ticket admits Two)",
-      "fingerprint": "norwich jollof (duo) cooking class. (one ticket admits two)|2026-05-30|venue tba"
+      "title": "Meet Magento UK 2026: Adobe Commerce and Magento Open Source Conference",
+      "fingerprint": "meet magento uk 2026: adobe commerce and magento open source conference|2026-07-07|the mermaid"
     },
     {
       "reason": "needs_review",
@@ -519,20 +533,6 @@
       "source": "Eventbrite Norwich",
       "title": "FREE GOALKEEPER SESSION IN NORWICH WITH LEGEND GK ANDY MARSHALL",
       "fingerprint": "free goalkeeper session in norwich with legend gk andy marshall|2026-06-29|thorpe st andrew school and sixth form"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "Joy Like Time",
-      "fingerprint": "joy like time|2026-06-20|sainsbury centre"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "Tree of Life",
-      "fingerprint": "tree of life|2026-06-20|sainsbury centre"
     }
   ]
 }

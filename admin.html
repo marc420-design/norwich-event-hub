@@ -44,7 +44,11 @@
             var hex = Array.from(new Uint8Array(buf)).map(function (b) { return b.toString(16).padStart(2, '0'); }).join('');
             // Hash set in config.js as window.ADMIN_PW_HASH — generate with: crypto.subtle.digest(…)
             var stored = (window.ADMIN_PW_HASH || '');
-            if (!stored || hex === stored) {
+            if (!stored) {
+                err.textContent = 'Admin password hash not configured. Set ADMIN_PW_HASH in config.js';
+                return;
+            }
+            if (hex === stored) {
                 sessionStorage.setItem('neh_admin_session', '1');
                 document.getElementById('adminAuthOverlay').remove();
             } else {

@@ -3,10 +3,10 @@ from pathlib import Path
 
 
 class Settings(BaseSettings):
-    database_url: str = "postgresql+asyncpg://norwich:norwich@localhost:5432/norwich_events"
+    database_url: str = ""
     anthropic_api_key: str = ""
     site_url: str = "https://norwicheventshub.com"
-    admin_password: str = "change-me-now"
+    admin_password: str = ""
     google_apps_script_url: str = ""
     scrape_days_ahead: int = 90
     min_quality_score: int = 50

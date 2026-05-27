@@ -41,13 +41,22 @@ async function loadEvents() {
         renderEvents();
     } catch (error) {
         console.error('CRITICAL ERROR loading events:', error);
-        eventsList.innerHTML = `
-            <div class="empty-state" style="background: #fee2e2; border: 2px solid #ef4444; color: #7f1d1d;">
-                <h3 style="color: #991b1b;">Connection Failed</h3>
-                <p><strong>Error:</strong> ${error.message}</p>
-                <button onclick="loadEvents()" class="admin-btn btn-view">Retry Connection</button>
-            </div>
-        `;
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'empty-state';
+        errorDiv.style.cssText = 'background: #fee2e2; border: 2px solid #ef4444; color: #7f1d1d;';
+        const h3 = document.createElement('h3');
+        h3.style.color = '#991b1b';
+        h3.textContent = 'Connection Failed';
+        const p = document.createElement('p');
+        p.innerHTML = '<strong>Error:</strong> ';
+        p.appendChild(document.createTextNode(error.message));
+        const btn = document.createElement('button');
+        btn.className = 'admin-btn btn-view';
+        btn.textContent = 'Retry Connection';
+        btn.addEventListener('click', loadEvents);
+        errorDiv.append(h3, p, btn);
+        eventsList.innerHTML = '';
+        eventsList.appendChild(errorDiv);
     }
 }
 

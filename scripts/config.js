@@ -47,7 +47,7 @@ const APP_CONFIG = {
     // Admin client-side password hash (SHA-256 of admin password)
     // Generate in browser console: crypto.subtle.digest('SHA-256', new TextEncoder().encode('yourpassword'))
     //   .then(b => Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,'0')).join(''))
-    // Leave empty to bypass client-side check (relies on Cloudflare middleware only)
+    // REQUIRED: Client-side admin access is blocked until this is set
     ADMIN_PW_HASH: ''
 };
 

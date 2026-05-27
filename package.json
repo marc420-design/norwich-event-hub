@@ -5,8 +5,8 @@
   "main": "index.html",
   "scripts": {
     "dev": "npx --yes serve . --listen 4173 --no-clipboard",
-    "build": "echo 'Static site - ready for Cloudflare Pages deployment'",
-    "deploy": "echo 'Deploy to Cloudflare Pages: wrangler pages publish .'",
+    "build": "bash build.sh",
+    "deploy": "npm run build && wrangler pages publish dist",
     "test": "echo no tests",
     "verify": "node scripts/verify-exports.js"
   },

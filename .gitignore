@@ -6,9 +6,11 @@ package-lock.json
 .env
 .env.local
 .env.*
+!.env.example
+!**/.env.example
 automation/.env
 automation/.env.*
-**/google-service-account.json
+!automation/.env.example
 
 # IDE
 .vscode/
@@ -19,10 +21,21 @@ automation/.env.*
 # OS
 .DS_Store
 Thumbs.db
+nul
 
 # Build outputs
 dist/
 build/
+.wrangler/
+.venv/
+
+# Python cache
+__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+pytest-cache-files-*/
+.pytest_cache/
 
 # Logs
 *.log
@@ -31,6 +44,9 @@ npm-debug.log*
 # Temporary files
 *.tmp
 *.temp
+temp-archive/
+cache/
+output/
 
 # Test and debug files
 *.test.js
@@ -45,38 +61,35 @@ quick-test.html
 *.webm
 *.mkv
 
-# Screenshots
+# Screenshots and PDFs
 Screenshot*.png
 *.screenshot.png
-
-# Automated exports
-automation/events_*.json
-
-# Documentation with sensitive data
-URGENT_SECURITY_BREACH.md
-*SECURITY*.md
+*.pdf
 
 # Google credentials (sensitive!)
 google-credentials.json
-automation/google-credentials.json
 **/google-credentials.json
 google-service-account.json
+**/google-service-account.json
+.clasp.json
 
 # AI aggregator output files
 ai_events_*.json
+automation/events_*.json
 
-# Windows batch/PowerShell scripts (temporary setup files)
+# Windows batch/PowerShell scripts (setup/deploy helpers)
 *.bat
 *.ps1
 
-# Temporary files
-nul
-
-# Setup documentation (keep the important ones, ignore duplicates)
+# Setup documentation (keep README.md only)
 *_QUICKSTART.md
 EASY_*.md
 SETUP_NOW.md
 DEPLOY_NOW.md
+*SECURITY*.md
+URGENT_SECURITY_BREACH.md
+
+# One-off utility scripts
 check-setup.py
 find-credentials.bat
 get-service-account-email.bat
@@ -87,4 +100,3 @@ run-ai-aggregator.sh
 .verify.ok
 PLAN.hash
 ACCEPTANCE.hash
-

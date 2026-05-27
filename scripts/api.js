@@ -10,10 +10,11 @@ const API_CONFIG = typeof APP_CONFIG !== 'undefined' ? {
     USE_LOCAL_STORAGE: APP_CONFIG.USE_LOCAL_STORAGE
 } : {
     // Default configuration (for development)
-    SUBMISSION_URL: 'https://script.google.com/macros/s/AKfycbwUqbC7ZkAqO5w0POhRd_hBDBPrZDKV0I_K43lmdKbLrL0rjAAoEYwgZpc_xuzs1x0M/exec',
-    EVENTS_URL: 'https://script.google.com/macros/s/AKfycbwUqbC7ZkAqO5w0POhRd_hBDBPrZDKV0I_K43lmdKbLrL0rjAAoEYwgZpc_xuzs1x0M/exec',
-    SHEETS_API_KEY: '', // Not required when using Web App
-    SHEET_ID: '1wdh2VOlZ8gp0hwFpFV6cVpDDmaMxGs48eCDqoFFZTcU',
+    // Set these values in config.js for production
+    SUBMISSION_URL: '',
+    EVENTS_URL: '',
+    SHEETS_API_KEY: '',
+    SHEET_ID: '',
     USE_LOCAL_STORAGE: true
 };
 

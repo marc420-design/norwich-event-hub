@@ -345,6 +345,12 @@ function createEventCard(event) {
         eventImageDiv.dataset.bgImage = fallbackImagePath;
         eventImageDiv.classList.add('lazy-bg');
         eventImageDiv.style.background = fallbackStyle;
+
+        // Add category label overlay on fallback images
+        const categoryLabel = document.createElement('span');
+        categoryLabel.className = 'event-image-label';
+        categoryLabel.textContent = (category || 'event').toUpperCase();
+        eventImageDiv.appendChild(categoryLabel);
     }
 
     const eventContentDiv = document.createElement('div');
@@ -587,96 +593,7 @@ function createEventCard(event) {
 
     eventContentDiv.appendChild(actions);
 
-    // Add social share buttons
-    const shareContainer = document.createElement('div');
-    shareContainer.className = 'event-share';
-    shareContainer.style.cssText = 'margin-top: 12px; display: flex; gap: 8px; flex-wrap: wrap;';
-
-    const shareDestination = getEventShareUrl(event);
-    const shareUrl = encodeURIComponent(shareDestination);
-    const shareText = encodeURIComponent(`${name} - ${window.formatDate(date)} at ${location}`);
-
-    // Twitter share
-    const twitterShare = document.createElement('a');
-    twitterShare.href = `https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareText}`;
-    twitterShare.target = '_blank';
-    twitterShare.rel = 'noopener noreferrer';
-    twitterShare.className = 'share-button';
-    twitterShare.style.cssText = 'display: inline-flex; align-items: center; gap: 4px; padding: 6px 12px; background: #1DA1F2; color: white; border-radius: 4px; text-decoration: none; font-size: 13px;';
-    twitterShare.innerHTML = '🐦 Share';
-    twitterShare.title = 'Share on Twitter';
-
-    // Facebook share
-    const facebookShare = document.createElement('a');
-    facebookShare.href = `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`;
-    facebookShare.target = '_blank';
-    facebookShare.rel = 'noopener noreferrer';
-    facebookShare.className = 'share-button';
-    facebookShare.style.cssText = 'display: inline-flex; align-items: center; gap: 4px; padding: 6px 12px; background: #1877F2; color: white; border-radius: 4px; text-decoration: none; font-size: 13px;';
-    facebookShare.innerHTML = '📘 Share';
-    facebookShare.title = 'Share on Facebook';
-
-    // Copy link
-    const copyLink = document.createElement('button');
-    copyLink.className = 'share-button';
-    copyLink.style.cssText = 'display: inline-flex; align-items: center; gap: 4px; padding: 6px 12px; background: #666; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 13px;';
-    copyLink.innerHTML = '🔗 Copy Link';
-    copyLink.title = 'Copy event link';
-    copyLink.onclick = function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        const urlToCopy = shareDestination;
-        navigator.clipboard.writeText(urlToCopy).then(() => {
-            const originalText = copyLink.innerHTML;
-            copyLink.innerHTML = '✓ Copied!';
-            copyLink.style.background = '#2B7A47';
-            setTimeout(() => {
-                copyLink.innerHTML = originalText;
-                copyLink.style.background = '#666';
-            }, 2000);
-        }).catch(() => {
-            alert('Could not copy link. Please copy manually: ' + urlToCopy);
-        });
-    };
-
-    shareContainer.appendChild(twitterShare);
-    shareContainer.appendChild(facebookShare);
-    shareContainer.appendChild(copyLink);
-
-    // Add to Calendar Button
-    try {
-        const calStartDate = date.replace(/-/g, '') + (time ? 'T' + time.replace(/:/g, '') + '00' : '');
-        // Default to one hour duration if time provided, or next day if all day
-        let calEndDate = '';
-        if (time && time !== 'Time TBC') {
-            const startHour = parseInt(time.split(':')[0]);
-            const endHour = (startHour + 2) % 24; // 2 hours duration
-            const endHourStr = endHour.toString().padStart(2, '0');
-            calEndDate = date.replace(/-/g, '') + 'T' + endHourStr + time.split(':')[1] + '00';
-        } else {
-            // Next day for all day event
-            const nextDay = new Date(date);
-            nextDay.setDate(nextDay.getDate() + 1);
-            calEndDate = nextDay.toISOString().split('T')[0].replace(/-/g, '');
-        }
-
-        const googleCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(name)}&dates=${calStartDate}/${calEndDate}&details=${encodeURIComponent(description + '\n\nFull details: ' + shareDestination)}&location=${encodeURIComponent(location)}`;
-
-        const calButton = document.createElement('a');
-        calButton.href = googleCalUrl;
-        calButton.target = '_blank';
-        calButton.rel = 'noopener noreferrer';
-        calButton.className = 'share-button';
-        calButton.style.cssText = 'display: inline-flex; align-items: center; gap: 4px; padding: 6px 12px; background: #fff; color: #333; border: 1px solid #ddd; border-radius: 4px; text-decoration: none; font-size: 13px; margin-left: auto;'; // margin-left: auto pushes it to the right
-        calButton.innerHTML = '📅 Add to Cal';
-        calButton.title = 'Add to Google Calendar';
-
-        shareContainer.appendChild(calButton);
-    } catch (e) {
-        console.warn('Error creating calendar link', e);
-    }
-
-    eventContentDiv.appendChild(shareContainer);
+    // Share buttons are available on the event detail page
 
     // SEO: Add JSON-LD Structured Data for this event
     const jsonLd = document.createElement("script");

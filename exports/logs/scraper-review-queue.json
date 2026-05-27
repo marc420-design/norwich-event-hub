@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-27T16:09:55.304253",
-  "count": 80,
+  "generated_at": "2026-05-27T16:37:09.803197",
+  "count": 78,
   "events": [
     {
       "reason": "needs_review",
@@ -20,8 +20,8 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Visit Norwich",
-      "title": "Business Networking Event Barnham Broom Hotel with Tracey Watt",
-      "fingerprint": "business networking event barnham broom hotel with tracey watt|2026-05-27|barnham broom hotel"
+      "title": "Business Networking Event",
+      "fingerprint": "business networking event|2026-05-27|barnham broom hotel"
     },
     {
       "reason": "needs_review",
@@ -34,15 +34,15 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Visit Norwich",
-      "title": "Creative Planet – Around the World – Kids Crafts at Yalm",
-      "fingerprint": "creative planet – around the world – kids crafts at yalm|2026-05-27|yalm"
+      "title": "Creative Planet – Around the World – Kids Crafts",
+      "fingerprint": "creative planet – around the world – kids crafts|2026-05-27|yalm"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Visit Norwich",
       "title": "King Street: Growth, Decline & Regeneration – walking tour",
-      "fingerprint": "king street: growth, decline & regeneration – walking tour|2026-05-27|king street"
+      "fingerprint": "king street: growth, decline & regeneration – walking tour|2026-05-27|king street, norwich"
     },
     {
       "reason": "needs_review",
@@ -70,7 +70,7 @@
       "status": "pending_review",
       "source": "Visit Norwich",
       "title": "Norwich Spooky Story Walk",
-      "fingerprint": "norwich spooky story walk|2026-05-27|cobbled streets of norwich"
+      "fingerprint": "norwich spooky story walk|2026-05-27|venue tba"
     },
     {
       "reason": "needs_review",
@@ -90,8 +90,8 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Visit Norwich",
-      "title": "Teen urban arts takeover at Castle Quarter this May half term",
-      "fingerprint": "teen urban arts takeover at castle quarter this may half term|2026-05-28|castle gardens"
+      "title": "Teen urban arts takeover",
+      "fingerprint": "teen urban arts takeover|2026-05-28|castle gardens"
     },
     {
       "reason": "needs_review",
@@ -99,6 +99,48 @@
       "source": "Visit Norwich",
       "title": "Gin & Golf",
       "fingerprint": "gin & golf|2026-05-28|city greens golf"
+    },
+    {
+      "reason": "duplicate",
+      "status": "pending_review",
+      "source": "The Halls Norwich",
+      "title": "Brew and Friends Makers Market",
+      "fingerprint": "brew and friends makers market|2026-05-30|the halls"
+    },
+    {
+      "reason": "duplicate",
+      "status": "pending_review",
+      "source": "The Halls Norwich",
+      "title": "The Jerseys",
+      "fingerprint": "the jerseys|2026-06-05|the halls"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Halls Norwich",
+      "title": "Big Fish Little Fish 2-4 Hour Party People",
+      "fingerprint": "big fish little fish 2-4 hour party people|2026-07-10|the halls"
+    },
+    {
+      "reason": "duplicate",
+      "status": "pending_review",
+      "source": "The Halls Norwich",
+      "title": "Lie Down and Listen",
+      "fingerprint": "lie down and listen|2026-07-25|the halls"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Halls Norwich",
+      "title": "The Ultimate Bubble Show",
+      "fingerprint": "the ultimate bubble show|2026-10-10|the halls"
+    },
+    {
+      "reason": "duplicate",
+      "status": "pending_review",
+      "source": "The Halls Norwich",
+      "title": "Three Acres and a Cow",
+      "fingerprint": "three acres and a cow|2026-10-21|the halls"
     },
     {
       "reason": "needs_review",
@@ -187,86 +229,44 @@
     {
       "reason": "duplicate",
       "status": "pending_review",
-      "source": "The Halls Norwich",
-      "title": "Brew and Friends Makers Market",
-      "fingerprint": "brew and friends makers market|2026-05-30|the halls"
-    },
-    {
-      "reason": "duplicate",
-      "status": "pending_review",
-      "source": "The Halls Norwich",
-      "title": "The Jerseys",
-      "fingerprint": "the jerseys|2026-06-05|the halls"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Halls Norwich",
-      "title": "Big Fish Little Fish 2-4 Hour Party People",
-      "fingerprint": "big fish little fish 2-4 hour party people|2026-07-10|the halls"
-    },
-    {
-      "reason": "duplicate",
-      "status": "pending_review",
-      "source": "The Halls Norwich",
-      "title": "Lie Down and Listen",
-      "fingerprint": "lie down and listen|2026-07-25|the halls"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Halls Norwich",
-      "title": "The Ultimate Bubble Show",
-      "fingerprint": "the ultimate bubble show|2026-10-10|the halls"
-    },
-    {
-      "reason": "duplicate",
-      "status": "pending_review",
-      "source": "The Halls Norwich",
-      "title": "Three Acres and a Cow",
-      "fingerprint": "three acres and a cow|2026-10-21|the halls"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "Royal Norfolk Show",
-      "fingerprint": "royal norfolk show|2026-06-24|norfolk events centre"
+      "fingerprint": "royal norfolk show|2026-06-24|norfolk showground"
     },
     {
-      "reason": "needs_review",
+      "reason": "duplicate",
       "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "Norfolk Garden Show",
-      "fingerprint": "norfolk garden show|2026-07-10|outdoor spaces"
+      "fingerprint": "norfolk garden show|2026-07-10|norfolk showground"
     },
     {
-      "reason": "needs_review",
+      "reason": "duplicate",
       "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "The Labyrinth Challenge Tour",
-      "fingerprint": "the labyrinth challenge tour|2026-07-11|outdoor spaces"
+      "fingerprint": "the labyrinth challenge tour|2026-07-11|norfolk showground"
     },
     {
-      "reason": "needs_review",
+      "reason": "duplicate",
       "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "Norfolk Motorhome & Campervan Show",
-      "fingerprint": "norfolk motorhome & campervan show|2026-07-17|outdoor spaces"
+      "fingerprint": "norfolk motorhome & campervan show|2026-07-17|norfolk showground"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "Ink & Engines Fest",
-      "fingerprint": "ink & engines fest|2026-08-15|norfolk events centre"
+      "fingerprint": "ink & engines fest|2026-08-15|norfolk showground"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "Action Arena",
-      "fingerprint": "action arena|2026-08-29|outdoor spaces"
+      "fingerprint": "action arena|2026-08-29|norfolk showground"
     },
     {
       "reason": "needs_review",
@@ -463,20 +463,6 @@
       "source": "Sainsbury Centre",
       "title": "Big Sunday",
       "fingerprint": "big sunday|2026-06-07|sainsbury centre"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "Free Daily Tours of the Living Area",
-      "fingerprint": "free daily tours of the living area|2026-05-28|sainsbury centre"
-    },
-    {
-      "reason": "duplicate",
-      "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "Free Daily Tours of the Living Area",
-      "fingerprint": "free daily tours of the living area|2026-05-28|sainsbury centre"
     },
     {
       "reason": "needs_review",

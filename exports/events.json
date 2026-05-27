@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-27T18:44:45Z",
-  "count": 12,
+  "generated_at": "2026-05-27T18:55:18Z",
+  "count": 13,
   "events": [
     {
       "id": "scraper-brew-and-friends-makers-market-2026-05-30-the-halls",
@@ -378,6 +378,24 @@
       "ageRestriction": null,
       "status": "approved",
       "source": "The Halls Norwich"
+    },
+    {
+      "name": "Cream Classical",
+      "date": "2026-10-02",
+      "time": "",
+      "location": "The Nick Rayns LCR, UEA",
+      "category": "nightlife",
+      "description": "Cream Classical showcases dance anthems with a live orchestra and special guests",
+      "ticketLink": "https://www.skiddle.com/whats-on/Norwich/The-Nick-Rayns-LCR-UEA/Cream-Classical/36119113/",
+      "sourceUrl": "",
+      "officialUrl": "",
+      "price": "",
+      "image": "",
+      "status": "approved",
+      "source": "manual",
+      "featured": false,
+      "editorsChoice": false,
+      "isFree": false
     },
     {
       "id": "scraper-three-acres-and-a-cow-2026-10-21-the-halls",

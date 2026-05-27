@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-27T16:37:09.803197",
-  "count": 78,
+  "generated_at": "2026-05-27T16:51:55.924712",
+  "count": 81,
   "events": [
     {
       "reason": "needs_review",
@@ -42,7 +42,7 @@
       "status": "pending_review",
       "source": "Visit Norwich",
       "title": "King Street: Growth, Decline & Regeneration – walking tour",
-      "fingerprint": "king street: growth, decline & regeneration – walking tour|2026-05-27|king street, norwich"
+      "fingerprint": "king street: growth, decline & regeneration – walking tour|2026-05-27|king street"
     },
     {
       "reason": "needs_review",
@@ -55,8 +55,8 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Visit Norwich",
-      "title": "UEA Green Film Festival",
-      "fingerprint": "uea green film festival|2026-05-27|uea"
+      "title": "UEA Green Film Festival (screening of \"EVERY LITTLE THING\")",
+      "fingerprint": "uea green film festival (screening of \"every little thing\")|2026-05-27|venue tba"
     },
     {
       "reason": "needs_review",
@@ -101,74 +101,32 @@
       "fingerprint": "gin & golf|2026-05-28|city greens golf"
     },
     {
-      "reason": "duplicate",
-      "status": "pending_review",
-      "source": "The Halls Norwich",
-      "title": "Brew and Friends Makers Market",
-      "fingerprint": "brew and friends makers market|2026-05-30|the halls"
-    },
-    {
-      "reason": "duplicate",
-      "status": "pending_review",
-      "source": "The Halls Norwich",
-      "title": "The Jerseys",
-      "fingerprint": "the jerseys|2026-06-05|the halls"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Halls Norwich",
-      "title": "Big Fish Little Fish 2-4 Hour Party People",
-      "fingerprint": "big fish little fish 2-4 hour party people|2026-07-10|the halls"
-    },
-    {
-      "reason": "duplicate",
-      "status": "pending_review",
-      "source": "The Halls Norwich",
-      "title": "Lie Down and Listen",
-      "fingerprint": "lie down and listen|2026-07-25|the halls"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Halls Norwich",
-      "title": "The Ultimate Bubble Show",
-      "fingerprint": "the ultimate bubble show|2026-10-10|the halls"
-    },
-    {
-      "reason": "duplicate",
-      "status": "pending_review",
-      "source": "The Halls Norwich",
-      "title": "Three Acres and a Cow",
-      "fingerprint": "three acres and a cow|2026-10-21|the halls"
-    },
-    {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "The Forum Norwich",
       "title": "TOASTies: Kids' Poetry Show featuring Simon Mole",
-      "fingerprint": "toasties: kids' poetry show featuring simon mole|2026-06-14|the auditorium"
+      "fingerprint": "toasties: kids' poetry show featuring simon mole|2026-06-14|the forum (the auditorium)"
     },
     {
-      "reason": "duplicate",
+      "reason": "needs_review",
       "status": "pending_review",
       "source": "The Forum Norwich",
       "title": "Norfolk Deaf Festival",
-      "fingerprint": "norfolk deaf festival|2026-06-26|the atrium"
+      "fingerprint": "norfolk deaf festival|2026-06-26|the forum (the atrium)"
     },
     {
-      "reason": "duplicate",
+      "reason": "needs_review",
       "status": "pending_review",
       "source": "The Forum Norwich",
       "title": "Heritage Open Days",
-      "fingerprint": "heritage open days|2026-09-11|across norfolk"
+      "fingerprint": "heritage open days|2026-09-11|various locations across norfolk"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "The Forum Norwich",
       "title": "Activities for D/deaf families at Norwich Games Festival",
-      "fingerprint": "activities for d/deaf families at norwich games festival|2026-05-28|the sunflower snug"
+      "fingerprint": "activities for d/deaf families at norwich games festival|2026-05-28|the forum (the sunflower snug)"
     },
     {
       "reason": "needs_review",
@@ -229,51 +187,93 @@
     {
       "reason": "duplicate",
       "status": "pending_review",
-      "source": "Norfolk Showground",
-      "title": "Royal Norfolk Show",
-      "fingerprint": "royal norfolk show|2026-06-24|norfolk showground"
+      "source": "The Halls Norwich",
+      "title": "Brew and Friends Makers Market",
+      "fingerprint": "brew and friends makers market|2026-05-30|the halls"
     },
     {
       "reason": "duplicate",
+      "status": "pending_review",
+      "source": "The Halls Norwich",
+      "title": "The Jerseys",
+      "fingerprint": "the jerseys|2026-06-05|the halls"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Halls Norwich",
+      "title": "Big Fish Little Fish 2-4 Hour Party People",
+      "fingerprint": "big fish little fish 2-4 hour party people|2026-07-10|the halls"
+    },
+    {
+      "reason": "duplicate",
+      "status": "pending_review",
+      "source": "The Halls Norwich",
+      "title": "Lie Down and Listen",
+      "fingerprint": "lie down and listen|2026-07-25|the halls"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Halls Norwich",
+      "title": "The Ultimate Bubble Show",
+      "fingerprint": "the ultimate bubble show|2026-10-10|the halls"
+    },
+    {
+      "reason": "duplicate",
+      "status": "pending_review",
+      "source": "The Halls Norwich",
+      "title": "Three Acres and a Cow",
+      "fingerprint": "three acres and a cow|2026-10-21|the halls"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Norfolk Showground",
+      "title": "Royal Norfolk Show",
+      "fingerprint": "royal norfolk show|2026-06-24|norfolk events centre"
+    },
+    {
+      "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "Norfolk Garden Show",
-      "fingerprint": "norfolk garden show|2026-07-10|norfolk showground"
+      "fingerprint": "norfolk garden show|2026-07-10|outdoor spaces"
     },
     {
-      "reason": "duplicate",
+      "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
-      "title": "The Labyrinth Challenge Tour",
-      "fingerprint": "the labyrinth challenge tour|2026-07-11|norfolk showground"
+      "title": "Family The Labyrinth Challenge Tour",
+      "fingerprint": "family the labyrinth challenge tour|2026-07-11|outdoor spaces"
     },
     {
-      "reason": "duplicate",
+      "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "Norfolk Motorhome & Campervan Show",
-      "fingerprint": "norfolk motorhome & campervan show|2026-07-17|norfolk showground"
+      "fingerprint": "norfolk motorhome & campervan show|2026-07-17|outdoor spaces"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "Ink & Engines Fest",
-      "fingerprint": "ink & engines fest|2026-08-15|norfolk showground"
+      "fingerprint": "ink & engines fest|2026-08-15|norfolk events centre"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
-      "title": "Action Arena",
-      "fingerprint": "action arena|2026-08-29|norfolk showground"
+      "title": "Family Action Arena",
+      "fingerprint": "family action arena|2026-08-29|outdoor spaces"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
-      "title": "Hoedown Showdown - Norwich",
-      "fingerprint": "hoedown showdown - norwich|2026-09-12|be at one"
+      "title": "Hoedown Showdown - Norwich, Be At One",
+      "fingerprint": "hoedown showdown - norwich, be at one|2026-09-12|be at one"
     },
     {
       "reason": "needs_review",
@@ -391,15 +391,15 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
-      "title": "R&B Lovers - Outdoor Festival Junkyard Norwich",
-      "fingerprint": "r&b lovers - outdoor festival junkyard norwich|2026-05-30|junkyard"
+      "title": "Junction 42",
+      "fingerprint": "junction 42|2026-06-27|earlham park"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
-      "title": "Junction 42",
-      "fingerprint": "junction 42|2026-06-27|earlham park"
+      "title": "R&B Lovers - Outdoor Festival Junkyard Norwich",
+      "fingerprint": "r&b lovers - outdoor festival junkyard norwich|2026-05-30|junkyard"
     },
     {
       "reason": "needs_review",
@@ -439,9 +439,16 @@
     {
       "reason": "needs_review",
       "status": "pending_review",
-      "source": "Skiddle Norwich",
-      "title": "Angry Boater Live in Norwich",
-      "fingerprint": "angry boater live in norwich|2026-09-26|the garage"
+      "source": "Sainsbury Centre",
+      "title": "Free Daily Tours of the Living Area (Morning)",
+      "fingerprint": "free daily tours of the living area (morning)|2026-05-27|sainsbury centre"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Sainsbury Centre",
+      "title": "Free Daily Tours of the Living Area (Afternoon)",
+      "fingerprint": "free daily tours of the living area (afternoon)|2026-05-27|sainsbury centre"
     },
     {
       "reason": "needs_review",
@@ -463,6 +470,20 @@
       "source": "Sainsbury Centre",
       "title": "Big Sunday",
       "fingerprint": "big sunday|2026-06-07|sainsbury centre"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Sainsbury Centre",
+      "title": "Big Sunday",
+      "fingerprint": "big sunday|2026-07-05|sainsbury centre"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Sainsbury Centre",
+      "title": "Big Sunday",
+      "fingerprint": "big sunday|2026-08-02|sainsbury centre"
     },
     {
       "reason": "needs_review",

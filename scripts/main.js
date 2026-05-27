@@ -609,7 +609,7 @@ function createEventCard(event) {
         },
         "description": description || name,
         "image": imageUrl || ("https://norwicheventshub.com/assets/logo-image.jpg"),
-        "url": shareDestination
+        "url": detailUrl
     });
     
     card.appendChild(eventImageDiv);

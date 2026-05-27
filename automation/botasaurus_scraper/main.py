@@ -17,6 +17,11 @@ from datetime import datetime
 import requests
 from bs4 import BeautifulSoup
 
+try:
+    from scrapling.fetchers import StealthyFetcher
+except ImportError:
+    StealthyFetcher = None
+
 sys.path.insert(0, os.path.dirname(__file__))
 
 from exporter import deduplicate_and_export
@@ -43,7 +48,50 @@ def _clean_html(html: str) -> str:
     return soup.get_text(separator=" ", strip=True)[:8000]
 
 
-def scrape_source(source: dict) -> dict | None:
+def _scrapling_page_text(page) -> str:
+    for attr in ("text", "body", "html"):
+        value = getattr(page, attr, "")
+        if callable(value):
+            try:
+                value = value()
+            except TypeError:
+                value = ""
+        if isinstance(value, str) and value.strip():
+            return _clean_html(value) if "<" in value and ">" in value else value.strip()[:8000]
+
+    return _clean_html(str(page)) if page is not None else ""
+
+
+def scrape_source_with_scrapling(source: dict) -> dict | None:
+    """Fetch JS-heavy sources with Scrapling when the optional dependency is installed."""
+    if StealthyFetcher is None:
+        print(f"[SCRAPLING SKIP] {source['name']}: install automation/botasaurus_scraper requirements to enable")
+        return None
+
+    url = source["url"]
+    name = source["name"]
+
+    try:
+        page = StealthyFetcher.fetch(
+            url,
+            headless=True,
+            network_idle=True,
+            block_ads=True,
+            timeout=30000,
+        )
+        text = _scrapling_page_text(page)
+        if len(text) > 200:
+            print(f"[SCRAPLING OK] {name}: {len(text)} chars")
+            return {"source": name, "url": url, "text": text, "fetcher": "scrapling"}
+
+        print(f"[SCRAPLING SKIP] {name}: too little content ({len(text)} chars)")
+    except Exception as error:
+        print(f"[SCRAPLING FAIL] {name}: {error}")
+
+    return None
+
+
+def scrape_source_with_requests(source: dict) -> dict | None:
     """Scrape a single source with requests + retries."""
     url = source["url"]
     name = source["name"]
@@ -55,7 +103,7 @@ def scrape_source(source: dict) -> dict | None:
                 text = _clean_html(response.text)
                 if len(text) > 200:
                     print(f"[OK]   {name}: {len(text)} chars")
-                    return {"source": name, "url": url, "text": text}
+                    return {"source": name, "url": url, "text": text, "fetcher": "requests"}
                 print(f"[SKIP] {name}: too little content ({len(text)} chars)")
                 return None
 
@@ -72,6 +120,16 @@ def scrape_source(source: dict) -> dict | None:
 
     print(f"[GIVE UP] {name}: all attempts failed")
     return None
+
+
+def scrape_source(source: dict) -> dict | None:
+    """Scrape a source, using Scrapling for browser-marked sources when available."""
+    if source.get("type") == "browser":
+        scrapling_result = scrape_source_with_scrapling(source)
+        if scrapling_result:
+            return scrapling_result
+
+    return scrape_source_with_requests(source)
 
 
 def main() -> None:

@@ -3,11 +3,19 @@ Deduplication and JSON export for the Botasaurus scraper.
 Maps scraper output onto the shared public event contract used by agent-bridge.js.
 """
 import json
+import os
 import pathlib
+import sys
 from urllib.parse import urlparse
 from datetime import datetime
 
 import requests
+
+# Ensure the project root is on sys.path so 'agent' package is importable
+# regardless of the working directory the script is launched from.
+_PROJECT_ROOT = pathlib.Path(__file__).resolve().parent.parent.parent
+if str(_PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(_PROJECT_ROOT))
 
 from agent.app.workers.export_format import format_event_for_website
 
@@ -96,6 +104,54 @@ def _mark_title_date_mismatch(events: list[dict]) -> None:
             by_source_url[source_url] = (title, date)
 
 
+def _event_public_url(event: dict) -> str:
+    return (
+        event.get("primaryUrl")
+        or event.get("ticketLink")
+        or event.get("ticketlink")
+        or event.get("officialUrl")
+        or event.get("sourceUrl")
+        or event.get("source_url")
+        or ""
+    )
+
+
+def _public_event_fingerprint(event: dict) -> str:
+    name = event.get("name") or event.get("title") or event.get("eventname") or ""
+    date = event.get("date") or str(event.get("start_datetime") or "")[:10]
+    venue = event.get("venue") or event.get("location") or event.get("venue_name") or ""
+    return event.get("fingerprint") or f"{name.strip().lower()}|{date}|{venue.strip().lower()}"
+
+
+def _load_existing_public_events() -> list[dict]:
+    export_path = EXPORTS_DIR / "events.json"
+    if not export_path.exists():
+        return []
+
+    try:
+        payload = json.loads(export_path.read_text(encoding="utf-8"))
+    except Exception:
+        return []
+
+    events = payload if isinstance(payload, list) else payload.get("events", [])
+    if not isinstance(events, list):
+        return []
+
+    retained: list[dict] = []
+    for event in events:
+        if not isinstance(event, dict):
+            continue
+        name = event.get("name") or event.get("title") or event.get("eventname")
+        date = event.get("date") or str(event.get("start_datetime") or "")[:10]
+        status = str(event.get("status") or "approved").lower()
+        if name and date >= TODAY and status == "approved" and _event_public_url(event):
+            event["status"] = "approved"
+            event["fingerprint"] = _public_event_fingerprint(event)
+            retained.append(event)
+
+    return retained
+
+
 def deduplicate_and_export(events: list[dict]) -> dict:
     """Deduplicate, validate, and write exports/events.json plus review logs."""
     _mark_title_date_mismatch(events)
@@ -107,8 +163,9 @@ def deduplicate_and_export(events: list[dict]) -> dict:
 
     adapted_events = [_adapt_scraper_event(event) for event in valid]
 
-    seen_fingerprints: set[str] = set()
-    exported: list[dict] = []
+    existing_public_events = _load_existing_public_events()
+    seen_fingerprints: set[str] = {_public_event_fingerprint(event) for event in existing_public_events}
+    exported: list[dict] = existing_public_events[:]
     review_queue: list[dict] = []
     duplicate_count = 0
     skipped_count = 0

@@ -1,6 +1,7 @@
 import unittest
 from pathlib import Path
 import sys
+from tempfile import TemporaryDirectory
 from unittest.mock import patch, Mock
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -110,6 +111,50 @@ class IngestionValidationTest(unittest.TestCase):
         self.assertIn("title_date_mismatch", adapted["review_notes"])
         self.assertEqual(adapted["status"], "pending_review")
         mock_get.assert_not_called()
+
+    @patch("exporter.requests.head")
+    @patch("exporter.requests.get")
+    def test_pending_review_scrape_does_not_wipe_existing_public_export(self, mock_get, mock_head):
+        mock_head.return_value = Mock(status_code=200)
+
+        temp_root = Path("C:/tmp") if Path("C:/tmp").exists() else ROOT
+        with TemporaryDirectory(dir=temp_root) as tmpdir:
+            tmp_path = Path(tmpdir)
+            exports_dir = tmp_path / "exports"
+            logs_dir = exports_dir / "logs"
+            exports_dir.mkdir()
+            logs_dir.mkdir()
+            export_path = exports_dir / "events.json"
+            export_path.write_text(
+                """
+                {
+                  "generated_at": "2026-05-01T00:00:00",
+                  "count": 1,
+                  "events": [
+                    {
+                      "id": "existing-1",
+                      "fingerprint": "existing event|2026-06-10|the forum",
+                      "name": "Existing Event",
+                      "date": "2026-06-10",
+                      "venue": "The Forum",
+                      "category": "culture",
+                      "status": "approved",
+                      "primaryUrl": "https://example.com/existing"
+                    }
+                  ]
+                }
+                """,
+                encoding="utf-8",
+            )
+
+            with patch.object(exporter, "EXPORTS_DIR", exports_dir), patch.object(exporter, "LOGS_DIR", logs_dir):
+                stats = exporter.deduplicate_and_export([self._base_event(title="New Pending Event")])
+
+            payload = exporter.json.loads(export_path.read_text(encoding="utf-8"))
+            self.assertEqual(stats["approved_exports"], 1)
+            self.assertEqual(payload["count"], 1)
+            self.assertEqual(payload["events"][0]["name"], "Existing Event")
+            self.assertTrue((logs_dir / "scraper-review-queue.json").exists())
 
 
 if __name__ == "__main__":

@@ -27,12 +27,13 @@ async function submitEventToAPI(eventData) {
             const response = await fetch(API_CONFIG.SUBMISSION_URL, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
+                    'Content-Type': 'text/plain;charset=utf-8',
                 },
                 body: JSON.stringify(eventData)
             });
 
-            const result = await response.json();
+            const responseText = await response.text();
+            const result = responseText ? JSON.parse(responseText) : { success: response.ok };
             return result;
         } catch (error) {
             console.error('API submission error:', error);

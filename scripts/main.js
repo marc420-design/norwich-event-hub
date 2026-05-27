@@ -199,6 +199,21 @@ function getCategoryFallbackStyle(categoryKey) {
     return styles[categoryKey] || styles.norwich;
 }
 
+function getCategoryFallbackImagePath(categoryKey) {
+    const fallbackImages = {
+        nightlife: 'assets/fallback-nightlife.svg',
+        music: 'assets/fallback-live-music.svg',
+        stage: 'assets/fallback-theatre.svg',
+        market: 'assets/fallback-markets.svg',
+        family: 'assets/fallback-family.svg',
+        sport: 'assets/fallback-sports.svg',
+        arts: 'assets/fallback-culture.svg',
+        norwich: 'assets/fallback-general.svg'
+    };
+
+    return fallbackImages[categoryKey] || fallbackImages.norwich;
+}
+
 function formatEventTimeLabel(time) {
     const formatted = window.formatTime ? window.formatTime(time) : '';
     return formatted || 'Time TBC';
@@ -301,6 +316,7 @@ function createEventCard(event) {
     const eventImage = getEventImageDetails(event);
     const imageUrl = eventImage.imageUrl;
     const fallbackStyle = getCategoryFallbackStyle(eventImage.fallbackKey);
+    const fallbackImagePath = getCategoryFallbackImagePath(eventImage.fallbackKey);
     const primaryUrl = choosePrimaryUrl(event);
     const ticketUrl = sanitizeUrl(event.ticketLink || event.ticketlink || event.ticket_url || '');
     const priceText = event.price || (event.isFree ? 'Free' : '');
@@ -326,8 +342,9 @@ function createEventCard(event) {
         eventImageDiv.dataset.bgImage = imageUrl;
         eventImageDiv.classList.add('lazy-bg');
     } else {
+        eventImageDiv.dataset.bgImage = fallbackImagePath;
+        eventImageDiv.classList.add('lazy-bg');
         eventImageDiv.style.background = fallbackStyle;
-        eventImageDiv.innerHTML = `<span style="display:inline-flex;align-items:flex-end;height:100%;padding:1rem;color:white;font-weight:700;text-transform:capitalize;">${escapeAttribute(eventImage.fallbackKey)}</span>`;
     }
 
     const eventContentDiv = document.createElement('div');

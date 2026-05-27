@@ -1,16 +1,25 @@
 """
 Gemini AI event normaliser.
 Sends cleaned page text to Gemini Flash and gets back a structured list of events.
-Tries multiple model names in order so the first available one is used.
+Tries multiple Gemini models in order; falls back to OpenAI gpt-4o-mini if all fail.
 """
 import json
 import os
 from datetime import datetime
 
-from google import genai
+try:
+    from google import genai as _genai
+except ImportError:
+    _genai = None
+
+try:
+    from openai import OpenAI as _OpenAI
+except ImportError:
+    _OpenAI = None
 
 _client = None
 _working_model = None
+_openai_client = None
 
 CANDIDATE_MODELS = [
     "gemini-2.5-flash-preview-05-20",
@@ -24,16 +33,32 @@ CANDIDATE_MODELS = [
 
 def get_client():
     global _client
+    if _genai is None:
+        return None
     if _client is None:
-        _client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
+        _client = _genai.Client(api_key=os.environ["GEMINI_API_KEY"])
     return _client
 
 
-def get_working_model() -> str:
+def get_openai_client():
+    global _openai_client
+    if _OpenAI is None:
+        return None
+    api_key = os.environ.get("OPENAI_API_KEY", "")
+    if not api_key:
+        return None
+    if _openai_client is None:
+        _openai_client = _OpenAI(api_key=api_key)
+    return _openai_client
+
+
+def get_working_model() -> str | None:
     global _working_model
     if _working_model:
         return _working_model
     client = get_client()
+    if client is None:
+        return None
     for model in CANDIDATE_MODELS:
         try:
             client.models.generate_content(model=model, contents="Reply with the word OK")
@@ -42,7 +67,7 @@ def get_working_model() -> str:
             return model
         except Exception as error:
             print(f"[MODEL] {model} unavailable: {error}")
-    raise RuntimeError("No working Gemini model found for this API key.")
+    return None
 
 
 TODAY = datetime.utcnow().strftime("%Y-%m-%d")
@@ -83,7 +108,7 @@ URL: {source_url}
 
 
 def normalise_with_gemini(text: str, source_url: str, source_name: str) -> list[dict]:
-    """Send page text to Gemini and return a list of parsed event dicts."""
+    """Send page text to Gemini (or OpenAI fallback) and return a list of parsed event dicts."""
     if not text or len(text.strip()) < 100:
         return []
 
@@ -94,11 +119,42 @@ def normalise_with_gemini(text: str, source_url: str, source_name: str) -> list[
         text=text[:8000],
     )
 
-    try:
-        model = get_working_model()
-        response = get_client().models.generate_content(model=model, contents=prompt)
-        raw = response.text.strip()
+    raw = None
 
+    # --- Try Gemini first ---
+    model = get_working_model()
+    if model:
+        try:
+            response = get_client().models.generate_content(model=model, contents=prompt)
+            raw = response.text.strip()
+        except Exception as error:
+            print(f"[WARN] {source_name}: Gemini failed - {error}")
+            raw = None
+
+    # --- Fallback to OpenAI ---
+    if raw is None:
+        oai = get_openai_client()
+        if oai:
+            try:
+                print(f"[MODEL] Gemini unavailable, trying OpenAI gpt-4o-mini for {source_name}")
+                completion = oai.chat.completions.create(
+                    model="gpt-4o-mini",
+                    messages=[
+                        {"role": "system", "content": "You are a JSON event extractor. Return only valid JSON."},
+                        {"role": "user", "content": prompt},
+                    ],
+                    temperature=0.1,
+                )
+                raw = completion.choices[0].message.content.strip()
+            except Exception as error:
+                print(f"[WARN] {source_name}: OpenAI fallback failed - {error}")
+                return []
+        else:
+            print(f"[WARN] {source_name}: No AI provider available (Gemini expired, no OpenAI key set)")
+            return []
+
+    # --- Parse JSON ---
+    try:
         if raw.startswith("```"):
             raw = raw.split("```")[1]
             if raw.startswith("json"):
@@ -107,7 +163,7 @@ def normalise_with_gemini(text: str, source_url: str, source_name: str) -> list[
 
         events = json.loads(raw)
         if not isinstance(events, list):
-            print(f"[WARN] {source_name}: Gemini returned non-list")
+            print(f"[WARN] {source_name}: AI returned non-list")
             return []
 
         for event in events:
@@ -122,9 +178,6 @@ def normalise_with_gemini(text: str, source_url: str, source_name: str) -> list[
     except json.JSONDecodeError as error:
         print(f"[WARN] {source_name}: JSON parse error - {error}")
         return []
-    except RuntimeError as error:
-        print(f"[ERROR] {error}")
-        raise
     except Exception as error:
-        print(f"[WARN] {source_name}: Gemini failed - {error}")
+        print(f"[WARN] {source_name}: parse failed - {error}")
         return []

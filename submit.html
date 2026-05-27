@@ -105,13 +105,26 @@
 
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="eventDate">Date *</label>
+                            <label for="eventDate">Start Date *</label>
                             <input type="date" id="eventDate" name="eventDate" required>
                         </div>
                         <div class="form-group">
-                            <label for="eventTime">Time</label>
+                            <label for="eventEndDate">End Date</label>
+                            <input type="date" id="eventEndDate" name="eventEndDate">
+                            <small>Use this for exhibitions, festivals, theatre runs, and other multi-day events</small>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="eventTime">Start Time</label>
                             <input type="time" id="eventTime" name="eventTime">
                             <small>Leave blank if time is not yet confirmed (will show as "Time TBC")</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="openingTimes">Opening Times / Session Times</label>
+                            <input type="text" id="openingTimes" name="openingTimes" placeholder="e.g., Daily, 11am-5pm">
+                            <small>Useful for exhibitions, markets, and repeated sessions</small>
                         </div>
                     </div>
 
@@ -136,26 +149,32 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="eventDescription">Description / Lineup *</label>
-                        <textarea id="eventDescription" name="eventDescription" rows="5" required placeholder="Describe your event, include lineup, performers, or key details..."></textarea>
+                        <label for="eventDescription">Event Description *</label>
+                        <textarea id="eventDescription" name="eventDescription" rows="5" required placeholder="Describe your event, include artists, performers, speakers, or key details..."></textarea>
                     </div>
 
                     <div class="form-group">
-                        <label for="ticketLink">Ticket/Info Link *</label>
-                        <input type="url" id="ticketLink" name="ticketLink" required placeholder="https://example.com/tickets or your website">
-                        <small>Required - Link to tickets or event information page</small>
+                        <label for="ticketLink">Website / Ticket / More Info Link</label>
+                        <input type="url" id="ticketLink" name="ticketLink" placeholder="https://example.com/tickets or your website">
+                        <small>Optional, but recommended if attendees need tickets or more details</small>
                     </div>
 
                     <div class="form-group">
                         <label for="eventPrice">Entry Price *</label>
-                        <input type="text" id="eventPrice" name="eventPrice" required placeholder="e.g., £10, Free, £5-£15">
-                        <small>Enter "Free" if the event is free to attend</small>
+                        <select id="eventPrice" name="eventPrice" required>
+                            <option value="">Select entry price</option>
+                            <option value="Free">Free</option>
+                            <option value="Paid">Paid - details in description</option>
+                            <option value="Donation">Donation / pay what you can</option>
+                            <option value="TBC">TBC</option>
+                        </select>
+                        <small>If paid, include the price or ticket details in the description or info link</small>
                     </div>
 
                     <div class="form-group">
                         <label for="eventFlyer">Event Flyer / Image</label>
-                        <input type="file" id="eventFlyer" name="eventFlyer" accept="image/*">
-                        <small>No flyer yet? Upload a logo, poster, or event image. We can still review it. (JPG, PNG, max 5MB)</small>
+                        <input type="file" id="eventFlyer" name="eventFlyer" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp">
+                        <small>No flyer yet? Upload a logo, poster, or event image. We can still review it. (JPG, JPEG, PNG, WEBP, max 5MB)</small>
                     </div>
 
                     <div class="form-divider">
@@ -240,7 +259,7 @@
                     <ul>
                         <li>✓ All events must be happening in Norwich</li>
                         <li>✓ <strong>High-quality flyer/image recommended</strong> (makes your event stand out — you can still submit without one)</li>
-                        <li>✓ <strong>Ticket or info link required</strong> (helps attendees find tickets)</li>
+                        <li>✓ <strong>Website, ticket, or info links are recommended</strong> (helps attendees find details)</li>
                         <li>✓ Events will be reviewed before publication</li>
                         <li>✓ You'll receive a confirmation email once approved</li>
                         <li>✓ Complete all fields for faster approval</li>
@@ -331,7 +350,6 @@
     <script defer src="scripts/api.js?v=20260210"></script>
     <script defer src="scripts/form-validation.js?v=20260210"></script>
     <script defer src="scripts/analytics-ga4.js?v=20260210"></script>
-    <script defer src="scripts/submit.js?v=20260210"></script>
+    <script defer src="scripts/submit.js?v=20260527"></script>
 </body>
 </html>
-

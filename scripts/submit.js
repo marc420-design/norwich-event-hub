@@ -1,71 +1,84 @@
-// Event Submission Form JavaScript with Real-Time Validation
+// Event Submission Form JavaScript with real-time validation.
 
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('eventSubmissionForm');
     const formMessage = document.getElementById('formMessage');
 
-    // Set minimum date to today
-    const dateInput = document.getElementById('eventDate');
-    if (dateInput) {
-        const today = new Date().toISOString().split('T')[0];
-        dateInput.setAttribute('min', today);
+    if (!form || !formMessage) {
+        return;
     }
 
-    // Real-time validation for each field
+    const startDateInput = document.getElementById('eventDate');
+    const endDateInput = document.getElementById('eventEndDate');
+
+    if (startDateInput) {
+        const today = new Date().toISOString().split('T')[0];
+        startDateInput.setAttribute('min', today);
+
+        if (endDateInput) {
+            endDateInput.setAttribute('min', startDateInput.value || today);
+            startDateInput.addEventListener('change', function() {
+                endDateInput.setAttribute('min', this.value || today);
+                if (endDateInput.value && this.value && makeLocalDate(endDateInput.value) < makeLocalDate(this.value)) {
+                    endDateInput.value = '';
+                    validateField(endDateInput, false, 'End date cannot be before the start date');
+                }
+            });
+        }
+    }
+
     setupRealTimeValidation();
-    
+
     form.addEventListener('submit', async function(e) {
         e.preventDefault();
-        
-        // Get form data
+
         const formData = new FormData(form);
+        const flyer = formData.get('eventFlyer');
         const eventData = {
-            name: formData.get('eventName'),
-            date: formData.get('eventDate'),
-            time: formData.get('eventTime'),
-            location: formData.get('eventLocation'),
-            category: formData.get('eventCategory'),
-            description: formData.get('eventDescription'),
-            ticketLink: formData.get('ticketLink'),
-            promoterName: formData.get('promoterName'),
-            promoterEmail: formData.get('promoterEmail'),
-            promoterPhone: formData.get('promoterPhone'),
-            flyer: formData.get('eventFlyer')
+            name: valueOf(formData, 'eventName'),
+            date: valueOf(formData, 'eventDate'),
+            startDate: valueOf(formData, 'eventDate'),
+            endDate: valueOf(formData, 'eventEndDate'),
+            time: valueOf(formData, 'eventTime'),
+            openingTimes: valueOf(formData, 'openingTimes'),
+            location: valueOf(formData, 'eventLocation'),
+            category: valueOf(formData, 'eventCategory'),
+            description: valueOf(formData, 'eventDescription'),
+            ticketLink: valueOf(formData, 'ticketLink'),
+            price: valueOf(formData, 'eventPrice'),
+            vibe: valueOf(formData, 'eventVibe'),
+            crowdType: valueOf(formData, 'crowdType'),
+            bestFor: valueOf(formData, 'bestFor'),
+            promoterName: valueOf(formData, 'promoterName'),
+            promoterEmail: valueOf(formData, 'promoterEmail'),
+            promoterPhone: valueOf(formData, 'promoterPhone'),
+            flyerName: flyer && flyer.name ? flyer.name : '',
+            flyerType: flyer && flyer.type ? flyer.type : '',
+            flyerSize: flyer && flyer.size ? flyer.size : ''
         };
-        
-        // Validate form
+
         if (!validateForm(eventData)) {
             return;
         }
-        
-        // Show loading state
+
         const submitButton = form.querySelector('button[type="submit"]');
         const originalText = submitButton.textContent;
         submitButton.textContent = 'Submitting...';
         submitButton.disabled = true;
-        
+
         try {
-            // In production, this would submit to Google Sheets API or backend
-            // For now, we'll simulate submission
-            await submitEvent(eventData);
-            
-            // Show success message
-            formMessage.className = 'form-message success';
-            formMessage.textContent = 'Thank you! Your event has been submitted successfully. You will receive a confirmation email shortly.';
-            formMessage.style.display = 'block';
-            
-            // Reset form
+            const result = await submitEvent(eventData);
+
+            if (result && result.success === false) {
+                throw new Error(result.message || 'Submission failed');
+            }
+
+            showFormMessage('success', 'Thank you! Your event has been submitted successfully. You will receive a confirmation email shortly.');
             form.reset();
-            
-            // Scroll to message
+            clearAllFieldStates(form);
             formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            
         } catch (error) {
-            // Show error message
-            formMessage.className = 'form-message error';
-            formMessage.textContent = 'There was an error submitting your event. Please try again or email submit@norwicheventshub.com';
-            formMessage.style.display = 'block';
-            
+            showFormMessage('error', 'There was an error submitting your event. Please try again or email submit@norwicheventshub.com');
             console.error('Submission error:', error);
         } finally {
             submitButton.textContent = originalText;
@@ -74,49 +87,63 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-function validateForm(data) {
+function valueOf(formData, key) {
+    const value = formData.get(key);
+    return typeof value === 'string' ? value.trim() : '';
+}
+
+function makeLocalDate(value) {
+    const parts = value.split('-').map(Number);
+    return new Date(parts[0], parts[1] - 1, parts[2]);
+}
+
+function showFormMessage(type, message) {
     const formMessage = document.getElementById('formMessage');
-    
-    // Basic validation
-    if (!data.name || !data.date || !data.time || !data.location || !data.category || !data.description) {
-        formMessage.className = 'form-message error';
-        formMessage.textContent = 'Please fill in all required fields.';
-        formMessage.style.display = 'block';
+    formMessage.className = `form-message ${type}`;
+    formMessage.textContent = message;
+    formMessage.style.display = 'block';
+}
+
+function validateForm(data) {
+    if (!data.name || !data.date || !data.location || !data.category || !data.description || !data.price || !data.promoterName || !data.promoterEmail) {
+        showFormMessage('error', 'Please fill in all required fields.');
         return false;
     }
-    
-    // Validate date is not in the past
-    const eventDate = new Date(data.date);
+
+    const startDate = makeLocalDate(data.date);
     const today = new Date();
     today.setHours(0, 0, 0, 0);
-    
-    if (eventDate < today) {
-        formMessage.className = 'form-message error';
-        formMessage.textContent = 'Event date cannot be in the past.';
-        formMessage.style.display = 'block';
+
+    if (startDate < today) {
+        showFormMessage('error', 'Event start date cannot be in the past.');
         return false;
     }
-    
-    // Validate email
+
+    if (data.endDate && makeLocalDate(data.endDate) < startDate) {
+        showFormMessage('error', 'Event end date cannot be before the start date.');
+        return false;
+    }
+
+    if (data.ticketLink && !isValidUrl(data.ticketLink)) {
+        showFormMessage('error', 'Please enter a valid website, ticket, or info link.');
+        return false;
+    }
+
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(data.promoterEmail)) {
-        formMessage.className = 'form-message error';
-        formMessage.textContent = 'Please enter a valid email address.';
-        formMessage.style.display = 'block';
+        showFormMessage('error', 'Please enter a valid email address.');
         return false;
     }
-    
+
     return true;
 }
 
 async function submitEvent(eventData) {
-    // Use API function if available, otherwise fallback to local storage
     if (typeof submitEventToAPI !== 'undefined') {
         return await submitEventToAPI(eventData);
     }
 
-    // Fallback simulation
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         setTimeout(() => {
             console.log('Event submitted:', eventData);
             resolve({ success: true, eventId: Date.now() });
@@ -124,101 +151,132 @@ async function submitEvent(eventData) {
     });
 }
 
-// Real-time validation setup
 function setupRealTimeValidation() {
-    // Event name validation
     const eventName = document.getElementById('eventName');
-    eventName.addEventListener('blur', function() {
-        validateField(this, this.value.trim().length >= 3, 'Event name must be at least 3 characters');
-    });
+    if (eventName) {
+        eventName.addEventListener('blur', function() {
+            validateField(this, this.value.trim().length >= 3, 'Event name must be at least 3 characters');
+        });
+    }
 
-    // Date validation
     const eventDate = document.getElementById('eventDate');
-    eventDate.addEventListener('change', function() {
-        const eventDateVal = new Date(this.value);
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
-        validateField(this, eventDateVal >= today, 'Event date cannot be in the past');
-    });
+    if (eventDate) {
+        eventDate.addEventListener('change', function() {
+            const eventDateVal = makeLocalDate(this.value);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            validateField(this, eventDateVal >= today, 'Event start date cannot be in the past');
+        });
+    }
 
-    // Location validation
+    const eventEndDate = document.getElementById('eventEndDate');
+    if (eventEndDate) {
+        eventEndDate.addEventListener('change', function() {
+            const startValue = document.getElementById('eventDate').value;
+            const isValid = !this.value || !startValue || makeLocalDate(this.value) >= makeLocalDate(startValue);
+            validateField(this, isValid, 'End date cannot be before the start date');
+        });
+    }
+
     const eventLocation = document.getElementById('eventLocation');
-    eventLocation.addEventListener('blur', function() {
-        validateField(this, this.value.trim().length >= 3, 'Please enter a valid location');
-    });
+    if (eventLocation) {
+        eventLocation.addEventListener('blur', function() {
+            validateField(this, this.value.trim().length >= 3, 'Please enter a valid location');
+        });
+    }
 
-    // Category validation
     const eventCategory = document.getElementById('eventCategory');
-    eventCategory.addEventListener('change', function() {
-        validateField(this, this.value !== '', 'Please select a category');
-    });
+    if (eventCategory) {
+        eventCategory.addEventListener('change', function() {
+            validateField(this, this.value !== '', 'Please select a category');
+        });
+    }
 
-    // Description validation
     const eventDescription = document.getElementById('eventDescription');
-    eventDescription.addEventListener('blur', function() {
-        validateField(this, this.value.trim().length >= 10, 'Description must be at least 10 characters');
-    });
+    if (eventDescription) {
+        eventDescription.addEventListener('blur', function() {
+            validateField(this, this.value.trim().length >= 10, 'Description must be at least 10 characters');
+        });
+    }
 
-    // Email validation
+    const eventPrice = document.getElementById('eventPrice');
+    if (eventPrice) {
+        eventPrice.addEventListener(eventPrice.tagName === 'SELECT' ? 'change' : 'blur', function() {
+            validateField(this, this.value.trim().length > 0, 'Please enter the entry price, Free, Donation, or TBC');
+        });
+    }
+
     const promoterEmail = document.getElementById('promoterEmail');
-    promoterEmail.addEventListener('blur', function() {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        validateField(this, emailRegex.test(this.value), 'Please enter a valid email address');
-    });
+    if (promoterEmail) {
+        promoterEmail.addEventListener('blur', function() {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            validateField(this, emailRegex.test(this.value), 'Please enter a valid email address');
+        });
+    }
 
-    // Phone validation (optional but if provided must be valid)
     const promoterPhone = document.getElementById('promoterPhone');
-    promoterPhone.addEventListener('blur', function() {
-        if (this.value.trim() !== '') {
-            const phoneRegex = /^[\d\s\-\+\(\)]{10,}$/;
-            validateField(this, phoneRegex.test(this.value), 'Please enter a valid phone number');
-        } else {
-            clearFieldError(this);
-        }
-    });
-
-    // File size validation
-    const eventFlyer = document.getElementById('eventFlyer');
-    eventFlyer.addEventListener('change', function() {
-        if (this.files.length > 0) {
-            const file = this.files[0];
-            const maxSize = 5 * 1024 * 1024; // 5MB in bytes
-            const validTypes = ['image/jpeg', 'image/png', 'image/jpg'];
-
-            if (file.size > maxSize) {
-                validateField(this, false, 'File size must be less than 5MB');
-                this.value = ''; // Clear the file input
-            } else if (!validTypes.includes(file.type)) {
-                validateField(this, false, 'Only JPG and PNG files are allowed');
-                this.value = '';
+    if (promoterPhone) {
+        promoterPhone.addEventListener('blur', function() {
+            if (this.value.trim() !== '') {
+                const phoneRegex = /^[\d\s\-+()]{10,}$/;
+                validateField(this, phoneRegex.test(this.value), 'Please enter a valid phone number');
             } else {
-                validateField(this, true, '');
+                clearFieldError(this);
             }
-        }
-    });
+        });
+    }
 
-    // Ticket link validation (optional but if provided must be valid URL)
-    const ticketLink = document.getElementById('ticketLink');
-    ticketLink.addEventListener('blur', function() {
-        if (this.value.trim() !== '') {
-            try {
-                new URL(this.value);
-                validateField(this, true, '');
-            } catch {
-                validateField(this, false, 'Please enter a valid URL (e.g., https://example.com)');
+    const eventFlyer = document.getElementById('eventFlyer');
+    if (eventFlyer) {
+        eventFlyer.addEventListener('change', function() {
+            if (this.files.length > 0) {
+                const file = this.files[0];
+                const maxSize = 5 * 1024 * 1024;
+                const validTypes = ['image/jpeg', 'image/png', 'image/webp'];
+                const validExtensions = ['jpg', 'jpeg', 'png', 'webp'];
+                const extension = file.name.split('.').pop().toLowerCase();
+
+                if (file.size > maxSize) {
+                    validateField(this, false, 'File size must be less than 5MB');
+                    this.value = '';
+                } else if (!validTypes.includes(file.type) && !validExtensions.includes(extension)) {
+                    validateField(this, false, 'Only JPG, JPEG, PNG, and WEBP files are allowed');
+                    this.value = '';
+                } else {
+                    validateField(this, true, '');
+                }
             }
-        } else {
-            clearFieldError(this);
-        }
-    });
+        });
+    }
+
+    const ticketLink = document.getElementById('ticketLink');
+    if (ticketLink) {
+        ticketLink.addEventListener('blur', function() {
+            if (this.value.trim() !== '') {
+                validateField(this, isValidUrl(this.value), 'Please enter a valid URL (e.g., https://example.com)');
+            } else {
+                clearFieldError(this);
+            }
+        });
+    }
 }
 
-// Validate individual field and show inline error
+function isValidUrl(value) {
+    try {
+        const url = new URL(value);
+        return url.protocol === 'http:' || url.protocol === 'https:';
+    } catch {
+        return false;
+    }
+}
+
 function validateField(field, isValid, errorMessage) {
     const formGroup = field.closest('.form-group');
-    let errorDiv = formGroup.querySelector('.field-error');
+    if (!formGroup) {
+        return;
+    }
 
-    // Create error div if it doesn't exist
+    let errorDiv = formGroup.querySelector('.field-error');
     if (!errorDiv) {
         errorDiv = document.createElement('div');
         errorDiv.className = 'field-error';
@@ -237,10 +295,9 @@ function validateField(field, isValid, errorMessage) {
     }
 }
 
-// Clear field error
 function clearFieldError(field) {
     const formGroup = field.closest('.form-group');
-    const errorDiv = formGroup.querySelector('.field-error');
+    const errorDiv = formGroup ? formGroup.querySelector('.field-error') : null;
 
     field.classList.remove('error');
     field.classList.remove('valid');
@@ -250,3 +307,10 @@ function clearFieldError(field) {
     }
 }
 
+function clearAllFieldStates(form) {
+    form.querySelectorAll('.error, .valid').forEach(field => field.classList.remove('error', 'valid'));
+    form.querySelectorAll('.field-error').forEach(error => {
+        error.textContent = '';
+        error.style.display = 'none';
+    });
+}

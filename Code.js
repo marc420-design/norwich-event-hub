@@ -4,7 +4,7 @@
  * This script handles form submissions and writes to Google Sheets
  * 
  * SETUP INSTRUCTIONS:
- * 1. Create a Google Sheet with columns: Timestamp, Event Name, Date, Time, Location, Category, Description, Ticket Link, Promoter Name, Promoter Email, Promoter Phone, Status
+ * 1. Create a Google Sheet, or let this script create/update the Event Submissions headers automatically.
  * 2. Open Script Editor in Google Sheets (Extensions > Apps Script)
  * 3. Paste this code
  * 4. Deploy as Web App (Deploy > New Deployment > Web App)
@@ -19,6 +19,65 @@ const EMAIL_FROM = 'events@norwicheventshub.com';
 
 // Configuration - IMPORTANT: Set your Google Sheet ID here
 const SHEET_ID = '1wdh2VOlZ8gp0hwFpFV6cVpDDmaMxGs48eCDqoFFZTcU';
+
+const SUBMISSION_HEADERS = [
+  'Timestamp',
+  'Event Name',
+  'Date',
+  'End Date',
+  'Time',
+  'Opening Times',
+  'Location',
+  'Category',
+  'Description',
+  'Ticket Link',
+  'Price',
+  'Image URL',
+  'Flyer Name',
+  'Flyer Type',
+  'Flyer Size',
+  'Vibe',
+  'Crowd Type',
+  'Best For',
+  'Promoter Name',
+  'Promoter Email',
+  'Promoter Phone',
+  'Status',
+  'Event ID',
+  'Editor\'s Choice'
+];
+
+function firstValue(data, keys) {
+  for (let i = 0; i < keys.length; i++) {
+    const value = data[keys[i]];
+    if (value !== undefined && value !== null && value !== '') {
+      return value;
+    }
+  }
+
+  return '';
+}
+
+function ensureSubmissionHeaders(sheet) {
+  if (sheet.getLastRow() === 0) {
+    sheet.appendRow(SUBMISSION_HEADERS);
+  } else {
+    const lastColumn = Math.max(sheet.getLastColumn(), 1);
+    const existingHeaders = sheet.getRange(1, 1, 1, lastColumn).getValues()[0].filter(String);
+    const missingHeaders = SUBMISSION_HEADERS.filter(header => existingHeaders.indexOf(header) === -1);
+
+    if (missingHeaders.length > 0) {
+      sheet.getRange(1, existingHeaders.length + 1, 1, missingHeaders.length).setValues([missingHeaders]);
+    }
+  }
+
+  const headerRange = sheet.getRange(1, 1, 1, sheet.getLastColumn());
+  headerRange.setFontWeight('bold');
+  headerRange.setBackground('#3AB8FF');
+  headerRange.setFontColor('#FFFFFF');
+
+  return sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0].filter(String);
+}
 
 /**
  * Handle OPTIONS request (CORS preflight)
@@ -68,83 +127,67 @@ function doPost(e) {
     // Create sheet if it doesn't exist
     if (!sheet) {
       sheet = ss.insertSheet(SHEET_NAME);
-      // Add headers
-      sheet.appendRow([
-        'Timestamp',
-        'Event Name',
-        'Date',
-        'Time',
-        'Location',
-        'Category',
-        'Description',
-        'Ticket Link',
-        'Price',
-        'Image URL',
-        'Vibe',
-        'Crowd Type',
-        'Best For',
-        'Promoter Name',
-        'Promoter Email',
-        'Promoter Phone',
-        'Status',
-        'Event ID',
-        'Editor\'s Choice'
-      ]);
-      // Format header row
-      const headerRange = sheet.getRange(1, 1, 1, 19);
-      headerRange.setFontWeight('bold');
-      headerRange.setBackground('#3AB8FF');
-      headerRange.setFontColor('#FFFFFF');
     }
+
+    const headers = ensureSubmissionHeaders(sheet);
 
     // Generate unique event ID
     const timestamp = new Date().toISOString().split('T')[0].replace(/-/g, '');
     const lastRow = sheet.getLastRow();
     const eventId = 'EVT-' + timestamp + '-' + (lastRow + 1);
 
-    // Append data to sheet
-    sheet.appendRow([
-      new Date(),
-      data.eventname || data.name || '',
-      data.date || '',
-      data.time || '',
-      data.location || '',
-      data.category || '',
-      data.description || '',
-      data.ticketlink || data.ticketLink || '',
-      data.price || '',
-      data.imageurl || data.image || '',
-      data.vibe || '',
-      data.crowdtype || '',
-      data.bestfor || '',
-      data.promotername || '',
-      data.promoteremail || '',
-      data.promoterphone || '',
-      'Pending',  // Default status
-      eventId,
-      false  // Editor's Choice default
-    ]);
+    const valuesByHeader = {
+      'Timestamp': new Date(),
+      'Event Name': firstValue(data, ['eventname', 'eventName', 'name']),
+      'Date': firstValue(data, ['date', 'startDate']),
+      'End Date': firstValue(data, ['enddate', 'endDate']),
+      'Time': firstValue(data, ['time']),
+      'Opening Times': firstValue(data, ['openingtimes', 'openingTimes']),
+      'Location': firstValue(data, ['location']),
+      'Category': firstValue(data, ['category']),
+      'Description': firstValue(data, ['description']),
+      'Ticket Link': firstValue(data, ['ticketlink', 'ticketLink']),
+      'Price': firstValue(data, ['price', 'eventPrice']),
+      'Image URL': firstValue(data, ['imageurl', 'imageUrl', 'image']),
+      'Flyer Name': firstValue(data, ['flyername', 'flyerName']),
+      'Flyer Type': firstValue(data, ['flyertype', 'flyerType']),
+      'Flyer Size': firstValue(data, ['flyersize', 'flyerSize']),
+      'Vibe': firstValue(data, ['vibe', 'eventVibe']),
+      'Crowd Type': firstValue(data, ['crowdtype', 'crowdType']),
+      'Best For': firstValue(data, ['bestfor', 'bestFor']),
+      'Promoter Name': firstValue(data, ['promotername', 'promoterName']),
+      'Promoter Email': firstValue(data, ['promoteremail', 'promoterEmail']),
+      'Promoter Phone': firstValue(data, ['promoterphone', 'promoterPhone']),
+      'Status': 'Pending',
+      'Event ID': eventId,
+      'Editor\'s Choice': false
+    };
+
+    sheet.appendRow(headers.map(header => valuesByHeader[header] !== undefined ? valuesByHeader[header] : ''));
 
     // Send notification email (optional)
     try {
-      const subject = 'New Event Submission: ' + (data.eventname || data.name);
+      const subject = 'New Event Submission: ' + valuesByHeader['Event Name'];
       const body = `
 New event submitted to Norwich Event Hub:
 
-Event: ${data.eventname || data.name}
-Date: ${data.date}
-Time: ${data.time}
-Location: ${data.location}
-Category: ${data.category}
+Event: ${valuesByHeader['Event Name']}
+Start Date: ${valuesByHeader['Date']}
+End Date: ${valuesByHeader['End Date']}
+Time: ${valuesByHeader['Time']}
+Opening Times: ${valuesByHeader['Opening Times']}
+Location: ${valuesByHeader['Location']}
+Category: ${valuesByHeader['Category']}
 
-Description: ${data.description}
+Description: ${valuesByHeader['Description']}
 
-Ticket Link: ${data.ticketlink || data.ticketLink}
-Price: ${data.price}
+Ticket/Info Link: ${valuesByHeader['Ticket Link']}
+Price: ${valuesByHeader['Price']}
+Flyer: ${valuesByHeader['Flyer Name']}
 
-Promoter: ${data.promotername}
-Email: ${data.promoteremail}
-Phone: ${data.promoterphone}
+Promoter: ${valuesByHeader['Promoter Name']}
+Email: ${valuesByHeader['Promoter Email']}
+Phone: ${valuesByHeader['Promoter Phone']}
 
 Event ID: ${eventId}
 Status: Pending Review

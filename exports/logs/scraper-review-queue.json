@@ -1,7 +1,119 @@
 {
-  "generated_at": "2026-05-27T16:51:55.924712",
-  "count": 81,
+  "generated_at": "2026-05-27T18:22:42.779858",
+  "count": 135,
   "events": [
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "UEA Waterfront",
+      "title": "La Sécurité",
+      "fingerprint": "la sécurité|2026-05-27|voodoo daddys showroom"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "UEA Waterfront",
+      "title": "Nightstalker",
+      "fingerprint": "nightstalker|2026-05-27|the adrian flux waterfront studio"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "UEA Waterfront",
+      "title": "Toots & The Maytals Feat Leba Hibbert ‘Reggae Got Soul’ 50th Anniversary Tour 1976 - 2026",
+      "fingerprint": "toots & the maytals feat leba hibbert ‘reggae got soul’ 50th anniversary tour 1976 - 2026|2026-05-28|the adrian flux waterfront"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "UEA Waterfront",
+      "title": "Canaan Cox ‘We Out Here’ Tour",
+      "fingerprint": "canaan cox ‘we out here’ tour|2026-05-28|the adrian flux waterfront studio"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "UEA Waterfront",
+      "title": "CQ Wrestling",
+      "fingerprint": "cq wrestling|2026-05-29|the adrian flux waterfront studio"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "UEA Waterfront",
+      "title": "Chez Kane",
+      "fingerprint": "chez kane|2026-05-29|the brickmakers"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "UEA Waterfront",
+      "title": "Los Campesinos!",
+      "fingerprint": "los campesinos!|2026-05-29|epic studios"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "UEA Waterfront",
+      "title": "Meltdown",
+      "fingerprint": "meltdown|2026-05-30|the adrian flux waterfront"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "UEA Waterfront",
+      "title": "From The Jam",
+      "fingerprint": "from the jam|2026-05-30|the adrian flux waterfront"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "UEA Waterfront",
+      "title": "Nontaines S.C. The World’s First Fontaines D.C. Tribute",
+      "fingerprint": "nontaines s.c. the world’s first fontaines d.c. tribute|2026-05-30|the adrian flux waterfront studio"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "UEA Waterfront",
+      "title": "John Robb",
+      "fingerprint": "john robb|2026-06-02|norwich arts centre"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "UEA Waterfront",
+      "title": "Levellers",
+      "fingerprint": "levellers|2026-06-04|the nick rayns lcr, uea"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "UEA Waterfront",
+      "title": "Jen Brister: Reactive",
+      "fingerprint": "jen brister: reactive|2026-06-04|epic studios"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "UEA Waterfront",
+      "title": "Police Dog Hogan",
+      "fingerprint": "police dog hogan|2026-06-04|norwich arts centre"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "UEA Waterfront",
+      "title": "The Virginmarys",
+      "fingerprint": "the virginmarys|2026-06-05|the adrian flux waterfront studio"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "UEA Waterfront",
+      "title": "The House of Love",
+      "fingerprint": "the house of love|2026-06-05|norwich arts centre"
+    },
     {
       "reason": "needs_review",
       "status": "pending_review",
@@ -19,114 +131,30 @@
     {
       "reason": "needs_review",
       "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Business Networking Event",
-      "fingerprint": "business networking event|2026-05-27|barnham broom hotel"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "K-pop party: The ultimate fan experience",
-      "fingerprint": "k-pop party: the ultimate fan experience|2026-05-27|castle quarter"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Creative Planet – Around the World – Kids Crafts",
-      "fingerprint": "creative planet – around the world – kids crafts|2026-05-27|yalm"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "King Street: Growth, Decline & Regeneration – walking tour",
-      "fingerprint": "king street: growth, decline & regeneration – walking tour|2026-05-27|king street"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Chitty Chitty Bang Bang",
-      "fingerprint": "chitty chitty bang bang|2026-05-27|maddermarket theatre"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "UEA Green Film Festival (screening of \"EVERY LITTLE THING\")",
-      "fingerprint": "uea green film festival (screening of \"every little thing\")|2026-05-27|venue tba"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Gentleman Jack",
-      "fingerprint": "gentleman jack|2026-05-27|venue tba"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Norwich Spooky Story Walk",
-      "fingerprint": "norwich spooky story walk|2026-05-27|venue tba"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Henry Wagons – CASH The American Recordings",
-      "fingerprint": "henry wagons – cash the american recordings|2026-05-27|venue tba"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Kids’ Paint Party with Creation Station",
-      "fingerprint": "kids’ paint party with creation station|2026-05-28|venue tba"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Teen urban arts takeover",
-      "fingerprint": "teen urban arts takeover|2026-05-28|castle gardens"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Gin & Golf",
-      "fingerprint": "gin & golf|2026-05-28|city greens golf"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
       "source": "The Forum Norwich",
       "title": "TOASTies: Kids' Poetry Show featuring Simon Mole",
-      "fingerprint": "toasties: kids' poetry show featuring simon mole|2026-06-14|the forum (the auditorium)"
+      "fingerprint": "toasties: kids' poetry show featuring simon mole|2026-06-14|the auditorium"
     },
     {
-      "reason": "needs_review",
+      "reason": "duplicate",
       "status": "pending_review",
       "source": "The Forum Norwich",
       "title": "Norfolk Deaf Festival",
-      "fingerprint": "norfolk deaf festival|2026-06-26|the forum (the atrium)"
+      "fingerprint": "norfolk deaf festival|2026-06-26|the atrium"
     },
     {
-      "reason": "needs_review",
+      "reason": "duplicate",
       "status": "pending_review",
       "source": "The Forum Norwich",
       "title": "Heritage Open Days",
-      "fingerprint": "heritage open days|2026-09-11|various locations across norfolk"
+      "fingerprint": "heritage open days|2026-09-11|across norfolk"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "The Forum Norwich",
       "title": "Activities for D/deaf families at Norwich Games Festival",
-      "fingerprint": "activities for d/deaf families at norwich games festival|2026-05-28|the forum (the sunflower snug)"
+      "fingerprint": "activities for d/deaf families at norwich games festival|2026-05-28|the sunflower snug"
     },
     {
       "reason": "needs_review",
@@ -183,6 +211,90 @@
       "source": "The Forum Norwich",
       "title": "Carers Information Day",
       "fingerprint": "carers information day|2026-06-08|the forum"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Business Networking Event Barnham Broom Hotel with Tracey Watt",
+      "fingerprint": "business networking event barnham broom hotel with tracey watt|2026-05-27|barnham broom hotel"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "K-pop party: The ultimate fan experience",
+      "fingerprint": "k-pop party: the ultimate fan experience|2026-05-27|castle quarter"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Creative Planet – Around the World – Kids Crafts at Yalm",
+      "fingerprint": "creative planet – around the world – kids crafts at yalm|2026-05-27|yalm"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "King Street: Growth, Decline & Regeneration – walking tour",
+      "fingerprint": "king street: growth, decline & regeneration – walking tour|2026-05-27|king street"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Chitty Chitty Bang Bang",
+      "fingerprint": "chitty chitty bang bang|2026-05-27|maddermarket theatre norwich"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "UEA Green Film Festival",
+      "fingerprint": "uea green film festival|2026-05-27|uea"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Gentleman Jack Masters of storytelling Northern Ballet",
+      "fingerprint": "gentleman jack masters of storytelling northern ballet|2026-05-27|norwich"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Norwich Spooky Story Walk",
+      "fingerprint": "norwich spooky story walk|2026-05-27|norwich"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Henry Wagons – CASH The American Recordings",
+      "fingerprint": "henry wagons – cash the american recordings|2026-05-27|norwich"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Kids’ Paint Party with Creation Station",
+      "fingerprint": "kids’ paint party with creation station|2026-05-28|norwich"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Teen urban arts takeover at Castle Quarter this May half term",
+      "fingerprint": "teen urban arts takeover at castle quarter this may half term|2026-05-28|castle gardens"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Gin & Golf",
+      "fingerprint": "gin & golf|2026-05-28|city greens golf"
     },
     {
       "reason": "duplicate",
@@ -244,8 +356,8 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
-      "title": "Family The Labyrinth Challenge Tour",
-      "fingerprint": "family the labyrinth challenge tour|2026-07-11|outdoor spaces"
+      "title": "The Labyrinth Challenge Tour",
+      "fingerprint": "the labyrinth challenge tour|2026-07-11|outdoor spaces"
     },
     {
       "reason": "needs_review",
@@ -265,8 +377,316 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
-      "title": "Family Action Arena",
-      "fingerprint": "family action arena|2026-08-29|outdoor spaces"
+      "title": "Action Arena",
+      "fingerprint": "action arena|2026-08-29|outdoor spaces"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Gonzo's Two Room",
+      "title": "Sounds of Disco",
+      "fingerprint": "sounds of disco|2026-05-29|gonzo's tea room"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Gonzo's Two Room",
+      "title": "Rinse FM w Arthi + Her Tempo",
+      "fingerprint": "rinse fm w arthi + her tempo|2026-05-30|gonzo's tea room"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Gonzo's Two Room",
+      "title": "Sounds of House",
+      "fingerprint": "sounds of house|2026-06-05|gonzo's tea room"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Gonzo's Two Room",
+      "title": "Sounds of Dubstep",
+      "fingerprint": "sounds of dubstep|2026-06-06|gonzo's tea room"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Gonzo's Two Room",
+      "title": "Twisted Skunk presents Plump Djs",
+      "fingerprint": "twisted skunk presents plump djs|2026-06-12|gonzo's tea room"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Gonzo's Two Room",
+      "title": "Osmosis Jones",
+      "fingerprint": "osmosis jones|2026-06-13|gonzo's tea room"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Gonzo's Two Room",
+      "title": "Sounds of Jungle",
+      "fingerprint": "sounds of jungle|2026-06-19|gonzo's tea room"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Gonzo's Two Room",
+      "title": "Sounds of UKG",
+      "fingerprint": "sounds of ukg|2026-06-20|gonzo's tea room"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Gonzo's Two Room",
+      "title": "Sound of 90s",
+      "fingerprint": "sound of 90s|2026-06-27|gonzo's tea room"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Gonzo's Two Room",
+      "title": "Rooftop Sunday Session w Shadow Child",
+      "fingerprint": "rooftop sunday session w shadow child|2026-06-28|gonzo's tea room"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Gonzo's Two Room",
+      "title": "Rooftop Sunday Sessions w Jimpster",
+      "fingerprint": "rooftop sunday sessions w jimpster|2026-07-05|gonzo's tea room"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Gonzo's Two Room",
+      "title": "Rooftop Sunday Session w Sophia Violet (Girls Don’t Sync)",
+      "fingerprint": "rooftop sunday session w sophia violet (girls don’t sync)|2026-07-12|gonzo's tea room"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Gonzo's Two Room",
+      "title": "Rooftop Sunday Sessions w Ryan Hope (Gabriels)",
+      "fingerprint": "rooftop sunday sessions w ryan hope (gabriels)|2026-07-19|gonzo's tea room"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Gonzo's Two Room",
+      "title": "T>I: The Residency – DJ Marky",
+      "fingerprint": "t>i: the residency – dj marky|2026-07-24|gonzo's tea room"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Gonzo's Two Room",
+      "title": "NORWICH PRIDE AFTERPARTY",
+      "fingerprint": "norwich pride afterparty|2026-07-25|gonzo's tea room"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Gonzo's Two Room",
+      "title": "Rooftop Sunday Sessions with System Olympia",
+      "fingerprint": "rooftop sunday sessions with system olympia|2026-07-26|gonzo's tea room"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Gonzo's Two Room",
+      "title": "Mr Scruff – All Night Long – 6hr Set",
+      "fingerprint": "mr scruff – all night long – 6hr set|2026-07-31|gonzo's tea room"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Gonzo's Two Room",
+      "title": "Rooftop Sunday Sessions w Aroop Roy",
+      "fingerprint": "rooftop sunday sessions w aroop roy|2026-08-02|gonzo's tea room"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Gonzo's Two Room",
+      "title": "Rooftop Sunday Sessions w Sam Redmore",
+      "fingerprint": "rooftop sunday sessions w sam redmore|2026-08-09|gonzo's tea room"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Gonzo's Two Room",
+      "title": "Rooftop Sunday Sessions w MiNNA",
+      "fingerprint": "rooftop sunday sessions w minna|2026-08-16|gonzo's tea room"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Gonzo's Two Room",
+      "title": "Metalheadz Blue Note Sessions – Sunday Day Party – Goldie + More",
+      "fingerprint": "metalheadz blue note sessions – sunday day party – goldie + more|2026-08-16|gonzo's tea room"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Gonzo's Two Room",
+      "title": "Photek",
+      "fingerprint": "photek|2026-08-21|gonzo's tea room"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Gonzo's Two Room",
+      "title": "Rooftop Sunday Sessions w HEIDI",
+      "fingerprint": "rooftop sunday sessions w heidi|2026-08-23|gonzo's tea room"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Gonzo's Two Room",
+      "title": "Rooftop Sunday Sessions w Joshua Roberts & Friends",
+      "fingerprint": "rooftop sunday sessions w joshua roberts & friends|2026-08-30|gonzo's tea room"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Gonzo's Two Room",
+      "title": "Rooftop Sunday Sessions w Somewhere Soul",
+      "fingerprint": "rooftop sunday sessions w somewhere soul|2026-09-06|gonzo's tea room"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Sainsbury Centre",
+      "title": "Ryan Gander: A newly commissioned artwork",
+      "fingerprint": "ryan gander: a newly commissioned artwork|2026-05-27|sainsbury centre, living area"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Sainsbury Centre",
+      "title": "Sainsbury Centre Sculpture Park",
+      "fingerprint": "sainsbury centre sculpture park|2026-05-27|sainsbury centre, sculpture park"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Sainsbury Centre",
+      "title": "Free Daily Tours of the Living Area",
+      "fingerprint": "free daily tours of the living area|2026-05-27|sainsbury centre, living area"
+    },
+    {
+      "reason": "duplicate",
+      "status": "pending_review",
+      "source": "Sainsbury Centre",
+      "title": "Free Daily Tours of the Living Area",
+      "fingerprint": "free daily tours of the living area|2026-05-27|sainsbury centre, living area"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Sainsbury Centre",
+      "title": "Joy Like Time",
+      "fingerprint": "joy like time|2026-06-20|sainsbury centre"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Sainsbury Centre",
+      "title": "Tree of Life",
+      "fingerprint": "tree of life|2026-06-20|sainsbury centre"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Sainsbury Centre",
+      "title": "Big Sunday",
+      "fingerprint": "big sunday|2026-06-07|sainsbury centre"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Gonzo's Fatsoma",
+      "title": "May Sounds of Disco",
+      "fingerprint": "may sounds of disco|2026-05-29|gonzo's tea room"
+    },
+    {
+      "reason": "duplicate",
+      "status": "pending_review",
+      "source": "Gonzo's Fatsoma",
+      "title": "Rinse FM w Arthi + Her Tempo",
+      "fingerprint": "rinse fm w arthi + her tempo|2026-05-30|gonzo's tea room"
+    },
+    {
+      "reason": "duplicate",
+      "status": "pending_review",
+      "source": "Gonzo's Fatsoma",
+      "title": "Sounds of House",
+      "fingerprint": "sounds of house|2026-06-05|gonzo's tea room"
+    },
+    {
+      "reason": "duplicate",
+      "status": "pending_review",
+      "source": "Gonzo's Fatsoma",
+      "title": "Sounds of Dubstep",
+      "fingerprint": "sounds of dubstep|2026-06-06|gonzo's tea room"
+    },
+    {
+      "reason": "duplicate",
+      "status": "pending_review",
+      "source": "Gonzo's Fatsoma",
+      "title": "Twisted Skunk presents Plump Djs",
+      "fingerprint": "twisted skunk presents plump djs|2026-06-12|gonzo's tea room"
+    },
+    {
+      "reason": "duplicate",
+      "status": "pending_review",
+      "source": "Gonzo's Fatsoma",
+      "title": "Osmosis Jones",
+      "fingerprint": "osmosis jones|2026-06-13|gonzo's tea room"
+    },
+    {
+      "reason": "duplicate",
+      "status": "pending_review",
+      "source": "Gonzo's Fatsoma",
+      "title": "Sounds of Jungle",
+      "fingerprint": "sounds of jungle|2026-06-19|gonzo's tea room"
+    },
+    {
+      "reason": "duplicate",
+      "status": "pending_review",
+      "source": "Gonzo's Fatsoma",
+      "title": "Sounds of UKG",
+      "fingerprint": "sounds of ukg|2026-06-20|gonzo's tea room"
+    },
+    {
+      "reason": "duplicate",
+      "status": "pending_review",
+      "source": "Gonzo's Fatsoma",
+      "title": "Sound of 90s",
+      "fingerprint": "sound of 90s|2026-06-27|gonzo's tea room"
+    },
+    {
+      "reason": "duplicate",
+      "status": "pending_review",
+      "source": "Gonzo's Fatsoma",
+      "title": "Rooftop Sunday Session w Shadow Child",
+      "fingerprint": "rooftop sunday session w shadow child|2026-06-28|gonzo's tea room"
+    },
+    {
+      "reason": "duplicate",
+      "status": "pending_review",
+      "source": "Gonzo's Fatsoma",
+      "title": "Rooftop Sunday Sessions w Jimpster",
+      "fingerprint": "rooftop sunday sessions w jimpster|2026-07-05|gonzo's tea room"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Gonzo's Fatsoma",
+      "title": "Rooftop Sunday Session w Sophia Violet (Girls Don't Sync)",
+      "fingerprint": "rooftop sunday session w sophia violet (girls don't sync)|2026-07-12|gonzo's tea room"
     },
     {
       "reason": "needs_review",
@@ -439,79 +859,9 @@
     {
       "reason": "needs_review",
       "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "Free Daily Tours of the Living Area (Morning)",
-      "fingerprint": "free daily tours of the living area (morning)|2026-05-27|sainsbury centre"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "Free Daily Tours of the Living Area (Afternoon)",
-      "fingerprint": "free daily tours of the living area (afternoon)|2026-05-27|sainsbury centre"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "Joy Like Time",
-      "fingerprint": "joy like time|2026-06-20|sainsbury centre"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "Tree of Life",
-      "fingerprint": "tree of life|2026-06-20|sainsbury centre"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "Big Sunday",
-      "fingerprint": "big sunday|2026-06-07|sainsbury centre"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "Big Sunday",
-      "fingerprint": "big sunday|2026-07-05|sainsbury centre"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "Big Sunday",
-      "fingerprint": "big sunday|2026-08-02|sainsbury centre"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Eventbrite Norwich",
-      "title": "ENTROPIC /04",
-      "fingerprint": "entropic /04|2026-06-06|louis marchesi"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Eventbrite Norwich",
-      "title": "Twisted Skunk Presents Plump DJs & Skunk Friends",
-      "fingerprint": "twisted skunk presents plump djs & skunk friends|2026-06-12|gonzo's tea room"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Eventbrite Norwich",
-      "title": "East Anglian Film Archive: Summer Special",
-      "fingerprint": "east anglian film archive: summer special|2026-06-16|cinema city"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Eventbrite Norwich",
-      "title": "NOVADOSE PART 3",
-      "fingerprint": "novadose part 3|2026-06-26|kerry’s"
+      "source": "Skiddle Norwich",
+      "title": "Angry Boater Live in Norwich",
+      "fingerprint": "angry boater live in norwich|2026-09-26|the garage"
     },
     {
       "reason": "needs_review",
@@ -568,6 +918,34 @@
       "source": "Eventbrite Norwich",
       "title": "Katona Twins - Alhambra Inspirations Norwich",
       "fingerprint": "katona twins - alhambra inspirations norwich|2026-07-12|the assembly house"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Eventbrite Norwich",
+      "title": "ENTROPIC /04",
+      "fingerprint": "entropic /04|2026-06-06|louis marchesi"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Eventbrite Norwich",
+      "title": "Twisted Skunk Presents Plump DJs & Skunk Friends",
+      "fingerprint": "twisted skunk presents plump djs & skunk friends|2026-06-12|gonzo's tea room"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Eventbrite Norwich",
+      "title": "East Anglian Film Archive: Summer Special",
+      "fingerprint": "east anglian film archive: summer special|2026-06-16|cinema city"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Eventbrite Norwich",
+      "title": "NOVADOSE PART 3",
+      "fingerprint": "novadose part 3|2026-06-26|kerry’s"
     }
   ]
 }

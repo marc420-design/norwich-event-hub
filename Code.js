@@ -10,6 +10,9 @@
  * 4. Deploy as Web App (Deploy > New Deployment > Web App)
  * 5. Set execute as: Me, Who has access: Anyone
  * 6. Copy the Web App URL and use it in submit.js
+ *
+ * NOTE: Google Apps Script ContentService does not support addHeader().
+ * CORS is handled automatically by Google for script.google.com domains.
  */
 
 // Configuration
@@ -81,25 +84,10 @@ function ensureSubmissionHeaders(sheet) {
 
 /**
  * Handle OPTIONS request (CORS preflight)
+ * Note: Google Apps Script handles CORS automatically; this is a no-op stub.
  */
 function doOptions(e) {
-  const output = ContentService.createTextOutput('');
-  output.setMimeType(ContentService.MimeType.JSON);
-
-  // Add CORS headers
-  const headers = {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type, Authorization, Cache-Control, Pragma',
-    'Access-Control-Max-Age': '86400'
-  };
-
-  // Set headers
-  Object.keys(headers).forEach(key => {
-    output.addHeader(key, headers[key]);
-  });
-
-  return output;
+  return ContentService.createTextOutput('').setMimeType(ContentService.MimeType.JSON);
 }
 
 /**
@@ -202,35 +190,17 @@ Review and approve this event at: https://norwicheventshub.com/admin
       console.error('Failed to send notification email:', error);
     }
 
-    // Return success response
-    const output = ContentService.createTextOutput(JSON.stringify({
+    return createJsonResponse({
       success: true,
       eventId: eventId,
       message: 'Event submitted successfully! Our team will review it shortly.'
-    }));
-    output.setMimeType(ContentService.MimeType.JSON);
-
-    // Add CORS headers
-    output.addHeader('Access-Control-Allow-Origin', '*');
-    output.addHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-    output.addHeader('Access-Control-Allow-Headers', 'Content-Type');
-
-    return output;
+    });
 
   } catch (error) {
-    // Return error response
-    const output = ContentService.createTextOutput(JSON.stringify({
+    return createJsonResponse({
       success: false,
       message: 'Error submitting event: ' + error.toString()
-    }));
-    output.setMimeType(ContentService.MimeType.JSON);
-
-    // Add CORS headers even for errors
-    output.addHeader('Access-Control-Allow-Origin', '*');
-    output.addHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-    output.addHeader('Access-Control-Allow-Headers', 'Content-Type');
-
-    return output;
+    });
   }
 }
 
@@ -423,16 +393,12 @@ function triggerGitHubScraper(githubToken) {
 }
 
 /**
- * Helper function to create JSON response with CORS headers
+ * Helper function to create JSON response.
+ * NOTE: ContentService.TextOutput does NOT support addHeader().
+ * Google Apps Script automatically sets CORS headers for script.google.com.
  */
 function createJsonResponse(data) {
-  const output = ContentService.createTextOutput(JSON.stringify(data));
-  output.setMimeType(ContentService.MimeType.JSON);
-
-  // Add CORS headers
-  output.addHeader('Access-Control-Allow-Origin', '*');
-  output.addHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-  output.addHeader('Access-Control-Allow-Headers', 'Content-Type');
-
-  return output;
+  return ContentService
+    .createTextOutput(JSON.stringify(data))
+    .setMimeType(ContentService.MimeType.JSON);
 }

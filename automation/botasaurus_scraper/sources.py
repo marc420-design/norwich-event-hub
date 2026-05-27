@@ -38,7 +38,7 @@ SOURCES = [
     },
     {
         "name": "UEA Waterfront",
-        "url": "https://www.uea.su/venues/waterfront",
+        "url": "https://www.ueaticketbookings.co.uk/whats-on/",
         "type": "request",
     },
     {
@@ -90,6 +90,27 @@ SOURCES = [
         "name": "Sainsbury Centre",
         "url": "https://sainsburycentre.ac.uk/whats-on/",
         "type": "request",
+    },
+    # ── Norwich nightlife & club venues ────────────────────────────
+    {
+        "name": "Gonzo's Two Room",
+        "url": "https://www.gonzostworoom.com/events/",
+        "type": "request",
+    },
+    {
+        "name": "Gonzo's Fatsoma",
+        "url": "https://www.fatsoma.com/p/gonzostworoom",
+        "type": "browser",
+    },
+    {
+        "name": "Kudos Norwich",
+        "url": "https://www.fatsoma.com/p/kudos-norwich",
+        "type": "browser",
+    },
+    {
+        "name": "Kudos FIXR",
+        "url": "https://fixr.co/venue/kudos-bar-and-nightclub-norwich-21386",
+        "type": "browser",
     },
     # ── Aggregators (JS-heavy — use browser mode) ─────────────────
     {

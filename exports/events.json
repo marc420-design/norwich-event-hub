@@ -1,4 +1,6 @@
 {
+  "generated_at": "2026-05-27T18:44:45Z",
+  "count": 12,
   "events": [
     {
       "id": "scraper-brew-and-friends-makers-market-2026-05-30-the-halls",
@@ -35,6 +37,24 @@
       "ageRestriction": null,
       "status": "approved",
       "source": "The Halls Norwich"
+    },
+    {
+      "name": "Norwich 20 Group Art Exhibition",
+      "date": "2026-05-30",
+      "time": "1899-12-30T11:00:00.000Z",
+      "location": "Undercroft Gallery",
+      "category": "culture",
+      "description": "Annual exhibition by the Norwich 20 Group of artists at the Undercroft Gallery. Open daily from 11am to 5pm, running from 30 May to 14 June 2026.",
+      "ticketLink": "https://www.norwich20group.co.uk/",
+      "sourceUrl": "",
+      "officialUrl": "",
+      "price": "See website",
+      "image": "",
+      "status": "approved",
+      "source": "manual",
+      "featured": false,
+      "editorsChoice": false,
+      "isFree": false
     },
     {
       "id": "scraper-the-jerseys-2026-06-05-the-halls",
@@ -396,7 +416,5 @@
       "status": "approved",
       "source": "The Halls Norwich"
     }
-  ],
-  "generated_at": "2026-05-27T18:22:42.779330",
-  "count": 11
+  ]
 }

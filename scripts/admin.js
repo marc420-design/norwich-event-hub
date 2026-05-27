@@ -188,7 +188,7 @@ async function approveEvent(eventId, editorsChoice = false) {
     try {
         const response = await fetch(APP_CONFIG.GOOGLE_APPS_SCRIPT_URL, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 'Content-Type': 'text/plain' },
             body: JSON.stringify({
                 action: 'updateStatus',
                 eventId,
@@ -218,7 +218,7 @@ async function rejectEvent(eventId) {
     try {
         const response = await fetch(APP_CONFIG.GOOGLE_APPS_SCRIPT_URL, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 'Content-Type': 'text/plain' },
             body: JSON.stringify({
                 action: 'updateStatus',
                 eventId,

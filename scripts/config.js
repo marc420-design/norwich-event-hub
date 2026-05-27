@@ -48,7 +48,7 @@ const APP_CONFIG = {
     // Generate in browser console: crypto.subtle.digest('SHA-256', new TextEncoder().encode('yourpassword'))
     //   .then(b => Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,'0')).join(''))
     // REQUIRED: Client-side admin access is blocked until this is set
-    ADMIN_PW_HASH: ''
+    ADMIN_PW_HASH: '4bd619d1f71b384be7ca9b535db031b8a9642a4ea727a0fe55f69751125589f8'
 };
 
 // Make config available globally

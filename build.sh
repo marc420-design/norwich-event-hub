@@ -7,8 +7,11 @@ set -e
 rm -rf dist
 mkdir -p dist
 
-# HTML pages
-cp *.html dist/ 2>/dev/null || true
+# HTML pages (exclude test/debug files)
+for f in *.html; do
+  case "$f" in test-*|debug-*|quick-test*|audit_*) continue ;; esac
+  cp "$f" dist/
+done
 
 # Config and meta files
 cp robots.txt dist/ 2>/dev/null || true

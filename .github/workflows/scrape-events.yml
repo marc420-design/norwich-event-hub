@@ -41,6 +41,75 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
 
+      # Push scraped events to Google Sheets (Event Submissions) for admin dashboard review
+      - name: Sync events to Google Sheets
+        if: success()
+        env:
+          APPS_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbxZ3PpsET6WuxSRQzKwqKQDbY9jWCvcvtVKDnfQ4-cBE-G9qNM_d4N_LCN_TR7UcwdC/exec'
+        run: |
+          echo "📤 Syncing scraped events to Google Sheets..."
+          SYNCED=0
+          FAILED=0
+
+          # Read each event from exports/events.json and POST to Apps Script
+          COUNT=$(python -c "
+          import json
+          try:
+              d = json.load(open('exports/events.json'))
+              print(len(d.get('events', [])))
+          except: print(0)
+          " 2>/dev/null || echo "0")
+
+          if [ "$COUNT" -gt "0" ]; then
+            python -c "
+          import json, urllib.request, urllib.error, sys, time
+
+          with open('exports/events.json') as f:
+              data = json.load(f)
+
+          events = data.get('events', [])
+          synced = 0
+          failed = 0
+
+          for event in events:
+              payload = json.dumps({
+                  'name': event.get('name', ''),
+                  'date': event.get('date', ''),
+                  'time': event.get('time', ''),
+                  'location': event.get('location', ''),
+                  'category': event.get('category', ''),
+                  'description': event.get('description', ''),
+                  'ticketLink': event.get('ticketLink', '') or event.get('officialUrl', ''),
+                  'promoterName': 'AI Scraper (' + event.get('source', 'unknown') + ')',
+                  'promoterEmail': 'scraper@norwicheventshub.com',
+                  'promoterPhone': ''
+              }).encode('utf-8')
+
+              req = urllib.request.Request(
+                  '${APPS_SCRIPT_URL}',
+                  data=payload,
+                  headers={'Content-Type': 'application/json'},
+                  method='POST'
+              )
+              try:
+                  resp = urllib.request.urlopen(req, timeout=30)
+                  result = json.loads(resp.read().decode())
+                  if result.get('success'):
+                      synced += 1
+                  else:
+                      failed += 1
+                      print(f'  ⚠ Failed: {event.get(\"name\", \"unknown\")} - {result.get(\"message\", \"\")}', file=sys.stderr)
+              except Exception as e:
+                  failed += 1
+                  print(f'  ❌ Error: {event.get(\"name\", \"unknown\")} - {e}', file=sys.stderr)
+              time.sleep(0.5)  # Rate limit
+
+          print(f'📊 Synced {synced} events to Google Sheets ({failed} failed)')
+          "
+          else
+            echo "⚠ No events to sync"
+          fi
+
       # Commit queue output every run; only update events.json when sufficient events were found.
       - name: Commit scraper outputs
         run: |

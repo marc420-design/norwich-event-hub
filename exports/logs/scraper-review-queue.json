@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-28T08:31:35.276063",
-  "count": 119,
+  "generated_at": "2026-05-29T08:30:02.387136",
+  "count": 124,
   "events": [
     {
       "reason": "needs_review",
@@ -19,191 +19,9 @@
     {
       "reason": "needs_review",
       "status": "pending_review",
-      "source": "UEA Waterfront",
-      "title": "Toots & The Maytals Feat Leba Hibbert ‘Reggae Got Soul’ 50th Anniversary Tour 1976 - 2026",
-      "fingerprint": "toots & the maytals feat leba hibbert ‘reggae got soul’ 50th anniversary tour 1976 - 2026|2026-05-28|the adrian flux waterfront"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "UEA Waterfront",
-      "title": "Canaan Cox ‘We Out Here’ Tour",
-      "fingerprint": "canaan cox ‘we out here’ tour|2026-05-28|the adrian flux waterfront studio"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "UEA Waterfront",
-      "title": "CQ Wrestling",
-      "fingerprint": "cq wrestling|2026-05-29|the adrian flux waterfront studio"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "UEA Waterfront",
-      "title": "Chez Kane",
-      "fingerprint": "chez kane|2026-05-29|the brickmakers"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "UEA Waterfront",
-      "title": "Los Campesinos!",
-      "fingerprint": "los campesinos!|2026-05-29|epic studios"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "UEA Waterfront",
-      "title": "Meltdown",
-      "fingerprint": "meltdown|2026-05-30|the adrian flux waterfront"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "UEA Waterfront",
-      "title": "From The Jam",
-      "fingerprint": "from the jam|2026-05-30|the adrian flux waterfront"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "UEA Waterfront",
-      "title": "Nontaines S.C. The World’s First Fontaines D.C. Tribute",
-      "fingerprint": "nontaines s.c. the world’s first fontaines d.c. tribute|2026-05-30|the adrian flux waterfront studio"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "UEA Waterfront",
-      "title": "John Robb",
-      "fingerprint": "john robb|2026-06-02|norwich arts centre"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "UEA Waterfront",
-      "title": "Levellers",
-      "fingerprint": "levellers|2026-06-04|the nick rayns lcr, uea"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "UEA Waterfront",
-      "title": "Jen Brister: Reactive",
-      "fingerprint": "jen brister: reactive|2026-06-04|epic studios"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "UEA Waterfront",
-      "title": "Police Dog Hogan",
-      "fingerprint": "police dog hogan|2026-06-04|norwich arts centre"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "UEA Waterfront",
-      "title": "The Virginmarys",
-      "fingerprint": "the virginmarys|2026-06-05|the adrian flux waterfront studio"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "UEA Waterfront",
-      "title": "The House of Love",
-      "fingerprint": "the house of love|2026-06-05|norwich arts centre"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Kids’ Paint Party with Creation Station",
-      "fingerprint": "kids’ paint party with creation station|2026-05-28|norwich"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Teen urban arts takeover at Castle Quarter this May half term",
-      "fingerprint": "teen urban arts takeover at castle quarter this may half term|2026-05-28|castle quarter"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Gin & Golf",
-      "fingerprint": "gin & golf|2026-05-28|city greens golf"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Edgeland",
-      "fingerprint": "edgeland|2026-05-28|norwich"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "WiFi Wars",
-      "fingerprint": "wifi wars|2026-05-28|norwich"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Blind Yeo",
-      "fingerprint": "blind yeo|2026-05-28|norwich"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Watercolour Workshop with Gill Starkie",
-      "fingerprint": "watercolour workshop with gill starkie|2026-05-29|norwich"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Fashion Finds: Summer Style",
-      "fingerprint": "fashion finds: summer style|2026-05-29|norwich"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Medieval Norwich walking tour – from the Normans to the Tudors",
-      "fingerprint": "medieval norwich walking tour – from the normans to the tudors|2026-05-29|norwich"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Tom Stade: Naughty By Nature",
-      "fingerprint": "tom stade: naughty by nature|2026-05-29|norwich"
-    },
-    {
-      "reason": "duplicate",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Los Campesinos!",
-      "fingerprint": "los campesinos!|2026-05-29|epic studios"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "80’s Night",
-      "fingerprint": "80’s night|2026-05-30|carrow road"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
       "source": "The Forum Norwich",
-      "title": "Activities for D/deaf families at Norwich Games Festival",
-      "fingerprint": "activities for d/deaf families at norwich games festival|2026-05-28|the sunflower snug"
+      "title": "Norwich Games Festival",
+      "fingerprint": "norwich games festival|2026-05-29|the forum"
     },
     {
       "reason": "needs_review",
@@ -265,6 +83,13 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "The Forum Norwich",
+      "title": "Film screening - Romani Gypsy and Traveller Voices in Music Archives A Basket Full of Eggs (Lisa Smith, 2025)",
+      "fingerprint": "film screening - romani gypsy and traveller voices in music archives a basket full of eggs (lisa smith, 2025)|2026-06-09|the forum"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Forum Norwich",
       "title": "TOASTies: Kids' Poetry Show featuring Simon Mole",
       "fingerprint": "toasties: kids' poetry show featuring simon mole|2026-06-14|the auditorium"
     },
@@ -281,6 +106,188 @@
       "source": "The Forum Norwich",
       "title": "Heritage Open Days",
       "fingerprint": "heritage open days|2026-09-11|across norfolk"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Watercolour Workshop with Gill Starkie",
+      "fingerprint": "watercolour workshop with gill starkie|2026-05-29|venue tba"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Fashion Finds: Summer Style",
+      "fingerprint": "fashion finds: summer style|2026-05-29|venue tba"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Medieval Norwich walking tour – from the Normans to the Tudors",
+      "fingerprint": "medieval norwich walking tour – from the normans to the tudors|2026-05-29|venue tba"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Tom Stade: Naughty By Nature",
+      "fingerprint": "tom stade: naughty by nature|2026-05-29|venue tba"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Los Campesinos!",
+      "fingerprint": "los campesinos!|2026-05-29|epic studios"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "80’s Night Back to the 80’s",
+      "fingerprint": "80’s night back to the 80’s|2026-05-30|carrow road"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Crystal bowl sound experience in nature",
+      "fingerprint": "crystal bowl sound experience in nature|2026-05-30|nwt sweetbriar marshes"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Norwich Her Story Walk",
+      "fingerprint": "norwich her story walk|2026-05-30|venue tba"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Fritton Lake Open-Air Summer Screening | Notting Hill",
+      "fingerprint": "fritton lake open-air summer screening | notting hill|2026-05-30|fritton lake"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Summer Makeover & Brow Experience with Benefit",
+      "fingerprint": "summer makeover & brow experience with benefit|2026-05-30|venue tba"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Why I Stuck a Flare Up My Ar*e for England",
+      "fingerprint": "why i stuck a flare up my ar*e for england|2026-05-30|venue tba"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "UEA Waterfront",
+      "title": "CQ Wrestling",
+      "fingerprint": "cq wrestling|2026-05-29|the adrian flux waterfront studio"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "UEA Waterfront",
+      "title": "Chez Kane",
+      "fingerprint": "chez kane|2026-05-29|the brickmakers"
+    },
+    {
+      "reason": "duplicate",
+      "status": "pending_review",
+      "source": "UEA Waterfront",
+      "title": "Los Campesinos!",
+      "fingerprint": "los campesinos!|2026-05-29|epic studios"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "UEA Waterfront",
+      "title": "Meltdown",
+      "fingerprint": "meltdown|2026-05-30|the adrian flux waterfront"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "UEA Waterfront",
+      "title": "From The Jam",
+      "fingerprint": "from the jam|2026-05-30|the adrian flux waterfront"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "UEA Waterfront",
+      "title": "Nontaines S.C.",
+      "fingerprint": "nontaines s.c.|2026-05-30|the adrian flux waterfront studio"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "UEA Waterfront",
+      "title": "John Robb",
+      "fingerprint": "john robb|2026-06-02|norwich arts centre"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "UEA Waterfront",
+      "title": "Levellers",
+      "fingerprint": "levellers|2026-06-04|the nick rayns lcr, uea"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "UEA Waterfront",
+      "title": "Jen Brister: Reactive",
+      "fingerprint": "jen brister: reactive|2026-06-04|epic studios"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "UEA Waterfront",
+      "title": "Police Dog Hogan",
+      "fingerprint": "police dog hogan|2026-06-04|norwich arts centre"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "UEA Waterfront",
+      "title": "The Virginmarys",
+      "fingerprint": "the virginmarys|2026-06-05|the adrian flux waterfront studio"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "UEA Waterfront",
+      "title": "The House of Love",
+      "fingerprint": "the house of love|2026-06-05|norwich arts centre"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "UEA Waterfront",
+      "title": "Bag of Crisps Bag of Cans + SNAKEMILK + Q&A with Simon Williams (Fierce Panda)",
+      "fingerprint": "bag of crisps bag of cans + snakemilk + q&a with simon williams (fierce panda)|2026-06-05|voodoo daddys showroom"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "UEA Waterfront",
+      "title": "The Big Free Concert",
+      "fingerprint": "the big free concert|2026-06-06|the square, uea"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "UEA Waterfront",
+      "title": "When Waterfront Was Young",
+      "fingerprint": "when waterfront was young|2026-06-06|the adrian flux waterfront"
     },
     {
       "reason": "duplicate",
@@ -339,11 +346,11 @@
       "fingerprint": "norfolk garden show|2026-07-10|norfolk showground"
     },
     {
-      "reason": "needs_review",
+      "reason": "duplicate",
       "status": "pending_review",
       "source": "Norfolk Showground",
-      "title": "Family The Labyrinth Challenge Tour",
-      "fingerprint": "family the labyrinth challenge tour|2026-07-11|norfolk showground"
+      "title": "The Labyrinth Challenge Tour",
+      "fingerprint": "the labyrinth challenge tour|2026-07-11|norfolk showground"
     },
     {
       "reason": "duplicate",
@@ -545,20 +552,6 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Sainsbury Centre",
-      "title": "Free Daily Tour of the Living Area",
-      "fingerprint": "free daily tour of the living area|2026-05-28|sainsbury centre"
-    },
-    {
-      "reason": "duplicate",
-      "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "Free Daily Tour of the Living Area",
-      "fingerprint": "free daily tour of the living area|2026-05-28|sainsbury centre"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Sainsbury Centre",
       "title": "Joy Like Time",
       "fingerprint": "joy like time|2026-06-20|sainsbury centre"
     },
@@ -575,6 +568,48 @@
       "source": "Sainsbury Centre",
       "title": "Big Sunday",
       "fingerprint": "big sunday|2026-06-07|sainsbury centre"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Sainsbury Centre",
+      "title": "Big Sunday",
+      "fingerprint": "big sunday|2026-07-05|sainsbury centre"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Sainsbury Centre",
+      "title": "Big Sunday",
+      "fingerprint": "big sunday|2026-08-02|sainsbury centre"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Sainsbury Centre",
+      "title": "Big Sunday",
+      "fingerprint": "big sunday|2026-09-06|sainsbury centre"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Sainsbury Centre",
+      "title": "Big Sunday",
+      "fingerprint": "big sunday|2026-10-04|sainsbury centre"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Sainsbury Centre",
+      "title": "Big Sunday",
+      "fingerprint": "big sunday|2026-11-01|sainsbury centre"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Sainsbury Centre",
+      "title": "Big Sunday",
+      "fingerprint": "big sunday|2026-12-06|sainsbury centre"
     },
     {
       "reason": "duplicate",
@@ -664,15 +699,8 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
-      "title": "Hoedown Showdown - Norwich, Be At One",
-      "fingerprint": "hoedown showdown - norwich, be at one|2026-09-12|be at one"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Skiddle Norwich",
-      "title": "Raver Tots Mini Fest Norwich",
-      "fingerprint": "raver tots mini fest norwich|2026-06-07|junkyard market"
+      "title": "Jungle Mania Norwich",
+      "fingerprint": "jungle mania norwich|2026-07-31|the adrian flux waterfront"
     },
     {
       "reason": "needs_review",
@@ -685,20 +713,6 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
-      "title": "Jungle Mania Norwich",
-      "fingerprint": "jungle mania norwich|2026-07-31|the adrian flux waterfront"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Skiddle Norwich",
-      "title": "90s Baby Daytime Clubbing - With The Over 30s Club",
-      "fingerprint": "90s baby daytime clubbing - with the over 30s club|2026-05-30|above kerry's"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Skiddle Norwich",
       "title": "RAW MATERIAL Presents - THE SHOCKWAVE - P MONEY + More",
       "fingerprint": "raw material presents - the shockwave - p money + more|2026-07-18|kudos bar and nightclub"
     },
@@ -706,8 +720,22 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
+      "title": "90s Baby Daytime Clubbing - With The Over 30s Club",
+      "fingerprint": "90s baby daytime clubbing - with the over 30s club|2026-05-30|above kerry's norwich"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
+      "title": "Raver Tots Mini Fest Norwich",
+      "fingerprint": "raver tots mini fest norwich|2026-06-07|junkyard market"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
       "title": "Poppy Moores iPod Norwich Pride",
-      "fingerprint": "poppy moores ipod norwich pride|2026-07-25|deadwax"
+      "fingerprint": "poppy moores ipod norwich pride|2026-07-25|deadwax norwich"
     },
     {
       "reason": "needs_review",
@@ -715,6 +743,13 @@
       "source": "Skiddle Norwich",
       "title": "The Greatest MUSICALS Daytime Disco - Norwich",
       "fingerprint": "the greatest musicals daytime disco - norwich|2026-06-06|be at one"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
+      "title": "Hoedown Showdown - Norwich, Be At One",
+      "fingerprint": "hoedown showdown - norwich, be at one|2026-09-12|be at one"
     },
     {
       "reason": "needs_review",
@@ -729,6 +764,13 @@
       "source": "Skiddle Norwich",
       "title": "THE WOMBATS Live in NORWICH",
       "fingerprint": "the wombats live in norwich|2026-06-28|earlham park"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
+      "title": "Rum & Reggae Fest | The Hangar, Norwich",
+      "fingerprint": "rum & reggae fest | the hangar, norwich|2026-07-25|the hangar"
     },
     {
       "reason": "duplicate",
@@ -769,15 +811,8 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
-      "title": "The Music of The Lord of The Rings. Tribute to Howard Shore",
-      "fingerprint": "the music of the lord of the rings. tribute to howard shore|2026-06-20|st peter mancroft church"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Skiddle Norwich",
-      "title": "Earlham Park Tribute Festival",
-      "fingerprint": "earlham park tribute festival|2026-06-13|earlham park"
+      "title": "R&B Lovers - Outdoor Festival Junkyard Norwich",
+      "fingerprint": "r&b lovers - outdoor festival junkyard norwich|2026-05-30|junkyard"
     },
     {
       "reason": "needs_review",
@@ -790,8 +825,8 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
-      "title": "R&B Lovers - Outdoor Festival Junkyard Norwich",
-      "fingerprint": "r&b lovers - outdoor festival junkyard norwich|2026-05-30|junkyard"
+      "title": "Earlham Park Tribute Festival",
+      "fingerprint": "earlham park tribute festival|2026-06-13|earlham park"
     },
     {
       "reason": "needs_review",
@@ -832,8 +867,8 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
-      "title": "Angry Boater Live in Norwich",
-      "fingerprint": "angry boater live in norwich|2026-09-26|the garage"
+      "title": "Fawlty Towers Weekend",
+      "fingerprint": "fawlty towers weekend|2026-07-25|holiday inn norwich north"
     }
   ]
 }

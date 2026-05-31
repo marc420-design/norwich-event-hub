@@ -1,61 +1,6 @@
 {
   "events": [
     {
-      "id": "scraper-brew-and-friends-makers-market-2026-05-30-the-halls",
-      "slug": "brew-and-friends-makers-market-2026-05-30",
-      "fingerprint": "brew and friends makers market|2026-05-30|the halls",
-      "name": "Brew and Friends Makers Market",
-      "eventname": "Brew and Friends Makers Market",
-      "date": "2026-05-30",
-      "time": "00:00",
-      "endDate": null,
-      "endTime": null,
-      "venue": "The Halls",
-      "location": "The Halls",
-      "address": null,
-      "category": "markets",
-      "description": "A market featuring local makers and their creations, taking place on 30 and 31 May 2026.",
-      "ticketLink": "https://www.thehallsnorwich.co.uk/events",
-      "officialUrl": "",
-      "sourceUrl": "https://www.thehallsnorwich.co.uk/events",
-      "primaryUrl": "https://www.thehallsnorwich.co.uk/events",
-      "price": "See website",
-      "image": "",
-      "hasFlyer": false,
-      "imageStatus": "fallback",
-      "linkStatus": "verified",
-      "tags": [
-        "market",
-        "crafts",
-        "local"
-      ],
-      "featured": false,
-      "editorsChoice": false,
-      "isFree": false,
-      "ageRestriction": null,
-      "status": "approved",
-      "source": "The Halls Norwich"
-    },
-    {
-      "name": "Norwich 20 Group Art Exhibition",
-      "date": "2026-05-30",
-      "time": "1899-12-30T11:00:00.000Z",
-      "location": "Undercroft Gallery",
-      "category": "culture",
-      "description": "Annual exhibition by the Norwich 20 Group of artists at the Undercroft Gallery. Open daily from 11am to 5pm, running from 30 May to 14 June 2026.",
-      "ticketLink": "https://www.norwich20group.co.uk/",
-      "sourceUrl": "",
-      "officialUrl": "",
-      "price": "See website",
-      "image": "",
-      "status": "approved",
-      "source": "manual",
-      "featured": false,
-      "editorsChoice": false,
-      "isFree": false,
-      "fingerprint": "norwich 20 group art exhibition|2026-05-30|undercroft gallery"
-    },
-    {
       "id": "scraper-the-jerseys-2026-06-05-the-halls",
       "slug": "the-jerseys-2026-06-05",
       "fingerprint": "the jerseys|2026-06-05|the halls",
@@ -435,6 +380,6 @@
       "source": "The Halls Norwich"
     }
   ],
-  "generated_at": "2026-05-30T08:03:24.185951",
-  "count": 13
+  "generated_at": "2026-05-31T09:55:25.343530",
+  "count": 11
 }

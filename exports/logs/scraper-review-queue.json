@@ -1,27 +1,20 @@
 {
-  "generated_at": "2026-05-30T08:03:24.186489",
-  "count": 118,
+  "generated_at": "2026-05-31T09:55:25.344009",
+  "count": 119,
   "events": [
     {
       "reason": "needs_review",
       "status": "pending_review",
-      "source": "UEA Waterfront",
-      "title": "Meltdown",
-      "fingerprint": "meltdown|2026-05-30|the adrian flux waterfront"
+      "source": "Norwich Cathedral",
+      "title": "Specialist Tour: The Cathedral Close",
+      "fingerprint": "specialist tour: the cathedral close|2026-06-03|norwich cathedral"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
-      "source": "UEA Waterfront",
-      "title": "From The Jam",
-      "fingerprint": "from the jam|2026-05-30|the adrian flux waterfront"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "UEA Waterfront",
-      "title": "Nontaines S.C. The World’s First Fontaines D.C. Tribute",
-      "fingerprint": "nontaines s.c. the world’s first fontaines d.c. tribute|2026-05-30|the adrian flux waterfront studio"
+      "source": "Norwich Cathedral",
+      "title": "Specialist Tour: Discovering the Green Man",
+      "fingerprint": "specialist tour: discovering the green man|2026-06-03|norwich cathedral"
     },
     {
       "reason": "needs_review",
@@ -76,8 +69,15 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "UEA Waterfront",
-      "title": "The Big Free Concert",
-      "fingerprint": "the big free concert|2026-06-06|the square, uea"
+      "title": "Meltdown",
+      "fingerprint": "meltdown|2026-06-06|the adrian flux waterfront"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "UEA Waterfront",
+      "title": "The Big Free Concert NEW DATE ANNOUNCED",
+      "fingerprint": "the big free concert new date announced|2026-06-06|the square, uea"
     },
     {
       "reason": "needs_review",
@@ -103,16 +103,37 @@
     {
       "reason": "needs_review",
       "status": "pending_review",
-      "source": "Norwich Cathedral",
-      "title": "Bereaved by Suicide Service",
-      "fingerprint": "bereaved by suicide service|2026-05-30|norwich cathedral"
+      "source": "UEA Waterfront",
+      "title": "Blu & Exile",
+      "fingerprint": "blu & exile|2026-06-11|voodoo daddys showroom"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
-      "source": "Norwich Cathedral",
-      "title": "NCCL: Bishop Shute Barrington - bridging the Long Eighteenth Century",
-      "fingerprint": "nccl: bishop shute barrington - bridging the long eighteenth century|2026-05-30|norwich cathedral"
+      "source": "UEA Waterfront",
+      "title": "Vieira And The Silvers",
+      "fingerprint": "vieira and the silvers|2026-06-12|the adrian flux waterfront studio"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "UEA Waterfront",
+      "title": "Day Fever Outdoors – By The River",
+      "fingerprint": "day fever outdoors – by the river|2026-06-13|the adrian flux waterfront"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "UEA Waterfront",
+      "title": "Alyssa Bonagura",
+      "fingerprint": "alyssa bonagura|2026-06-13|the adrian flux waterfront studio"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "UEA Waterfront",
+      "title": "Special Kinda Madness",
+      "fingerprint": "special kinda madness|2026-06-13|the adrian flux waterfront"
     },
     {
       "reason": "needs_review",
@@ -129,11 +150,11 @@
       "fingerprint": "norfolk deaf festival|2026-06-26|the atrium, the forum"
     },
     {
-      "reason": "duplicate",
+      "reason": "needs_review",
       "status": "pending_review",
       "source": "The Forum Norwich",
       "title": "Heritage Open Days",
-      "fingerprint": "heritage open days|2026-09-11|across norfolk"
+      "fingerprint": "heritage open days|2026-09-11|various locations in norfolk"
     },
     {
       "reason": "needs_review",
@@ -223,64 +244,15 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Visit Norwich",
-      "title": "80’s Night Back to the 80’s",
-      "fingerprint": "80’s night back to the 80’s|2026-05-30|carrow road"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Crystal bowl sound experience in nature",
-      "fingerprint": "crystal bowl sound experience in nature|2026-05-30|nwt sweetbriar marshes"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Norwich Her Story Walk",
-      "fingerprint": "norwich her story walk|2026-05-30|norwich"
-    },
-    {
-      "reason": "duplicate",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Norwich Her Story Walk",
-      "fingerprint": "norwich her story walk|2026-05-30|norwich"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Fritton Lake Open-Air Summer Screening | Notting Hill",
-      "fingerprint": "fritton lake open-air summer screening | notting hill|2026-05-30|fritton lake"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Summer Makeover & Brow Experience with Benefit",
-      "fingerprint": "summer makeover & brow experience with benefit|2026-05-30|venue tba"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Why I Stuck a Flare Up My Ar*e for England",
-      "fingerprint": "why i stuck a flare up my ar*e for england|2026-05-30|venue tba"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
       "title": "Norwich 100/60/30 Bike Ride",
-      "fingerprint": "norwich 100/60/30 bike ride|2026-05-31|venue tba"
+      "fingerprint": "norwich 100/60/30 bike ride|2026-05-31|norfolk"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Visit Norwich",
-      "title": "Pond Dipping (Family event)",
-      "fingerprint": "pond dipping (family event)|2026-05-31|nwt thorpe marshes"
+      "title": "Pond Dipping (Family event) NWT Thorpe Marshes – Wild Weekend",
+      "fingerprint": "pond dipping (family event) nwt thorpe marshes – wild weekend|2026-05-31|nwt thorpe marshes"
     },
     {
       "reason": "needs_review",
@@ -304,46 +276,88 @@
       "fingerprint": "gravity – starring kerry ellis, louise dearman & rachel tucker|2026-05-31|venue tba"
     },
     {
-      "reason": "duplicate",
+      "reason": "needs_review",
       "status": "pending_review",
-      "source": "The Halls Norwich",
-      "title": "Brew and Friends Makers Market",
-      "fingerprint": "brew and friends makers market|2026-05-30|the halls"
+      "source": "Visit Norwich",
+      "title": "Summer Courtyard Events",
+      "fingerprint": "summer courtyard events|2026-06-01|venue tba"
     },
     {
-      "reason": "duplicate",
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Rumours of Fleetwood Mac",
+      "fingerprint": "rumours of fleetwood mac|2026-06-01|venue tba"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "The Bug Club",
+      "fingerprint": "the bug club|2026-06-01|venue tba"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Ukulele Orchestra of Great Britain",
+      "fingerprint": "ukulele orchestra of great britain|2026-06-02|venue tba"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "John Robb",
+      "fingerprint": "john robb|2026-06-02|venue tba"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Rooted in the Landscape Exploring The Power of Creativity Through Adversity",
+      "fingerprint": "rooted in the landscape exploring the power of creativity through adversity|2026-06-03|venue tba"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Norwich Weird & Wonderful Story Walk",
+      "fingerprint": "norwich weird & wonderful story walk|2026-06-03|norwich"
+    },
+    {
+      "reason": "needs_review",
       "status": "pending_review",
       "source": "The Halls Norwich",
       "title": "The Jerseys",
-      "fingerprint": "the jerseys|2026-06-05|the halls"
+      "fingerprint": "the jerseys|2026-06-05|the halls norwich"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "The Halls Norwich",
       "title": "Big Fish Little Fish 2-4 Hour Party People",
-      "fingerprint": "big fish little fish 2-4 hour party people|2026-07-10|the halls"
+      "fingerprint": "big fish little fish 2-4 hour party people|2026-07-10|the halls norwich"
     },
     {
-      "reason": "duplicate",
+      "reason": "needs_review",
       "status": "pending_review",
       "source": "The Halls Norwich",
       "title": "Lie Down and Listen",
-      "fingerprint": "lie down and listen|2026-07-25|the halls"
+      "fingerprint": "lie down and listen|2026-07-25|the halls norwich"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "The Halls Norwich",
       "title": "The Ultimate Bubble Show",
-      "fingerprint": "the ultimate bubble show|2026-10-10|the halls"
+      "fingerprint": "the ultimate bubble show|2026-10-10|the halls norwich"
     },
     {
-      "reason": "duplicate",
+      "reason": "needs_review",
       "status": "pending_review",
       "source": "The Halls Norwich",
       "title": "Three Acres and a Cow",
-      "fingerprint": "three acres and a cow|2026-10-21|the halls"
+      "fingerprint": "three acres and a cow|2026-10-21|the halls norwich"
     },
     {
       "reason": "needs_review",
@@ -378,7 +392,7 @@
       "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "Ink & Engines Fest",
-      "fingerprint": "ink & engines fest|2026-08-15|norfolk events centre"
+      "fingerprint": "ink & engines fest|2026-08-15|events centre"
     },
     {
       "reason": "needs_review",
@@ -386,13 +400,6 @@
       "source": "Norfolk Showground",
       "title": "Action Arena",
       "fingerprint": "action arena|2026-08-29|outdoor spaces"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Gonzo's Two Room",
-      "title": "Rinse FM w Arthi + Her Tempo",
-      "fingerprint": "rinse fm w arthi + her tempo|2026-05-30|gonzo's tea room"
     },
     {
       "reason": "needs_review",
@@ -556,18 +563,11 @@
       "fingerprint": "rooftop sunday sessions w somewhere soul|2026-09-06|gonzo's tea room"
     },
     {
-      "reason": "duplicate",
+      "reason": "needs_review",
       "status": "pending_review",
       "source": "Gonzo's Fatsoma",
-      "title": "Rinse FM w Arthi + Her Tempo",
-      "fingerprint": "rinse fm w arthi + her tempo|2026-05-30|gonzo's tea room"
-    },
-    {
-      "reason": "duplicate",
-      "status": "pending_review",
-      "source": "Gonzo's Fatsoma",
-      "title": "Sounds of House",
-      "fingerprint": "sounds of house|2026-06-05|gonzo's tea room"
+      "title": "June Sounds of House",
+      "fingerprint": "june sounds of house|2026-06-05|gonzo's tea room"
     },
     {
       "reason": "duplicate",
@@ -642,6 +642,13 @@
     {
       "reason": "needs_review",
       "status": "pending_review",
+      "source": "Gonzo's Fatsoma",
+      "title": "T>I: The Residency - DJ Marky",
+      "fingerprint": "t>i: the residency - dj marky|2026-07-24|gonzo's tea room"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
       "source": "Sainsbury Centre",
       "title": "Joy Like Time",
       "fingerprint": "joy like time|2026-06-20|sainsbury centre"
@@ -664,22 +671,8 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
-      "title": "90s Baby Daytime Clubbing - With The Over 30s Club",
-      "fingerprint": "90s baby daytime clubbing - with the over 30s club|2026-05-30|above kerry's"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Skiddle Norwich",
       "title": "Jungle Mania Norwich",
       "fingerprint": "jungle mania norwich|2026-07-31|the adrian flux waterfront"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Skiddle Norwich",
-      "title": "An Evening With Chicane - Norwich",
-      "fingerprint": "an evening with chicane - norwich|2026-09-26|epic studios"
     },
     {
       "reason": "needs_review",
@@ -692,8 +685,15 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
+      "title": "An Evening With Chicane - Norwich",
+      "fingerprint": "an evening with chicane - norwich|2026-09-26|epic studios"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
       "title": "Poppy Moores iPod Norwich Pride",
-      "fingerprint": "poppy moores ipod norwich pride|2026-07-25|deadwax"
+      "fingerprint": "poppy moores ipod norwich pride|2026-07-25|deadwax norwich"
     },
     {
       "reason": "needs_review",
@@ -708,6 +708,13 @@
       "source": "Skiddle Norwich",
       "title": "The Greatest MUSICALS Daytime Disco - Norwich",
       "fingerprint": "the greatest musicals daytime disco - norwich|2026-06-06|be at one"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
+      "title": "Hoedown Showdown - Norwich, Be At One",
+      "fingerprint": "hoedown showdown - norwich, be at one|2026-09-12|be at one"
     },
     {
       "reason": "needs_review",
@@ -731,13 +738,6 @@
       "fingerprint": "rum & reggae fest | the hangar, norwich|2026-07-25|the hangar"
     },
     {
-      "reason": "duplicate",
-      "status": "pending_review",
-      "source": "Skiddle Norwich",
-      "title": "Emilio Santoro as Elvis",
-      "fingerprint": "emilio santoro as elvis|2026-09-26|the halls"
-    },
-    {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
@@ -745,11 +745,11 @@
       "fingerprint": "the ultimate eagles|2026-10-16|the halls"
     },
     {
-      "reason": "needs_review",
+      "reason": "duplicate",
       "status": "pending_review",
       "source": "Skiddle Norwich",
-      "title": "Special Kinda Madness: Norwich",
-      "fingerprint": "special kinda madness: norwich|2026-06-13|the adrian flux waterfront"
+      "title": "Emilio Santoro as Elvis",
+      "fingerprint": "emilio santoro as elvis|2026-09-26|the halls"
     },
     {
       "reason": "needs_review",
@@ -769,8 +769,8 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
-      "title": "R&B Lovers - Outdoor Festival Junkyard Norwich",
-      "fingerprint": "r&b lovers - outdoor festival junkyard norwich|2026-05-30|junkyard"
+      "title": "Special Kinda Madness: Norwich",
+      "fingerprint": "special kinda madness: norwich|2026-06-13|the adrian flux waterfront"
     },
     {
       "reason": "needs_review",
@@ -790,15 +790,15 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
-      "title": "Country Club - Outdoor Country Music Festival - Norwich",
-      "fingerprint": "country club - outdoor country music festival - norwich|2026-07-04|junkyard"
+      "title": "Summer 90s Outdoor Festival - Junkyard Norwich",
+      "fingerprint": "summer 90s outdoor festival - junkyard norwich|2026-08-15|junkyard market"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
-      "title": "Summer 90s Outdoor Festival - Junkyard Norwich",
-      "fingerprint": "summer 90s outdoor festival - junkyard norwich|2026-08-15|junkyard market"
+      "title": "Country Club - Outdoor Country Music Festival - Norwich",
+      "fingerprint": "country club - outdoor country music festival - norwich|2026-07-04|junkyard market"
     },
     {
       "reason": "needs_review",
@@ -820,6 +820,13 @@
       "source": "Skiddle Norwich",
       "title": "Rock N Roll Circus Norwich",
       "fingerprint": "rock n roll circus norwich|2026-08-21|earlham park"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
+      "title": "Fawlty Towers Weekend",
+      "fingerprint": "fawlty towers weekend|2026-07-25|holiday inn norwich north by ihg"
     },
     {
       "reason": "needs_review",

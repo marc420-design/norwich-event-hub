@@ -1,14 +1,7 @@
 {
-  "generated_at": "2026-06-02T11:30:25.374349",
-  "count": 121,
+  "generated_at": "2026-06-03T12:06:49.419006",
+  "count": 120,
   "events": [
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "UEA Waterfront",
-      "title": "John Robb",
-      "fingerprint": "john robb|2026-06-02|norwich arts centre"
-    },
     {
       "reason": "needs_review",
       "status": "pending_review",
@@ -62,13 +55,6 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "UEA Waterfront",
-      "title": "The Big Free Concert NEW DATE ANNOUNCED",
-      "fingerprint": "the big free concert new date announced|2026-06-06|the square, uea"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "UEA Waterfront",
       "title": "When Waterfront Was Young",
       "fingerprint": "when waterfront was young|2026-06-06|the adrian flux waterfront"
     },
@@ -104,13 +90,6 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "UEA Waterfront",
-      "title": "The Fooz",
-      "fingerprint": "the fooz|2026-06-12|the brickmakers"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "UEA Waterfront",
       "title": "Day Fever Outdoors – By The River",
       "fingerprint": "day fever outdoors – by the river|2026-06-13|the adrian flux waterfront"
     },
@@ -134,6 +113,13 @@
       "source": "UEA Waterfront",
       "title": "Rebel Dread Rockers ft Don Letts and Andy Smith",
       "fingerprint": "rebel dread rockers ft don letts and andy smith|2026-06-13|norwich arts centre"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "UEA Waterfront",
+      "title": "thrown",
+      "fingerprint": "thrown|2026-06-16|the adrian flux waterfront"
     },
     {
       "reason": "needs_review",
@@ -164,25 +150,11 @@
       "fingerprint": "norfolk deaf festival|2026-06-26|the atrium"
     },
     {
-      "reason": "needs_review",
+      "reason": "duplicate",
       "status": "pending_review",
       "source": "The Forum Norwich",
       "title": "Heritage Open Days",
-      "fingerprint": "heritage open days|2026-09-11|various locations in norfolk"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "Afternoon Music: Xenia Horne - Harp",
-      "fingerprint": "afternoon music: xenia horne - harp|2026-06-02|the gallery"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "Colour Me Calm in The Gallery",
-      "fingerprint": "colour me calm in the gallery|2026-06-02|the gallery"
+      "fingerprint": "heritage open days|2026-09-11|across norfolk"
     },
     {
       "reason": "needs_review",
@@ -224,14 +196,14 @@
       "status": "pending_review",
       "source": "The Forum Norwich",
       "title": "Board Games for Families in The Gallery",
-      "fingerprint": "board games for families in the gallery|2026-06-07|the gallery"
+      "fingerprint": "board games for families in the gallery|2026-06-07|the gallery, the forum"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "The Forum Norwich",
       "title": "Board Games for Adults in The Gallery",
-      "fingerprint": "board games for adults in the gallery|2026-06-07|the gallery"
+      "fingerprint": "board games for adults in the gallery|2026-06-07|the gallery, the forum"
     },
     {
       "reason": "needs_review",
@@ -243,44 +215,37 @@
     {
       "reason": "needs_review",
       "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Norwich Wine Week 2026",
-      "fingerprint": "norwich wine week 2026|2026-06-19|norwich"
+      "source": "The Forum Norwich",
+      "title": "Bounce and Rhyme in The Gallery",
+      "fingerprint": "bounce and rhyme in the gallery|2026-06-08|the gallery, the forum"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Forum Norwich",
+      "title": "English Exchange in The Gallery",
+      "fingerprint": "english exchange in the gallery|2026-06-08|the gallery, the forum"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Visit Norwich",
-      "title": "Jazz Afternoon Tea",
-      "fingerprint": "jazz afternoon tea|2026-06-07|norwich"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Ukulele Orchestra of Great Britain",
-      "fingerprint": "ukulele orchestra of great britain|2026-06-02|norwich"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "John Robb",
-      "fingerprint": "john robb|2026-06-02|norwich"
+      "title": "Norwich Wine Week",
+      "fingerprint": "norwich wine week|2026-06-19|venue tba"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Visit Norwich",
       "title": "Rooted in the Landscape",
-      "fingerprint": "rooted in the landscape|2026-06-03|norwich"
+      "fingerprint": "rooted in the landscape|2026-06-03|venue tba"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Visit Norwich",
       "title": "Norwich Weird & Wonderful Story Walk",
-      "fingerprint": "norwich weird & wonderful story walk|2026-06-03|norwich"
+      "fingerprint": "norwich weird & wonderful story walk|2026-06-03|venue tba"
     },
     {
       "reason": "needs_review",
@@ -294,14 +259,14 @@
       "status": "pending_review",
       "source": "Visit Norwich",
       "title": "Aynsley Lister",
-      "fingerprint": "aynsley lister|2026-06-03|norwich"
+      "fingerprint": "aynsley lister|2026-06-03|venue tba"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Visit Norwich",
       "title": "The Class of ’55",
-      "fingerprint": "the class of ’55|2026-06-04|norwich"
+      "fingerprint": "the class of ’55|2026-06-04|venue tba"
     },
     {
       "reason": "needs_review",
@@ -314,6 +279,13 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Visit Norwich",
+      "title": "Melville & Sons, Pour Decisions – June Wine Club",
+      "fingerprint": "melville & sons, pour decisions – june wine club|2026-06-04|melville & sons"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
       "title": "Little Lifts & John Lewis Norwich Fashion Show",
       "fingerprint": "little lifts & john lewis norwich fashion show|2026-06-04|john lewis norwich"
     },
@@ -321,22 +293,29 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Visit Norwich",
+      "title": "MELVILLE & SONS // SUPPER CLUB",
+      "fingerprint": "melville & sons // supper club|2026-06-04|melville & sons"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
       "title": "Police Dog Hogan",
-      "fingerprint": "police dog hogan|2026-06-04|norwich"
+      "fingerprint": "police dog hogan|2026-06-04|venue tba"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Visit Norwich",
       "title": "The Mersey Beatles",
-      "fingerprint": "the mersey beatles|2026-06-05|norwich"
+      "fingerprint": "the mersey beatles|2026-06-05|venue tba"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Visit Norwich",
       "title": "Les Ballets Trockadero de Monte Carlo",
-      "fingerprint": "les ballets trockadero de monte carlo|2026-06-05|norwich"
+      "fingerprint": "les ballets trockadero de monte carlo|2026-06-05|venue tba"
     },
     {
       "reason": "duplicate",
@@ -385,42 +364,42 @@
       "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "Royal Norfolk Show",
-      "fingerprint": "royal norfolk show|2026-06-24|norfolk events centre"
+      "fingerprint": "royal norfolk show|2026-06-24|norfolk showground - norfolk events centre"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "Norfolk Garden Show",
-      "fingerprint": "norfolk garden show|2026-07-10|outdoor spaces"
+      "fingerprint": "norfolk garden show|2026-07-10|norfolk showground - outdoor spaces"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "The Labyrinth Challenge Tour",
-      "fingerprint": "the labyrinth challenge tour|2026-07-11|outdoor spaces"
+      "fingerprint": "the labyrinth challenge tour|2026-07-11|norfolk showground - outdoor spaces"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "Norfolk Motorhome & Campervan Show",
-      "fingerprint": "norfolk motorhome & campervan show|2026-07-17|outdoor spaces"
+      "fingerprint": "norfolk motorhome & campervan show|2026-07-17|norfolk showground - outdoor spaces"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "Ink & Engines Fest",
-      "fingerprint": "ink & engines fest|2026-08-15|norfolk events centre"
+      "fingerprint": "ink & engines fest|2026-08-15|norfolk showground - norfolk events centre"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "Action Arena",
-      "fingerprint": "action arena|2026-08-29|outdoor spaces"
+      "fingerprint": "action arena|2026-08-29|norfolk showground - outdoor spaces"
     },
     {
       "reason": "needs_review",
@@ -607,30 +586,177 @@
     {
       "reason": "needs_review",
       "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "Free Daily Tour of the Living Area",
-      "fingerprint": "free daily tour of the living area|2026-06-02|sainsbury centre"
-    },
-    {
-      "reason": "duplicate",
-      "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "Free Daily Tour of the Living Area",
-      "fingerprint": "free daily tour of the living area|2026-06-02|sainsbury centre"
+      "source": "Skiddle Norwich",
+      "title": "An Evening With Chicane - Norwich",
+      "fingerprint": "an evening with chicane - norwich|2026-09-26|epic studios"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "Free Daily Exhibition Tour",
-      "fingerprint": "free daily exhibition tour|2026-06-02|sainsbury centre"
+      "source": "Skiddle Norwich",
+      "title": "Jungle Mania Norwich",
+      "fingerprint": "jungle mania norwich|2026-07-31|the adrian flux waterfront"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
+      "title": "Raver Tots Mini Fest Norwich",
+      "fingerprint": "raver tots mini fest norwich|2026-06-07|junkyard market"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
+      "title": "RAW MATERIAL Presents - THE SHOCKWAVE - P MONEY + More",
+      "fingerprint": "raw material presents - the shockwave - p money + more|2026-07-18|kudos bar and nightclub"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
+      "title": "The Greatest MUSICALS Daytime Disco - Norwich",
+      "fingerprint": "the greatest musicals daytime disco - norwich|2026-06-06|be at one"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
+      "title": "Mania U18: Norwich + Chad Harrison",
+      "fingerprint": "mania u18: norwich + chad harrison|2026-07-29|bar and beyond norwich"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
+      "title": "Raiser & Friends presents: MIND VORTEX",
+      "fingerprint": "raiser & friends presents: mind vortex|2026-06-19|kudos bar and nightclub"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
+      "title": "Poppy Moores iPod Norwich Pride",
+      "fingerprint": "poppy moores ipod norwich pride|2026-07-25|deadwax norwich"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
+      "title": "The Ultimate Eagles",
+      "fingerprint": "the ultimate eagles|2026-10-16|the halls"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
+      "title": "Symphonic Ibiza Orchestra | Earlham Park Concert",
+      "fingerprint": "symphonic ibiza orchestra | earlham park concert|2026-06-12|earlham park"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
+      "title": "Rum & Reggae Fest | The Hangar, Norwich",
+      "fingerprint": "rum & reggae fest | the hangar, norwich|2026-07-25|the hangar"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
+      "title": "THE WOMBATS Live in NORWICH",
+      "fingerprint": "the wombats live in norwich|2026-06-28|earlham park"
     },
     {
       "reason": "duplicate",
       "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "Free Daily Exhibition Tour",
-      "fingerprint": "free daily exhibition tour|2026-06-02|sainsbury centre"
+      "source": "Skiddle Norwich",
+      "title": "Emilio Santoro as Elvis",
+      "fingerprint": "emilio santoro as elvis|2026-09-26|the halls"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
+      "title": "The Music of The Lord of The Rings. Tribute to Howard Shore",
+      "fingerprint": "the music of the lord of the rings. tribute to howard shore|2026-06-20|st peter mancroft church"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
+      "title": "Special Kinda Madness: Norwich",
+      "fingerprint": "special kinda madness: norwich|2026-06-13|the adrian flux waterfront"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
+      "title": "War Bastard - M2TM GRAND FINAL - Norwich",
+      "fingerprint": "war bastard - m2tm grand final - norwich|2026-06-06|the brickmakers"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
+      "title": "Junction 42",
+      "fingerprint": "junction 42|2026-06-27|earlham park"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
+      "title": "Earlham Park Tribute Festival",
+      "fingerprint": "earlham park tribute festival|2026-06-13|earlham park"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
+      "title": "Country Club - Outdoor Country Music Festival - Norwich",
+      "fingerprint": "country club - outdoor country music festival - norwich|2026-07-04|junkyard"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
+      "title": "Summer Outdoor 80s Tribute Festival - Junkyard Norwich",
+      "fingerprint": "summer outdoor 80s tribute festival - junkyard norwich|2026-06-06|junkyard market"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
+      "title": "Summer 90s Outdoor Festival - Junkyard Norwich",
+      "fingerprint": "summer 90s outdoor festival - junkyard norwich|2026-08-15|junkyard market"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
+      "title": "Taste Of Thailand Music And Food Festival",
+      "fingerprint": "taste of thailand music and food festival|2026-07-25|earlham park"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
+      "title": "Rock N Roll Circus Norwich",
+      "fingerprint": "rock n roll circus norwich|2026-08-21|earlham park"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
+      "title": "Angry Boater Live in Norwich",
+      "fingerprint": "angry boater live in norwich|2026-09-26|the garage"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
+      "title": "Fawlty Towers Weekend",
+      "fingerprint": "fawlty towers weekend|2026-07-25|holiday inn norwich north by ihg"
     },
     {
       "reason": "duplicate",
@@ -715,139 +841,6 @@
       "source": "Gonzo's Fatsoma",
       "title": "Rooftop Sunday Sessions w Ryan Hope (Gabriels)",
       "fingerprint": "rooftop sunday sessions w ryan hope (gabriels)|2026-07-19|gonzo's tea room"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Skiddle Norwich",
-      "title": "The Ultimate Eagles",
-      "fingerprint": "the ultimate eagles|2026-10-16|the halls"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Skiddle Norwich",
-      "title": "Symphonic Ibiza Orchestra | Earlham Park Concert",
-      "fingerprint": "symphonic ibiza orchestra | earlham park concert|2026-06-12|earlham park"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Skiddle Norwich",
-      "title": "THE WOMBATS Live in NORWICH",
-      "fingerprint": "the wombats live in norwich|2026-06-28|earlham park"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Skiddle Norwich",
-      "title": "Rum & Reggae Fest",
-      "fingerprint": "rum & reggae fest|2026-07-25|the hangar"
-    },
-    {
-      "reason": "duplicate",
-      "status": "pending_review",
-      "source": "Skiddle Norwich",
-      "title": "Emilio Santoro as Elvis",
-      "fingerprint": "emilio santoro as elvis|2026-09-26|the halls"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Skiddle Norwich",
-      "title": "The Music of The Lord of The Rings. Tribute to Howard Shore",
-      "fingerprint": "the music of the lord of the rings. tribute to howard shore|2026-06-20|st peter mancroft church"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Skiddle Norwich",
-      "title": "Special Kinda Madness: Norwich",
-      "fingerprint": "special kinda madness: norwich|2026-06-13|the adrian flux waterfront"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Skiddle Norwich",
-      "title": "War Bastard - M2TM GRAND FINAL - Norwich",
-      "fingerprint": "war bastard - m2tm grand final - norwich|2026-06-06|the brickmakers"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Eventbrite Norwich",
-      "title": "Democratic Economy: A Q&A with Clive Lewis",
-      "fingerprint": "democratic economy: a q&a with clive lewis|2026-06-05|university of east anglia"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Eventbrite Norwich",
-      "title": "The Psychology of Psychopaths with Forensic Psychologist Dee Anand",
-      "fingerprint": "the psychology of psychopaths with forensic psychologist dee anand|2026-06-08|the maddermarket theatre"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Eventbrite Norwich",
-      "title": "Gather: The Brandland Awards",
-      "fingerprint": "gather: the brandland awards|2026-06-09|the forum"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Eventbrite Norwich",
-      "title": "Refugee Week Norwich 2026 - Launch Party",
-      "fingerprint": "refugee week norwich 2026 - launch party|2026-06-11|dragon hall"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Eventbrite Norwich",
-      "title": "Norwich's Midcentury Home Market",
-      "fingerprint": "norwich's midcentury home market|2026-06-21|st andrew's hall"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Eventbrite Norwich",
-      "title": "Katona Twins - Alhambra Inspirations Norwich",
-      "fingerprint": "katona twins - alhambra inspirations norwich|2026-07-12|the assembly house"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Eventbrite Norwich",
-      "title": "The Norfolk Motorhome & Campervan Show 2026 - Camping",
-      "fingerprint": "the norfolk motorhome & campervan show 2026 - camping|2026-07-16|norfolk showground"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Eventbrite Norwich",
-      "title": "ENTROPIC /04",
-      "fingerprint": "entropic /04|2026-06-06|louis marchesi"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Eventbrite Norwich",
-      "title": "Twisted Skunk Presents Plump DJs & Skunk Friends",
-      "fingerprint": "twisted skunk presents plump djs & skunk friends|2026-06-12|gonzo's tea room"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Eventbrite Norwich",
-      "title": "NOVADOSE PART 3",
-      "fingerprint": "novadose part 3|2026-06-26|kerryâ€™s"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Eventbrite Norwich",
-      "title": "Nick Lawrence @ The Green Room, Norwich",
-      "fingerprint": "nick lawrence @ the green room, norwich|2026-06-29|the green room"
     }
   ]
 }

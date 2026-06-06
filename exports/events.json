@@ -1,41 +1,6 @@
 {
   "events": [
     {
-      "id": "scraper-the-jerseys-2026-06-05-the-halls",
-      "slug": "the-jerseys-2026-06-05",
-      "fingerprint": "the jerseys|2026-06-05|the halls",
-      "name": "The Jerseys",
-      "eventname": "The Jerseys",
-      "date": "2026-06-05",
-      "time": "19:30",
-      "endDate": null,
-      "endTime": null,
-      "venue": "The Halls",
-      "location": "The Halls",
-      "address": null,
-      "category": "gigs",
-      "description": "A live performance by The Jerseys.",
-      "ticketLink": "https://www.thehallsnorwich.co.uk/events",
-      "officialUrl": "",
-      "sourceUrl": "https://www.thehallsnorwich.co.uk/events",
-      "primaryUrl": "https://www.thehallsnorwich.co.uk/events",
-      "price": "See website",
-      "image": "",
-      "hasFlyer": false,
-      "imageStatus": "fallback",
-      "linkStatus": "verified",
-      "tags": [
-        "music",
-        "tribute"
-      ],
-      "featured": false,
-      "editorsChoice": false,
-      "isFree": false,
-      "ageRestriction": null,
-      "status": "approved",
-      "source": "The Halls Norwich"
-    },
-    {
       "id": "scraper-royal-norfolk-show-2026-06-24-norfolk-showground",
       "slug": "royal-norfolk-show-2026-06-24",
       "fingerprint": "royal norfolk show|2026-06-24|norfolk showground",
@@ -380,6 +345,6 @@
       "source": "The Halls Norwich"
     }
   ],
-  "generated_at": "2026-06-05T10:56:33.213387",
-  "count": 11
+  "generated_at": "2026-06-06T09:36:10.506356",
+  "count": 10
 }

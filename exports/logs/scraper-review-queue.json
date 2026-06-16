@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-06-15T09:24:58.245430",
-  "count": 127,
+  "generated_at": "2026-06-16T09:08:20.693483",
+  "count": 121,
   "events": [
     {
       "reason": "needs_review",
@@ -13,13 +13,6 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "UEA Waterfront",
-      "title": "McFly – Forest Live With special guests Twin Atlantic + Remember Monday",
-      "fingerprint": "mcfly – forest live with special guests twin atlantic + remember monday|2026-06-17|thetford forest, high lodge"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "UEA Waterfront",
       "title": "England Vs Croatia The Waterfront FanPark:Live",
       "fingerprint": "england vs croatia the waterfront fanpark:live|2026-06-17|the adrian flux waterfront"
     },
@@ -27,22 +20,8 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "UEA Waterfront",
-      "title": "Nile Rodgers & CHIC- Forest Live With special guests The Brand New Heavies",
-      "fingerprint": "nile rodgers & chic- forest live with special guests the brand new heavies|2026-06-18|thetford forest, high lodge"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "UEA Waterfront",
       "title": "Crus Fest 2026",
       "fingerprint": "crus fest 2026|2026-06-19|crusaders rugby club"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "UEA Waterfront",
-      "title": "A Ticket Bundles",
-      "fingerprint": "a ticket bundles|2026-06-19|the adrian flux waterfront"
     },
     {
       "reason": "needs_review",
@@ -62,8 +41,8 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "UEA Waterfront",
-      "title": "Sanctum Sanctorium The Darkside Of The 80’s",
-      "fingerprint": "sanctum sanctorium the darkside of the 80’s|2026-06-20|the adrian flux waterfront"
+      "title": "Sanctum Sanctorium",
+      "fingerprint": "sanctum sanctorium|2026-06-20|the adrian flux waterfront"
     },
     {
       "reason": "needs_review",
@@ -71,13 +50,6 @@
       "source": "UEA Waterfront",
       "title": "A Void x Damp Matches",
       "fingerprint": "a void x damp matches|2026-06-20|voodoo daddys showroom"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "UEA Waterfront",
-      "title": "UB40 ft. Ali Campbell – Forest Live With Special Guests Bitty Mclean + Reggae Roast feat. Horseman",
-      "fingerprint": "ub40 ft. ali campbell – forest live with special guests bitty mclean + reggae roast feat. horseman|2026-06-21|thetford forest, high lodge"
     },
     {
       "reason": "needs_review",
@@ -111,13 +83,6 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "UEA Waterfront",
-      "title": "The Divine Comedy",
-      "fingerprint": "the divine comedy|2026-06-27|the nick rayns lcr, uea"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "UEA Waterfront",
       "title": "HorseBastard",
       "fingerprint": "horsebastard|2026-06-27|the brickmakers"
     },
@@ -134,83 +99,6 @@
       "source": "Norwich Cathedral",
       "title": "Benedictine lectures 2026: Living by the Rule: contemporary meets medieval",
       "fingerprint": "benedictine lectures 2026: living by the rule: contemporary meets medieval|2026-06-17|norwich cathedral"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Guided tour of Dragon Hall",
-      "fingerprint": "guided tour of dragon hall|2026-06-15|dragon hall"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "The Battle",
-      "fingerprint": "the battle|2026-06-16|norwich"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "The Spy Who Came in from the Cold",
-      "fingerprint": "the spy who came in from the cold|2026-06-16|norwich"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Gnoss",
-      "fingerprint": "gnoss|2026-06-16|norwich"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Norwich Her Story Walk",
-      "fingerprint": "norwich her story walk|2026-06-17|norwich"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "England Vs Croatia",
-      "fingerprint": "england vs croatia|2026-06-17|norwich"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "People’s Emergency Briefing",
-      "fingerprint": "people’s emergency briefing|2026-06-18|norwich"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Drunk Women Solving Crime",
-      "fingerprint": "drunk women solving crime|2026-06-18|norwich"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Norwich at War (how WW2 changed the city centre) – walking tour",
-      "fingerprint": "norwich at war (how ww2 changed the city centre) – walking tour|2026-06-19|norwich"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Norwich Wine Week 2026",
-      "fingerprint": "norwich wine week 2026|2026-06-19|norwich"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "The High Points + support",
-      "fingerprint": "the high points + support|2026-06-19|epic studios"
     },
     {
       "reason": "duplicate",
@@ -369,6 +257,83 @@
     {
       "reason": "needs_review",
       "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "The Battle",
+      "fingerprint": "the battle|2026-06-16|venue tba"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "The Spy Who Came in from the Cold",
+      "fingerprint": "the spy who came in from the cold|2026-06-16|venue tba"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Gnoss",
+      "fingerprint": "gnoss|2026-06-16|venue tba"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Norwich Her Story Walk",
+      "fingerprint": "norwich her story walk|2026-06-17|venue tba"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "England Vs Croatia",
+      "fingerprint": "england vs croatia|2026-06-17|venue tba"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "THROTTLE THURSDAYS BIKE MEET",
+      "fingerprint": "throttle thursdays bike meet|2026-06-18|the larling angel"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "People’s Emergency Briefing",
+      "fingerprint": "people’s emergency briefing|2026-06-18|venue tba"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Drunk Women Solving Crime",
+      "fingerprint": "drunk women solving crime|2026-06-18|venue tba"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Norwich at War (how WW2 changed the city centre) – walking tour",
+      "fingerprint": "norwich at war (how ww2 changed the city centre) – walking tour|2026-06-19|venue tba"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Norwich Wine Week 2026",
+      "fingerprint": "norwich wine week 2026|2026-06-19|norwich"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "The High Points + support",
+      "fingerprint": "the high points + support|2026-06-19|epic studios"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
       "source": "The Halls Norwich",
       "title": "People's Emergency Briefing",
       "fingerprint": "people's emergency briefing|2026-06-18|the halls"
@@ -409,46 +374,46 @@
       "fingerprint": "james b partridge - the big christmas assembly 2026|2026-11-27|the halls"
     },
     {
-      "reason": "needs_review",
+      "reason": "duplicate",
       "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "Royal Norfolk Show",
-      "fingerprint": "royal norfolk show|2026-06-24|norfolk events centre, norfolk showground"
+      "fingerprint": "royal norfolk show|2026-06-24|norfolk showground"
     },
     {
-      "reason": "needs_review",
+      "reason": "duplicate",
       "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "Norfolk Garden Show",
-      "fingerprint": "norfolk garden show|2026-07-10|outdoor spaces, norfolk showground"
+      "fingerprint": "norfolk garden show|2026-07-10|norfolk showground"
     },
     {
-      "reason": "needs_review",
+      "reason": "duplicate",
       "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "The Labyrinth Challenge Tour",
-      "fingerprint": "the labyrinth challenge tour|2026-07-11|outdoor spaces, norfolk showground"
+      "fingerprint": "the labyrinth challenge tour|2026-07-11|norfolk showground"
     },
     {
-      "reason": "needs_review",
+      "reason": "duplicate",
       "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "Norfolk Motorhome & Campervan Show",
-      "fingerprint": "norfolk motorhome & campervan show|2026-07-17|outdoor spaces, norfolk showground"
+      "fingerprint": "norfolk motorhome & campervan show|2026-07-17|norfolk showground"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "Ink & Engines Fest",
-      "fingerprint": "ink & engines fest|2026-08-15|norfolk events centre, norfolk showground"
+      "fingerprint": "ink & engines fest|2026-08-15|norfolk showground"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "Norwich Games Con",
-      "fingerprint": "norwich games con|2026-08-22|norfolk events centre, norfolk showground"
+      "fingerprint": "norwich games con|2026-08-22|norfolk showground"
     },
     {
       "reason": "needs_review",
@@ -591,6 +556,48 @@
       "fingerprint": "rooftop sunday sessions w somewhere soul|2026-09-06|gonzo's tea room"
     },
     {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Sainsbury Centre",
+      "title": "Free Daily Guided Tour of the Living Area",
+      "fingerprint": "free daily guided tour of the living area|2026-06-16|sainsbury centre"
+    },
+    {
+      "reason": "duplicate",
+      "status": "pending_review",
+      "source": "Sainsbury Centre",
+      "title": "Free Daily Guided Tour of the Living Area",
+      "fingerprint": "free daily guided tour of the living area|2026-06-16|sainsbury centre"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Sainsbury Centre",
+      "title": "Free Daily Guided Exhibition Tour",
+      "fingerprint": "free daily guided exhibition tour|2026-06-16|sainsbury centre"
+    },
+    {
+      "reason": "duplicate",
+      "status": "pending_review",
+      "source": "Sainsbury Centre",
+      "title": "Free Daily Guided Exhibition Tour",
+      "fingerprint": "free daily guided exhibition tour|2026-06-16|sainsbury centre"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Sainsbury Centre",
+      "title": "Big Sunday",
+      "fingerprint": "big sunday|2026-07-05|sainsbury centre"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Sainsbury Centre",
+      "title": "Games at the Gallery",
+      "fingerprint": "games at the gallery|2026-07-28|sainsbury centre"
+    },
+    {
       "reason": "duplicate",
       "status": "pending_review",
       "source": "Gonzo's Fatsoma",
@@ -670,55 +677,6 @@
     {
       "reason": "needs_review",
       "status": "pending_review",
-      "source": "Gonzo's Fatsoma",
-      "title": "Mr Scruff - All Night Long - 6hr Set",
-      "fingerprint": "mr scruff - all night long - 6hr set|2026-07-31|gonzo's tea room"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "Joy Like Time",
-      "fingerprint": "joy like time|2026-06-20|sainsbury centre"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "Tree of Life",
-      "fingerprint": "tree of life|2026-06-20|sainsbury centre"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "Living Area Guided Tour",
-      "fingerprint": "living area guided tour|2026-06-15|sainsbury centre"
-    },
-    {
-      "reason": "duplicate",
-      "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "Living Area Guided Tour",
-      "fingerprint": "living area guided tour|2026-06-15|sainsbury centre"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "Exhibition Guided Tour",
-      "fingerprint": "exhibition guided tour|2026-06-15|sainsbury centre"
-    },
-    {
-      "reason": "duplicate",
-      "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "Exhibition Guided Tour",
-      "fingerprint": "exhibition guided tour|2026-06-15|sainsbury centre"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
       "source": "Skiddle Norwich",
       "title": "RAW MATERIAL Presents - THE SHOCKWAVE - P MONEY + More",
       "fingerprint": "raw material presents - the shockwave - p money + more|2026-07-18|kudos bar and nightclub"
@@ -755,15 +713,15 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
-      "title": "Poppy Moores iPod Norwich Pride",
-      "fingerprint": "poppy moores ipod norwich pride|2026-07-25|deadwax norwich"
+      "title": "Hoedown Showdown - Norwich, Be At One",
+      "fingerprint": "hoedown showdown - norwich, be at one|2026-09-12|be at one"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
-      "title": "Hoedown Showdown - Norwich, Be At One",
-      "fingerprint": "hoedown showdown - norwich, be at one|2026-09-12|be at one"
+      "title": "Poppy Moores iPod Norwich Pride",
+      "fingerprint": "poppy moores ipod norwich pride|2026-07-25|deadwax norwich"
     },
     {
       "reason": "needs_review",
@@ -777,7 +735,7 @@
       "status": "pending_review",
       "source": "Skiddle Norwich",
       "title": "The Ultimate Eagles",
-      "fingerprint": "the ultimate eagles|2026-10-16|the halls"
+      "fingerprint": "the ultimate eagles|2026-10-16|the halls norwich"
     },
     {
       "reason": "needs_review",
@@ -794,11 +752,18 @@
       "fingerprint": "rum & reggae fest | the hangar, norwich|2026-07-25|the hangar"
     },
     {
-      "reason": "duplicate",
+      "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
       "title": "Emilio Santoro as Elvis",
-      "fingerprint": "emilio santoro as elvis|2026-09-26|the halls"
+      "fingerprint": "emilio santoro as elvis|2026-09-26|the halls norwich"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
+      "title": "A Country Night in Nashville",
+      "fingerprint": "a country night in nashville|2026-12-18|the halls norwich"
     },
     {
       "reason": "needs_review",
@@ -806,13 +771,6 @@
       "source": "Skiddle Norwich",
       "title": "The Music of The Lord of The Rings. Tribute to Howard Shore",
       "fingerprint": "the music of the lord of the rings. tribute to howard shore|2026-06-20|st peter mancroft church"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Skiddle Norwich",
-      "title": "A Country Night in Nashville",
-      "fingerprint": "a country night in nashville|2026-12-18|the halls"
     },
     {
       "reason": "needs_review",
@@ -860,6 +818,13 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
+      "title": "Earlham Park Tribute Festival 2027",
+      "fingerprint": "earlham park tribute festival 2027|2027-06-12|earlham park"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
       "title": "Rock N Roll Circus Norwich",
       "fingerprint": "rock n roll circus norwich|2026-08-21|earlham park"
     },
@@ -883,13 +848,6 @@
       "source": "Skiddle Norwich",
       "title": "A Christmas Carol - A One-Man Performance",
       "fingerprint": "a christmas carol - a one-man performance|2026-12-18|octagon chapel"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Skiddle Norwich",
-      "title": "Art showcasing the use of the digital stylus as a paint brush",
-      "fingerprint": "art showcasing the use of the digital stylus as a paint brush|2026-06-16|gallery 56"
     }
   ]
 }

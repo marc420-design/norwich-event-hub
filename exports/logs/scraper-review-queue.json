@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-06-21T08:41:46.427948",
-  "count": 115,
+  "generated_at": "2026-06-22T09:15:54.320709",
+  "count": 108,
   "events": [
     {
       "reason": "needs_review",
@@ -8,20 +8,6 @@
       "source": "Norwich Cathedral",
       "title": "Benedictine lectures 2026: Business with Benedict",
       "fingerprint": "benedictine lectures 2026: business with benedict|2026-06-24|norwich cathedral"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "Norfolk Deaf Festival",
-      "fingerprint": "norfolk deaf festival|2026-06-26|the atrium, the forum"
-    },
-    {
-      "reason": "duplicate",
-      "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "Heritage Open Days",
-      "fingerprint": "heritage open days|2026-09-11|across norfolk"
     },
     {
       "reason": "needs_review",
@@ -69,6 +55,13 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "The Forum Norwich",
+      "title": "Norfolk Deaf Festival",
+      "fingerprint": "norfolk deaf festival|2026-06-26|the atrium, the forum"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Forum Norwich",
       "title": "Bear Ear Clinic with Toy Like Me",
       "fingerprint": "bear ear clinic with toy like me|2026-06-26|the forum"
     },
@@ -87,130 +80,11 @@
       "fingerprint": "cambridge science centre hands-on interactive tables|2026-06-26|the forum"
     },
     {
-      "reason": "needs_review",
+      "reason": "duplicate",
       "status": "pending_review",
-      "source": "UEA Waterfront",
-      "title": "UB40 ft. Ali Campbell – Forest Live",
-      "fingerprint": "ub40 ft. ali campbell – forest live|2026-06-21|thetford forest, high lodge"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "UEA Waterfront",
-      "title": "England Vs Ghana The Waterfront FanPark:Live",
-      "fingerprint": "england vs ghana the waterfront fanpark:live|2026-06-23|the adrian flux waterfront"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "UEA Waterfront",
-      "title": "Guns N Roses Experience",
-      "fingerprint": "guns n roses experience|2026-06-26|epic studios"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "UEA Waterfront",
-      "title": "Junction 42",
-      "fingerprint": "junction 42|2026-06-27|earlham park, norwich"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "UEA Waterfront",
-      "title": "England Vs Panama The Waterfront FanPark:Live",
-      "fingerprint": "england vs panama the waterfront fanpark:live|2026-06-27|the adrian flux waterfront"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "UEA Waterfront",
-      "title": "The Divine Comedy",
-      "fingerprint": "the divine comedy|2026-06-27|the nick rayns lcr, uea"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "UEA Waterfront",
-      "title": "HorseBastard",
-      "fingerprint": "horsebastard|2026-06-27|the brickmakers"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "UEA Waterfront",
-      "title": "The Wombats",
-      "fingerprint": "the wombats|2026-06-28|earlham park, norwich"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "UEA Waterfront",
-      "title": "MC Devvo",
-      "fingerprint": "mc devvo|2026-07-03|the brickmakers"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "UEA Waterfront",
-      "title": "As December Falls",
-      "fingerprint": "as december falls|2026-07-03|the adrian flux waterfront"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "UEA Waterfront",
-      "title": "Halo Festival – Two Door Cinema Club",
-      "fingerprint": "halo festival – two door cinema club|2026-07-04|trinity park, ipswich"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "UEA Waterfront",
-      "title": "Common People – Britpop By The River",
-      "fingerprint": "common people – britpop by the river|2026-07-04|the adrian flux waterfront"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "UEA Waterfront",
-      "title": "Banks Arcade x Tropic Gold",
-      "fingerprint": "banks arcade x tropic gold|2026-07-04|the adrian flux waterfront studio"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Dadventure at Go Ape Thetford",
-      "fingerprint": "dadventure at go ape thetford|2026-06-21|go ape thetford"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "BOXED IN",
-      "fingerprint": "boxed in|2026-06-21|venue tba"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Fathers Day Lunch",
-      "fingerprint": "fathers day lunch|2026-06-21|carrow road"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Father’s Day",
-      "fingerprint": "father’s day|2026-06-21|maids head"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "The Fit Prince (who gets switched on the square in the frosty castle the night before (insert public holiday here))",
-      "fingerprint": "the fit prince (who gets switched on the square in the frosty castle the night before (insert public holiday here))|2026-06-21|venue tba"
+      "source": "The Forum Norwich",
+      "title": "Heritage Open Days",
+      "fingerprint": "heritage open days|2026-09-11|across norfolk"
     },
     {
       "reason": "needs_review",
@@ -245,7 +119,7 @@
       "status": "pending_review",
       "source": "Visit Norwich",
       "title": "Ale Tales: a walking tour of Norwich pubs, old and new",
-      "fingerprint": "ale tales: a walking tour of norwich pubs, old and new|2026-06-24|venue tba"
+      "fingerprint": "ale tales: a walking tour of norwich pubs, old and new|2026-06-24|norwich"
     },
     {
       "reason": "needs_review",
@@ -264,44 +138,79 @@
     {
       "reason": "needs_review",
       "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Norwich Weird & Wonderful Story Walk",
+      "fingerprint": "norwich weird & wonderful story walk|2026-06-24|norwich"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "The Picture of Dorian Gray by Oscar Wilde",
+      "fingerprint": "the picture of dorian gray by oscar wilde|2026-06-24|venue tba"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Green Shoots presents Corinne Le Quere",
+      "fingerprint": "green shoots presents corinne le quere|2026-06-24|venue tba"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Mr Doodle: Return of The Doodler – Pop Up Exhibition",
+      "fingerprint": "mr doodle: return of the doodler – pop up exhibition|2026-06-25|moosey"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Billy Lubach",
+      "fingerprint": "billy lubach|2026-06-25|venue tba"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
       "source": "The Halls Norwich",
       "title": "Big Fish Little Fish Family Rave",
-      "fingerprint": "big fish little fish family rave|2026-07-10|the halls"
+      "fingerprint": "big fish little fish family rave|2026-07-10|the halls, norwich"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "The Halls Norwich",
       "title": "Lord Mayor's Procession Day Activities at The Halls",
-      "fingerprint": "lord mayor's procession day activities at the halls|2026-07-11|the halls"
+      "fingerprint": "lord mayor's procession day activities at the halls|2026-07-11|the halls, norwich"
     },
     {
-      "reason": "duplicate",
+      "reason": "needs_review",
       "status": "pending_review",
       "source": "The Halls Norwich",
       "title": "Lie Down and Listen",
-      "fingerprint": "lie down and listen|2026-07-25|the halls"
+      "fingerprint": "lie down and listen|2026-07-25|the halls, norwich"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "The Halls Norwich",
       "title": "The Ultimate Bubble Show",
-      "fingerprint": "the ultimate bubble show|2026-10-10|the halls"
+      "fingerprint": "the ultimate bubble show|2026-10-10|the halls, norwich"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "The Halls Norwich",
       "title": "3 Acres + A Cow",
-      "fingerprint": "3 acres + a cow|2026-10-21|the halls"
+      "fingerprint": "3 acres + a cow|2026-10-21|the halls, norwich"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "The Halls Norwich",
       "title": "James B Partridge - The Big Christmas Assembly 2026",
-      "fingerprint": "james b partridge - the big christmas assembly 2026|2026-11-27|the halls"
+      "fingerprint": "james b partridge - the big christmas assembly 2026|2026-11-27|the halls, norwich"
     },
     {
       "reason": "needs_review",
@@ -321,8 +230,8 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
-      "title": "The Labyrinth Challenge Tour",
-      "fingerprint": "the labyrinth challenge tour|2026-07-11|outdoor spaces"
+      "title": "Family The Labyrinth Challenge Tour",
+      "fingerprint": "family the labyrinth challenge tour|2026-07-11|outdoor spaces"
     },
     {
       "reason": "needs_review",
@@ -587,6 +496,20 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
+      "title": "Mania U18: Norwich + Chad Harrison",
+      "fingerprint": "mania u18: norwich + chad harrison|2026-07-29|bar and beyond norwich"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
+      "title": "The Reggae Rooftop - NORWICH - Sat 4th July",
+      "fingerprint": "the reggae rooftop - norwich - sat 4th july|2026-07-04|rooftop gardens"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
       "title": "An Evening With Chicane - Norwich",
       "fingerprint": "an evening with chicane - norwich|2026-09-26|epic studios"
     },
@@ -615,29 +538,8 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
-      "title": "Mania U18: Norwich + Chad Harrison",
-      "fingerprint": "mania u18: norwich + chad harrison|2026-07-29|bar and beyond norwich"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Skiddle Norwich",
-      "title": "INTO THE VAULT - Vaulted Audio",
-      "fingerprint": "into the vault - vaulted audio|2026-07-24|kudos bar and nightclub"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Skiddle Norwich",
       "title": "THE WOMBATS Live in NORWICH",
       "fingerprint": "the wombats live in norwich|2026-06-28|earlham park"
-    },
-    {
-      "reason": "duplicate",
-      "status": "pending_review",
-      "source": "Skiddle Norwich",
-      "title": "Emilio Santoro as Elvis",
-      "fingerprint": "emilio santoro as elvis|2026-09-26|the halls"
     },
     {
       "reason": "needs_review",
@@ -652,6 +554,13 @@
       "source": "Skiddle Norwich",
       "title": "The Ultimate Eagles",
       "fingerprint": "the ultimate eagles|2026-10-16|the halls"
+    },
+    {
+      "reason": "duplicate",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
+      "title": "Emilio Santoro as Elvis",
+      "fingerprint": "emilio santoro as elvis|2026-09-26|the halls"
     },
     {
       "reason": "needs_review",
@@ -749,7 +658,35 @@
       "status": "pending_review",
       "source": "Skiddle Norwich",
       "title": "A Christmas Carol - A One-Man Performance",
-      "fingerprint": "a christmas carol - a one-man performance|2026-12-18|octago"
+      "fingerprint": "a christmas carol - a one-man performance|2026-12-18|octagon chapel"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Sainsbury Centre",
+      "title": "Living Art: Ryan Gander",
+      "fingerprint": "living art: ryan gander|2026-06-22|sainsbury centre"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Sainsbury Centre",
+      "title": "Free Daily Tour of The Living Area",
+      "fingerprint": "free daily tour of the living area|2026-06-22|sainsbury centre, the living area"
+    },
+    {
+      "reason": "duplicate",
+      "status": "pending_review",
+      "source": "Sainsbury Centre",
+      "title": "Free Daily Tour of The Living Area",
+      "fingerprint": "free daily tour of the living area|2026-06-22|sainsbury centre, the living area"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Eventbrite Norwich",
+      "title": "NOVADOSE PART 3",
+      "fingerprint": "novadose part 3|2026-06-26|kerry's"
     },
     {
       "reason": "needs_review",
@@ -776,8 +713,29 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Eventbrite Norwich",
-      "title": "Norwich Jollof Cooking Class",
-      "fingerprint": "norwich jollof cooking class|2026-06-27|venue tba"
+      "title": "Meet Magento UK 2026: Adobe Commerce and Magento Open Source Conference",
+      "fingerprint": "meet magento uk 2026: adobe commerce and magento open source conference|2026-07-07|the mermaid"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Eventbrite Norwich",
+      "title": "The UEA University of Sanctuary Annual Celebration",
+      "fingerprint": "the uea university of sanctuary annual celebration|2026-06-26|university of east anglia"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Eventbrite Norwich",
+      "title": "80s NIGHT NORWICH @ THE VENUE LAST SATURDAY EVERY MONTH",
+      "fingerprint": "80s night norwich @ the venue last saturday every month|2026-06-27|pinches cue club & venue"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Eventbrite Norwich",
+      "title": "How to make Norwich a swift city",
+      "fingerprint": "how to make norwich a swift city|2026-07-01|the forum"
     },
     {
       "reason": "needs_review",
@@ -799,13 +757,6 @@
       "source": "Eventbrite Norwich",
       "title": "JESTER’S MENAGERIE",
       "fingerprint": "jester’s menagerie|2026-07-25|theatre street"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Eventbrite Norwich",
-      "title": "The R&B Orchestra in Norwich!",
-      "fingerprint": "the r&b orchestra in norwich!|2026-08-28|epic studios"
     }
   ]
 }

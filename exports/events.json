@@ -1,42 +1,6 @@
 {
   "events": [
     {
-      "id": "scraper-royal-norfolk-show-2026-06-24-norfolk-showground",
-      "slug": "royal-norfolk-show-2026-06-24",
-      "fingerprint": "royal norfolk show|2026-06-24|norfolk showground",
-      "name": "Royal Norfolk Show",
-      "eventname": "Royal Norfolk Show",
-      "date": "2026-06-24",
-      "time": "00:00",
-      "endDate": null,
-      "endTime": null,
-      "venue": "Norfolk Showground",
-      "location": "Norfolk Showground",
-      "address": null,
-      "category": "festivals",
-      "description": "",
-      "ticketLink": "https://www.norfolkshowground.co.uk/events",
-      "officialUrl": "",
-      "sourceUrl": "https://www.norfolkshowground.co.uk/events",
-      "primaryUrl": "https://www.norfolkshowground.co.uk/events",
-      "price": "See website",
-      "image": "",
-      "hasFlyer": false,
-      "imageStatus": "fallback",
-      "linkStatus": "verified",
-      "tags": [
-        "show",
-        "agriculture",
-        "outdoor"
-      ],
-      "featured": false,
-      "editorsChoice": false,
-      "isFree": false,
-      "ageRestriction": null,
-      "status": "approved",
-      "source": "Norfolk Showground"
-    },
-    {
       "id": "scraper-norfolk-deaf-festival-2026-06-26-the-atrium",
       "slug": "norfolk-deaf-festival-2026-06-26",
       "fingerprint": "norfolk deaf festival|2026-06-26|the atrium",
@@ -345,6 +309,6 @@
       "source": "The Halls Norwich"
     }
   ],
-  "generated_at": "2026-06-24T08:20:21.229027",
-  "count": 10
+  "generated_at": "2026-06-25T08:20:16.837854",
+  "count": 9
 }

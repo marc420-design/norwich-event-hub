@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-06-24T08:20:21.229508",
-  "count": 116,
+  "generated_at": "2026-06-25T08:20:16.838317",
+  "count": 113,
   "events": [
     {
       "reason": "needs_review",
@@ -21,14 +21,14 @@
       "status": "pending_review",
       "source": "UEA Waterfront",
       "title": "Junction 42",
-      "fingerprint": "junction 42|2026-06-27|earlham park, norwich"
+      "fingerprint": "junction 42|2026-06-27|earlham park"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "UEA Waterfront",
-      "title": "England Vs Panama",
-      "fingerprint": "england vs panama|2026-06-27|the adrian flux waterfront"
+      "title": "England Vs Panama The Waterfront FanPark:Live",
+      "fingerprint": "england vs panama the waterfront fanpark:live|2026-06-27|the adrian flux waterfront"
     },
     {
       "reason": "needs_review",
@@ -49,7 +49,7 @@
       "status": "pending_review",
       "source": "UEA Waterfront",
       "title": "The Wombats",
-      "fingerprint": "the wombats|2026-06-28|earlham park, norwich"
+      "fingerprint": "the wombats|2026-06-28|earlham park"
     },
     {
       "reason": "needs_review",
@@ -64,13 +64,6 @@
       "source": "UEA Waterfront",
       "title": "As December Falls",
       "fingerprint": "as december falls|2026-07-03|the adrian flux waterfront"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "UEA Waterfront",
-      "title": "Halo Festival – Two Door Cinema Club",
-      "fingerprint": "halo festival – two door cinema club|2026-07-04|trinity park, ipswich"
     },
     {
       "reason": "needs_review",
@@ -119,77 +112,91 @@
       "status": "pending_review",
       "source": "UEA Waterfront",
       "title": "The Waterfront x Hay Hill Takeover",
-      "fingerprint": "the waterfront x hay hill takeover|2026-07-12|hay hill, norwich city centre"
+      "fingerprint": "the waterfront x hay hill takeover|2026-07-12|hay hill"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "UEA Waterfront",
-      "title": "Blue SPECIAL MATINEE PERFORMANCE ADDED!",
-      "fingerprint": "blue special matinee performance added!|2026-07-16|the adrian flux waterfront"
+      "title": "Blue",
+      "fingerprint": "blue|2026-07-16|the adrian flux waterfront"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "UEA Waterfront",
+      "title": "A Thousand Horses",
+      "fingerprint": "a thousand horses|2026-07-16|norwich arts centre"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "The Forum Norwich",
       "title": "Norfolk Deaf Festival",
-      "fingerprint": "norfolk deaf festival|2026-06-26|the forum (the atrium)"
+      "fingerprint": "norfolk deaf festival|2026-06-26|the forum"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "The Forum Norwich",
       "title": "Heritage Open Days",
-      "fingerprint": "heritage open days|2026-09-11|various locations across norfolk"
+      "fingerprint": "heritage open days|2026-09-11|the forum"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "The Forum Norwich",
-      "title": "Bear Ear Clinic with Toy Like Me",
-      "fingerprint": "bear ear clinic with toy like me|2026-06-26|the forum"
+      "title": "Bear Ear Clinic with Toy Like Me (Norfolk Deaf Festival)",
+      "fingerprint": "bear ear clinic with toy like me (norfolk deaf festival)|2026-06-26|the forum"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "The Forum Norwich",
-      "title": "British Sign Language taster session with SHBSL",
-      "fingerprint": "british sign language taster session with shbsl|2026-06-26|the forum"
+      "title": "British Sign Language taster session with SHBSL (Norfolk Deaf Festival)",
+      "fingerprint": "british sign language taster session with shbsl (norfolk deaf festival)|2026-06-26|the forum"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "The Forum Norwich",
-      "title": "Cambridge Science Centre Hands-on interactive tables",
-      "fingerprint": "cambridge science centre hands-on interactive tables|2026-06-26|the forum"
+      "title": "Cambridge Science Centre Hands-on interactive tables (Norfolk Deaf Festival)",
+      "fingerprint": "cambridge science centre hands-on interactive tables (norfolk deaf festival)|2026-06-26|the forum"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "The Forum Norwich",
-      "title": "Circus skills with Terry",
-      "fingerprint": "circus skills with terry|2026-06-26|the forum"
+      "title": "Circus skills with Terry (Norfolk Deaf Festival)",
+      "fingerprint": "circus skills with terry (norfolk deaf festival)|2026-06-26|the forum"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "The Forum Norwich",
-      "title": "Communication Station with Deafblind interpreter",
-      "fingerprint": "communication station with deafblind interpreter|2026-06-26|the forum"
+      "title": "Communication Station with Deafblind interpreter (Norfolk Deaf Festival)",
+      "fingerprint": "communication station with deafblind interpreter (norfolk deaf festival)|2026-06-26|the forum"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "The Forum Norwich",
-      "title": "Filming workshop with The Offshoot Foundation",
-      "fingerprint": "filming workshop with the offshoot foundation|2026-06-26|the forum"
+      "title": "Filming workshop with The Offshoot Foundation (Norfolk Deaf Festival) - 10am session",
+      "fingerprint": "filming workshop with the offshoot foundation (norfolk deaf festival) - 10am session|2026-06-26|the forum"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "The Forum Norwich",
-      "title": "Guided tour with Kim: Deafblind manual interpretation",
-      "fingerprint": "guided tour with kim: deafblind manual interpretation|2026-06-26|the forum"
+      "title": "Filming workshop with The Offshoot Foundation (Norfolk Deaf Festival) - 1:30pm session",
+      "fingerprint": "filming workshop with the offshoot foundation (norfolk deaf festival) - 1:30pm session|2026-06-26|the forum"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Forum Norwich",
+      "title": "Guided tour with Kim: Deafblind manual interpretation (Norfolk Deaf Festival)",
+      "fingerprint": "guided tour with kim: deafblind manual interpretation (norfolk deaf festival)|2026-06-26|the forum"
     },
     {
       "reason": "needs_review",
@@ -202,64 +209,15 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "The Forum Norwich",
-      "title": "See it Be it exhibition with Toy Like Me",
-      "fingerprint": "see it be it exhibition with toy like me|2026-06-26|the forum"
+      "title": "See it Be it exhibition with Toy Like Me (Norfolk Deaf Festival)",
+      "fingerprint": "see it be it exhibition with toy like me (norfolk deaf festival)|2026-06-26|the forum"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Visit Norwich",
-      "title": "Royal Norfolk Show",
-      "fingerprint": "royal norfolk show|2026-06-24|venue tba"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Ale Tales: a walking tour of Norwich pubs, old and new",
-      "fingerprint": "ale tales: a walking tour of norwich pubs, old and new|2026-06-24|norwich"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "True Crime Immersive Dinning Experience",
-      "fingerprint": "true crime immersive dinning experience|2026-06-24|barnham broom hotel"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Othello",
-      "fingerprint": "othello|2026-06-24|wolterton hall"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Norwich Weird & Wonderful Story Walk",
-      "fingerprint": "norwich weird & wonderful story walk|2026-06-24|norwich"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "The Picture of Dorian Gray by Oscar Wilde",
-      "fingerprint": "the picture of dorian gray by oscar wilde|2026-06-24|venue tba"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Green Shoots presents Corinne Le Quere",
-      "fingerprint": "green shoots presents corinne le quere|2026-06-24|venue tba"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Mr Doodle: Return of The Doodler – Pop Up Exhibition",
-      "fingerprint": "mr doodle: return of the doodler – pop up exhibition|2026-06-25|moosey"
+      "title": "Mr Doodle: Return of The Doodler – Pop Up Exhibition at Moosey",
+      "fingerprint": "mr doodle: return of the doodler – pop up exhibition at moosey|2026-06-25|moosey"
     },
     {
       "reason": "needs_review",
@@ -273,7 +231,7 @@
       "status": "pending_review",
       "source": "Visit Norwich",
       "title": "Medieval Norwich walking tour – from the Normans to the Tudors",
-      "fingerprint": "medieval norwich walking tour – from the normans to the tudors|2026-06-26|norwich"
+      "fingerprint": "medieval norwich walking tour – from the normans to the tudors|2026-06-26|venue tba"
     },
     {
       "reason": "needs_review",
@@ -288,6 +246,41 @@
       "source": "Visit Norwich",
       "title": "The Guns N’ Roses Experience + Motley Crude + Some Kind Of Metallica",
       "fingerprint": "the guns n’ roses experience + motley crude + some kind of metallica|2026-06-26|venue tba"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Norwich Wine Week – Alcohol Free Wine Tasting at The Lions’ Den City",
+      "fingerprint": "norwich wine week – alcohol free wine tasting at the lions’ den city|2026-06-26|the lions’ den city"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Hal Cruttenden: Can Dish It Out But Can’t Take It",
+      "fingerprint": "hal cruttenden: can dish it out but can’t take it|2026-06-26|venue tba"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Liv presents The Pride Ball 2026 (5th anniversary)",
+      "fingerprint": "liv presents the pride ball 2026 (5th anniversary)|2026-06-26|norwich arts centre"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Guided Tour of Strangers’ Hall",
+      "fingerprint": "guided tour of strangers’ hall|2026-06-27|strangers’ hall"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Norwich Wine Week Bottomless Wine Brunches",
+      "fingerprint": "norwich wine week bottomless wine brunches|2026-06-27|venue tba"
     },
     {
       "reason": "needs_review",
@@ -332,13 +325,6 @@
       "fingerprint": "james b partridge - the big christmas assembly 2026|2026-11-27|the halls"
     },
     {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Norfolk Showground",
-      "title": "Royal Norfolk Show",
-      "fingerprint": "royal norfolk show|2026-06-24|norfolk events centre"
-    },
-    {
       "reason": "duplicate",
       "status": "pending_review",
       "source": "Norfolk Showground",
@@ -346,11 +332,11 @@
       "fingerprint": "norfolk garden show|2026-07-10|norfolk showground"
     },
     {
-      "reason": "duplicate",
+      "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
-      "title": "The Labyrinth Challenge Tour",
-      "fingerprint": "the labyrinth challenge tour|2026-07-11|norfolk showground"
+      "title": "Family The Labyrinth Challenge Tour",
+      "fingerprint": "family the labyrinth challenge tour|2026-07-11|norfolk showground"
     },
     {
       "reason": "duplicate",
@@ -364,14 +350,14 @@
       "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "Ink & Engines Fest",
-      "fingerprint": "ink & engines fest|2026-08-15|norfolk events centre"
+      "fingerprint": "ink & engines fest|2026-08-15|norfolk showground"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "Norwich Games Con",
-      "fingerprint": "norwich games con|2026-08-22|norfolk events centre"
+      "fingerprint": "norwich games con|2026-08-22|norfolk showground"
     },
     {
       "reason": "needs_review",
@@ -516,6 +502,34 @@
     {
       "reason": "needs_review",
       "status": "pending_review",
+      "source": "Sainsbury Centre",
+      "title": "Living Art Ryan Gander",
+      "fingerprint": "living art ryan gander|2026-06-25|sainsbury centre"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Sainsbury Centre",
+      "title": "Sculpture Park",
+      "fingerprint": "sculpture park|2026-06-25|sainsbury centre"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Sainsbury Centre",
+      "title": "Free Daily Tours of The Living Area",
+      "fingerprint": "free daily tours of the living area|2026-06-25|sainsbury centre"
+    },
+    {
+      "reason": "duplicate",
+      "status": "pending_review",
+      "source": "Sainsbury Centre",
+      "title": "Free Daily Tours of The Living Area",
+      "fingerprint": "free daily tours of the living area|2026-06-25|sainsbury centre"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
       "source": "Gonzo's Fatsoma",
       "title": "GRL DEM presents Asian Brat - 10 Year Anniversary",
       "fingerprint": "grl dem presents asian brat - 10 year anniversary|2026-06-26|gonzo's tea room"
@@ -600,48 +614,6 @@
     {
       "reason": "needs_review",
       "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "Living Art Ryan Gander",
-      "fingerprint": "living art ryan gander|2026-06-24|sainsbury centre"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "Sculpture Park",
-      "fingerprint": "sculpture park|2026-06-24|sainsbury centre sculpture park"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "The Living Area: Robert and Lisa Sainsbury Collection",
-      "fingerprint": "the living area: robert and lisa sainsbury collection|2026-06-24|sainsbury centre"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "Free Daily Guided Tours of The Living Area",
-      "fingerprint": "free daily guided tours of the living area|2026-06-24|sainsbury centre"
-    },
-    {
-      "reason": "duplicate",
-      "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "Free Daily Guided Tours of The Living Area",
-      "fingerprint": "free daily guided tours of the living area|2026-06-24|sainsbury centre"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Skiddle Norwich",
-      "title": "Jungle Mania Norwich",
-      "fingerprint": "jungle mania norwich|2026-07-31|the adrian flux waterfront"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
       "source": "Skiddle Norwich",
       "title": "Mania U18: Norwich + Chad Harrison",
       "fingerprint": "mania u18: norwich + chad harrison|2026-07-29|bar and beyond norwich"
@@ -650,22 +622,29 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
+      "title": "Jungle Mania Norwich",
+      "fingerprint": "jungle mania norwich|2026-07-31|the adrian flux waterfront, norwich"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
       "title": "RAW MATERIAL Presents - THE SHOCKWAVE - P MONEY + More",
-      "fingerprint": "raw material presents - the shockwave - p money + more|2026-07-18|kudos bar and nightclub"
+      "fingerprint": "raw material presents - the shockwave - p money + more|2026-07-18|kudos bar and nightclub, norwich"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
       "title": "The Reggae Rooftop - NORWICH - Sat 4th July",
-      "fingerprint": "the reggae rooftop - norwich - sat 4th july|2026-07-04|rooftop gardens"
+      "fingerprint": "the reggae rooftop - norwich - sat 4th july|2026-07-04|rooftop gardens, norwich"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
       "title": "An Evening With Chicane - Norwich",
-      "fingerprint": "an evening with chicane - norwich|2026-09-26|epic studios"
+      "fingerprint": "an evening with chicane - norwich|2026-09-26|epic studios, norwich"
     },
     {
       "reason": "needs_review",
@@ -678,43 +657,43 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
-      "title": "An Afternoon of Indie: NORWICH - Over 30s Summer Party",
-      "fingerprint": "an afternoon of indie: norwich - over 30s summer party|2026-08-01|junkyard market"
+      "title": "The Greatest MUSICALS Daytime Disco - Norwich",
+      "fingerprint": "the greatest musicals daytime disco - norwich|2027-02-27|be at one norwich"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
-      "title": "Hoedown Showdown - Norwich, Be At One",
-      "fingerprint": "hoedown showdown - norwich, be at one|2026-09-12|be at one"
+      "title": "An Afternoon of Indie: NORWICH - Over 30s Summer Party",
+      "fingerprint": "an afternoon of indie: norwich - over 30s summer party|2026-08-01|junkyard market, norwich"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
       "title": "THE WOMBATS Live in NORWICH",
-      "fingerprint": "the wombats live in norwich|2026-06-28|earlham park"
+      "fingerprint": "the wombats live in norwich|2026-06-28|earlham park, norwich"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
       "title": "Rum & Reggae Fest | The Hangar, Norwich",
-      "fingerprint": "rum & reggae fest | the hangar, norwich|2026-07-25|the hangar"
+      "fingerprint": "rum & reggae fest | the hangar, norwich|2026-07-25|the hangar, norwich"
     },
     {
-      "reason": "duplicate",
+      "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
       "title": "Emilio Santoro as Elvis",
-      "fingerprint": "emilio santoro as elvis|2026-09-26|the halls"
+      "fingerprint": "emilio santoro as elvis|2026-09-26|the halls norwich"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
       "title": "The Ultimate Eagles",
-      "fingerprint": "the ultimate eagles|2026-10-16|the halls"
+      "fingerprint": "the ultimate eagles|2026-10-16|the halls norwich"
     },
     {
       "reason": "needs_review",
@@ -727,57 +706,57 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
-      "title": "Symphonic Ibiza Orchestra | Earlham Park Concert 2027",
-      "fingerprint": "symphonic ibiza orchestra | earlham park concert 2027|2027-06-11|earlham park"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Skiddle Norwich",
       "title": "Aladdinsane - The Sound & Vision of Bowie tribute: Norwich",
-      "fingerprint": "aladdinsane - the sound & vision of bowie tribute: norwich|2026-09-12|the adrian flux waterfront"
+      "fingerprint": "aladdinsane - the sound & vision of bowie tribute: norwich|2026-09-12|the adrian flux waterfront, norwich"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
       "title": "A Country Night in Nashville",
-      "fingerprint": "a country night in nashville|2026-12-18|the halls"
+      "fingerprint": "a country night in nashville|2026-12-18|the halls norwich"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
+      "title": "Immersion + Pram + e.m. arson",
+      "fingerprint": "immersion + pram + e.m. arson|2026-09-13|voodoo daddy's"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
       "title": "Junction 42",
-      "fingerprint": "junction 42|2026-06-27|earlham park"
+      "fingerprint": "junction 42|2026-06-27|earlham park, norwich"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
       "title": "Country Club - Outdoor Country Music Festival - Norwich",
-      "fingerprint": "country club - outdoor country music festival - norwich|2026-07-04|junkyard"
+      "fingerprint": "country club - outdoor country music festival - norwich|2026-07-04|junkyard, norwich"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
       "title": "Summer 90s Outdoor Festival - Junkyard Norwich",
-      "fingerprint": "summer 90s outdoor festival - junkyard norwich|2026-08-15|junkyard market"
+      "fingerprint": "summer 90s outdoor festival - junkyard norwich|2026-08-15|junkyard market, norwich"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
       "title": "Taste Of Thailand Music And Food Festival",
-      "fingerprint": "taste of thailand music and food festival|2026-07-25|earlham park"
+      "fingerprint": "taste of thailand music and food festival|2026-07-25|earlham park norwich"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
       "title": "Earlham Park Tribute Festival 2027",
-      "fingerprint": "earlham park tribute festival 2027|2027-06-12|earlham park"
+      "fingerprint": "earlham park tribute festival 2027|2027-06-12|earlham park, norwich"
     },
     {
       "reason": "needs_review",
@@ -791,7 +770,14 @@
       "status": "pending_review",
       "source": "Skiddle Norwich",
       "title": "Rock N Roll Circus Norwich",
-      "fingerprint": "rock n roll circus norwich|2026-08-21|earlham park"
+      "fingerprint": "rock n roll circus norwich|2026-08-21|earlham park, norwich"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
+      "title": "Angry Boater Live in Norwich",
+      "fingerprint": "angry boater live in norwich|2026-09-26|the garage, norwich"
     },
     {
       "reason": "needs_review",
@@ -804,15 +790,8 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
-      "title": "Angry Boater Live in Norwich",
-      "fingerprint": "angry boater live in norwich|2026-09-26|the garage"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Skiddle Norwich",
       "title": "A Christmas Carol - A One-Man Performance",
-      "fingerprint": "a christmas carol - a one-man performance|2026-12-18|octagon chapel"
+      "fingerprint": "a christmas carol - a one-man performance|2026-12-18|octagon chapel, norwich"
     }
   ]
 }

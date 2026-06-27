@@ -1,41 +1,6 @@
 {
   "events": [
     {
-      "id": "scraper-norfolk-deaf-festival-2026-06-26-the-atrium",
-      "slug": "norfolk-deaf-festival-2026-06-26",
-      "fingerprint": "norfolk deaf festival|2026-06-26|the atrium",
-      "name": "Norfolk Deaf Festival",
-      "eventname": "Norfolk Deaf Festival",
-      "date": "2026-06-26",
-      "time": "00:00",
-      "endDate": null,
-      "endTime": null,
-      "venue": "The Atrium",
-      "location": "The Atrium",
-      "address": null,
-      "category": "festivals",
-      "description": "All day festival.",
-      "ticketLink": "",
-      "officialUrl": "",
-      "sourceUrl": "https://www.theforumnorwich.co.uk/whats-on",
-      "primaryUrl": "https://www.theforumnorwich.co.uk/whats-on",
-      "price": "See website",
-      "image": "",
-      "hasFlyer": false,
-      "imageStatus": "fallback",
-      "linkStatus": "verified",
-      "tags": [
-        "deaf community",
-        "festival"
-      ],
-      "featured": false,
-      "editorsChoice": false,
-      "isFree": false,
-      "ageRestriction": null,
-      "status": "approved",
-      "source": "The Forum Norwich"
-    },
-    {
       "id": "scraper-norfolk-garden-show-2026-07-10-norfolk-showground",
       "slug": "norfolk-garden-show-2026-07-10",
       "fingerprint": "norfolk garden show|2026-07-10|norfolk showground",
@@ -309,6 +274,6 @@
       "source": "The Halls Norwich"
     }
   ],
-  "generated_at": "2026-06-26T08:17:52.828088",
-  "count": 9
+  "generated_at": "2026-06-27T08:07:49.335182",
+  "count": 8
 }

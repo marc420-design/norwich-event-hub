@@ -1,7 +1,14 @@
 {
-  "generated_at": "2026-06-30T08:24:17.344215",
-  "count": 122,
+  "generated_at": "2026-07-01T10:51:29.657155",
+  "count": 113,
   "events": [
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Norwich Cathedral",
+      "title": "Specialist Tour: Monastic Life at Norwich Cathedral",
+      "fingerprint": "specialist tour: monastic life at norwich cathedral|2026-07-01|norwich cathedral"
+    },
     {
       "reason": "needs_review",
       "status": "pending_review",
@@ -138,16 +145,121 @@
     {
       "reason": "needs_review",
       "status": "pending_review",
-      "source": "Norwich Cathedral",
-      "title": "Specialist Tour: Monastic Life at Norwich Cathedral",
-      "fingerprint": "specialist tour: monastic life at norwich cathedral|2026-07-01|norwich cathedral"
+      "source": "Visit Norwich",
+      "title": "Norwich Comedy Garden",
+      "fingerprint": "norwich comedy garden|2026-07-01|norwich comedy garden"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Carrow Road to Cathedral cloister",
+      "fingerprint": "carrow road to cathedral cloister|2026-07-02|carrow road to cathedral cloister"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Norwich Writers’ Space open mic night",
+      "fingerprint": "norwich writers’ space open mic night|2026-07-02|norwich writers' space"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "HOT MESS: Scummy Mummies MUMS’ NIGHT OUT!",
+      "fingerprint": "hot mess: scummy mummies mums’ night out!|2026-07-02|norwich"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "SPACE COMEDY NIGHT YOUNG COMEDIANS SHOWCASE",
+      "fingerprint": "space comedy night young comedians showcase|2026-07-02|space"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Natural Recharge at Fritton Lake x Norfolk Natural Living",
+      "fingerprint": "natural recharge at fritton lake x norfolk natural living|2026-07-03|fritton lake"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Cat Linocut at The Cat House",
+      "fingerprint": "cat linocut at the cat house|2026-07-03|the cat house"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Shakespeare Festival",
+      "fingerprint": "shakespeare festival|2026-07-03|norwich cathedral cloister"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Outlaw Half Holkham Weekend",
+      "fingerprint": "outlaw half holkham weekend|2026-07-04|holkham park"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "I Have A Dream – The Ultimate Mamma Mia Party – Live Entertainment Plus 3 Course Meal Just £45",
+      "fingerprint": "i have a dream – the ultimate mamma mia party – live entertainment plus 3 course meal just £45|2026-07-04|holiday inn norwich north"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Halls Norwich",
+      "title": "Big Fish Little Fish Family Rave",
+      "fingerprint": "big fish little fish family rave|2026-07-10|the halls"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Halls Norwich",
+      "title": "Lord Mayor's Procession Day Activities at The Halls",
+      "fingerprint": "lord mayor's procession day activities at the halls|2026-07-11|the halls"
+    },
+    {
+      "reason": "duplicate",
+      "status": "pending_review",
+      "source": "The Halls Norwich",
+      "title": "Lie Down and Listen",
+      "fingerprint": "lie down and listen|2026-07-25|the halls"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Halls Norwich",
+      "title": "The Ultimate Bubble Show",
+      "fingerprint": "the ultimate bubble show|2026-10-10|the halls"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Halls Norwich",
+      "title": "3 Acres + A Cow",
+      "fingerprint": "3 acres + a cow|2026-10-21|the halls"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Halls Norwich",
+      "title": "James B Partridge - The Big Christmas Assembly 2026",
+      "fingerprint": "james b partridge - the big christmas assembly 2026|2026-11-27|the halls"
+    },
+    {
+      "reason": "duplicate",
+      "status": "pending_review",
       "source": "The Forum Norwich",
-      "title": "ReDo Pop-Up: Vintage Treasures & Sustainable Life-Style!",
-      "fingerprint": "redo pop-up: vintage treasures & sustainable life-style!|2026-06-30|the forum"
+      "title": "Heritage Open Days",
+      "fingerprint": "heritage open days|2026-09-11|across norfolk"
     },
     {
       "reason": "needs_review",
@@ -168,7 +280,7 @@
       "status": "pending_review",
       "source": "The Forum Norwich",
       "title": "Norwich Forum Writers",
-      "fingerprint": "norwich forum writers|2026-07-03|the gallery"
+      "fingerprint": "norwich forum writers|2026-07-03|the forum"
     },
     {
       "reason": "needs_review",
@@ -210,119 +322,14 @@
       "status": "pending_review",
       "source": "The Forum Norwich",
       "title": "Autism Just a Cuppa in The Gallery",
-      "fingerprint": "autism just a cuppa in the gallery|2026-07-06|the gallery"
+      "fingerprint": "autism just a cuppa in the gallery|2026-07-06|the forum"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Victoria String Quartet and pupils from Norwich School",
-      "fingerprint": "victoria string quartet and pupils from norwich school|2026-06-30|norwich"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "MAMMA MIA!",
-      "fingerprint": "mamma mia!|2026-06-30|norwich theatre royal"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Kanpur 1857",
-      "fingerprint": "kanpur 1857|2026-06-30|norwich"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Norwich Comedy Garden",
-      "fingerprint": "norwich comedy garden|2026-07-01|norwich"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Carrow Road to Cathedral cloister",
-      "fingerprint": "carrow road to cathedral cloister|2026-07-02|norwich"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Norwich Writers’ Space open mic night",
-      "fingerprint": "norwich writers’ space open mic night|2026-07-02|norwich writers’ space"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "HOT MESS: Scummy Mummies MUMS’ NIGHT OUT!",
-      "fingerprint": "hot mess: scummy mummies mums’ night out!|2026-07-02|norwich"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "SPACE COMEDY NIGHT YOUNG COMEDIANS SHOWCASE",
-      "fingerprint": "space comedy night young comedians showcase|2026-07-02|norwich"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Cat Linocut at The Cat House",
-      "fingerprint": "cat linocut at the cat house|2026-07-03|the cat house"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Shakespeare Festival",
-      "fingerprint": "shakespeare festival|2026-07-03|norwich cathedral cloister"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Halls Norwich",
-      "title": "Big Fish Little Fish Family Rave",
-      "fingerprint": "big fish little fish family rave|2026-07-10|the halls"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Halls Norwich",
-      "title": "Lord Mayor's Procession Day Activities",
-      "fingerprint": "lord mayor's procession day activities|2026-07-11|the halls"
-    },
-    {
-      "reason": "duplicate",
-      "status": "pending_review",
-      "source": "The Halls Norwich",
-      "title": "Lie Down and Listen",
-      "fingerprint": "lie down and listen|2026-07-25|the halls"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Halls Norwich",
-      "title": "The Ultimate Bubble Show",
-      "fingerprint": "the ultimate bubble show|2026-10-10|the halls"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Halls Norwich",
-      "title": "3 Acres + A Cow",
-      "fingerprint": "3 acres + a cow|2026-10-21|the halls"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Halls Norwich",
-      "title": "James B Partridge - The Big Christmas Assembly",
-      "fingerprint": "james b partridge - the big christmas assembly|2026-11-27|the halls"
+      "source": "The Forum Norwich",
+      "title": "English Exchange in The Gallery",
+      "fingerprint": "english exchange in the gallery|2026-07-06|the forum"
     },
     {
       "reason": "duplicate",
@@ -493,41 +500,6 @@
       "fingerprint": "a.m.c grassroots energy: norwich|2026-12-11|gonzo's tea room"
     },
     {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "Living Art: Ryan Gander",
-      "fingerprint": "living art: ryan gander|2026-07-01|sainsbury centre"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "Sculpture Park",
-      "fingerprint": "sculpture park|2026-07-01|sainsbury centre"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "The Living Area: Robert and Lisa Sainsbury Collection",
-      "fingerprint": "the living area: robert and lisa sainsbury collection|2026-07-01|sainsbury centre"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "Free Daily Tours of The Living Area: Robert and Lisa Sainsbury Collection",
-      "fingerprint": "free daily tours of the living area: robert and lisa sainsbury collection|2026-07-01|sainsbury centre"
-    },
-    {
-      "reason": "duplicate",
-      "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "Free Daily Tours of The Living Area: Robert and Lisa Sainsbury Collection",
-      "fingerprint": "free daily tours of the living area: robert and lisa sainsbury collection|2026-07-01|sainsbury centre"
-    },
-    {
       "reason": "duplicate",
       "status": "pending_review",
       "source": "Gonzo's Fatsoma",
@@ -636,15 +608,15 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
-      "title": "Poppy Moores iPod Norwich Pride",
-      "fingerprint": "poppy moores ipod norwich pride|2026-07-25|deadwax norwich"
+      "title": "Mania U18: Norwich + Chad Harrison",
+      "fingerprint": "mania u18: norwich + chad harrison|2026-07-29|bar and beyond norwich"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
-      "title": "Mania U18: Norwich + Chad Harrison",
-      "fingerprint": "mania u18: norwich + chad harrison|2026-07-29|bar and beyond norwich"
+      "title": "Poppy Moores iPod Norwich Pride",
+      "fingerprint": "poppy moores ipod norwich pride|2026-07-25|deadwax norwich"
     },
     {
       "reason": "needs_review",
@@ -664,8 +636,8 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
-      "title": "An Afternoon of Indie: NORWICH - Over 30s Summer Party",
-      "fingerprint": "an afternoon of indie: norwich - over 30s summer party|2026-08-01|junkyard market"
+      "title": "The Reggae Rooftop - NORWICH - Sat 4th July",
+      "fingerprint": "the reggae rooftop - norwich - sat 4th july|2026-07-04|rooftop gardens"
     },
     {
       "reason": "needs_review",
@@ -762,15 +734,15 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
-      "title": "Rock N Roll Circus Norwich",
-      "fingerprint": "rock n roll circus norwich|2026-08-21|earlham park"
+      "title": "Field Maneuvers",
+      "fingerprint": "field maneuvers|2026-08-21|secret location norwich"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
-      "title": "Field Maneuvers",
-      "fingerprint": "field maneuvers|2026-08-21|secret location norwich"
+      "title": "Rock N Roll Circus Norwich",
+      "fingerprint": "rock n roll circus norwich|2026-08-21|earlham park"
     },
     {
       "reason": "needs_review",
@@ -789,72 +761,37 @@
     {
       "reason": "needs_review",
       "status": "pending_review",
-      "source": "Eventbrite Norwich",
-      "title": "Days of Glory - Old School Party [FREE ENTRY]",
-      "fingerprint": "days of glory - old school party [free entry]|2026-07-04|louis marchesi"
+      "source": "Sainsbury Centre",
+      "title": "Living Art: Ryan Gander",
+      "fingerprint": "living art: ryan gander|2026-07-01|sainsbury centre"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
-      "source": "Eventbrite Norwich",
-      "title": "Are You Succeed? + Bore Joysey + Chubaby",
-      "fingerprint": "are you succeed? + bore joysey + chubaby|2026-07-09|space studios"
+      "source": "Sainsbury Centre",
+      "title": "Sculpture Park",
+      "fingerprint": "sculpture park|2026-07-01|sainsbury centre"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
-      "source": "Eventbrite Norwich",
-      "title": "Jungle Mania Norwich",
-      "fingerprint": "jungle mania norwich|2026-07-31|the waterfront"
+      "source": "Sainsbury Centre",
+      "title": "The Living Area: Robert and Lisa Sainsbury Collection",
+      "fingerprint": "the living area: robert and lisa sainsbury collection|2026-07-01|sainsbury centre"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
-      "source": "Eventbrite Norwich",
-      "title": "POLLY - YUFO - BLACK TRANSISTOR",
-      "fingerprint": "polly - yufo - black transistor|2026-07-31|deadwax"
+      "source": "Sainsbury Centre",
+      "title": "Free Daily Tour of the Living Area",
+      "fingerprint": "free daily tour of the living area|2026-07-01|sainsbury centre"
     },
     {
       "reason": "duplicate",
       "status": "pending_review",
-      "source": "Eventbrite Norwich",
-      "title": "How to make Norwich a swift city",
-      "fingerprint": "how to make norwich a swift city|2026-07-01|the forum"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Eventbrite Norwich",
-      "title": "Tummyache + Takeda + Philippe Nash",
-      "fingerprint": "tummyache + takeda + philippe nash|2026-07-01|dead wax norwich"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Eventbrite Norwich",
-      "title": "Norwich Social Club by Agency Folk (2nd July)",
-      "fingerprint": "norwich social club by agency folk (2nd july)|2026-07-02|dick's cafe/bar"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Eventbrite Norwich",
-      "title": "Sipthesystem Trans fundraiser",
-      "fingerprint": "sipthesystem trans fundraiser|2026-07-05|dead wax norwich"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Eventbrite Norwich",
-      "title": "Access Creative College Norwich Award Ceremony",
-      "fingerprint": "access creative college norwich award ceremony|2026-07-09|the halls"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Eventbrite Norwich",
-      "title": "The Norfolk Motorhome & Campervan Show 2026 - Camping",
-      "fingerprint": "the norfolk motorhome & campervan show 2026 - camping|2026-07-16|norfolk showground"
+      "source": "Sainsbury Centre",
+      "title": "Free Daily Tour of the Living Area",
+      "fingerprint": "free daily tour of the living area|2026-07-01|sainsbury centre"
     }
   ]
 }

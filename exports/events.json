@@ -1,42 +1,6 @@
 {
   "events": [
     {
-      "id": "scraper-norfolk-garden-show-2026-07-10-norfolk-showground",
-      "slug": "norfolk-garden-show-2026-07-10",
-      "fingerprint": "norfolk garden show|2026-07-10|norfolk showground",
-      "name": "Norfolk Garden Show",
-      "eventname": "Norfolk Garden Show",
-      "date": "2026-07-10",
-      "time": "00:00",
-      "endDate": null,
-      "endTime": null,
-      "venue": "Norfolk Showground",
-      "location": "Norfolk Showground",
-      "address": null,
-      "category": "general",
-      "description": "",
-      "ticketLink": "https://www.norfolkshowground.co.uk/events",
-      "officialUrl": "",
-      "sourceUrl": "https://www.norfolkshowground.co.uk/events",
-      "primaryUrl": "https://www.norfolkshowground.co.uk/events",
-      "price": "See website",
-      "image": "",
-      "hasFlyer": false,
-      "imageStatus": "fallback",
-      "linkStatus": "verified",
-      "tags": [
-        "garden",
-        "show",
-        "outdoor"
-      ],
-      "featured": false,
-      "editorsChoice": false,
-      "isFree": false,
-      "ageRestriction": null,
-      "status": "approved",
-      "source": "Norfolk Showground"
-    },
-    {
       "id": "scraper-the-labyrinth-challenge-tour-2026-07-11-norfolk-showground",
       "slug": "the-labyrinth-challenge-tour-2026-07-11",
       "fingerprint": "the labyrinth challenge tour|2026-07-11|norfolk showground",
@@ -274,6 +238,6 @@
       "source": "The Halls Norwich"
     }
   ],
-  "generated_at": "2026-07-10T10:27:39.247844",
-  "count": 8
+  "generated_at": "2026-07-11T08:53:54.840195",
+  "count": 7
 }

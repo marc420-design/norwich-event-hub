@@ -1,43 +1,6 @@
 {
   "events": [
     {
-      "id": "scraper-the-labyrinth-challenge-tour-2026-07-11-norfolk-showground",
-      "slug": "the-labyrinth-challenge-tour-2026-07-11",
-      "fingerprint": "the labyrinth challenge tour|2026-07-11|norfolk showground",
-      "name": "The Labyrinth Challenge Tour",
-      "eventname": "The Labyrinth Challenge Tour",
-      "date": "2026-07-11",
-      "time": "00:00",
-      "endDate": null,
-      "endTime": null,
-      "venue": "Norfolk Showground",
-      "location": "Norfolk Showground",
-      "address": null,
-      "category": "family",
-      "description": "",
-      "ticketLink": "https://www.norfolkshowground.co.uk/events",
-      "officialUrl": "",
-      "sourceUrl": "https://www.norfolkshowground.co.uk/events",
-      "primaryUrl": "https://www.norfolkshowground.co.uk/events",
-      "price": "See website",
-      "image": "",
-      "hasFlyer": false,
-      "imageStatus": "fallback",
-      "linkStatus": "verified",
-      "tags": [
-        "labyrinth",
-        "challenge",
-        "tour",
-        "outdoor"
-      ],
-      "featured": false,
-      "editorsChoice": false,
-      "isFree": false,
-      "ageRestriction": null,
-      "status": "approved",
-      "source": "Norfolk Showground"
-    },
-    {
       "id": "scraper-norfolk-motorhome-&-campervan-show-2026-07-17-norfolk-showground",
       "slug": "norfolk-motorhome-campervan-show-2026-07-17",
       "fingerprint": "norfolk motorhome & campervan show|2026-07-17|norfolk showground",
@@ -238,6 +201,6 @@
       "source": "The Halls Norwich"
     }
   ],
-  "generated_at": "2026-07-11T08:53:54.840195",
-  "count": 7
+  "generated_at": "2026-07-12T09:09:23.724397",
+  "count": 6
 }

@@ -1,27 +1,13 @@
 {
-  "generated_at": "2026-07-15T07:47:57.957784",
-  "count": 80,
+  "generated_at": "2026-07-16T07:50:51.256106",
+  "count": 82,
   "events": [
     {
       "reason": "needs_review",
       "status": "pending_review",
-      "source": "Norwich Cathedral",
-      "title": "Benedictine lectures 2026: Liturgy and Music in the Medieval Customary",
-      "fingerprint": "benedictine lectures 2026: liturgy and music in the medieval customary|2026-07-15|norwich cathedral"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Norwich Cathedral",
-      "title": "BBC Radio 3 broadcast: Choral Evensong with Norwich Cathedral Choir",
-      "fingerprint": "bbc radio 3 broadcast: choral evensong with norwich cathedral choir|2026-07-15|norwich cathedral"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
       "source": "UEA Waterfront",
-      "title": "Semi Final – England vs Argentina – STUDIO ONLY",
-      "fingerprint": "semi final – england vs argentina – studio only|2026-07-15|the adrian flux waterfront studio"
+      "title": "Blue SPECIAL MATINEE PERFORMANCE ADDED!",
+      "fingerprint": "blue special matinee performance added!|2026-07-16|the adrian flux waterfront"
     },
     {
       "reason": "needs_review",
@@ -29,6 +15,13 @@
       "source": "UEA Waterfront",
       "title": "A Thousand Horses",
       "fingerprint": "a thousand horses|2026-07-16|norwich arts centre"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "UEA Waterfront",
+      "title": "Blue",
+      "fingerprint": "blue|2026-07-16|the adrian flux waterfront"
     },
     {
       "reason": "needs_review",
@@ -69,8 +62,15 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "UEA Waterfront",
-      "title": "Latitude Festival 2026 The Twentieth Edition",
-      "fingerprint": "latitude festival 2026 the twentieth edition|2026-07-23|henham park"
+      "title": "Gary Numan",
+      "fingerprint": "gary numan|2026-07-20|the adrian flux waterfront"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "UEA Waterfront",
+      "title": "Gary Numan New date added due to phenomenal demand!",
+      "fingerprint": "gary numan new date added due to phenomenal demand!|2026-07-21|the adrian flux waterfront"
     },
     {
       "reason": "needs_review",
@@ -110,51 +110,37 @@
     {
       "reason": "needs_review",
       "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "Art Norfolk 26 Summer exhibition",
-      "fingerprint": "art norfolk 26 summer exhibition|2026-07-15|the forum"
+      "source": "UEA Waterfront",
+      "title": "We Are Scientists",
+      "fingerprint": "we are scientists|2026-07-28|the adrian flux waterfront studio"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "ReDo Pop-Up: Vintage Treasures & Sustainable Life-Style!",
-      "fingerprint": "redo pop-up: vintage treasures & sustainable life-style!|2026-07-15|the forum"
+      "source": "UEA Waterfront",
+      "title": "RØRY presents BLOODLETTING The Album Listening Experience",
+      "fingerprint": "røry presents bloodletting the album listening experience|2026-07-29|the adrian flux waterfront"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "Bounce and Rhyme in The Gallery",
-      "fingerprint": "bounce and rhyme in the gallery|2026-07-15|the forum"
+      "source": "UEA Waterfront",
+      "title": "Jungle Mania",
+      "fingerprint": "jungle mania|2026-07-31|the adrian flux waterfront"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "Board Games for Families in The Gallery",
-      "fingerprint": "board games for families in the gallery|2026-07-15|the forum"
+      "source": "Norwich Cathedral",
+      "title": "St Benedict Study Day",
+      "fingerprint": "st benedict study day|2026-07-18|norwich cathedral"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "Poetry Just a Cuppa in The Gallery",
-      "fingerprint": "poetry just a cuppa in the gallery|2026-07-15|the forum"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "Drop in and Draw in The Gallery",
-      "fingerprint": "drop in and draw in the gallery|2026-07-15|the forum"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "English Exchange in The Gallery",
-      "fingerprint": "english exchange in the gallery|2026-07-15|the forum"
+      "source": "Norwich Cathedral",
+      "title": "Specialist Tour: The Graffiti of Norwich Cathedral",
+      "fingerprint": "specialist tour: the graffiti of norwich cathedral|2026-07-18|norwich cathedral"
     },
     {
       "reason": "needs_review",
@@ -180,16 +166,51 @@
     {
       "reason": "needs_review",
       "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "The Pastons in Norwich Walking Tour",
-      "fingerprint": "the pastons in norwich walking tour|2026-07-15|norwich"
+      "source": "The Forum Norwich",
+      "title": "Norwich Forum Writers",
+      "fingerprint": "norwich forum writers|2026-07-17|the forum"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Forum Norwich",
+      "title": "Colour Me Calm in The Gallery",
+      "fingerprint": "colour me calm in the gallery|2026-07-17|the forum"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Forum Norwich",
+      "title": "Norfolk Small Charities Showcase 2026",
+      "fingerprint": "norfolk small charities showcase 2026|2026-07-18|the forum"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Forum Norwich",
+      "title": "East Coast Truckers Children’s Charity Fun Day",
+      "fingerprint": "east coast truckers children’s charity fun day|2026-07-18|the forum"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Forum Norwich",
+      "title": "Norwich Aphasia Choir Summer Concert",
+      "fingerprint": "norwich aphasia choir summer concert|2026-07-18|the forum"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Forum Norwich",
+      "title": "Norwich Antiques & Vintage Fair",
+      "fingerprint": "norwich antiques & vintage fair|2026-07-19|the forum"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Visit Norwich",
       "title": "Norwich Her Story Walk",
-      "fingerprint": "norwich her story walk|2026-07-16|norwich"
+      "fingerprint": "norwich her story walk|2026-07-16|venue tba"
     },
     {
       "reason": "needs_review",
@@ -216,29 +237,36 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Visit Norwich",
-      "title": "Summer Holiday Workshops/Events",
-      "fingerprint": "summer holiday workshops/events|2026-07-17|the cat house"
+      "title": "Goat Shed Maize Maze",
+      "fingerprint": "goat shed maize maze|2026-07-17|goat shed"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Summer Holiday Workshops/Events at The Cat House",
+      "fingerprint": "summer holiday workshops/events at the cat house|2026-07-17|the cat house"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Visit Norwich",
       "title": "Norwich Weird & Wonderful Story Walk",
-      "fingerprint": "norwich weird & wonderful story walk|2026-07-17|norwich"
+      "fingerprint": "norwich weird & wonderful story walk|2026-07-17|venue tba"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Visit Norwich",
-      "title": "FREE Ice Cream for Every Child This Summer",
-      "fingerprint": "free ice cream for every child this summer|2026-07-18|pensthorpe"
+      "title": "FREE Ice Cream for Every Child This Summer at Pensthorpe!",
+      "fingerprint": "free ice cream for every child this summer at pensthorpe!|2026-07-18|pensthorpe"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Visit Norwich",
-      "title": "Design Your Own Book Cover",
-      "fingerprint": "design your own book cover|2026-07-18|look twice"
+      "title": "Design Your Own Book Cover at Look Twice",
+      "fingerprint": "design your own book cover at look twice|2026-07-18|look twice"
     },
     {
       "reason": "needs_review",
@@ -262,39 +290,39 @@
       "fingerprint": "norwich city of stories summer trail|2026-07-18|norwich"
     },
     {
-      "reason": "needs_review",
+      "reason": "duplicate",
       "status": "pending_review",
       "source": "The Halls Norwich",
       "title": "Lie Down and Listen",
-      "fingerprint": "lie down and listen|2026-07-25|the halls norwich"
+      "fingerprint": "lie down and listen|2026-07-25|the halls"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "The Halls Norwich",
       "title": "The Music of James Bond",
-      "fingerprint": "the music of james bond|2026-08-06|the halls norwich"
+      "fingerprint": "the music of james bond|2026-08-06|the halls"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "The Halls Norwich",
       "title": "The Ultimate Bubble Show",
-      "fingerprint": "the ultimate bubble show|2026-10-10|the halls norwich"
+      "fingerprint": "the ultimate bubble show|2026-10-10|the halls"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "The Halls Norwich",
       "title": "3 Acres + A Cow",
-      "fingerprint": "3 acres + a cow|2026-10-21|the halls norwich"
+      "fingerprint": "3 acres + a cow|2026-10-21|the halls"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "The Halls Norwich",
       "title": "James B Partridge - The Big Christmas Assembly 2026",
-      "fingerprint": "james b partridge - the big christmas assembly 2026|2026-11-27|the halls norwich"
+      "fingerprint": "james b partridge - the big christmas assembly 2026|2026-11-27|the halls"
     },
     {
       "reason": "needs_review",
@@ -321,8 +349,8 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
-      "title": "Action Arena",
-      "fingerprint": "action arena|2026-08-29|norfolk showground"
+      "title": "Family Action Arena",
+      "fingerprint": "family action arena|2026-08-29|norfolk showground"
     },
     {
       "reason": "needs_review",
@@ -337,13 +365,6 @@
       "source": "Norfolk Showground",
       "title": "NORCON",
       "fingerprint": "norcon|2026-09-26|norfolk showground"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Gonzo's Two Room",
-      "title": "England v Argentina – Full Building",
-      "fingerprint": "england v argentina – full building|2026-07-15|gonzo's tea room"
     },
     {
       "reason": "needs_review",
@@ -460,9 +481,16 @@
     {
       "reason": "needs_review",
       "status": "pending_review",
-      "source": "Gonzo's Fatsoma",
-      "title": "England v Argentina - Full Building",
-      "fingerprint": "england v argentina - full building|2026-07-15|gonzo's tea room"
+      "source": "Sainsbury Centre",
+      "title": "Free Daily Guided Tour of The Living Area (11am)",
+      "fingerprint": "free daily guided tour of the living area (11am)|2026-07-16|sainsbury centre"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Sainsbury Centre",
+      "title": "Free Daily Guided Tour of The Living Area (2pm)",
+      "fingerprint": "free daily guided tour of the living area (2pm)|2026-07-16|sainsbury centre"
     },
     {
       "reason": "duplicate",
@@ -542,25 +570,11 @@
       "fingerprint": "photek|2026-08-21|gonzo's tea room"
     },
     {
-      "reason": "needs_review",
+      "reason": "duplicate",
       "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "Living Art: Ryan Gander",
-      "fingerprint": "living art: ryan gander|2026-07-15|sainsbury centre"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "Sculpture Park",
-      "fingerprint": "sculpture park|2026-07-15|sainsbury centre"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "Free Daily Tours of The Living Area",
-      "fingerprint": "free daily tours of the living area|2026-07-15|sainsbury centre"
+      "source": "Gonzo's Fatsoma",
+      "title": "Rooftop Sunday Sessions w HEIDI",
+      "fingerprint": "rooftop sunday sessions w heidi|2026-08-23|gonzo's tea room"
     }
   ]
 }

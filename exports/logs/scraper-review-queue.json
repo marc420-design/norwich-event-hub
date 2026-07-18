@@ -1,49 +1,7 @@
 {
-  "generated_at": "2026-07-17T07:50:47.964368",
-  "count": 109,
+  "generated_at": "2026-07-18T07:42:50.199007",
+  "count": 105,
   "events": [
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Norwich Cathedral",
-      "title": "St Benedict Study Day",
-      "fingerprint": "st benedict study day|2026-07-18|norwich cathedral"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Norwich Cathedral",
-      "title": "Specialist Tour: The Graffiti of Norwich Cathedral",
-      "fingerprint": "specialist tour: the graffiti of norwich cathedral|2026-07-18|norwich cathedral"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "UEA Waterfront",
-      "title": "The Bon Jovi Experience + KISS tribute ‘Dressed To Kill’",
-      "fingerprint": "the bon jovi experience + kiss tribute ‘dressed to kill’|2026-07-17|the adrian flux waterfront"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "UEA Waterfront",
-      "title": "The Music of Trees – Geoff Robb",
-      "fingerprint": "the music of trees – geoff robb|2026-07-17|cley marshes"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "UEA Waterfront",
-      "title": "Anthony Gomes",
-      "fingerprint": "anthony gomes|2026-07-18|the adrian flux waterfront"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "UEA Waterfront",
-      "title": "Evil Scarecrow",
-      "fingerprint": "evil scarecrow|2026-07-18|the adrian flux waterfront studio"
-    },
     {
       "reason": "needs_review",
       "status": "pending_review",
@@ -131,72 +89,23 @@
     {
       "reason": "needs_review",
       "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "Art Norfolk 26",
-      "fingerprint": "art norfolk 26|2026-07-17|the forum"
+      "source": "UEA Waterfront",
+      "title": "Guns 2 Roses",
+      "fingerprint": "guns 2 roses|2026-08-01|the adrian flux waterfront"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "24 Hour Spinathon – Raising Funds for the Norfolk and Norwich Hospitals Charity",
-      "fingerprint": "24 hour spinathon – raising funds for the norfolk and norwich hospitals charity|2026-07-17|the forum"
+      "source": "UEA Waterfront",
+      "title": "Sleemo",
+      "fingerprint": "sleemo|2026-08-01|the adrian flux waterfront studio"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "National Careers Service at The Forum",
-      "fingerprint": "national careers service at the forum|2026-07-17|the forum"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "Bounce and Rhyme in The Gallery",
-      "fingerprint": "bounce and rhyme in the gallery|2026-07-17|the forum"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "Norwich Forum Writers",
-      "fingerprint": "norwich forum writers|2026-07-17|the forum"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "Colour Me Calm in The Gallery",
-      "fingerprint": "colour me calm in the gallery|2026-07-17|the forum"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "Norfolk Small Charities Showcase 2026",
-      "fingerprint": "norfolk small charities showcase 2026|2026-07-18|the forum"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "East Coast Truckers Children’s Charity Fun Day",
-      "fingerprint": "east coast truckers children’s charity fun day|2026-07-18|the forum"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "Norwich Aphasia Choir Summer Concert",
-      "fingerprint": "norwich aphasia choir summer concert|2026-07-18|the forum"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "Norwich Antiques & Vintage Fair",
-      "fingerprint": "norwich antiques & vintage fair|2026-07-19|the forum"
+      "source": "UEA Waterfront",
+      "title": "Ultimate Power – By The River",
+      "fingerprint": "ultimate power – by the river|2026-08-08|the adrian flux waterfront"
     },
     {
       "reason": "needs_review",
@@ -204,34 +113,6 @@
       "source": "Visit Norwich",
       "title": "Norwich City of Stories Summer Trail",
       "fingerprint": "norwich city of stories summer trail|2026-07-18|norwich"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "The Norfolk Motorhome & Campervan Show",
-      "fingerprint": "the norfolk motorhome & campervan show|2026-07-17|norfolk showground"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Goat Shed Maize Maze",
-      "fingerprint": "goat shed maize maze|2026-07-17|goat shed"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Summer Holiday Workshops/Events at The Cat House",
-      "fingerprint": "summer holiday workshops/events at the cat house|2026-07-17|the cat house"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Norwich Weird & Wonderful Story Walk",
-      "fingerprint": "norwich weird & wonderful story walk|2026-07-17|norwich"
     },
     {
       "reason": "needs_review",
@@ -280,7 +161,105 @@
       "status": "pending_review",
       "source": "Visit Norwich",
       "title": "BRASS TO THE FUTURE",
-      "fingerprint": "brass to the future|2026-07-18|venue tba"
+      "fingerprint": "brass to the future|2026-07-18|great yarmouth"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Norwich: A Black History Walking Tour",
+      "fingerprint": "norwich: a black history walking tour|2026-07-19|norwich"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Music in the Burnhams’ Festival Week",
+      "fingerprint": "music in the burnhams’ festival week|2026-07-19|churches across the burnhams"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Logans’ City of Stories Summer Trail Specials",
+      "fingerprint": "logans’ city of stories summer trail specials|2026-07-20|logans"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Norwich Cathedral Explorer Backpacks",
+      "fingerprint": "norwich cathedral explorer backpacks|2026-07-20|norwich cathedral"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Forum Norwich",
+      "title": "Norfolk Small Charities Showcase 2026",
+      "fingerprint": "norfolk small charities showcase 2026|2026-07-18|the forum"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Forum Norwich",
+      "title": "East Coast Truckers Children’s Charity Fun Day",
+      "fingerprint": "east coast truckers children’s charity fun day|2026-07-18|the forum"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Forum Norwich",
+      "title": "Norwich Aphasia Choir Summer Concert",
+      "fingerprint": "norwich aphasia choir summer concert|2026-07-18|the forum"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Forum Norwich",
+      "title": "Norwich Antiques & Vintage Fair",
+      "fingerprint": "norwich antiques & vintage fair|2026-07-19|the forum"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Forum Norwich",
+      "title": "Psychosis awareness stand",
+      "fingerprint": "psychosis awareness stand|2026-07-20|the forum"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Forum Norwich",
+      "title": "Why the Gloucester shipwreck matters with Claire Jowitt",
+      "fingerprint": "why the gloucester shipwreck matters with claire jowitt|2026-07-20|the forum"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Forum Norwich",
+      "title": "Bounce and Rhyme in The Gallery",
+      "fingerprint": "bounce and rhyme in the gallery|2026-07-23|the forum"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Forum Norwich",
+      "title": "English Exchange in The Gallery",
+      "fingerprint": "english exchange in the gallery|2026-07-23|the forum"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Forum Norwich",
+      "title": "Norwich Society Talk Signs of Past Times",
+      "fingerprint": "norwich society talk signs of past times|2026-07-23|the forum"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Forum Norwich",
+      "title": "Norwich Pride 2026",
+      "fingerprint": "norwich pride 2026|2026-07-25|the forum"
     },
     {
       "reason": "duplicate",
@@ -321,43 +300,36 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
-      "title": "Fun Norfolk Motorhome & Campervan Show",
-      "fingerprint": "fun norfolk motorhome & campervan show|2026-07-17|norfolk showground"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Norfolk Showground",
       "title": "Ink & Engines Fest",
-      "fingerprint": "ink & engines fest|2026-08-15|norfolk showground"
+      "fingerprint": "ink & engines fest|2026-08-15|norfolk events centre"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "Norwich Games Con",
-      "fingerprint": "norwich games con|2026-08-22|norfolk showground"
+      "fingerprint": "norwich games con|2026-08-22|norfolk events centre"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
-      "title": "Action Arena",
-      "fingerprint": "action arena|2026-08-29|norfolk showground"
+      "title": "Family Action Arena",
+      "fingerprint": "family action arena|2026-08-29|outdoor spaces"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "All About Dogs",
-      "fingerprint": "all about dogs|2026-08-30|norfolk showground"
+      "fingerprint": "all about dogs|2026-08-30|outdoor spaces"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "NORCON",
-      "fingerprint": "norcon|2026-09-26|norfolk showground"
+      "fingerprint": "norcon|2026-09-26|outdoor spaces"
     },
     {
       "reason": "needs_review",
@@ -405,6 +377,13 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Gonzo's Two Room",
+      "title": "Resident House Party",
+      "fingerprint": "resident house party|2026-08-01|gonzo's tea room"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Gonzo's Two Room",
       "title": "Rooftop Sunday Sessions w Aroop Roy",
       "fingerprint": "rooftop sunday sessions w aroop roy|2026-08-02|gonzo's tea room"
     },
@@ -412,8 +391,22 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Gonzo's Two Room",
+      "title": "Sounds of House",
+      "fingerprint": "sounds of house|2026-08-08|gonzo's tea room"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Gonzo's Two Room",
       "title": "Rooftop Sunday Sessions w Sam Redmore",
       "fingerprint": "rooftop sunday sessions w sam redmore|2026-08-09|gonzo's tea room"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Gonzo's Two Room",
+      "title": "Resident Rave w H3R",
+      "fingerprint": "resident rave w h3r|2026-08-15|gonzo's tea room"
     },
     {
       "reason": "needs_review",
@@ -454,6 +447,13 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Gonzo's Two Room",
+      "title": "Sounds of Summer",
+      "fingerprint": "sounds of summer|2026-08-29|gonzo's tea room"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Gonzo's Two Room",
       "title": "Rooftop Sunday Sessions w Joshua Roberts & Friends",
       "fingerprint": "rooftop sunday sessions w joshua roberts & friends|2026-08-30|gonzo's tea room"
     },
@@ -472,46 +472,11 @@
       "fingerprint": "a.m.c grassroots energy: norwich|2026-12-11|gonzo's tea room"
     },
     {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "Living Art Ryan Gander",
-      "fingerprint": "living art ryan gander|2026-07-17|sainsbury centre"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "Sculpture Park",
-      "fingerprint": "sculpture park|2026-07-17|sainsbury centre"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "The Living Area (Robert and Lisa Sainsbury Collection)",
-      "fingerprint": "the living area (robert and lisa sainsbury collection)|2026-07-17|sainsbury centre"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "Free Daily Tours of the Living Area",
-      "fingerprint": "free daily tours of the living area|2026-07-17|sainsbury centre"
-    },
-    {
       "reason": "duplicate",
       "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "Free Daily Tours of the Living Area",
-      "fingerprint": "free daily tours of the living area|2026-07-17|sainsbury centre"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
       "source": "Gonzo's Fatsoma",
-      "title": "July Sounds of Rave",
-      "fingerprint": "july sounds of rave|2026-07-18|gonzo's tea room"
+      "title": "Sounds of Rave",
+      "fingerprint": "sounds of rave|2026-07-18|gonzo's tea room"
     },
     {
       "reason": "duplicate",
@@ -552,8 +517,22 @@
       "reason": "duplicate",
       "status": "pending_review",
       "source": "Gonzo's Fatsoma",
+      "title": "Resident House Party",
+      "fingerprint": "resident house party|2026-08-01|gonzo's tea room"
+    },
+    {
+      "reason": "duplicate",
+      "status": "pending_review",
+      "source": "Gonzo's Fatsoma",
       "title": "Rooftop Sunday Sessions w Aroop Roy",
       "fingerprint": "rooftop sunday sessions w aroop roy|2026-08-02|gonzo's tea room"
+    },
+    {
+      "reason": "duplicate",
+      "status": "pending_review",
+      "source": "Gonzo's Fatsoma",
+      "title": "Sounds of House",
+      "fingerprint": "sounds of house|2026-08-08|gonzo's tea room"
     },
     {
       "reason": "duplicate",
@@ -563,32 +542,18 @@
       "fingerprint": "rooftop sunday sessions w sam redmore|2026-08-09|gonzo's tea room"
     },
     {
+      "reason": "duplicate",
+      "status": "pending_review",
+      "source": "Gonzo's Fatsoma",
+      "title": "Resident Rave w H3R",
+      "fingerprint": "resident rave w h3r|2026-08-15|gonzo's tea room"
+    },
+    {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Gonzo's Fatsoma",
       "title": "Metalheadz Blue Note Sessions - Sunday Day Party - Goldie + More",
       "fingerprint": "metalheadz blue note sessions - sunday day party - goldie + more|2026-08-16|gonzo's tea room"
-    },
-    {
-      "reason": "duplicate",
-      "status": "pending_review",
-      "source": "Gonzo's Fatsoma",
-      "title": "Rooftop Sunday Sessions w MiNNA",
-      "fingerprint": "rooftop sunday sessions w minna|2026-08-16|gonzo's tea room"
-    },
-    {
-      "reason": "duplicate",
-      "status": "pending_review",
-      "source": "Gonzo's Fatsoma",
-      "title": "Photek",
-      "fingerprint": "photek|2026-08-21|gonzo's tea room"
-    },
-    {
-      "reason": "duplicate",
-      "status": "pending_review",
-      "source": "Gonzo's Fatsoma",
-      "title": "Rooftop Sunday Sessions w HEIDI",
-      "fingerprint": "rooftop sunday sessions w heidi|2026-08-23|gonzo's tea room"
     },
     {
       "reason": "needs_review",
@@ -615,6 +580,13 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
+      "title": "The Greatest MUSICALS Daytime Disco - Norwich",
+      "fingerprint": "the greatest musicals daytime disco - norwich|2027-02-27|be at one norwich"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
       "title": "Poppy Moores iPod Norwich Pride",
       "fingerprint": "poppy moores ipod norwich pride|2026-07-25|deadwax norwich"
     },
@@ -629,22 +601,15 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
-      "title": "The Greatest MUSICALS Daytime Disco - Norwich",
-      "fingerprint": "the greatest musicals daytime disco - norwich|2027-02-27|be at one norwich"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Skiddle Norwich",
-      "title": "INTO THE VAULT - Vaulted Audio",
-      "fingerprint": "into the vault - vaulted audio|2026-07-24|kudos bar and nightclub"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Skiddle Norwich",
       "title": "An Evening With Chicane - Norwich",
       "fingerprint": "an evening with chicane - norwich|2026-09-26|epic studios"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
+      "title": "Hoedown Showdown - Norwich, Be At One",
+      "fingerprint": "hoedown showdown - norwich, be at one|2026-09-12|be at one"
     },
     {
       "reason": "duplicate",
@@ -652,13 +617,6 @@
       "source": "Skiddle Norwich",
       "title": "Emilio Santoro as Elvis",
       "fingerprint": "emilio santoro as elvis|2026-09-26|the halls"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Skiddle Norwich",
-      "title": "The Ultimate Eagles",
-      "fingerprint": "the ultimate eagles|2026-10-16|the halls"
     },
     {
       "reason": "needs_review",
@@ -678,15 +636,22 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
-      "title": "Luke Combs UK Tribute in NORWICH",
-      "fingerprint": "luke combs uk tribute in norwich|2026-09-06|epic studios"
+      "title": "The Ultimate Eagles",
+      "fingerprint": "the ultimate eagles|2026-10-16|the halls"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
-      "title": "Immersion + Pram + e.m. arson",
-      "fingerprint": "immersion + pram + e.m. arson|2026-09-13|voodoo daddy's"
+      "title": "The Tumbling Paddies",
+      "fingerprint": "the tumbling paddies|2027-05-21|epic studios"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
+      "title": "Luke Combs UK Tribute in NORWICH",
+      "fingerprint": "luke combs uk tribute in norwich|2026-09-06|epic studios"
     },
     {
       "reason": "needs_review",
@@ -699,8 +664,8 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
-      "title": "The Tumbling Paddies",
-      "fingerprint": "the tumbling paddies|2027-05-21|epic studios"
+      "title": "Immersion + Pram + e.m. arson",
+      "fingerprint": "immersion + pram + e.m. arson|2026-09-13|voodoo daddy's"
     },
     {
       "reason": "needs_review",
@@ -741,15 +706,15 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
-      "title": "Rock N Roll Circus Norwich",
-      "fingerprint": "rock n roll circus norwich|2026-08-20|earlham park"
+      "title": "Field Maneuvers",
+      "fingerprint": "field maneuvers|2026-08-21|secret location norwich"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
-      "title": "Field Maneuvers",
-      "fingerprint": "field maneuvers|2026-08-21|secret location norwich"
+      "title": "Rock N Roll Circus Norwich",
+      "fingerprint": "rock n roll circus norwich|2026-08-20|earlham park"
     },
     {
       "reason": "needs_review",
@@ -764,6 +729,13 @@
       "source": "Skiddle Norwich",
       "title": "Fawlty Towers Weekend",
       "fingerprint": "fawlty towers weekend|2026-07-25|holiday inn norwich north by ihg"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
+      "title": "A Christmas Carol - A One-Man Performance",
+      "fingerprint": "a christmas carol - a one-man performance|2026-12-18|venue tba"
     }
   ]
 }

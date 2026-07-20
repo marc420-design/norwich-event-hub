@@ -265,7 +265,9 @@ def _adapt_scraper_event(event: dict) -> dict:
     official_url = (event.get("official_url") or "").strip()
     image_url = (event.get("image_url") or event.get("image") or "").strip()
 
-    start_datetime = f"{date}T{time or '00:00'}:00" if date else None
+    # Only attach a time-of-day when one was actually scraped; a fabricated
+    # "00:00" would defeat the "Time TBC" fallback in format_event_for_website.
+    start_datetime = f"{date}T{time}:00" if date and time else (date or None)
     end_datetime = f"{date}T{end_time}:00" if date and end_time else None
     primary_url = ticket_url or official_url or source_url
     source_status = _validate_url(source_url)

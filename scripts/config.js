@@ -12,8 +12,8 @@
  */
 
 const APP_CONFIG = {
-    // Google Apps Script Web App URL - ✅ CONFIGURED (Version 31 - Emergency Fix Feb 10, 2026)
-    GOOGLE_APPS_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbzNcW9XXg_t7pzIKKqrPio-B5oXbJJw0Fq6w4VYMp4LTgxe6PD4V4yNw_inEIDMO7u6/exec',
+    // Google Apps Script Web App URL - ✅ CONFIGURED (Version 36 - Removed addHeader() bug 2026-05-27)
+    GOOGLE_APPS_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbxZ3PpsET6WuxSRQzKwqKQDbY9jWCvcvtVKDnfQ4-cBE-G9qNM_d4N_LCN_TR7UcwdC/exec',
 
     // Google Sheet ID - ✅ CONFIGURED
     GOOGLE_SHEET_ID: '1wdh2VOlZ8gp0hwFpFV6cVpDDmaMxGs48eCDqoFFZTcU',
@@ -45,6 +45,12 @@ const APP_CONFIG = {
 
     // Cloudflare Turnstile (spam protection) - optional
     // TURNSTILE_SITE_KEY: 'your-site-key'  // Uncomment and add your site key
+
+    // Admin client-side password hash (SHA-256 of admin password)
+    // Generate in browser console: crypto.subtle.digest('SHA-256', new TextEncoder().encode('yourpassword'))
+    //   .then(b => Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,'0')).join(''))
+    // REQUIRED: Client-side admin access is blocked until this is set
+    ADMIN_PW_HASH: '4bd619d1f71b384be7ca9b535db031b8a9642a4ea727a0fe55f69751125589f8'
 };
 
 // Make config available globally

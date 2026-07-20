@@ -12,10 +12,11 @@ const API_CONFIG = typeof APP_CONFIG !== 'undefined' ? {
     API_BASE_URL: APP_CONFIG.API_BASE_URL
 } : {
     // Default configuration (for development)
-    SUBMISSION_URL: 'https://script.google.com/macros/s/AKfycbwUqbC7ZkAqO5w0POhRd_hBDBPrZDKV0I_K43lmdKbLrL0rjAAoEYwgZpc_xuzs1x0M/exec',
-    EVENTS_URL: 'https://script.google.com/macros/s/AKfycbwUqbC7ZkAqO5w0POhRd_hBDBPrZDKV0I_K43lmdKbLrL0rjAAoEYwgZpc_xuzs1x0M/exec',
-    SHEETS_API_KEY: '', // Not required when using Web App
-    SHEET_ID: '1wdh2VOlZ8gp0hwFpFV6cVpDDmaMxGs48eCDqoFFZTcU',
+    // Set these values in config.js for production
+    SUBMISSION_URL: '',
+    EVENTS_URL: '',
+    SHEETS_API_KEY: '',
+    SHEET_ID: '',
     USE_LOCAL_STORAGE: true
 };
 
@@ -29,12 +30,13 @@ async function submitEventToAPI(eventData) {
             const response = await fetch(API_CONFIG.SUBMISSION_URL, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
+                    'Content-Type': 'text/plain;charset=utf-8',
                 },
                 body: JSON.stringify(eventData)
             });
 
-            const result = await response.json();
+            const responseText = await response.text();
+            const result = responseText ? JSON.parse(responseText) : { success: response.ok };
             return result;
         } catch (error) {
             console.error('API submission error:', error);

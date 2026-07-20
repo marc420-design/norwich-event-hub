@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Submit your event to Norwich Event Hub - Share your event with thousands of Norwich residents and visitors.">
-    <title>Submit Your Event - Norwich Event Hub</title>
+    <meta name="description" content="Submit your Norwich event for free. Add gigs, club nights, theatre, markets, sports, community events and more to Norwich Event Hub.">
+    <title>Submit Your Event | Norwich Event Hub</title>
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
@@ -14,15 +14,15 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://norwicheventshub.com/submit.html">
-    <meta property="og:title" content="Submit Your Event - Norwich Event Hub">
-    <meta property="og:description" content="Submit your event to Norwich Event Hub - Share your event with thousands of Norwich residents and visitors.">
+    <meta property="og:title" content="Submit Your Event | Norwich Event Hub">
+    <meta property="og:description" content="Submit your Norwich event for free. Add gigs, club nights, theatre, markets, sports, community events and more to Norwich Event Hub.">
     <meta property="og:image" content="https://norwicheventshub.com/assets/logo-image.jpg">
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://norwicheventshub.com/submit.html">
-    <meta name="twitter:title" content="Submit Your Event - Norwich Event Hub">
-    <meta name="twitter:description" content="Submit your event to Norwich Event Hub - Share your event with thousands of Norwich residents and visitors.">
+    <meta name="twitter:title" content="Submit Your Event | Norwich Event Hub">
+    <meta name="twitter:description" content="Submit your Norwich event for free. Add gigs, club nights, theatre, markets, sports, community events and more to Norwich Event Hub.">
     <meta name="twitter:image" content="https://norwicheventshub.com/assets/logo-image.jpg">
     
     <!-- Theme Color -->
@@ -31,8 +31,8 @@
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://norwicheventshub.com/submit">
-<link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/enhanced.css">
+<link rel="stylesheet" href="styles/main.css?v=20260527">
+    <link rel="stylesheet" href="styles/enhanced.css?v=20260527">
     <link rel="stylesheet" href="styles/form.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -56,10 +56,13 @@
             </button>
             <ul class="nav-menu">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="today.html">What's On Today</a></li>
+                <li><a href="today.html">Today</a></li>
+                <li><a href="this-weekend.html">This Weekend</a></li>
+                <li><a href="directory.html">Directory</a></li>
                 <li><a href="venues.html">Venues</a></li>
-                <li><a href="directory.html">2026 Directory</a></li>
                 <li><a href="submit.html" class="active">Submit Event</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -80,7 +83,7 @@
                 </div>
                 <div class="benefit-item">
                     <span class="benefit-icon">✓</span>
-                    <span>Reach thousands</span>
+                    <span>Reach local Norwich event-goers</span>
                 </div>
                 <div class="benefit-item">
                     <span class="benefit-icon">✓</span>
@@ -102,12 +105,26 @@
 
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="eventDate">Date *</label>
+                            <label for="eventDate">Start Date *</label>
                             <input type="date" id="eventDate" name="eventDate" required>
                         </div>
                         <div class="form-group">
-                            <label for="eventTime">Time *</label>
-                            <input type="time" id="eventTime" name="eventTime" required>
+                            <label for="eventEndDate">End Date</label>
+                            <input type="date" id="eventEndDate" name="eventEndDate">
+                            <small>Use this for exhibitions, festivals, theatre runs, and other multi-day events</small>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="eventTime">Start Time</label>
+                            <input type="time" id="eventTime" name="eventTime">
+                            <small>Leave blank if time is not yet confirmed (will show as "Time TBC")</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="openingTimes">Opening Times / Session Times</label>
+                            <input type="text" id="openingTimes" name="openingTimes" placeholder="e.g., Daily, 11am-5pm">
+                            <small>Useful for exhibitions, markets, and repeated sessions</small>
                         </div>
                     </div>
 
@@ -132,36 +149,42 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="eventDescription">Description / Lineup *</label>
-                        <textarea id="eventDescription" name="eventDescription" rows="5" required placeholder="Describe your event, include lineup, performers, or key details..."></textarea>
+                        <label for="eventDescription">Event Description *</label>
+                        <textarea id="eventDescription" name="eventDescription" rows="5" required placeholder="Describe your event, include artists, performers, speakers, or key details..."></textarea>
                     </div>
 
                     <div class="form-group">
-                        <label for="ticketLink">Ticket/Info Link *</label>
-                        <input type="url" id="ticketLink" name="ticketLink" required placeholder="https://example.com/tickets or your website">
-                        <small>Required - Link to tickets or event information page</small>
+                        <label for="ticketLink">Website / Ticket / More Info Link</label>
+                        <input type="url" id="ticketLink" name="ticketLink" placeholder="https://example.com/tickets or your website">
+                        <small>Optional, but recommended if attendees need tickets or more details</small>
                     </div>
 
                     <div class="form-group">
                         <label for="eventPrice">Entry Price *</label>
-                        <input type="text" id="eventPrice" name="eventPrice" required placeholder="e.g., £10, Free, £5-£15">
-                        <small>Enter "Free" if the event is free to attend</small>
+                        <select id="eventPrice" name="eventPrice" required>
+                            <option value="">Select entry price</option>
+                            <option value="Free">Free</option>
+                            <option value="Paid">Paid - details in description</option>
+                            <option value="Donation">Donation / pay what you can</option>
+                            <option value="TBC">TBC</option>
+                        </select>
+                        <small>If paid, include the price or ticket details in the description or info link</small>
                     </div>
 
                     <div class="form-group">
-                        <label for="eventFlyer">Event Flyer / Image *</label>
-                        <input type="file" id="eventFlyer" name="eventFlyer" accept="image/*" required>
-                        <small>Required - Upload a flyer or promotional image (JPG, PNG, max 5MB)</small>
+                        <label for="eventFlyer">Event Flyer / Image</label>
+                        <input type="file" id="eventFlyer" name="eventFlyer" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp">
+                        <small>No flyer yet? Upload a logo, poster, or event image. We can still review it. (JPG, JPEG, PNG, WEBP, max 5MB)</small>
                     </div>
 
                     <div class="form-divider">
-                        <h3>📋 Event Snapshot (Help users find the right event)</h3>
+                        <h3>📋 Event Snapshot <span style="font-weight:400;font-size:0.9rem;">(Optional — helps users find the right event)</span></h3>
                     </div>
 
                     <div class="form-group">
-                        <label for="eventVibe">Event Vibe *</label>
-                        <select id="eventVibe" name="eventVibe" required>
-                            <option value="">Select the event vibe</option>
+                        <label for="eventVibe">Event Vibe</label>
+                        <select id="eventVibe" name="eventVibe">
+                            <option value="">Select the event vibe (optional)</option>
                             <option value="Underground">Underground - Alternative, edgy, niche audience</option>
                             <option value="Commercial">Commercial - Mainstream, broad appeal</option>
                             <option value="Chill">Chill - Relaxed, laid-back atmosphere</option>
@@ -170,14 +193,14 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="crowdType">Crowd Type *</label>
-                        <input type="text" id="crowdType" name="crowdType" required placeholder="e.g., Students, families, 25-40 professionals, electronic music fans">
+                        <label for="crowdType">Crowd Type</label>
+                        <input type="text" id="crowdType" name="crowdType" placeholder="e.g., Students, families, 25-40 professionals, electronic music fans">
                         <small>Describe the expected audience (age, interests, demographics)</small>
                     </div>
 
                     <div class="form-group">
-                        <label for="bestFor">Best For *</label>
-                        <input type="text" id="bestFor" name="bestFor" required placeholder="e.g., Dancers, Students, Families, Ravers, 30+">
+                        <label for="bestFor">Best For</label>
+                        <input type="text" id="bestFor" name="bestFor" placeholder="e.g., Dancers, Students, Families, Ravers, 30+">
                         <small>Who would enjoy this event most? (separate with commas)</small>
                     </div>
 
@@ -216,7 +239,7 @@
                         <h3>🎯 Why Submit Here?</h3>
                         <p><strong>Free listing viewed by locals & visitors — published within 24h!</strong></p>
                         <ul>
-                            <li>✓ Reach thousands of Norwich residents and visitors</li>
+                            <li>✓ Reach local Norwich residents and visitors looking for events</li>
                             <li>✓ Free for promoters — no hidden costs</li>
                             <li>✓ Quick approval — events reviewed within 24 hours</li>
                             <li>✓ Quality listings get more engagement</li>
@@ -235,8 +258,8 @@
                     <h3>📋 Submission Guidelines</h3>
                     <ul>
                         <li>✓ All events must be happening in Norwich</li>
-                        <li>✓ <strong>High-quality flyer/image required</strong> (makes your event stand out)</li>
-                        <li>✓ <strong>Ticket or info link required</strong> (helps attendees find tickets)</li>
+                        <li>✓ <strong>High-quality flyer/image recommended</strong> (makes your event stand out — you can still submit without one)</li>
+                        <li>✓ <strong>Website, ticket, or info links are recommended</strong> (helps attendees find details)</li>
                         <li>✓ Events will be reviewed before publication</li>
                         <li>✓ You'll receive a confirmation email once approved</li>
                         <li>✓ Complete all fields for faster approval</li>
@@ -272,9 +295,14 @@
                 <div class="footer-section">
                     <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="today.html">What's On Today</a></li>
-                        <li><a href="directory.html">2026 Directory</a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="today.html">Today</a></li>
+                        <li><a href="this-weekend.html">This Weekend</a></li>
+                        <li><a href="directory.html">Directory</a></li>
+                        <li><a href="venues.html">Venues</a></li>
                         <li><a href="submit.html">Submit Event</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -290,7 +318,6 @@
                     <div class="social-links">
                         <a href="https://www.instagram.com/norwicheventshub" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
                         <a href="https://www.facebook.com/norwicheventshub" target="_blank" rel="noopener noreferrer" aria-label="Facebook">Facebook</a>
-                        <a href="https://twitter.com/norwicheventshub" target="_blank" rel="noopener noreferrer" aria-label="Twitter">Twitter</a>
                         <a href="https://www.tiktok.com/@norwicheventshub" target="_blank" rel="noopener noreferrer" aria-label="TikTok">TikTok</a>
                     </div>
                 </div>
@@ -313,7 +340,6 @@
         "sameAs": [
             "https://www.instagram.com/norwicheventshub",
             "https://www.facebook.com/norwicheventshub",
-            "https://twitter.com/norwicheventshub",
             "https://www.tiktok.com/@norwicheventshub"
         ]
     }
@@ -324,7 +350,6 @@
     <script defer src="scripts/api.js?v=20260210"></script>
     <script defer src="scripts/form-validation.js?v=20260210"></script>
     <script defer src="scripts/analytics-ga4.js?v=20260210"></script>
-    <script defer src="scripts/submit.js?v=20260210"></script>
+    <script defer src="scripts/submit.js?v=20260527"></script>
 </body>
 </html>
-

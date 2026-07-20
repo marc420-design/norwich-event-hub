@@ -1,178 +1,77 @@
-# Social Media Templates - Norwich Event Hub
+# Norwich Event Hub - Social Media Strategy & Templates
 
-## Brand Guidelines
+## Brand Voice & Tone
+- **Independent & Local:** We're not a corporate giant; we're Norwich residents.
+- **Vibrant & Energetic:** Use emojis, active verbs, and "nightlife" energy.
+- **Helpful & Curated:** We do the digging so the user doesn't have to. "We found this, so you don't miss it."
 
-### Colors
-- **Primary**: Electric Blue #3AB8FF
-- **Accent**: Gold #D6A72B
-- **Secondary**: Forest Green #234F32
-- **Background**: Black #000000
-- **Text**: White #FFFFFF
+## Visual Style
+- **Primary Colors:** Electric Blue (#3AB8FF) & Gold (#FFD700).
+- **Secondary Colors:** Deep Navy (#0A0A0B), Forest Green (#234F32).
+- **Typography:** Bold headlines (Montserrat), high-impact display (Bebas Neue).
+- **Imagery:** High-contrast photos of Norwich venues, vibrant crowds, and neon lighting.
 
-### Fonts
-- **Headlines**: Montserrat Bold
-- **Subheadings**: Bebas Neue
-- **Body**: Inter Regular
+---
 
-### Logo Usage
-- Use logo in top-left or bottom-right corner
-- Maintain clear space around logo
-- Minimum logo size: 50px height
+## Instagram Strategy (The Visual Hub)
 
-## Template Specifications
+### Bio Template:
+> 🎯 Your independent guide to Norwich.
+> 🌙 Gigs | Club Nights | Culture | Markets
+> 🤖 AI-Discovered & Human-Curated.
+> 👇 What's on tonight:
+> norwicheventshub.com
 
-### 1. Event Post Template (Instagram/Facebook)
-**Dimensions**: 1080x1080px (Square)
+### Feed Post Template 1: "This Weekend in Norwich" (Carousel)
+- **Slide 1:** "Top 5 Events This Weekend" (Large Bebas Neue text on Electric Blue background).
+- **Slide 2-6:** Single event cards with image, date, and venue.
+- **Caption:** 
+  Looking for plans? 🍻 We've scrubbed the city to find the best of Norwich this weekend. From underground techno to local craft markets, we've got you covered. 
+  
+  Which one are you hitting? Let us know in the comments! 👇
+  
+  #Norwich #NorwichEvents #NorwichNightlife #NorwichGigs #VisitNorwich #Norfolk
 
-**Layout**:
-```
-┌─────────────────────────┐
-│ [Logo]              [Category Badge]
-│                         
-│ EVENT NAME              
-│ (Montserrat Bold, 48pt)
-│                         
-│ 📅 Date & Time          
-│ 📍 Location             
-│                         
-│ Description text        
-│ (Inter Regular, 24pt)   
-│                         
-│ [Ticket Link Button]    
-│                         
-│ #NorwichEvents          
-│ #Norwich                
-│                         
-└─────────────────────────┘
-```
+### Story Template: "Tonight's Top Pick"
+- **Background:** High-blur photo of the venue.
+- **Overlay:** "🔴 TONIGHT IN NORWICH" (Glowing red text).
+- **Center:** Event Name + Time.
+- **Bottom:** "Link in Bio" or Sticker Link to `norwicheventshub.com/today.html`.
 
-**Elements**:
-- Background: Gradient (Electric Blue to Forest Green)
-- Event name: White, Montserrat Bold
-- Date/Location: Gold, Inter Regular
-- Category badge: Top-right corner
-- Ticket button: Gold background, Black text
-- Hashtags: Bottom, Electric Blue
+---
 
-### 2. Story Template (Instagram Stories)
-**Dimensions**: 1080x1920px (Vertical)
+## TikTok Strategy (The Vibe)
 
-**Layout**:
-```
-┌─────────────┐
-│ [Logo]      │
-│             │
-│ WHAT'S ON   │
-│ TODAY       │
-│             │
-│ Event 1     │
-│ Event 2     │
-│ Event 3     │
-│ ...         │
-│             │
-│ Swipe up →  │
-│             │
-└─────────────┘
-```
+### Series: "3 Spots for Saturday Night"
+- **Clip 1:** Fast cuts of the first venue/vibe (0-3s).
+- **Clip 2:** Second venue (3-6s).
+- **Clip 3:** Third venue (6-9s).
+- **Overlay:** "Where to go in Norwich tonight?"
+- **Audio:** Trending high-energy electronic track.
 
-**Elements**:
-- Background: Black with Electric Blue accents
-- Header: "WHAT'S ON TODAY" (Bebas Neue, large)
-- Events listed vertically
-- Swipe-up indicator at bottom
+### Series: "The AI Event Scout"
+- **Concept:** Screen recording of the Norwich Event Hub website showing "AI Discovered" events.
+- **Hook:** "Our AI just found 50+ events in Norwich you didn't know about."
 
-### 3. Weekly Roundup Template
-**Dimensions**: 1080x1080px (Square)
+---
 
-**Layout**:
-```
-┌─────────────────────────┐
-│ THIS WEEK IN NORWICH    │
-│                         │
-│ [Event Grid 3x3]        │
-│                         │
-│ See full schedule →     │
-│                         │
-│ norwicheventshub.com    │
-└─────────────────────────┘
-```
+## Facebook Strategy (The Community)
 
-### 4. Announcement Post
-**Dimensions**: 1080x1080px
+### Post: Community Highlights
+- **Focus:** Local markets, family-friendly culture, or community workshops.
+- **Caption:** 
+  Norwich is buzzing this week! 🐝 Beyond the nightlife, there's some incredible culture happening at [Venue Name] and [Venue Name]. 
+  
+  Support local. Stay independent. 
+  
+  Check the full directory: https://norwicheventshub.com/directory.html
 
-**Content**:
-- "NORWICH EVENT HUB IS LIVE"
-- Mission statement
-- Call-to-action: "Submit your event"
-- Website URL
+---
 
-## Hashtag Strategy
-
-### Primary Hashtags
-- #NorwichEvents
-- #Norwich
-- #WhatOnNorwich
-- #NorwichNightlife
-- #NorwichCulture
-
-### Category-Specific
-- #NorwichGigs
-- #NorwichMarkets
-- #NorwichTheatre
-- #NorwichSports
-
-### Location-Specific
-- #NorwichUK
-- #NorfolkEvents
-- #EastAngliaEvents
-
-## Posting Schedule
-
-### Daily
-- **9:00 AM**: "What's On Today" story
-- **12:00 PM**: Featured event post
-- **6:00 PM**: Evening event reminder
-
-### Weekly
-- **Monday 10:00 AM**: Weekly roundup post
-- **Wednesday**: Mid-week event highlights
-- **Friday**: Weekend preview
-
-### Monthly
-- Monthly event calendar
-- Featured venue spotlight
-- Community highlights
-
-## Content Guidelines
-
-### Event Posts Should Include:
-1. Clear event name
-2. Date and time
-3. Location
-4. Brief description
-5. Ticket link (if applicable)
-6. Relevant hashtags
-7. Category tag
-
-### Tone:
-- Energetic but professional
-- Community-focused
-- Inclusive
-- Exciting but informative
-
-## Canva Template Setup
-
-1. Create templates in Canva
-2. Use brand colors and fonts
-3. Save as templates for reuse
-4. Connect to Make.com for automation
-5. Test with sample events before going live
-
-## Automation Integration
-
-Templates should be integrated with Make.com workflows:
-- Auto-generate from event data
-- Schedule posting
-- Maintain consistent branding
-- Track performance
-
+## Launch Checklist (First 14 Days)
+1. **Day 1:** "We're Live" announcement post. Tag all major venues.
+2. **Day 2:** "The Problem" post: "Tired of missing great gigs? We built this for you."
+3. **Day 4:** First "This Weekend" carousel.
+4. **Day 7:** "Behind the Scenes": Show the scraping/curation process.
+5. **Day 10:** User Spotlight: "What's your favorite Norwich venue?"
+6. **Day 14:** Milestone: "500+ Events Discovered. Thanks Norwich!"

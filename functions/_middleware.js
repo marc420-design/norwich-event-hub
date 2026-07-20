@@ -1,37 +1,58 @@
 /**
  * Cloudflare Pages Middleware
- * protecting /admin routes with Basic Auth
+ * Protecting /admin routes with Basic Auth
  */
 
 export async function onRequest(context) {
-    const url = new URL(context.request.url);
+    const { request, env, next } = context;
+    const url = new URL(request.url);
+    const pathname = url.pathname.toLowerCase();
 
-    // Check if we are accessing the admin page
-    // Matches /admin, /admin.html, /admin/anything
-    if (url.pathname.startsWith('/admin')) {
-        const authHeader = context.request.headers.get('Authorization');
+    // Paths to protect
+    const protectedPaths = [
+        '/admin',
+        '/admin.html',
+        '/trigger-scraper'
+    ];
 
-        // Get credentials from environment variables or use defaults
-        // User should set ADMIN_PASSWORD in Cloudflare Pages settings
-        const password = context.env.ADMIN_PASSWORD || 'NorwichEvents2026!';
-        const username = context.env.ADMIN_USERNAME || 'admin';
+    const isProtected = protectedPaths.some(path => 
+        pathname === path || pathname.startsWith(path + '/')
+    );
 
-        // Construct expected header
-        const credentials = btoa(`${username}:${password}`);
-        const expectedAuth = `Basic ${credentials}`;
+    if (isProtected) {
+        const authHeader = request.headers.get('Authorization');
 
-        // Verify
+        const username = env.ADMIN_USERNAME;
+        const password = env.ADMIN_PASSWORD;
+        const precomputedToken = env.ADMIN_BASIC_AUTH_TOKEN;
+        const expectedAuth = precomputedToken
+            ? `Basic ${precomputedToken}`
+            : (username && password ? `Basic ${btoa(`${username}:${password}`)}` : null);
+
+        if (!expectedAuth) {
+            return new Response('Admin authentication is not configured.', {
+                status: 500,
+                headers: {
+                    'Content-Type': 'text/plain'
+                }
+            });
+        }
+
         if (!authHeader || authHeader !== expectedAuth) {
-            return new Response('Unauthorized - Admin Access Required', {
+            return new Response('Unauthorized', {
                 status: 401,
                 headers: {
-                    // Trigger browser's native login prompt
                     'WWW-Authenticate': 'Basic realm="Norwich Event Hub Admin"',
                 },
             });
         }
     }
 
-    // Continue to next middleware or asset
-    return context.next();
+    // Continue to the next middleware or asset
+    try {
+        return await next();
+    } catch (err) {
+        console.error('Middleware Error:', err);
+        return new Response(`Internal Server Error: ${err.message}`, { status: 500 });
+    }
 }

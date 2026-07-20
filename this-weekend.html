@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="What's on in Norwich this weekend - Discover the best events happening Saturday & Sunday. Club nights, gigs, theatre, markets and more.">
+        content="Discover events happening in Norwich this weekend, including live music, nightlife, theatre, markets, family activities and free events.">
     <meta name="keywords"
         content="Norwich events this weekend, Norwich weekend events, what's on Norwich weekend, Norwich Saturday events, Norwich Sunday events">
     <title>What's On This Weekend in Norwich | Norwich Event Hub</title>
@@ -20,14 +20,14 @@
     <meta property="og:url" content="https://norwicheventshub.com/this-weekend.html">
     <meta property="og:title" content="What's On This Weekend in Norwich | Norwich Event Hub">
     <meta property="og:description"
-        content="Discover the best events happening this weekend in Norwich. Club nights, gigs, theatre, markets and more.">
+        content="Discover events happening in Norwich this weekend, including live music, nightlife, theatre, markets, family activities and free events.">
     <meta property="og:image" content="https://norwicheventshub.com/assets/logo-image.jpg">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://norwicheventshub.com/this-weekend.html">
-    <meta name="twitter:title" content="What's On This Weekend in Norwich">
-    <meta name="twitter:description" content="Discover the best events happening this weekend in Norwich.">
+    <meta name="twitter:title" content="What's On This Weekend in Norwich | Norwich Event Hub">
+    <meta name="twitter:description" content="Discover events happening in Norwich this weekend, including live music, nightlife, theatre, markets, family activities and free events.">
     <meta name="twitter:image" content="https://norwicheventshub.com/assets/logo-image.jpg">
 
     <!-- Theme Color -->
@@ -36,8 +36,8 @@
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://norwicheventshub.com/this-weekend">
-<link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/enhanced.css">
+<link rel="stylesheet" href="styles/main.css?v=20260527">
+    <link rel="stylesheet" href="styles/enhanced.css?v=20260527">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -63,11 +63,13 @@
             </button>
             <ul class="nav-menu">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="today.html">What's On Today</a></li>
+                <li><a href="today.html">Today</a></li>
                 <li><a href="this-weekend.html" class="active">This Weekend</a></li>
+                <li><a href="directory.html">Directory</a></li>
                 <li><a href="venues.html">Venues</a></li>
-                <li><a href="directory.html">Event Directory</a></li>
                 <li><a href="submit.html">Submit Event</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -76,7 +78,7 @@
     <section class="page-header" style="background: linear-gradient(135deg, #FF5722 0%, #E53935 100%);">
         <div class="container">
             <h1>🔥 This Weekend in Norwich</h1>
-            <p id="weekendDateRange" class="page-subtitle" style="color: white; font-size: 1.2rem;">Loading...</p>
+            <p id="weekendDateRange" class="page-subtitle" style="color: white; font-size: 1.2rem;"></p>
             <p style="color: rgba(255,255,255,0.9); margin-top: 1rem;">The best events happening Saturday & Sunday</p>
         </div>
     </section>
@@ -100,7 +102,7 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">📅 Saturday</h2>
-                <p class="section-subtitle" id="saturdayDate">Loading...</p>
+                <p class="section-subtitle" id="saturdayDate"></p>
             </div>
             <div class="events-grid" id="saturdayEvents">
                 <!-- Events will load here -->
@@ -113,7 +115,7 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">📅 Sunday</h2>
-                <p class="section-subtitle" id="sundayDate">Loading...</p>
+                <p class="section-subtitle" id="sundayDate"></p>
             </div>
             <div class="events-grid" id="sundayEvents">
                 <!-- Events will load here -->
@@ -148,17 +150,21 @@
                 <div class="footer-section">
                     <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="today.html">What's On Today</a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="today.html">Today</a></li>
                         <li><a href="this-weekend.html">This Weekend</a></li>
-                        <li><a href="directory.html">Event Directory</a></li>
+                        <li><a href="directory.html">Directory</a></li>
+                        <li><a href="venues.html">Venues</a></li>
                         <li><a href="submit.html">Submit Event</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h4>Contact</h4>
                     <ul>
-                        <li><a href="mailto:info@norwicheventshub.com">info@norwicheventshub.com</a></li>
-                        <li><a href="mailto:submit@norwicheventshub.com">submit@norwicheventshub.com</a></li>
+                        <li><a href="mailto:hello@norwicheventshub.com">hello@norwicheventshub.com</a></li>
+                        <li><a href="mailto:events@norwicheventshub.com">events@norwicheventshub.com</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -168,8 +174,6 @@
                             aria-label="Instagram">Instagram</a>
                         <a href="https://www.facebook.com/norwicheventshub" target="_blank" rel="noopener noreferrer"
                             aria-label="Facebook">Facebook</a>
-                        <a href="https://twitter.com/norwicheventshub" target="_blank" rel="noopener noreferrer"
-                            aria-label="Twitter">Twitter</a>
                         <a href="https://www.tiktok.com/@norwicheventshub" target="_blank" rel="noopener noreferrer"
                             aria-label="TikTok">TikTok</a>
                     </div>
@@ -193,12 +197,11 @@
     }
     </script>
 
-    <script src="scripts/config.js?v=20260210"></script>
-    <script src="scripts/date-utils.js?v=20260210"></script>
-    <script src="scripts/force-reload.js?v=20260210"></script>
-    <script src="scripts/main.js?v=20260210"></script>
-    <script defer src="scripts/api.js?v=20260210"></script>
-    <script defer src="scripts/this-weekend.js?v=20260210"></script>
+    <script src="scripts/config.js?v=20260527"></script>
+    <script src="scripts/date-utils.js?v=20260527"></script>
+    <script defer src="scripts/agent-bridge.js?v=20260527"></script>
+    <script src="scripts/main.js?v=20260527"></script>
+    <script defer src="scripts/this-weekend.js?v=20260527"></script>
 </body>
 
 </html>

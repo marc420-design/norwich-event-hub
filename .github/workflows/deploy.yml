@@ -17,12 +17,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Build site
+        run: bash build.sh
+
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/pages-action@v1
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: 8c701b8757253b51f9344c37d4ceef48
-          projectName: norwich-event-hub
-          directory: .
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: norwich-event-hub-git
+          directory: dist
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
           branch: master

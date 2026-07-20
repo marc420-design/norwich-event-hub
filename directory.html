@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Complete 2026 directory of events in Norwich - Browse all events by category, date, and venue.">
-    <title>2026 Directory - Norwich Event Hub</title>
+        content="Browse the full directory of events in Norwich. Filter by category, month, and price to find the perfect event for you.">
+    <title>Full Event Directory | Norwich Event Hub</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
@@ -16,17 +16,17 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://norwicheventshub.com/directory.html">
-    <meta property="og:title" content="2026 Directory - Norwich Event Hub">
+    <meta property="og:title" content="Full Event Directory | Norwich Event Hub">
     <meta property="og:description"
-        content="Complete 2026 directory of events in Norwich - Browse all events by category, date, and venue.">
+        content="Browse the full directory of events in Norwich. Filter by category, month, and price to find the perfect event for you.">
     <meta property="og:image" content="https://norwicheventshub.com/assets/logo-image.jpg">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://norwicheventshub.com/directory.html">
-    <meta name="twitter:title" content="2026 Directory - Norwich Event Hub">
+    <meta name="twitter:title" content="Full Event Directory | Norwich Event Hub">
     <meta name="twitter:description"
-        content="Complete 2026 directory of events in Norwich - Browse all events by category, date, and venue.">
+        content="Browse the full directory of events in Norwich. Filter by category, month, and price to find the perfect event for you.">
     <meta name="twitter:image" content="https://norwicheventshub.com/assets/logo-image.jpg">
 
     <!-- Theme Color -->
@@ -35,8 +35,8 @@
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://norwicheventshub.com/directory">
-<link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/enhanced.css">
+<link rel="stylesheet" href="styles/main.css?v=20260527">
+    <link rel="stylesheet" href="styles/enhanced.css?v=20260527">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -62,10 +62,13 @@
             </button>
             <ul class="nav-menu">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="today.html">What's On Today</a></li>
+                <li><a href="today.html">Today</a></li>
+                <li><a href="this-weekend.html">This Weekend</a></li>
+                <li><a href="directory.html" class="active">Directory</a></li>
                 <li><a href="venues.html">Venues</a></li>
-                <li><a href="directory.html" class="active">2026 Directory</a></li>
                 <li><a href="submit.html">Submit Event</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -74,9 +77,26 @@
     <section class="page-header">
         <div class="container">
             <h1>Event Directory</h1>
-            <p>Browse all events happening in Norwich - <span id="eventCount">Loading...</span> events listed</p>
+            <p>Browse all events happening in Norwich - <span id="eventCount">...</span> events listed</p>
         </div>
     </section>
+
+    <!-- AI Freshness Indicator -->
+    <div id="freshness-bar" style="display:block; text-align:center; font-size:0.75rem; color:#888; padding:6px 0 4px; background:rgba(58,184,255,0.04); border-bottom:1px solid rgba(58,184,255,0.1);">
+      <span id="last-updated-time">Events updated daily</span>
+      &nbsp;<span style="background:rgba(58,184,255,0.15); color:#3AB8FF; font-size:0.65rem; padding:2px 8px; border-radius:10px; border:1px solid rgba(58,184,255,0.3);">AI Discovered</span>
+    </div>
+    <script>
+    window.addEventListener('eventsMetadata', function(e) {
+      var bar = document.getElementById('freshness-bar');
+      var ts  = document.getElementById('last-updated-time');
+      if (bar && ts && e.detail.generated_at) {
+        var d = new Date(e.detail.generated_at);
+        ts.textContent = 'Last updated: ' + d.toLocaleDateString('en-GB', {day:'numeric', month:'short', year:'numeric'});
+        bar.style.display = 'block';
+      }
+    });
+    </script>
 
     <!-- Quick Filters -->
     <section class="quick-filters">
@@ -159,16 +179,12 @@
         <div class="container">
             <div class="events-grid" id="directoryEvents">
                 <!-- Events will be loaded dynamically -->
-                <div class="event-card placeholder">
-                    <div class="event-image"></div>
-                    <div class="event-content">
-                        <span class="event-date">Loading events...</span>
-                        <h3 class="event-title">Events directory coming soon</h3>
-                    </div>
+                <div id="directory-loading" style="text-align:center;padding:3rem;grid-column:1/-1;">
+                    <p style="color:#888;">Loading events directory...</p>
                 </div>
             </div>
             <div id="noResults" class="no-results" style="display: none;">
-                <p>No events found matching your filters. <a href="submit.html">Submit an event</a> to get started!</p>
+                <p>No events listed for your current filters. Try this weekend or <a href="submit.html">submit an event</a>.</p>
             </div>
         </div>
     </section>
@@ -184,17 +200,21 @@
                 <div class="footer-section">
                     <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="today.html">What's On Today</a></li>
-                        <li><a href="directory.html">2026 Directory</a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="today.html">Today</a></li>
+                        <li><a href="this-weekend.html">This Weekend</a></li>
+                        <li><a href="directory.html">Directory</a></li>
+                        <li><a href="venues.html">Venues</a></li>
                         <li><a href="submit.html">Submit Event</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h4>Contact</h4>
                     <ul>
-                        <li><a href="mailto:info@norwicheventshub.com">info@norwicheventshub.com</a></li>
-                        <li><a href="mailto:submit@norwicheventshub.com">submit@norwicheventshub.com</a></li>
-                        <li><a href="mailto:press@norwicheventshub.com">press@norwicheventshub.com</a></li>
+                        <li><a href="mailto:hello@norwicheventshub.com">hello@norwicheventshub.com</a></li>
+                        <li><a href="mailto:events@norwicheventshub.com">events@norwicheventshub.com</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -204,8 +224,6 @@
                             aria-label="Instagram">Instagram</a>
                         <a href="https://www.facebook.com/norwicheventshub" target="_blank" rel="noopener noreferrer"
                             aria-label="Facebook">Facebook</a>
-                        <a href="https://twitter.com/norwicheventshub" target="_blank" rel="noopener noreferrer"
-                            aria-label="Twitter">Twitter</a>
                         <a href="https://www.tiktok.com/@norwicheventshub" target="_blank" rel="noopener noreferrer"
                             aria-label="TikTok">TikTok</a>
                     </div>
@@ -229,18 +247,15 @@
         "sameAs": [
             "https://www.instagram.com/norwicheventshub",
             "https://www.facebook.com/norwicheventshub",
-            "https://twitter.com/norwicheventshub",
             "https://www.tiktok.com/@norwicheventshub"
         ]
     }
     </script>
-
-    <script src="scripts/config.js?v=20260210"></script>
-    <script src="scripts/date-utils.js?v=20260210"></script>
-    <script src="scripts/force-reload.js?v=20260210"></script>
-    <script src="scripts/main.js?v=20260210"></script>
-    <script defer src="scripts/api.js?v=20260210"></script>
-    <script defer src="scripts/directory.js?v=20260210"></script>
+    
+    <script src="scripts/config.js?v=20260527"></script>
+    <script defer src="scripts/date-utils.js?v=20260527"></script>
+    <script defer src="scripts/agent-bridge.js?v=20260527"></script>
+    <script defer src="scripts/main.js?v=20260527"></script>
+    <script defer src="scripts/directory.js?v=20260527"></script>
 </body>
-
 </html>

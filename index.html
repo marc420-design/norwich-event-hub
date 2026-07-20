@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Discover what's on in Norwich today and this weekend. Live music, nightlife, theatre, markets, sports and free events. Your complete guide to Norwich events this weekend.">
+        content="Find what’s on in Norwich today and this weekend. Discover local gigs, club nights, theatre, markets, sports, community events and free things to do.">
     <meta name="keywords"
         content="Norwich events, Norwich events this weekend, what's on Norwich, Norwich nightlife, Norwich gigs, Norwich theatre, Norwich events today, things to do Norwich">
     <title>Norwich Event Hub - What's On in Norwich Today & This Weekend</title>
@@ -18,17 +18,17 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://norwicheventshub.com/">
-    <meta property="og:title" content="Norwich Event Hub - Discover What's On in Norwich">
+    <meta property="og:title" content="Norwich Event Hub - What's On in Norwich Today & This Weekend">
     <meta property="og:description"
-        content="Your complete guide to events, nightlife, culture, and community happenings in Norwich through 2026 and beyond.">
+        content="Find what’s on in Norwich today and this weekend. Discover local gigs, club nights, theatre, markets, sports, community events and free things to do.">
     <meta property="og:image" content="https://norwicheventshub.com/assets/logo-image.jpg">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://norwicheventshub.com/">
-    <meta name="twitter:title" content="Norwich Event Hub - Discover What's On in Norwich">
+    <meta name="twitter:title" content="Norwich Event Hub - What's On in Norwich Today & This Weekend">
     <meta name="twitter:description"
-        content="Your complete guide to events, nightlife, culture, and community happenings in Norwich through 2026 and beyond.">
+        content="Find what’s on in Norwich today and this weekend. Discover local gigs, club nights, theatre, markets, sports, community events and free things to do.">
     <meta name="twitter:image" content="https://norwicheventshub.com/assets/logo-image.jpg">
 
     <!-- Theme Color -->
@@ -37,8 +37,8 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://norwicheventshub.com/">
 
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/enhanced.css">
+    <link rel="stylesheet" href="styles/main.css?v=20260527">
+    <link rel="stylesheet" href="styles/enhanced.css?v=20260527">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -64,10 +64,10 @@
             </button>
             <ul class="nav-menu">
                 <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="today.html">What's On Today</a></li>
+                <li><a href="today.html">Today</a></li>
                 <li><a href="this-weekend.html">This Weekend</a></li>
+                <li><a href="directory.html">Directory</a></li>
                 <li><a href="venues.html">Venues</a></li>
-                <li><a href="directory.html">Event Directory</a></li>
                 <li><a href="submit.html">Submit Event</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
@@ -135,6 +135,23 @@
             </div>
         </div>
     </section>
+
+    <!-- AI Freshness Indicator -->
+    <div id="freshness-bar" style="display:block; text-align:center; font-size:0.75rem; color:#888; padding:6px 0 4px; background:rgba(58,184,255,0.04); border-bottom:1px solid rgba(58,184,255,0.1);">
+      <span id="last-updated-time">Events updated daily</span>
+      &nbsp;<span style="background:rgba(58,184,255,0.15); color:#3AB8FF; font-size:0.65rem; padding:2px 8px; border-radius:10px; border:1px solid rgba(58,184,255,0.3);">AI Discovered</span>
+    </div>
+    <script>
+    window.addEventListener('eventsMetadata', function(e) {
+      var bar = document.getElementById('freshness-bar');
+      var ts  = document.getElementById('last-updated-time');
+      if (bar && ts && e.detail.generated_at) {
+        var d = new Date(e.detail.generated_at);
+        ts.textContent = 'Last updated: ' + d.toLocaleDateString('en-GB', {day:'numeric', month:'short', year:'numeric'});
+        bar.style.display = 'block';
+      }
+    });
+    </script>
 
     <!-- Featured This Week -->
     <section class="featured-events section-featured-week"
@@ -392,17 +409,21 @@
                 <div class="footer-section">
                     <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="today.html">What's On Today</a></li>
-                        <li><a href="directory.html">Event Directory</a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="today.html">Today</a></li>
+                        <li><a href="this-weekend.html">This Weekend</a></li>
+                        <li><a href="directory.html">Directory</a></li>
+                        <li><a href="venues.html">Venues</a></li>
                         <li><a href="submit.html">Submit Event</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h4>Contact</h4>
                     <ul>
-                        <li><a href="mailto:info@norwicheventshub.com">info@norwicheventshub.com</a></li>
-                        <li><a href="mailto:submit@norwicheventshub.com">submit@norwicheventshub.com</a></li>
-                        <li><a href="mailto:press@norwicheventshub.com">press@norwicheventshub.com</a></li>
+                        <li><a href="mailto:hello@norwicheventshub.com">hello@norwicheventshub.com</a></li>
+                        <li><a href="mailto:events@norwicheventshub.com">events@norwicheventshub.com</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -412,8 +433,6 @@
                             aria-label="Instagram">Instagram</a>
                         <a href="https://www.facebook.com/norwicheventshub" target="_blank" rel="noopener noreferrer"
                             aria-label="Facebook">Facebook</a>
-                        <a href="https://twitter.com/norwicheventshub" target="_blank" rel="noopener noreferrer"
-                            aria-label="Twitter">Twitter</a>
                         <a href="https://www.tiktok.com/@norwicheventshub" target="_blank" rel="noopener noreferrer"
                             aria-label="TikTok">TikTok</a>
                     </div>
@@ -435,8 +454,7 @@
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2025-2026 Norwich Event Hub. All rights reserved. | <a href="/admin.html"
-                        style="color: #666; text-decoration: none; font-size: 0.85em;">Admin</a></p>
+                <p>&copy; 2025-2026 Norwich Event Hub. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -453,7 +471,6 @@
         "sameAs": [
             "https://www.instagram.com/norwicheventshub",
             "https://www.facebook.com/norwicheventshub",
-            "https://twitter.com/norwicheventshub",
             "https://www.tiktok.com/@norwicheventshub"
         ],
         "contactPoint": {
@@ -468,16 +485,14 @@
         }
     }
     </script>
-
-    <script src="scripts/config.js?v=20260210"></script>
-    <script src="scripts/date-utils.js?v=20260210"></script>
-    <script src="scripts/force-reload.js?v=20260210"></script>
-    <script src="scripts/main.js?v=20260210"></script>
-    <script defer src="scripts/api.js?v=20260210"></script>
-    <script defer src="scripts/analytics.js?v=20260210"></script>
-    <script defer src="scripts/analytics-ga4.js?v=20260210"></script>
-    <script defer src="scripts/newsletter.js?v=20260210"></script>
-    <script defer src="scripts/home.js?v=20260210"></script>
+    
+    <script src="scripts/config.js?v=20260527"></script>
+    <script defer src="scripts/date-utils.js?v=20260527"></script>
+    <script defer src="scripts/agent-bridge.js?v=20260527"></script>
+    <script defer src="scripts/main.js?v=20260527"></script>
+    <script defer src="scripts/analytics.js?v=20260527"></script>
+    <script defer src="scripts/newsletter.js?v=20260527"></script>
+    <script defer src="scripts/home.js?v=20260527"></script>
 </body>
 
 </html>

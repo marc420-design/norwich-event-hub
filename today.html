@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="What's on today in Norwich - Discover events happening today in Norwich.">
-    <title>What's On Today - Norwich Event Hub</title>
+    <meta name="description" content="See what's happening in Norwich today. Your up-to-the-minute guide to local gigs, shows, and community events.">
+    <title>What's On Today in Norwich | Norwich Event Hub</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
@@ -15,15 +15,15 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://norwicheventshub.com/today.html">
-    <meta property="og:title" content="What's On Today - Norwich Event Hub">
-    <meta property="og:description" content="What's on today in Norwich - Discover events happening today in Norwich.">
+    <meta property="og:title" content="What's On Today in Norwich | Norwich Event Hub">
+    <meta property="og:description" content="See what's happening in Norwich today. Your up-to-the-minute guide to local gigs, shows, and community events.">
     <meta property="og:image" content="https://norwicheventshub.com/assets/logo-image.jpg">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://norwicheventshub.com/today.html">
-    <meta name="twitter:title" content="What's On Today - Norwich Event Hub">
-    <meta name="twitter:description" content="What's on today in Norwich - Discover events happening today in Norwich.">
+    <meta name="twitter:title" content="What's On Today in Norwich | Norwich Event Hub">
+    <meta name="twitter:description" content="See what's happening in Norwich today. Your up-to-the-minute guide to local gigs, shows, and community events.">
     <meta name="twitter:image" content="https://norwicheventshub.com/assets/logo-image.jpg">
 
     <!-- Theme Color -->
@@ -32,8 +32,8 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://norwicheventshub.com/today">
 
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/enhanced.css">
+    <link rel="stylesheet" href="styles/main.css?v=20260527">
+    <link rel="stylesheet" href="styles/enhanced.css?v=20260527">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -59,10 +59,13 @@
             </button>
             <ul class="nav-menu">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="today.html" class="active">What's On Today</a></li>
+                <li><a href="today.html" class="active">Today</a></li>
+                <li><a href="this-weekend.html">This Weekend</a></li>
+                <li><a href="directory.html">Directory</a></li>
                 <li><a href="venues.html">Venues</a></li>
-                <li><a href="directory.html">2026 Directory</a></li>
                 <li><a href="submit.html">Submit Event</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -75,6 +78,23 @@
         </div>
     </section>
 
+    <!-- AI Freshness Indicator -->
+    <div id="freshness-bar" style="display:block; text-align:center; font-size:0.75rem; color:#888; padding:6px 0 4px; background:rgba(58,184,255,0.04); border-bottom:1px solid rgba(58,184,255,0.1);">
+      <span id="last-updated-time">Events updated daily</span>
+      &nbsp;<span style="background:rgba(58,184,255,0.15); color:#3AB8FF; font-size:0.65rem; padding:2px 8px; border-radius:10px; border:1px solid rgba(58,184,255,0.3);">AI Discovered</span>
+    </div>
+    <script>
+    window.addEventListener('eventsMetadata', function(e) {
+      var bar = document.getElementById('freshness-bar');
+      var ts  = document.getElementById('last-updated-time');
+      if (bar && ts && e.detail.generated_at) {
+        var d = new Date(e.detail.generated_at);
+        ts.textContent = 'Last updated: ' + d.toLocaleDateString('en-GB', {day:'numeric', month:'short', year:'numeric'});
+        bar.style.display = 'block';
+      }
+    });
+    </script>
+
     <!-- Events List -->
     <section class="events-section">
         <div class="container">
@@ -86,15 +106,7 @@
                 <button class="filter-btn" data-filter="free">Free Events</button>
             </div>
             <div class="events-list" id="todayEvents">
-                <!-- Events will be loaded dynamically -->
-                <div class="event-card placeholder">
-                    <div class="event-image"></div>
-                    <div class="event-content">
-                        <span class="event-date">No events found for today</span>
-                        <h3 class="event-title">Check back soon or submit your event!</h3>
-                        <a href="submit.html" class="event-link">Submit an Event →</a>
-                    </div>
-                </div>
+                <!-- Loaded by today.js -->
             </div>
         </div>
     </section>
@@ -110,17 +122,21 @@
                 <div class="footer-section">
                     <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="today.html">What's On Today</a></li>
-                        <li><a href="directory.html">2026 Directory</a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="today.html">Today</a></li>
+                        <li><a href="this-weekend.html">This Weekend</a></li>
+                        <li><a href="directory.html">Directory</a></li>
+                        <li><a href="venues.html">Venues</a></li>
                         <li><a href="submit.html">Submit Event</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h4>Contact</h4>
                     <ul>
-                        <li><a href="mailto:info@norwicheventshub.com">info@norwicheventshub.com</a></li>
-                        <li><a href="mailto:submit@norwicheventshub.com">submit@norwicheventshub.com</a></li>
-                        <li><a href="mailto:press@norwicheventshub.com">press@norwicheventshub.com</a></li>
+                        <li><a href="mailto:hello@norwicheventshub.com">hello@norwicheventshub.com</a></li>
+                        <li><a href="mailto:events@norwicheventshub.com">events@norwicheventshub.com</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -130,8 +146,6 @@
                             aria-label="Instagram">Instagram</a>
                         <a href="https://www.facebook.com/norwicheventshub" target="_blank" rel="noopener noreferrer"
                             aria-label="Facebook">Facebook</a>
-                        <a href="https://twitter.com/norwicheventshub" target="_blank" rel="noopener noreferrer"
-                            aria-label="Twitter">Twitter</a>
                         <a href="https://www.tiktok.com/@norwicheventshub" target="_blank" rel="noopener noreferrer"
                             aria-label="TikTok">TikTok</a>
                     </div>
@@ -155,18 +169,15 @@
         "sameAs": [
             "https://www.instagram.com/norwicheventshub",
             "https://www.facebook.com/norwicheventshub",
-            "https://twitter.com/norwicheventshub",
             "https://www.tiktok.com/@norwicheventshub"
         ]
     }
     </script>
-
-    <script src="scripts/config.js?v=20260210"></script>
-    <script src="scripts/date-utils.js?v=20260210"></script>
-    <script src="scripts/force-reload.js?v=20260210"></script>
-    <script src="scripts/main.js?v=20260210"></script>
-    <script defer src="scripts/api.js?v=20260210"></script>
-    <script defer src="scripts/today.js?v=20260210"></script>
+    
+    <script src="scripts/config.js?v=20260527"></script>
+    <script defer src="scripts/date-utils.js?v=20260527"></script>
+    <script defer src="scripts/agent-bridge.js?v=20260527"></script>
+    <script defer src="scripts/main.js?v=20260527"></script>
+    <script defer src="scripts/today.js?v=20260527"></script>
 </body>
-
 </html>

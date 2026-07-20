@@ -1,79 +1,140 @@
-name: Scrape Real-Time Events
+name: Daily Event Scrape (Botasaurus + Claude AI)
 
+# Runs every morning at 7am UTC (8am BST) to catch overnight additions
+# Also runnable manually from the GitHub Actions tab for testing
 on:
-  # Run automatically every Monday at 6 AM UTC
   schedule:
-    - cron: '0 6 * * 1'
-
-  # Allow manual trigger from GitHub Actions tab
+    - cron: '0 7 * * *'
   workflow_dispatch:
 
-  # Run on push to main (for testing)
-  push:
-    branches:
-      - main
-      - master
-    paths:
-      - 'automation/**'
-      - '.github/workflows/scrape-events.yml'
+permissions:
+  contents: write   # needed to commit exports/events.json back to the repo
 
 jobs:
-  scrape-and-update:
+  scrape:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: Set up Python 3.11
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-          cache: 'pip'
+          cache: pip
 
-      - name: Install dependencies
-        run: |
-          pip install google-generativeai openai requests beautifulsoup4 gspread oauth2client python-dateutil python-dotenv lxml
+      - name: Install Python dependencies
+        run: pip install -r automation/botasaurus_scraper/requirements.txt
 
-      - name: Setup Google credentials
-        run: |
-          cd automation
-          echo '${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}' > google-credentials.json
-
-      - name: Run AI event aggregator
-        run: |
-          cd automation
-          python ai-event-aggregator.py
+      - name: Run scraper
         env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
-          GOOGLE_SERVICE_ACCOUNT_JSON: google-credentials.json
-          SCRAPE_DAYS_AHEAD: 60
-          MIN_QUALITY_SCORE: 50
-          AUTO_APPROVE_THRESHOLD: 80
-          NORWICH_RADIUS_KM: 15
+          PYTHONPATH: ${{ github.workspace }}
+        run: python automation/botasaurus_scraper/main.py
 
-      - name: Cleanup credentials
-        if: always()
-        run: |
-          cd automation
-          rm -f google-credentials.json
+      - name: Upload review queue artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: scraper-review-queue
+          path: exports/logs/scraper-review-queue.json
+          if-no-files-found: warn
+          retention-days: 14
 
-      - name: Summary
+      # Push scraped events to Google Sheets (Event Submissions) for admin dashboard review
+      - name: Sync events to Google Sheets
+        if: success()
+        env:
+          APPS_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbxZ3PpsET6WuxSRQzKwqKQDbY9jWCvcvtVKDnfQ4-cBE-G9qNM_d4N_LCN_TR7UcwdC/exec'
         run: |
-          echo "✅ AI event scraping completed successfully!"
-          echo "📊 New events have been posted to Google Sheets"
-          echo "🔍 Check your admin dashboard to review pending events"
-          echo "🌐 Admin: https://norwicheventshub.com/admin"
+          echo "📤 Syncing scraped events to Google Sheets..."
+          SYNCED=0
+          FAILED=0
 
-  # Optional: Notify on failure
-  notify-on-failure:
-    runs-on: ubuntu-latest
-    needs: scrape-and-update
-    if: failure()
-    steps:
-      - name: Notification
+          # Read each event from exports/events.json and POST to Apps Script
+          COUNT=$(python -c "
+          import json
+          try:
+              d = json.load(open('exports/events.json'))
+              print(len(d.get('events', [])))
+          except: print(0)
+          " 2>/dev/null || echo "0")
+
+          if [ "$COUNT" -gt "0" ]; then
+            python -c "
+          import json, urllib.request, urllib.error, sys, time
+
+          with open('exports/events.json') as f:
+              data = json.load(f)
+
+          events = data.get('events', [])
+          synced = 0
+          failed = 0
+
+          for event in events:
+              payload = json.dumps({
+                  'name': event.get('name', ''),
+                  'date': event.get('date', ''),
+                  'time': event.get('time', ''),
+                  'location': event.get('location', ''),
+                  'category': event.get('category', ''),
+                  'description': event.get('description', ''),
+                  'ticketLink': event.get('ticketLink', '') or event.get('officialUrl', ''),
+                  'promoterName': 'AI Scraper (' + event.get('source', 'unknown') + ')',
+                  'promoterEmail': 'scraper@norwicheventshub.com',
+                  'promoterPhone': ''
+              }).encode('utf-8')
+
+              req = urllib.request.Request(
+                  '${APPS_SCRIPT_URL}',
+                  data=payload,
+                  headers={'Content-Type': 'application/json'},
+                  method='POST'
+              )
+              try:
+                  resp = urllib.request.urlopen(req, timeout=30)
+                  result = json.loads(resp.read().decode())
+                  if result.get('success'):
+                      synced += 1
+                  else:
+                      failed += 1
+                      print(f'  ⚠ Failed: {event.get(\"name\", \"unknown\")} - {result.get(\"message\", \"\")}', file=sys.stderr)
+              except Exception as e:
+                  failed += 1
+                  print(f'  ❌ Error: {event.get(\"name\", \"unknown\")} - {e}', file=sys.stderr)
+              time.sleep(0.5)  # Rate limit
+
+          print(f'📊 Synced {synced} events to Google Sheets ({failed} failed)')
+          "
+          else
+            echo "⚠ No events to sync"
+          fi
+
+      # Commit queue output every run; only update events.json when sufficient events were found.
+      - name: Commit scraper outputs
         run: |
-          echo "❌ Event scraping failed!"
-          echo "Check the logs above for details"
+          COUNT=$(python -c "
+          import json, sys
+          try:
+              d = json.load(open('exports/events.json'))
+              print(d.get('count', 0))
+          except Exception:
+              print(0)
+          " 2>/dev/null || echo "0")
+
+          echo "Events found: $COUNT"
+
+          git config user.name  "Norwich Events Bot"
+          git config user.email "bot@norwicheventshub.com"
+          git add exports/logs/scraper-review-queue.json
+
+          if [ "$COUNT" -gt "5" ]; then
+            git add exports/events.json
+            COMMIT_MSG="chore: daily event refresh $(date -u +'%Y-%m-%d %H:%M UTC') — ${COUNT} events + review queue"
+          else
+            COMMIT_MSG="chore: update scraper review queue $(date -u +'%Y-%m-%d %H:%M UTC')"
+            echo "⚠ Only $COUNT events found — keeping previous exports/events.json"
+          fi
+
+          git diff --staged --quiet || git commit -m "$COMMIT_MSG"
+          git push

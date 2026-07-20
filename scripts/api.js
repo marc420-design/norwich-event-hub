@@ -7,7 +7,9 @@ const API_CONFIG = typeof APP_CONFIG !== 'undefined' ? {
     EVENTS_URL: APP_CONFIG.GOOGLE_APPS_SCRIPT_URL,
     SHEETS_API_KEY: APP_CONFIG.GOOGLE_SHEETS_API_KEY,
     SHEET_ID: APP_CONFIG.GOOGLE_SHEET_ID,
-    USE_LOCAL_STORAGE: APP_CONFIG.USE_LOCAL_STORAGE
+    USE_LOCAL_STORAGE: APP_CONFIG.USE_LOCAL_STORAGE,
+    USE_BACKEND_API: APP_CONFIG.USE_BACKEND_API,
+    API_BASE_URL: APP_CONFIG.API_BASE_URL
 } : {
     // Default configuration (for development)
     SUBMISSION_URL: 'https://script.google.com/macros/s/AKfycbwUqbC7ZkAqO5w0POhRd_hBDBPrZDKV0I_K43lmdKbLrL0rjAAoEYwgZpc_xuzs1x0M/exec',
@@ -52,7 +54,29 @@ async function submitEventToAPI(eventData) {
  * Get events from backend/Google Sheets
  */
 async function getEventsFromAPI(filters = {}) {
-    // If using Google Apps Script Web App
+    // 1. Backend API (FastAPI) - Priority if enabled
+    if (API_CONFIG.USE_BACKEND_API && API_CONFIG.API_BASE_URL) {
+        try {
+            const queryParams = new URLSearchParams(filters);
+            const url = `${API_CONFIG.API_BASE_URL}/events?${queryParams}`;
+
+            console.log(`Fetching events from Backend: ${url}`);
+            const response = await fetch(url);
+
+            if (!response.ok) {
+                throw new Error(`Backend API Error: ${response.statusText}`);
+            }
+
+            const events = await response.json();
+            return events;
+        } catch (error) {
+            console.error('Backend API fetch error, falling back to Google Apps Script/local data:', error);
+            // Fall through to the Google Apps Script / local storage fallbacks below
+            // instead of returning an empty list.
+        }
+    }
+
+    // 2. Google Apps Script Web App
     if (API_CONFIG.EVENTS_URL && API_CONFIG.EVENTS_URL !== 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL') {
         try {
             const queryParams = new URLSearchParams(filters);
@@ -71,7 +95,7 @@ async function getEventsFromAPI(filters = {}) {
         }
     }
 
-    // Fallback to local storage
+    // 3. Fallback to local storage
     if (API_CONFIG.USE_LOCAL_STORAGE) {
         return getEventsFromLocalStorage(filters);
     }

@@ -23,6 +23,8 @@ const APP_CONFIG = {
 
     // ✅ USING GOOGLE SHEETS FOR REAL-TIME DATA
     USE_LOCAL_STORAGE: false,  // Now fetching from Google Sheets API
+    USE_BACKEND_API: false, // FastAPI backend isn't publicly deployed yet - re-enable once it has a real, reachable URL
+    API_BASE_URL: 'http://localhost:8000/api/v1',
 
     // Site configuration
     SITE_URL: 'https://norwicheventshub.com',  // Production domain

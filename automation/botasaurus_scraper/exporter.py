@@ -278,8 +278,9 @@ def _adapt_scraper_event(event: dict) -> dict:
 
     has_title_date_mismatch = bool(event.get("_title_date_mismatch"))
     auto_approval_allowed = source_status == "verified" and not has_title_date_mismatch
-    # Scraped events are always queued for manual approval.
-    status = "pending_review"
+    # Events from a verified source with no title/date mismatch publish automatically;
+    # everything else still needs a human to look at it.
+    status = "approved" if auto_approval_allowed else "pending_review"
     review_notes = []
     if source_status == "broken":
         review_notes.append("broken_source_link")
@@ -288,7 +289,7 @@ def _adapt_scraper_event(event: dict) -> dict:
     if not auto_approval_allowed and not review_notes:
         review_notes.append("manual_review_required")
     if auto_approval_allowed and not review_notes:
-        review_notes.append("queued_for_approval")
+        review_notes.append("auto_approved")
 
     return {
         "id": event.get("id") or _build_event_id(title, date, venue_name),

@@ -1,44 +1,6 @@
 {
   "events": [
     {
-      "id": "scraper-summer-organ-concert:-christopher-too-2026-07-22-norwich-cathedral",
-      "slug": "summer-organ-concert-christopher-too-2026-07-22",
-      "fingerprint": "summer organ concert: christopher too|2026-07-22|norwich cathedral",
-      "name": "Summer Organ Concert: Christopher Too",
-      "eventname": "Summer Organ Concert: Christopher Too",
-      "date": "2026-07-22",
-      "time": "Time TBC",
-      "endDate": null,
-      "endTime": null,
-      "venue": "Norwich Cathedral",
-      "location": "Norwich Cathedral",
-      "address": null,
-      "category": "gigs",
-      "description": "A summer organ concert featuring Christopher Too, held at Norwich Cathedral.",
-      "ticketLink": "https://cathedral.org.uk/whats-on",
-      "officialUrl": "",
-      "sourceUrl": "https://cathedral.org.uk/whats-on",
-      "primaryUrl": "https://cathedral.org.uk/whats-on",
-      "price": "See website",
-      "image": "assets/fallback-culture.svg",
-      "hasFlyer": true,
-      "imageStatus": "fallback_assigned",
-      "linkStatus": "verified",
-      "ticketStatus": "missing",
-      "needsFlyer": true,
-      "tags": [
-        "organ",
-        "concert",
-        "music"
-      ],
-      "featured": false,
-      "editorsChoice": false,
-      "isFree": false,
-      "ageRestriction": null,
-      "status": "approved",
-      "source": "Norwich Cathedral"
-    },
-    {
       "id": "scraper-bounce-and-rhyme-in-the-gallery-2026-07-23-the-forum",
       "slug": "bounce-and-rhyme-in-the-gallery-2026-07-23",
       "fingerprint": "bounce and rhyme in the gallery|2026-07-23|the forum",
@@ -300,6 +262,43 @@
       "source": "The Halls Norwich"
     },
     {
+      "id": "scraper-benedictine-lectures-2026:-champions-of--2026-07-29-norwich-cathedral",
+      "slug": "benedictine-lectures-2026-champions-of-moderation-2026-07-29",
+      "fingerprint": "benedictine lectures 2026: champions of moderation|2026-07-29|norwich cathedral",
+      "name": "Benedictine lectures 2026: Champions of moderation",
+      "eventname": "Benedictine lectures 2026: Champions of moderation",
+      "date": "2026-07-29",
+      "time": "Time TBC",
+      "endDate": null,
+      "endTime": null,
+      "venue": "Norwich Cathedral",
+      "location": "Norwich Cathedral",
+      "address": null,
+      "category": "workshops",
+      "description": "",
+      "ticketLink": "https://cathedral.org.uk/whats-on",
+      "officialUrl": "",
+      "sourceUrl": "https://cathedral.org.uk/whats-on",
+      "primaryUrl": "https://cathedral.org.uk/whats-on",
+      "price": "See website",
+      "image": "assets/fallback-culture.svg",
+      "hasFlyer": true,
+      "imageStatus": "fallback_assigned",
+      "linkStatus": "verified",
+      "ticketStatus": "missing",
+      "needsFlyer": true,
+      "tags": [
+        "lecture",
+        "benedictine"
+      ],
+      "featured": false,
+      "editorsChoice": false,
+      "isFree": false,
+      "ageRestriction": null,
+      "status": "approved",
+      "source": "Norwich Cathedral"
+    },
+    {
       "id": "scraper-jungle-mania-norwich-2026-07-31-the-adrian-flux-waterfro",
       "slug": "jungle-mania-norwich-2026-07-31",
       "fingerprint": "jungle mania norwich|2026-07-31|the adrian flux waterfront",
@@ -453,6 +452,45 @@
       "source": "Norfolk Showground"
     },
     {
+      "id": "scraper-ink-&-engines-fest-2026-08-15-norfolk-showground",
+      "slug": "ink-engines-fest-2026-08-15",
+      "fingerprint": "ink & engines fest|2026-08-15|norfolk showground",
+      "name": "Ink & Engines Fest",
+      "eventname": "Ink & Engines Fest",
+      "date": "2026-08-15",
+      "time": "Time TBC",
+      "endDate": null,
+      "endTime": null,
+      "venue": "Norfolk Showground",
+      "location": "Norfolk Showground",
+      "address": null,
+      "category": "festivals",
+      "description": "An ink and engines themed festival.",
+      "ticketLink": "https://www.norfolkshowground.co.uk/events",
+      "officialUrl": "",
+      "sourceUrl": "https://www.norfolkshowground.co.uk/events",
+      "primaryUrl": "https://www.norfolkshowground.co.uk/events",
+      "price": "See website",
+      "image": "assets/fallback-general.svg",
+      "hasFlyer": true,
+      "imageStatus": "fallback_assigned",
+      "linkStatus": "verified",
+      "ticketStatus": "missing",
+      "needsFlyer": true,
+      "tags": [
+        "ink",
+        "engines",
+        "festival",
+        "events centre"
+      ],
+      "featured": false,
+      "editorsChoice": false,
+      "isFree": false,
+      "ageRestriction": null,
+      "status": "approved",
+      "source": "Norfolk Showground"
+    },
+    {
       "id": "scraper-heritage-open-days-2026-09-11-across-norfolk",
       "slug": "heritage-open-days-2026-09-11",
       "fingerprint": "heritage open days|2026-09-11|across norfolk",
@@ -580,6 +618,6 @@
       "source": "The Halls Norwich"
     }
   ],
-  "generated_at": "2026-07-22T07:57:09.948340",
-  "count": 16
+  "generated_at": "2026-07-23T07:58:42.815367",
+  "count": 17
 }

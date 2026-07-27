@@ -1,7 +1,28 @@
 {
-  "generated_at": "2026-07-26T07:58:05.819843",
-  "count": 100,
+  "generated_at": "2026-07-27T08:20:54.635657",
+  "count": 101,
   "events": [
+    {
+      "reason": "duplicate",
+      "status": "approved",
+      "source": "Norwich Cathedral",
+      "title": "Benedictine lectures 2026: Champions of moderation",
+      "fingerprint": "benedictine lectures 2026: champions of moderation|2026-07-29|norwich cathedral"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Norwich Cathedral",
+      "title": "Specialist Tour: Julian of Norwich",
+      "fingerprint": "specialist tour: julian of norwich|2026-08-01|norwich cathedral"
+    },
+    {
+      "reason": "duplicate",
+      "status": "approved",
+      "source": "UEA Waterfront",
+      "title": "We Are Scientists",
+      "fingerprint": "we are scientists|2026-07-28|the adrian flux waterfront studio"
+    },
     {
       "reason": "needs_review",
       "status": "pending_review",
@@ -62,8 +83,8 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "UEA Waterfront",
-      "title": "Hi-On Maiden",
-      "fingerprint": "hi-on maiden|2026-08-15|the adrian flux waterfront"
+      "title": "Hi-On Maiden Celebrating 50+ Years of Iron Maiden + 40th Anniversary of ‘Somewhere In Time’",
+      "fingerprint": "hi-on maiden celebrating 50+ years of iron maiden + 40th anniversary of ‘somewhere in time’|2026-08-15|the adrian flux waterfront"
     },
     {
       "reason": "needs_review",
@@ -77,21 +98,21 @@
       "status": "pending_review",
       "source": "UEA Waterfront",
       "title": "Rock N Roll Circus – James",
-      "fingerprint": "rock n roll circus – james|2026-08-20|earlham park"
+      "fingerprint": "rock n roll circus – james|2026-08-20|earlham park, norwich"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "UEA Waterfront",
       "title": "Rock N Roll Circus – Weekend Ticket",
-      "fingerprint": "rock n roll circus – weekend ticket|2026-08-21|earlham park"
+      "fingerprint": "rock n roll circus – weekend ticket|2026-08-21|earlham park, norwich"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "UEA Waterfront",
       "title": "Rock N Roll Circus – The Streets",
-      "fingerprint": "rock n roll circus – the streets|2026-08-21|earlham park"
+      "fingerprint": "rock n roll circus – the streets|2026-08-21|earlham park, norwich"
     },
     {
       "reason": "needs_review",
@@ -105,14 +126,14 @@
       "status": "pending_review",
       "source": "UEA Waterfront",
       "title": "Rock N Roll Circus – The Kooks + The Vaccines + The Fratellis",
-      "fingerprint": "rock n roll circus – the kooks + the vaccines + the fratellis|2026-08-22|earlham park"
+      "fingerprint": "rock n roll circus – the kooks + the vaccines + the fratellis|2026-08-22|earlham park, norwich"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "UEA Waterfront",
       "title": "Rock N Roll Circus – Madness",
-      "fingerprint": "rock n roll circus – madness|2026-08-23|earlham park"
+      "fingerprint": "rock n roll circus – madness|2026-08-23|earlham park, norwich"
     },
     {
       "reason": "needs_review",
@@ -131,16 +152,9 @@
     {
       "reason": "duplicate",
       "status": "approved",
-      "source": "Norwich Cathedral",
-      "title": "Benedictine lectures 2026: Champions of moderation",
-      "fingerprint": "benedictine lectures 2026: champions of moderation|2026-07-29|norwich cathedral"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Norwich Cathedral",
-      "title": "Specialist Tour: Julian of Norwich",
-      "fingerprint": "specialist tour: julian of norwich|2026-08-01|norwich cathedral"
+      "source": "The Forum Norwich",
+      "title": "Look At Us Now! A Celebration of Disabled Joy",
+      "fingerprint": "look at us now! a celebration of disabled joy|2026-07-27|the forum norwich"
     },
     {
       "reason": "needs_review",
@@ -209,27 +223,6 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Visit Norwich",
-      "title": "On The Huh! 900 Years of Norwich Market",
-      "fingerprint": "on the huh! 900 years of norwich market|2026-07-26|norwich market"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Norwich Weird & Wonderful Story Walk",
-      "fingerprint": "norwich weird & wonderful story walk|2026-07-26|norwich"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Norfolk Day Saver",
-      "fingerprint": "norfolk day saver|2026-07-27|venue tba"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
       "title": "Norfolk Day Makers Market at Castle Quarter",
       "fingerprint": "norfolk day makers market at castle quarter|2026-07-27|castle quarter"
     },
@@ -259,7 +252,7 @@
       "status": "pending_review",
       "source": "Visit Norwich",
       "title": "Norwich Spooky Story Walk",
-      "fingerprint": "norwich spooky story walk|2026-07-29|norwich"
+      "fingerprint": "norwich spooky story walk|2026-07-29|venue tba"
     },
     {
       "reason": "needs_review",
@@ -273,7 +266,7 @@
       "status": "pending_review",
       "source": "Visit Norwich",
       "title": "Norwich Her Story Walk",
-      "fingerprint": "norwich her story walk|2026-07-30|norwich"
+      "fingerprint": "norwich her story walk|2026-07-30|venue tba"
     },
     {
       "reason": "needs_review",
@@ -288,6 +281,27 @@
       "source": "Visit Norwich",
       "title": "Gary Delaney: Gary On Laughing",
       "fingerprint": "gary delaney: gary on laughing|2026-07-30|venue tba"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Daraa Tribes",
+      "fingerprint": "daraa tribes|2026-07-30|venue tba"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Medieval Norwich walking tour – from the Normans to the Tudors",
+      "fingerprint": "medieval norwich walking tour – from the normans to the tudors|2026-07-31|venue tba"
+    },
+    {
+      "reason": "duplicate",
+      "status": "approved",
+      "source": "The Halls Norwich",
+      "title": "The Music of James Bond",
+      "fingerprint": "the music of james bond|2026-08-06|the halls"
     },
     {
       "reason": "needs_review",
@@ -322,42 +336,35 @@
       "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "Norwich Games Con",
-      "fingerprint": "norwich games con|2027-08-22|norfolk events centre"
+      "fingerprint": "norwich games con|2026-08-22|events centre"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "Family Action Arena",
-      "fingerprint": "family action arena|2027-08-29|outdoor spaces"
+      "fingerprint": "family action arena|2026-08-29|outdoor spaces"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "All About Dogs",
-      "fingerprint": "all about dogs|2027-08-30|outdoor spaces"
+      "fingerprint": "all about dogs|2026-08-30|outdoor spaces"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "NORCON",
-      "fingerprint": "norcon|2027-09-26|outdoor spaces"
+      "fingerprint": "norcon|2026-09-26|outdoor spaces"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
-      "title": "Cody Pennington Country Show",
-      "fingerprint": "cody pennington country show|2027-10-17|norfolk events centre"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Gonzo's Two Room",
-      "title": "Mr Scruff – All Night Long – 6hr Set",
-      "fingerprint": "mr scruff – all night long – 6hr set|2026-07-31|gonzo's tea room"
+      "title": "Inflatable 5K",
+      "fingerprint": "inflatable 5k|2026-10-17|outdoor spaces"
     },
     {
       "reason": "needs_review",
@@ -472,18 +479,11 @@
       "fingerprint": "a.m.c grassroots energy: norwich|2026-12-11|gonzo's tea room"
     },
     {
-      "reason": "needs_review",
+      "reason": "duplicate",
       "status": "pending_review",
       "source": "Gonzo's Fatsoma",
-      "title": "Mr Scruff - All Night Long - 6hr Set",
-      "fingerprint": "mr scruff - all night long - 6hr set|2026-07-31|gonzo's tea room"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Gonzo's Fatsoma",
-      "title": "August Resident House Party",
-      "fingerprint": "august resident house party|2026-08-01|gonzo's tea room"
+      "title": "Resident House Party",
+      "fingerprint": "resident house party|2026-08-01|gonzo's tea room"
     },
     {
       "reason": "duplicate",
@@ -594,8 +594,15 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
-      "title": "The Greatest MUSICALS Daytime Disco - Norwich",
-      "fingerprint": "the greatest musicals daytime disco - norwich|2027-02-27|be at one norwich"
+      "title": "Cafe Mambo Ibiza - Classics In The City",
+      "fingerprint": "cafe mambo ibiza - classics in the city|2026-09-19|epic studios"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
+      "title": "Girls Just Wanna Have Fun - Norwich",
+      "fingerprint": "girls just wanna have fun - norwich|2026-11-21|be at one norwich"
     },
     {
       "reason": "needs_review",
@@ -629,22 +636,15 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
-      "title": "Symphonic Ibiza Orchestra | Earlham Park Concert 2027",
-      "fingerprint": "symphonic ibiza orchestra | earlham park concert 2027|2027-06-11|earlham park"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Skiddle Norwich",
-      "title": "Aladdinsane - The Sound & Vision of Bowie tribute: Norwich",
-      "fingerprint": "aladdinsane - the sound & vision of bowie tribute: norwich|2026-09-12|the adrian flux waterfront"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Skiddle Norwich",
       "title": "The Tumbling Paddies",
       "fingerprint": "the tumbling paddies|2027-05-21|epic studios"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
+      "title": "Symphonic Ibiza Orchestra | Earlham Park Concert 2027",
+      "fingerprint": "symphonic ibiza orchestra | earlham park concert 2027|2027-06-11|earlham park"
     },
     {
       "reason": "needs_review",
@@ -657,8 +657,8 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
-      "title": "Summer 90s Outdoor Festival - Junkyard Norwich",
-      "fingerprint": "summer 90s outdoor festival - junkyard norwich|2026-08-15|junkyard market"
+      "title": "Aladdinsane - The Sound & Vision of Bowie tribute: Norwich",
+      "fingerprint": "aladdinsane - the sound & vision of bowie tribute: norwich|2026-09-12|the adrian flux waterfront"
     },
     {
       "reason": "needs_review",
@@ -671,8 +671,8 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Skiddle Norwich",
-      "title": "Earlham Park Tribute Festival 2027",
-      "fingerprint": "earlham park tribute festival 2027|2027-06-12|earlham park"
+      "title": "Summer 90s Outdoor Festival - Junkyard Norwich",
+      "fingerprint": "summer 90s outdoor festival - junkyard norwich|2026-08-15|junkyard market"
     },
     {
       "reason": "needs_review",
@@ -680,6 +680,13 @@
       "source": "Skiddle Norwich",
       "title": "Field Maneuvers",
       "fingerprint": "field maneuvers|2026-08-21|secret location norwich"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Skiddle Norwich",
+      "title": "Earlham Park Tribute Festival 2027",
+      "fingerprint": "earlham park tribute festival 2027|2027-06-12|earlham park"
     },
     {
       "reason": "needs_review",

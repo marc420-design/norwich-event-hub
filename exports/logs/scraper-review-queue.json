@@ -1,14 +1,7 @@
 {
-  "generated_at": "2026-07-29T08:04:23.158061",
-  "count": 86,
+  "generated_at": "2026-07-30T07:57:21.925507",
+  "count": 87,
   "events": [
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "UEA Waterfront",
-      "title": "Jungle Mania",
-      "fingerprint": "jungle mania|2026-07-31|the adrian flux waterfront"
-    },
     {
       "reason": "needs_review",
       "status": "pending_review",
@@ -55,8 +48,8 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "UEA Waterfront",
-      "title": "Hi-On Maiden Celebrating 50+ Years of Iron Maiden + 40th Anniversary of ‘Somewhere In Time’",
-      "fingerprint": "hi-on maiden celebrating 50+ years of iron maiden + 40th anniversary of ‘somewhere in time’|2026-08-15|the adrian flux waterfront"
+      "title": "Hi-On Maiden",
+      "fingerprint": "hi-on maiden|2026-08-15|the adrian flux waterfront"
     },
     {
       "reason": "needs_review",
@@ -131,16 +124,9 @@
     {
       "reason": "duplicate",
       "status": "approved",
-      "source": "Norwich Cathedral",
-      "title": "Benedictine lectures 2026: Champions of moderation",
-      "fingerprint": "benedictine lectures 2026: champions of moderation|2026-07-29|norwich cathedral"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Norwich Cathedral",
-      "title": "Specialist Tour: Julian of Norwich",
-      "fingerprint": "specialist tour: julian of norwich|2026-08-01|norwich cathedral"
+      "source": "The Forum Norwich",
+      "title": "Positive Minds",
+      "fingerprint": "positive minds|2026-07-30|the forum"
     },
     {
       "reason": "needs_review",
@@ -201,9 +187,16 @@
     {
       "reason": "needs_review",
       "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Norwich Spooky Story Walk",
-      "fingerprint": "norwich spooky story walk|2026-07-29|norwich"
+      "source": "The Forum Norwich",
+      "title": "Norwich Summer Vegan Fair",
+      "fingerprint": "norwich summer vegan fair|2026-08-09|the forum"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Norwich Cathedral",
+      "title": "Specialist Tour: In Quires and Places Where They Sing",
+      "fingerprint": "specialist tour: in quires and places where they sing|2026-08-05|norwich cathedral"
     },
     {
       "reason": "needs_review",
@@ -283,6 +276,13 @@
       "fingerprint": "life’s a beach|2026-08-01|castle quarter"
     },
     {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Cafe Writers",
+      "fingerprint": "cafe writers|2026-08-01|venue tba"
+    },
+    {
       "reason": "duplicate",
       "status": "approved",
       "source": "The Halls Norwich",
@@ -325,46 +325,39 @@
       "fingerprint": "james b partridge - the big christmas assembly 2026|2026-11-27|the halls"
     },
     {
-      "reason": "duplicate",
-      "status": "approved",
-      "source": "Norfolk Showground",
-      "title": "Ink & Engines Fest",
-      "fingerprint": "ink & engines fest|2026-08-15|norfolk events centre"
-    },
-    {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "Norwich Games Con",
-      "fingerprint": "norwich games con|2026-08-22|norfolk events centre"
+      "fingerprint": "norwich games con|2026-08-22|events centre, norfolk showground"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "Family Action Arena",
-      "fingerprint": "family action arena|2026-08-29|outdoor spaces"
+      "fingerprint": "family action arena|2026-08-29|outdoor spaces, norfolk showground"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "All About Dogs",
-      "fingerprint": "all about dogs|2026-08-30|outdoor spaces"
+      "fingerprint": "all about dogs|2026-08-30|outdoor spaces, norfolk showground"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "NORCON",
-      "fingerprint": "norcon|2026-09-26|outdoor spaces"
+      "fingerprint": "norcon|2026-09-26|outdoor spaces, norfolk showground"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "Inflatable 5K",
-      "fingerprint": "inflatable 5k|2026-10-17|outdoor spaces"
+      "fingerprint": "inflatable 5k|2026-10-17|outdoor spaces, norfolk showground"
     },
     {
       "reason": "duplicate",
@@ -587,22 +580,36 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Sainsbury Centre",
+      "title": "Living Art: Ryan Gander",
+      "fingerprint": "living art: ryan gander|2026-07-30|sainsbury centre"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Sainsbury Centre",
       "title": "Sculpture Park",
-      "fingerprint": "sculpture park|2026-07-29|sainsbury centre, sculpture park"
+      "fingerprint": "sculpture park|2026-07-30|sainsbury centre"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Sainsbury Centre",
-      "title": "The Living Area (Robert and Lisa Sainsbury Collection)",
-      "fingerprint": "the living area (robert and lisa sainsbury collection)|2026-07-29|sainsbury centre, the living area"
+      "title": "The Living Area: Robert and Lisa Sainsbury Collection",
+      "fingerprint": "the living area: robert and lisa sainsbury collection|2026-07-30|sainsbury centre"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Sainsbury Centre",
-      "title": "Free Daily Tours of The Living Area",
-      "fingerprint": "free daily tours of the living area|2026-07-29|sainsbury centre, the living area"
+      "title": "Free Daily Guided Tour of The Living Area (11am)",
+      "fingerprint": "free daily guided tour of the living area (11am)|2026-07-30|sainsbury centre"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Sainsbury Centre",
+      "title": "Free Daily Guided Tour of The Living Area (2pm)",
+      "fingerprint": "free daily guided tour of the living area (2pm)|2026-07-30|sainsbury centre"
     }
   ]
 }

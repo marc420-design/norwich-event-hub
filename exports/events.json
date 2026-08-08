@@ -1,42 +1,6 @@
 {
   "events": [
     {
-      "id": "scraper-norfolk-showcase-art-exhibition-2026-08-07-the-forum",
-      "slug": "norfolk-showcase-art-exhibition-2026-08-07",
-      "fingerprint": "norfolk showcase art exhibition|2026-08-07|the forum",
-      "name": "Norfolk Showcase Art Exhibition",
-      "eventname": "Norfolk Showcase Art Exhibition",
-      "date": "2026-08-07",
-      "time": "09:00",
-      "endDate": "2026-08-07",
-      "endTime": "17:00",
-      "venue": "The Forum",
-      "location": "The Forum",
-      "address": null,
-      "category": "exhibitions",
-      "description": "A group art exhibition showcasing creative talent from the Norwich area, featuring work from experienced practitioners as well as relative newcomers",
-      "ticketLink": "https://www.theforumnorwich.co.uk/whats-on",
-      "officialUrl": "",
-      "sourceUrl": "https://www.theforumnorwich.co.uk/whats-on",
-      "primaryUrl": "https://www.theforumnorwich.co.uk/whats-on",
-      "price": "Free",
-      "image": "assets/fallback-markets.svg",
-      "hasFlyer": true,
-      "imageStatus": "fallback_assigned",
-      "linkStatus": "verified",
-      "ticketStatus": "missing",
-      "needsFlyer": true,
-      "tags": [
-        "art"
-      ],
-      "featured": false,
-      "editorsChoice": false,
-      "isFree": true,
-      "ageRestriction": null,
-      "status": "approved",
-      "source": "The Forum Norwich"
-    },
-    {
       "id": "scraper-sounds-of-house-2026-08-08-gonzo's-tea-room",
       "slug": "sounds-of-house-2026-08-08",
       "fingerprint": "sounds of house|2026-08-08|gonzo's tea room",
@@ -619,6 +583,44 @@
       "source": "The Halls Norwich"
     },
     {
+      "id": "scraper-santa’s-grotto-for-dogs-2026-12-13-the-forum",
+      "slug": "santa-s-grotto-for-dogs-2026-12-13",
+      "fingerprint": "santa’s grotto for dogs|2026-12-13|the forum",
+      "name": "Santa’s Grotto for Dogs",
+      "eventname": "Santa’s Grotto for Dogs",
+      "date": "2026-12-13",
+      "time": "10:00",
+      "endDate": "2026-12-13",
+      "endTime": "14:00",
+      "venue": "The Forum",
+      "location": "The Forum",
+      "address": null,
+      "category": "family",
+      "description": "",
+      "ticketLink": "https://www.theforumnorwich.co.uk/whats-on",
+      "officialUrl": "",
+      "sourceUrl": "https://www.theforumnorwich.co.uk/whats-on",
+      "primaryUrl": "https://www.theforumnorwich.co.uk/whats-on",
+      "price": "See website",
+      "image": "assets/fallback-markets.svg",
+      "hasFlyer": true,
+      "imageStatus": "fallback_assigned",
+      "linkStatus": "verified",
+      "ticketStatus": "missing",
+      "needsFlyer": true,
+      "tags": [
+        "dogs",
+        "christmas",
+        "grotto"
+      ],
+      "featured": false,
+      "editorsChoice": false,
+      "isFree": false,
+      "ageRestriction": null,
+      "status": "approved",
+      "source": "The Forum Norwich"
+    },
+    {
       "id": "scraper-ink-&-engines-fest-2027-08-15-norfolk-events-centre",
       "slug": "ink-engines-fest-2027-08-15",
       "fingerprint": "ink & engines fest|2027-08-15|norfolk events centre",
@@ -655,6 +657,6 @@
       "source": "Norfolk Showground"
     }
   ],
-  "generated_at": "2026-08-07T08:23:27.387397",
+  "generated_at": "2026-08-08T07:57:25.461330",
   "count": 18
 }

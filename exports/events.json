@@ -1,6 +1,45 @@
 {
   "events": [
     {
+      "id": "scraper-the-elo-encounter-2026-08-11-venue",
+      "slug": "the-elo-encounter-2026-08-11",
+      "fingerprint": "the elo encounter|2026-08-11|venue tba",
+      "name": "The ELO Encounter",
+      "eventname": "The ELO Encounter",
+      "date": "2026-08-11",
+      "time": "Time TBC",
+      "endDate": null,
+      "endTime": null,
+      "venue": "Venue TBA",
+      "location": "Venue TBA",
+      "address": null,
+      "category": "gigs",
+      "description": "Roll over Beethoven, because the greatest tribute to Jeff Lynne’s Electric Light Orchestra is here! In an all live show featuring soaring strings, striking vocal…",
+      "ticketLink": "",
+      "officialUrl": "",
+      "sourceUrl": "https://www.visitnorwich.co.uk/whats-on/",
+      "primaryUrl": "https://www.visitnorwich.co.uk/whats-on/",
+      "price": "See website",
+      "image": "assets/fallback-live-music.svg",
+      "hasFlyer": true,
+      "imageStatus": "fallback_assigned",
+      "linkStatus": "verified",
+      "ticketStatus": "missing",
+      "needsFlyer": true,
+      "tags": [
+        "music",
+        "tribute",
+        "live show",
+        "ELO"
+      ],
+      "featured": false,
+      "editorsChoice": false,
+      "isFree": false,
+      "ageRestriction": null,
+      "status": "approved",
+      "source": "Visit Norwich"
+    },
+    {
       "id": "scraper-teddy-bears'-picnic-day-2026-08-12-norwich-cathedral",
       "slug": "teddy-bears-picnic-day-2026-08-12",
       "fingerprint": "teddy bears' picnic day|2026-08-12|norwich cathedral",
@@ -37,6 +76,43 @@
       "ageRestriction": null,
       "status": "approved",
       "source": "Norwich Cathedral"
+    },
+    {
+      "id": "scraper-the-forum-film-club-2026-08-13-the-auditorium,-the-foru",
+      "slug": "the-forum-film-club-2026-08-13",
+      "fingerprint": "the forum film club|2026-08-13|the auditorium, the forum norwich",
+      "name": "The Forum Film Club",
+      "eventname": "The Forum Film Club",
+      "date": "2026-08-13",
+      "time": "19:00",
+      "endDate": null,
+      "endTime": null,
+      "venue": "The Auditorium, The Forum Norwich",
+      "location": "The Auditorium, The Forum Norwich",
+      "address": null,
+      "category": "culture",
+      "description": "Monthly film screenings in our film club with a difference!",
+      "ticketLink": "https://www.theforumnorwich.co.uk/whats-on",
+      "officialUrl": "",
+      "sourceUrl": "https://www.theforumnorwich.co.uk/whats-on",
+      "primaryUrl": "https://www.theforumnorwich.co.uk/whats-on",
+      "price": "See website",
+      "image": "assets/fallback-culture.svg",
+      "hasFlyer": true,
+      "imageStatus": "fallback_assigned",
+      "linkStatus": "verified",
+      "ticketStatus": "missing",
+      "needsFlyer": true,
+      "tags": [
+        "film",
+        "screening"
+      ],
+      "featured": false,
+      "editorsChoice": false,
+      "isFree": false,
+      "ageRestriction": null,
+      "status": "approved",
+      "source": "The Forum Norwich"
     },
     {
       "id": "scraper-suffield-summer-fiesta-2026-08-14-suffield-arms",
@@ -110,6 +186,43 @@
       "ageRestriction": null,
       "status": "approved",
       "source": "Gonzo's Two Room"
+    },
+    {
+      "id": "scraper-august-resident-rave-2026-08-15-gonzo's-tea-room",
+      "slug": "august-resident-rave-2026-08-15",
+      "fingerprint": "august resident rave|2026-08-15|gonzo's tea room",
+      "name": "August Resident Rave",
+      "eventname": "August Resident Rave",
+      "date": "2026-08-15",
+      "time": "23:00",
+      "endDate": "2026-08-15",
+      "endTime": "03:00",
+      "venue": "Gonzo's Tea Room",
+      "location": "Gonzo's Tea Room",
+      "address": null,
+      "category": "nightlife",
+      "description": "",
+      "ticketLink": "https://www.fatsoma.com/p/gonzostworoom",
+      "officialUrl": "",
+      "sourceUrl": "https://www.fatsoma.com/p/gonzostworoom",
+      "primaryUrl": "https://www.fatsoma.com/p/gonzostworoom",
+      "price": "Free",
+      "image": "assets/fallback-nightlife.svg",
+      "hasFlyer": true,
+      "imageStatus": "fallback_assigned",
+      "linkStatus": "verified",
+      "ticketStatus": "missing",
+      "needsFlyer": true,
+      "tags": [
+        "rave",
+        "resident"
+      ],
+      "featured": false,
+      "editorsChoice": false,
+      "isFree": true,
+      "ageRestriction": null,
+      "status": "approved",
+      "source": "Gonzo's Fatsoma"
     },
     {
       "id": "scraper-ink-&-engines-fest-2026-08-15-norfolk-events-centre",
@@ -619,6 +732,6 @@
       "source": "Norfolk Showground"
     }
   ],
-  "generated_at": "2026-08-10T08:50:14.132759",
-  "count": 17
+  "generated_at": "2026-08-11T08:18:45.371529",
+  "count": 20
 }

@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-10T08:50:14.133263",
-  "count": 81,
+  "generated_at": "2026-08-11T08:18:45.372248",
+  "count": 85,
   "events": [
     {
       "reason": "duplicate",
@@ -13,13 +13,6 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "UEA Waterfront",
-      "title": "Motörheadache",
-      "fingerprint": "motörheadache|2026-08-14|the brickmakers"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "UEA Waterfront",
       "title": "The King Blues ‘A Monkey Could Do That Tour’",
       "fingerprint": "the king blues ‘a monkey could do that tour’|2026-08-15|the adrian flux waterfront studio"
     },
@@ -27,8 +20,8 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "UEA Waterfront",
-      "title": "Hi-On Maiden Celebrating 50+ Years of Iron Maiden + 40th Anniversary of ‘Somewhere In Time’",
-      "fingerprint": "hi-on maiden celebrating 50+ years of iron maiden + 40th anniversary of ‘somewhere in time’|2026-08-15|the adrian flux waterfront"
+      "title": "Hi-On Maiden",
+      "fingerprint": "hi-on maiden|2026-08-15|the adrian flux waterfront"
     },
     {
       "reason": "needs_review",
@@ -129,6 +122,111 @@
       "fingerprint": "the felice brothers|2026-09-01|norwich arts centre"
     },
     {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "UEA Waterfront",
+      "title": "Altered Images",
+      "fingerprint": "altered images|2026-09-03|the adrian flux waterfront"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "UEA Waterfront",
+      "title": "A Place To Bury Strangers",
+      "fingerprint": "a place to bury strangers|2026-09-03|the adrian flux waterfront studio"
+    },
+    {
+      "reason": "duplicate",
+      "status": "pending_review",
+      "source": "The Forum Norwich",
+      "title": "Heritage Open Days",
+      "fingerprint": "heritage open days|2026-09-11|across norfolk"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Forum Norwich",
+      "title": "Norwich Book Festival",
+      "fingerprint": "norwich book festival|2026-10-24|the forum norwich"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Forum Norwich",
+      "title": "Santa’s Grotto for Dogs",
+      "fingerprint": "santa’s grotto for dogs|2026-12-13|the forum norwich"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Forum Norwich",
+      "title": "Norwich Science Festival",
+      "fingerprint": "norwich science festival|2027-02-13|the forum norwich"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Forum Norwich",
+      "title": "Anglian Water's Community Hub",
+      "fingerprint": "anglian water's community hub|2026-08-11|the forum norwich"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Forum Norwich",
+      "title": "Norwich Jobs Fair",
+      "fingerprint": "norwich jobs fair|2026-08-12|the forum norwich"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Forum Norwich",
+      "title": "Abseil for Finnbar's Force 2026",
+      "fingerprint": "abseil for finnbar's force 2026|2026-08-15|the forum norwich"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Forum Norwich",
+      "title": "Video Game Retro Market Norwich",
+      "fingerprint": "video game retro market norwich|2026-08-15|the forum norwich"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Forum Norwich",
+      "title": "Psychosis awareness stand",
+      "fingerprint": "psychosis awareness stand|2026-08-17|the forum norwich"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Forum Norwich",
+      "title": "Norfolk RecoveryFest",
+      "fingerprint": "norfolk recoveryfest|2026-08-22|the forum norwich"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Forum Norwich",
+      "title": "A Fine City Summer Fête",
+      "fingerprint": "a fine city summer fête|2026-08-28|the forum norwich"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Forum Norwich",
+      "title": "Run Norwich Expo",
+      "fingerprint": "run norwich expo|2026-09-04|the forum norwich"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Forum Norwich",
+      "title": "Norwich Forum Writers",
+      "fingerprint": "norwich forum writers|2026-09-04|the gallery, the forum norwich"
+    },
+    {
       "reason": "duplicate",
       "status": "approved",
       "source": "Norwich Cathedral",
@@ -141,104 +239,6 @@
       "source": "Norwich Cathedral",
       "title": "Specialist Tour: The Graffiti of Norwich Cathedral",
       "fingerprint": "specialist tour: the graffiti of norwich cathedral|2026-08-15|norwich cathedral"
-    },
-    {
-      "reason": "duplicate",
-      "status": "approved",
-      "source": "The Forum Norwich",
-      "title": "Santa’s Grotto for Dogs",
-      "fingerprint": "santa’s grotto for dogs|2026-12-13|the forum"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "Anglian Water's Community Hub",
-      "fingerprint": "anglian water's community hub|2026-08-11|the forum"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "Norwich Jobs Fair",
-      "fingerprint": "norwich jobs fair|2026-08-12|the forum"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "The Forum Film Club",
-      "fingerprint": "the forum film club|2026-08-13|the forum"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "Abseil for Finnbar's Force",
-      "fingerprint": "abseil for finnbar's force|2026-08-15|the forum"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "Video Game Retro Market Norwich",
-      "fingerprint": "video game retro market norwich|2026-08-15|the forum"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "Psychosis awareness stand",
-      "fingerprint": "psychosis awareness stand|2026-08-17|the forum"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "Norfolk RecoveryFest",
-      "fingerprint": "norfolk recoveryfest|2026-08-22|the forum"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "A Fine City Summer Fête",
-      "fingerprint": "a fine city summer fête|2026-08-28|the forum"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "Run Norwich Expo",
-      "fingerprint": "run norwich expo|2026-09-04|the forum"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "Norwich Forum Writers",
-      "fingerprint": "norwich forum writers|2026-09-04|the forum"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "CAMP Holkham",
-      "fingerprint": "camp holkham|2026-08-10|holkham"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Afternoon Tea Week at The Maids Head Hotel",
-      "fingerprint": "afternoon tea week at the maids head hotel|2026-08-10|the maids head hotel"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "The ELO Encounter",
-      "fingerprint": "the elo encounter|2026-08-11|venue tba"
     },
     {
       "reason": "needs_review",
@@ -293,8 +293,8 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Visit Norwich",
-      "title": "The Suffield Summer ¡Fiesta!",
-      "fingerprint": "the suffield summer ¡fiesta!|2026-08-14|the suffield"
+      "title": "The Suffield Summer ¡Fiesta! – Norfolk",
+      "fingerprint": "the suffield summer ¡fiesta! – norfolk|2026-08-14|venue tba"
     },
     {
       "reason": "needs_review",
@@ -302,6 +302,20 @@
       "source": "Visit Norwich",
       "title": "Norwich on the Dark Side",
       "fingerprint": "norwich on the dark side|2026-08-14|venue tba"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "AfriFest East",
+      "fingerprint": "afrifest east|2026-08-15|venue tba"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Norwich Summer Sessions – Goldie Fiasco Street theatre",
+      "fingerprint": "norwich summer sessions – goldie fiasco street theatre|2026-08-16|venue tba"
     },
     {
       "reason": "duplicate",
@@ -350,42 +364,49 @@
       "status": "approved",
       "source": "Norfolk Showground",
       "title": "Ink & Engines Fest",
-      "fingerprint": "ink & engines fest|2026-08-15|norfolk events centre"
+      "fingerprint": "ink & engines fest|2026-08-15|norfolk showground, events centre"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "Norwich Games Con",
-      "fingerprint": "norwich games con|2026-08-22|norfolk events centre"
+      "fingerprint": "norwich games con|2026-08-22|norfolk showground, events centre"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "Family Action Arena",
-      "fingerprint": "family action arena|2026-08-29|outdoor spaces"
+      "fingerprint": "family action arena|2026-08-29|norfolk showground, family action arena outdoor spaces"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "All About Dogs",
-      "fingerprint": "all about dogs|2026-08-30|outdoor spaces"
+      "fingerprint": "all about dogs|2026-08-30|norfolk showground, outdoor spaces"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "Stroke Information Live - Norfolk and Suffolk",
-      "fingerprint": "stroke information live - norfolk and suffolk|2026-09-22|norfolk events centre"
+      "fingerprint": "stroke information live - norfolk and suffolk|2026-09-22|norfolk showground, events centre"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "NORCON",
-      "fingerprint": "norcon|2026-09-26|outdoor spaces"
+      "fingerprint": "norcon|2026-09-26|norfolk showground, outdoor spaces"
+    },
+    {
+      "reason": "duplicate",
+      "status": "approved",
+      "source": "Gonzo's Two Room",
+      "title": "Resident Rave",
+      "fingerprint": "resident rave|2026-08-15|gonzo's tea room"
     },
     {
       "reason": "needs_review",
@@ -410,6 +431,13 @@
     },
     {
       "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Gonzo's Two Room",
+      "title": "Bean b2b Tadi + Special Guest MCs",
+      "fingerprint": "bean b2b tadi + special guest mcs|2026-08-22|gonzo's tea room"
+    },
+    {
+      "reason": "duplicate",
       "status": "pending_review",
       "source": "Gonzo's Two Room",
       "title": "Bean b2b Tadi + Special Guest MCs",
@@ -470,13 +498,6 @@
       "source": "Gonzo's Two Room",
       "title": "A.M.C Grassroots Energy: Norwich",
       "fingerprint": "a.m.c grassroots energy: norwich|2026-12-11|gonzo's tea room"
-    },
-    {
-      "reason": "duplicate",
-      "status": "approved",
-      "source": "Gonzo's Fatsoma",
-      "title": "Resident Rave",
-      "fingerprint": "resident rave|2026-08-15|gonzo's tea room"
     },
     {
       "reason": "needs_review",
@@ -549,25 +570,32 @@
       "fingerprint": "rooftop sunday session w dunmore brothers (summer closing)|2026-09-13|gonzo's tea room"
     },
     {
+      "reason": "duplicate",
+      "status": "pending_review",
+      "source": "Gonzo's Fatsoma",
+      "title": "Mozey",
+      "fingerprint": "mozey|2026-10-02|gonzo's tea room"
+    },
+    {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Sainsbury Centre",
       "title": "Living Art Ryan Gander",
-      "fingerprint": "living art ryan gander|2026-08-10|sainsbury centre"
+      "fingerprint": "living art ryan gander|2026-08-11|sainsbury centre"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Sainsbury Centre",
-      "title": "Free Daily Tour of the Living Area (11am)",
-      "fingerprint": "free daily tour of the living area (11am)|2026-08-11|sainsbury centre"
+      "title": "Free Daily Tour of the Living Area",
+      "fingerprint": "free daily tour of the living area|2026-08-11|sainsbury centre"
     },
     {
-      "reason": "needs_review",
+      "reason": "duplicate",
       "status": "pending_review",
       "source": "Sainsbury Centre",
-      "title": "Free Daily Tour of the Living Area (2pm)",
-      "fingerprint": "free daily tour of the living area (2pm)|2026-08-11|sainsbury centre"
+      "title": "Free Daily Tour of the Living Area",
+      "fingerprint": "free daily tour of the living area|2026-08-11|sainsbury centre"
     }
   ]
 }

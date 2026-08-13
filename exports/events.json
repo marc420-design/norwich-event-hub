@@ -1,44 +1,6 @@
 {
   "events": [
     {
-      "id": "scraper-teddy-bears'-picnic-day-2026-08-12-norwich-cathedral",
-      "slug": "teddy-bears-picnic-day-2026-08-12",
-      "fingerprint": "teddy bears' picnic day|2026-08-12|norwich cathedral",
-      "name": "Teddy Bears' Picnic Day",
-      "eventname": "Teddy Bears' Picnic Day",
-      "date": "2026-08-12",
-      "time": "Time TBC",
-      "endDate": null,
-      "endTime": null,
-      "venue": "Norwich Cathedral",
-      "location": "Norwich Cathedral",
-      "address": null,
-      "category": "family",
-      "description": "Join us for a fun family activity.",
-      "ticketLink": "https://cathedral.org.uk/whats-on",
-      "officialUrl": "",
-      "sourceUrl": "https://cathedral.org.uk/whats-on",
-      "primaryUrl": "https://cathedral.org.uk/whats-on",
-      "price": "See website",
-      "image": "assets/fallback-culture.svg",
-      "hasFlyer": true,
-      "imageStatus": "fallback_assigned",
-      "linkStatus": "verified",
-      "ticketStatus": "missing",
-      "needsFlyer": true,
-      "tags": [
-        "picnic",
-        "family",
-        "children"
-      ],
-      "featured": false,
-      "editorsChoice": false,
-      "isFree": false,
-      "ageRestriction": null,
-      "status": "approved",
-      "source": "Norwich Cathedral"
-    },
-    {
       "id": "scraper-the-forum-film-club-2026-08-13-the-auditorium,-the-foru",
       "slug": "the-forum-film-club-2026-08-13",
       "fingerprint": "the forum film club|2026-08-13|the auditorium, the forum norwich",
@@ -656,6 +618,47 @@
       "source": "The Halls Norwich"
     },
     {
+      "id": "scraper-immersive-sound-and-light-experience-2026-10-27-norwich-cathedral",
+      "slug": "immersive-sound-and-light-experience-2026-10-27",
+      "fingerprint": "immersive sound and light experience|2026-10-27|norwich cathedral",
+      "name": "Immersive Sound and Light Experience",
+      "eventname": "Immersive Sound and Light Experience",
+      "date": "2026-10-27",
+      "time": "Time TBC",
+      "endDate": null,
+      "endTime": null,
+      "venue": "Norwich Cathedral",
+      "location": "Norwich Cathedral",
+      "address": null,
+      "category": "exhibitions",
+      "description": "Journey through an immersive sound and light experience exploring history, science and imagination.",
+      "ticketLink": "https://cathedral.org.uk/whats-on",
+      "officialUrl": "",
+      "sourceUrl": "https://cathedral.org.uk/whats-on",
+      "primaryUrl": "https://cathedral.org.uk/whats-on",
+      "price": "See website",
+      "image": "assets/fallback-culture.svg",
+      "hasFlyer": true,
+      "imageStatus": "fallback_assigned",
+      "linkStatus": "verified",
+      "ticketStatus": "missing",
+      "needsFlyer": true,
+      "tags": [
+        "sound",
+        "light",
+        "immersive",
+        "history",
+        "science",
+        "imagination"
+      ],
+      "featured": false,
+      "editorsChoice": false,
+      "isFree": false,
+      "ageRestriction": null,
+      "status": "approved",
+      "source": "Norwich Cathedral"
+    },
+    {
       "id": "scraper-santa’s-grotto-for-dogs-2026-12-13-the-forum",
       "slug": "santa-s-grotto-for-dogs-2026-12-13",
       "fingerprint": "santa’s grotto for dogs|2026-12-13|the forum",
@@ -730,6 +733,6 @@
       "source": "Norfolk Showground"
     }
   ],
-  "generated_at": "2026-08-12T08:29:55.506503",
+  "generated_at": "2026-08-13T08:32:30.501297",
   "count": 20
 }

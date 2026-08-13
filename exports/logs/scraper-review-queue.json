@@ -1,14 +1,7 @@
 {
-  "generated_at": "2026-08-12T08:29:55.507251",
-  "count": 84,
+  "generated_at": "2026-08-13T08:32:30.501937",
+  "count": 85,
   "events": [
-    {
-      "reason": "duplicate",
-      "status": "approved",
-      "source": "Norwich Cathedral",
-      "title": "Teddy Bears' Picnic Day",
-      "fingerprint": "teddy bears' picnic day|2026-08-12|norwich cathedral"
-    },
     {
       "reason": "needs_review",
       "status": "pending_review",
@@ -19,170 +12,9 @@
     {
       "reason": "needs_review",
       "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Teddy Bear’s Picnic at Norwich Cathedral",
-      "fingerprint": "teddy bear’s picnic at norwich cathedral|2026-08-12|norwich cathedral"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Carrow Road to Cathedral cloister – walking tour",
-      "fingerprint": "carrow road to cathedral cloister – walking tour|2026-08-12|norwich"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Special Tour – Ranworth Church and Afternoon Tea",
-      "fingerprint": "special tour – ranworth church and afternoon tea|2026-08-12|st helen’s church, ranworth"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Norwich Weird & Wonderful Story Walk",
-      "fingerprint": "norwich weird & wonderful story walk|2026-08-12|norwich"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Kids’ Summer Roll Making Workshop",
-      "fingerprint": "kids’ summer roll making workshop|2026-08-13|rosa’s thai"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Norwich Her Story Walk",
-      "fingerprint": "norwich her story walk|2026-08-13|norwich"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Medieval Norwich walking tour – from the Normans to the Tudors",
-      "fingerprint": "medieval norwich walking tour – from the normans to the tudors|2026-08-14|norwich"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "The Suffield Summer ¡Fiesta! – Norfolk",
-      "fingerprint": "the suffield summer ¡fiesta! – norfolk|2026-08-14|suffield"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Norwich on the Dark Side",
-      "fingerprint": "norwich on the dark side|2026-08-14|norwich"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "AfriFest East",
-      "fingerprint": "afrifest east|2026-08-15|venue tba"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Norwich Summer Sessions – Goldie Fiasco",
-      "fingerprint": "norwich summer sessions – goldie fiasco|2026-08-16|norwich"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Norwich Summer Sessions – Amber Scott",
-      "fingerprint": "norwich summer sessions – amber scott|2026-08-16|norwich"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "Heritage Open Days",
-      "fingerprint": "heritage open days|2026-09-11|various locations across norfolk"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "Norwich Book Festival",
-      "fingerprint": "norwich book festival|2026-10-24|the forum"
-    },
-    {
-      "reason": "duplicate",
-      "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "Santa’s Grotto for Dogs",
-      "fingerprint": "santa’s grotto for dogs|2026-12-13|the forum"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "Norwich Science Festival",
-      "fingerprint": "norwich science festival|2027-02-13|the forum"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "Norwich Jobs Fair",
-      "fingerprint": "norwich jobs fair|2026-08-12|the forum"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "Abseil for Finnbar's Force 2026",
-      "fingerprint": "abseil for finnbar's force 2026|2026-08-15|the forum"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "Video Game Retro Market Norwich",
-      "fingerprint": "video game retro market norwich|2026-08-15|the forum"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "Psychosis awareness stand",
-      "fingerprint": "psychosis awareness stand|2026-08-17|the forum"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "Norfolk RecoveryFest",
-      "fingerprint": "norfolk recoveryfest|2026-08-22|the forum"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "A Fine City Summer Fête",
-      "fingerprint": "a fine city summer fête|2026-08-28|the forum"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "Run Norwich Expo",
-      "fingerprint": "run norwich expo|2026-09-04|the forum"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "Norwich Forum Writers",
-      "fingerprint": "norwich forum writers|2026-09-04|the gallery"
+      "source": "Norwich Cathedral",
+      "title": "Summer Organ Concert: Stephen Farr",
+      "fingerprint": "summer organ concert: stephen farr|2026-08-19|norwich cathedral"
     },
     {
       "reason": "duplicate",
@@ -217,21 +49,21 @@
       "status": "pending_review",
       "source": "UEA Waterfront",
       "title": "Rock N Roll Circus – James",
-      "fingerprint": "rock n roll circus – james|2026-08-20|earlham park, norwich"
+      "fingerprint": "rock n roll circus – james|2026-08-20|earlham park"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "UEA Waterfront",
       "title": "Rock N Roll Circus – Weekend Ticket",
-      "fingerprint": "rock n roll circus – weekend ticket|2026-08-21|earlham park, norwich"
+      "fingerprint": "rock n roll circus – weekend ticket|2026-08-21|earlham park"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "UEA Waterfront",
       "title": "Rock N Roll Circus – The Streets",
-      "fingerprint": "rock n roll circus – the streets|2026-08-21|earlham park, norwich"
+      "fingerprint": "rock n roll circus – the streets|2026-08-21|earlham park"
     },
     {
       "reason": "needs_review",
@@ -245,14 +77,14 @@
       "status": "pending_review",
       "source": "UEA Waterfront",
       "title": "Rock N Roll Circus – The Kooks + The Vaccines + The Fratellis",
-      "fingerprint": "rock n roll circus – the kooks + the vaccines + the fratellis|2026-08-22|earlham park, norwich"
+      "fingerprint": "rock n roll circus – the kooks + the vaccines + the fratellis|2026-08-22|earlham park"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "UEA Waterfront",
       "title": "Rock N Roll Circus – Madness",
-      "fingerprint": "rock n roll circus – madness|2026-08-23|earlham park, norwich"
+      "fingerprint": "rock n roll circus – madness|2026-08-23|earlham park"
     },
     {
       "reason": "needs_review",
@@ -320,6 +152,174 @@
     {
       "reason": "duplicate",
       "status": "approved",
+      "source": "The Forum Norwich",
+      "title": "Heritage Open Days",
+      "fingerprint": "heritage open days|2026-09-11|across norfolk"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Forum Norwich",
+      "title": "Norwich Book Festival",
+      "fingerprint": "norwich book festival|2026-10-24|the forum"
+    },
+    {
+      "reason": "duplicate",
+      "status": "pending_review",
+      "source": "The Forum Norwich",
+      "title": "Santa’s Grotto for Dogs",
+      "fingerprint": "santa’s grotto for dogs|2026-12-13|the forum"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Forum Norwich",
+      "title": "Norwich Science Festival",
+      "fingerprint": "norwich science festival|2027-02-13|the forum"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Forum Norwich",
+      "title": "Abseil for Finnbar's Force 2026",
+      "fingerprint": "abseil for finnbar's force 2026|2026-08-15|the forum"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Forum Norwich",
+      "title": "Video Game Retro Market Norwich",
+      "fingerprint": "video game retro market norwich|2026-08-15|the forum"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Forum Norwich",
+      "title": "Psychosis awareness stand",
+      "fingerprint": "psychosis awareness stand|2026-08-17|the forum"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Forum Norwich",
+      "title": "Norfolk RecoveryFest",
+      "fingerprint": "norfolk recoveryfest|2026-08-22|the forum"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Forum Norwich",
+      "title": "A Fine City Summer Fête",
+      "fingerprint": "a fine city summer fête|2026-08-28|the forum"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Forum Norwich",
+      "title": "Run Norwich Expo",
+      "fingerprint": "run norwich expo|2026-09-04|the forum"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Forum Norwich",
+      "title": "Norwich Forum Writers",
+      "fingerprint": "norwich forum writers|2026-09-04|the forum"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Forum Norwich",
+      "title": "Run Norwich Expo",
+      "fingerprint": "run norwich expo|2026-09-05|the forum"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Kids’ Summer Roll Making Workshop",
+      "fingerprint": "kids’ summer roll making workshop|2026-08-13|rosa’s thai"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Norwich Her Story Walk",
+      "fingerprint": "norwich her story walk|2026-08-13|norwich"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Medieval Norwich walking tour – from the Normans to the Tudors",
+      "fingerprint": "medieval norwich walking tour – from the normans to the tudors|2026-08-14|norwich"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "The Suffield Summer ¡Fiesta! – Norfolk",
+      "fingerprint": "the suffield summer ¡fiesta! – norfolk|2026-08-14|a stunning pub garden in suffield"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Norwich on the Dark Side",
+      "fingerprint": "norwich on the dark side|2026-08-14|norwich"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "AfriFest East",
+      "fingerprint": "afrifest east|2026-08-15|norwich"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Norwich Summer Sessions – Goldie Fiasco",
+      "fingerprint": "norwich summer sessions – goldie fiasco|2026-08-16|norwich"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Norwich Summer Sessions – Amber Scott",
+      "fingerprint": "norwich summer sessions – amber scott|2026-08-16|norwich"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Norwich Summer Sessions – Heather Cartwright & Sam Mabbett",
+      "fingerprint": "norwich summer sessions – heather cartwright & sam mabbett|2026-08-16|norwich"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "All Norfolk Wine & Cheese Celebration",
+      "fingerprint": "all norfolk wine & cheese celebration|2026-08-16|norfolk local wine school"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Norwich Summer Sessions – Big Black Cadillac & Swing Dance",
+      "fingerprint": "norwich summer sessions – big black cadillac & swing dance|2026-08-16|norwich"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Family Imagination Day",
+      "fingerprint": "family imagination day|2026-08-17|dragon hall"
+    },
+    {
+      "reason": "duplicate",
+      "status": "approved",
       "source": "The Halls Norwich",
       "title": "Norfolk Heritage Open Days - Tours",
       "fingerprint": "norfolk heritage open days - tours|2026-09-13|the halls"
@@ -364,42 +364,35 @@
       "status": "approved",
       "source": "Norfolk Showground",
       "title": "Ink & Engines Fest",
-      "fingerprint": "ink & engines fest|2026-08-15|norfolk events centre"
+      "fingerprint": "ink & engines fest|2026-08-15|norfolk showground"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "Norwich Games Con",
-      "fingerprint": "norwich games con|2026-08-22|norfolk events centre"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Norfolk Showground",
-      "title": "Action Arena",
-      "fingerprint": "action arena|2026-08-29|outdoor spaces"
+      "fingerprint": "norwich games con|2026-08-22|norfolk showground"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "All About Dogs",
-      "fingerprint": "all about dogs|2026-08-30|outdoor spaces"
+      "fingerprint": "all about dogs|2026-08-30|norfolk showground"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "Stroke Information Live - Norfolk and Suffolk",
-      "fingerprint": "stroke information live - norfolk and suffolk|2026-09-22|norfolk events centre"
+      "fingerprint": "stroke information live - norfolk and suffolk|2026-09-22|norfolk showground"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "NORCON",
-      "fingerprint": "norcon|2026-09-26|outdoor spaces"
+      "fingerprint": "norcon|2026-09-26|norfolk showground"
     },
     {
       "reason": "duplicate",
@@ -581,14 +574,28 @@
       "status": "pending_review",
       "source": "Sainsbury Centre",
       "title": "Living Art Ryan Gander",
-      "fingerprint": "living art ryan gander|2026-08-12|sainsbury centre, living area"
+      "fingerprint": "living art ryan gander|2026-08-13|sainsbury centre"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Sainsbury Centre",
-      "title": "Free Daily Tours of the Living Area",
-      "fingerprint": "free daily tours of the living area|2026-08-12|sainsbury centre, living area"
+      "title": "Sculpture Park",
+      "fingerprint": "sculpture park|2026-08-13|sainsbury centre"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Sainsbury Centre",
+      "title": "The Living Area",
+      "fingerprint": "the living area|2026-08-13|sainsbury centre"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Sainsbury Centre",
+      "title": "Free Daily Tours of The Living Area",
+      "fingerprint": "free daily tours of the living area|2026-08-13|sainsbury centre"
     }
   ]
 }

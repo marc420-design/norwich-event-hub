@@ -1,13 +1,20 @@
 {
-  "generated_at": "2026-08-14T08:27:12.404564",
-  "count": 82,
+  "generated_at": "2026-08-15T07:44:04.500900",
+  "count": 85,
   "events": [
     {
       "reason": "duplicate",
       "status": "approved",
-      "source": "UEA Waterfront",
-      "title": "Suffield Summer Fiesta",
-      "fingerprint": "suffield summer fiesta|2026-08-14|suffield arms"
+      "source": "Norwich Cathedral",
+      "title": "Immersive Sound and Light Experience",
+      "fingerprint": "immersive sound and light experience|2026-10-27|norwich cathedral"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Norwich Cathedral",
+      "title": "Summer Organ Concert: Stephen Farr",
+      "fingerprint": "summer organ concert: stephen farr|2026-08-19|norwich cathedral"
     },
     {
       "reason": "needs_review",
@@ -20,8 +27,8 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "UEA Waterfront",
-      "title": "Hi-On Maiden",
-      "fingerprint": "hi-on maiden|2026-08-15|the adrian flux waterfront"
+      "title": "Hi-On Maiden Celebrating 50+ Years of Iron Maiden + 40th Anniversary of ‘Somewhere In Time’",
+      "fingerprint": "hi-on maiden celebrating 50+ years of iron maiden + 40th anniversary of ‘somewhere in time’|2026-08-15|the adrian flux waterfront"
     },
     {
       "reason": "needs_review",
@@ -138,55 +145,6 @@
     {
       "reason": "needs_review",
       "status": "pending_review",
-      "source": "Norwich Cathedral",
-      "title": "Specialist Tour: The Graffiti of Norwich Cathedral",
-      "fingerprint": "specialist tour: the graffiti of norwich cathedral|2026-08-15|norwich cathedral"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Norwich Cathedral",
-      "title": "Summer Organ Concert: Stephen Farr",
-      "fingerprint": "summer organ concert: stephen farr|2026-08-19|norwich cathedral"
-    },
-    {
-      "reason": "duplicate",
-      "status": "approved",
-      "source": "The Forum Norwich",
-      "title": "Heritage Open Days",
-      "fingerprint": "heritage open days|2026-09-11|across norfolk"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "Norwich Book Festival",
-      "fingerprint": "norwich book festival|2026-10-24|the forum"
-    },
-    {
-      "reason": "duplicate",
-      "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "Santa’s Grotto for Dogs",
-      "fingerprint": "santa’s grotto for dogs|2026-12-13|the forum"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "Norwich Science Festival",
-      "fingerprint": "norwich science festival|2027-02-13|the forum"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "The Forum Norwich",
-      "title": "Abseil for Finnbar's Force 2026",
-      "fingerprint": "abseil for finnbar's force 2026|2026-08-15|the forum"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
       "source": "The Forum Norwich",
       "title": "Video Game Retro Market Norwich",
       "fingerprint": "video game retro market norwich|2026-08-15|the forum"
@@ -236,65 +194,93 @@
     {
       "reason": "needs_review",
       "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Medieval Norwich walking tour – from the Normans to the Tudors",
-      "fingerprint": "medieval norwich walking tour – from the normans to the tudors|2026-08-14|norwich"
+      "source": "The Forum Norwich",
+      "title": "Run Norwich Race Day",
+      "fingerprint": "run norwich race day|2026-09-06|norwich city centre"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "The Suffield Summer ¡Fiesta! – Norfolk",
-      "fingerprint": "the suffield summer ¡fiesta! – norfolk|2026-08-14|suffield"
+      "source": "The Forum Norwich",
+      "title": "Psychosis awareness stand",
+      "fingerprint": "psychosis awareness stand|2026-09-07|the forum"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Norwich on the Dark Side",
-      "fingerprint": "norwich on the dark side|2026-08-14|norwich"
+      "source": "The Forum Norwich",
+      "title": "The Forum Film Club",
+      "fingerprint": "the forum film club|2026-09-10|the auditorium, the forum"
+    },
+    {
+      "reason": "duplicate",
+      "status": "pending_review",
+      "source": "The Forum Norwich",
+      "title": "Heritage Open Days",
+      "fingerprint": "heritage open days|2026-09-11|across norfolk"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Forum Norwich",
+      "title": "Norwich Book Festival",
+      "fingerprint": "norwich book festival|2026-10-24|the forum"
+    },
+    {
+      "reason": "duplicate",
+      "status": "pending_review",
+      "source": "The Forum Norwich",
+      "title": "Santa’s Grotto for Dogs",
+      "fingerprint": "santa’s grotto for dogs|2026-12-13|the forum"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Forum Norwich",
+      "title": "Norwich Science Festival",
+      "fingerprint": "norwich science festival|2027-02-13|the forum"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Visit Norwich",
       "title": "AfriFest East",
-      "fingerprint": "afrifest east|2026-08-15|venue tba"
+      "fingerprint": "afrifest east|2026-08-15|norwich"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Visit Norwich",
-      "title": "Norwich Summer Sessions – Goldie Fiasco Street theatre",
-      "fingerprint": "norwich summer sessions – goldie fiasco street theatre|2026-08-16|venue tba"
+      "title": "Norwich Summer Sessions – Goldie Fiasco",
+      "fingerprint": "norwich summer sessions – goldie fiasco|2026-08-16|norwich"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Visit Norwich",
       "title": "Norwich Summer Sessions – Amber Scott",
-      "fingerprint": "norwich summer sessions – amber scott|2026-08-16|venue tba"
+      "fingerprint": "norwich summer sessions – amber scott|2026-08-16|norwich"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Visit Norwich",
       "title": "Norwich Summer Sessions – Heather Cartwright & Sam Mabbett",
-      "fingerprint": "norwich summer sessions – heather cartwright & sam mabbett|2026-08-16|venue tba"
+      "fingerprint": "norwich summer sessions – heather cartwright & sam mabbett|2026-08-16|norwich"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Visit Norwich",
       "title": "All Norfolk Wine & Cheese Celebration",
-      "fingerprint": "all norfolk wine & cheese celebration|2026-08-16|venue tba"
+      "fingerprint": "all norfolk wine & cheese celebration|2026-08-16|norfolk local wine school"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Visit Norwich",
       "title": "Norwich Summer Sessions – Big Black Cadillac & Swing Dance",
-      "fingerprint": "norwich summer sessions – big black cadillac & swing dance|2026-08-16|venue tba"
+      "fingerprint": "norwich summer sessions – big black cadillac & swing dance|2026-08-16|norwich"
     },
     {
       "reason": "needs_review",
@@ -320,9 +306,37 @@
     {
       "reason": "needs_review",
       "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Family Imagination Day",
+      "fingerprint": "family imagination day|2026-08-18|dragon hall"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Art Exhibition at Pavilion Theatre",
+      "fingerprint": "art exhibition at pavilion theatre|2026-08-19|pavilion theatre"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Norwich Over the Water – walking tour",
+      "fingerprint": "norwich over the water – walking tour|2026-08-19|norwich"
+    },
+    {
+      "reason": "duplicate",
+      "status": "approved",
       "source": "The Halls Norwich",
-      "title": "An Evening of Dickens",
-      "fingerprint": "an evening of dickens|2026-09-16|the halls, norwich"
+      "title": "Norfolk Heritage Open Days - Tours",
+      "fingerprint": "norfolk heritage open days - tours|2026-09-13|the halls, norwich"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "The Halls Norwich",
+      "title": "An Evening of Dickens — a free dramatic reading",
+      "fingerprint": "an evening of dickens — a free dramatic reading|2026-09-16|the halls, norwich"
     },
     {
       "reason": "needs_review",
@@ -357,14 +371,21 @@
       "status": "approved",
       "source": "Norfolk Showground",
       "title": "Ink & Engines Fest",
-      "fingerprint": "ink & engines fest|2026-08-15|events centre"
+      "fingerprint": "ink & engines fest|2026-08-15|norfolk events centre"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "Norwich Games Con",
-      "fingerprint": "norwich games con|2026-08-22|events centre"
+      "fingerprint": "norwich games con|2026-08-22|norfolk events centre"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Norfolk Showground",
+      "title": "Family Action Arena",
+      "fingerprint": "family action arena|2026-08-29|outdoor spaces"
     },
     {
       "reason": "needs_review",
@@ -378,7 +399,7 @@
       "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "BLAKELY Apex Games",
-      "fingerprint": "blakely apex games|2026-09-12|events centre"
+      "fingerprint": "blakely apex games|2026-09-12|norfolk events centre"
     },
     {
       "reason": "needs_review",
@@ -386,111 +407,6 @@
       "source": "Norfolk Showground",
       "title": "Stroke Information Live - Norfolk and Suffolk",
       "fingerprint": "stroke information live - norfolk and suffolk|2026-09-22|norfolk events centre"
-    },
-    {
-      "reason": "duplicate",
-      "status": "approved",
-      "source": "Gonzo's Two Room",
-      "title": "Resident Rave",
-      "fingerprint": "resident rave|2026-08-15|gonzo's tea room"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Gonzo's Two Room",
-      "title": "Rooftop Sunday Sessions w MiNNA",
-      "fingerprint": "rooftop sunday sessions w minna|2026-08-16|gonzo's tea room"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Gonzo's Two Room",
-      "title": "Metalheadz Blue Note Sessions – Sunday Day Party – Goldie + More",
-      "fingerprint": "metalheadz blue note sessions – sunday day party – goldie + more|2026-08-16|gonzo's tea room"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Gonzo's Two Room",
-      "title": "Photek",
-      "fingerprint": "photek|2026-08-21|gonzo's tea room"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Gonzo's Two Room",
-      "title": "Bean b2b Tadi + Special Guest MCs",
-      "fingerprint": "bean b2b tadi + special guest mcs|2026-08-22|gonzo's tea room"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Gonzo's Two Room",
-      "title": "Rooftop Sunday Sessions w HEIDI",
-      "fingerprint": "rooftop sunday sessions w heidi|2026-08-23|gonzo's tea room"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Gonzo's Two Room",
-      "title": "Kepler (Fuse) – Bank Holiday Special",
-      "fingerprint": "kepler (fuse) – bank holiday special|2026-08-28|gonzo's tea room"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Gonzo's Two Room",
-      "title": "Sounds of Summer",
-      "fingerprint": "sounds of summer|2026-08-29|gonzo's tea room"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Gonzo's Two Room",
-      "title": "Rooftop Sunday Sessions w Joshua Roberts & Friends",
-      "fingerprint": "rooftop sunday sessions w joshua roberts & friends|2026-08-30|gonzo's tea room"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Gonzo's Two Room",
-      "title": "Rooftop Sunday Sessions w Somewhere Soul",
-      "fingerprint": "rooftop sunday sessions w somewhere soul|2026-09-06|gonzo's tea room"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Gonzo's Two Room",
-      "title": "Rooftop Sunday Session w Dunmore Brothers (Summer Closing)",
-      "fingerprint": "rooftop sunday session w dunmore brothers (summer closing)|2026-09-13|gonzo's tea room"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Gonzo's Two Room",
-      "title": "Mozey",
-      "fingerprint": "mozey|2026-10-02|gonzo's tea room"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Gonzo's Two Room",
-      "title": "A.M.C Grassroots Energy: Norwich",
-      "fingerprint": "a.m.c grassroots energy: norwich|2026-12-11|gonzo's tea room"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "Free Daily Tour of the Living Area",
-      "fingerprint": "free daily tour of the living area|2026-08-15|sainsbury centre"
-    },
-    {
-      "reason": "duplicate",
-      "status": "pending_review",
-      "source": "Sainsbury Centre",
-      "title": "Free Daily Tour of the Living Area",
-      "fingerprint": "free daily tour of the living area|2026-08-15|sainsbury centre"
     },
     {
       "reason": "duplicate",
@@ -507,28 +423,28 @@
       "fingerprint": "metalheadz blue note sessions - sunday day party - goldie + more|2026-08-16|gonzo's tea room"
     },
     {
-      "reason": "duplicate",
+      "reason": "needs_review",
       "status": "pending_review",
       "source": "Gonzo's Fatsoma",
       "title": "Rooftop Sunday Sessions w MiNNA",
       "fingerprint": "rooftop sunday sessions w minna|2026-08-16|gonzo's tea room"
     },
     {
-      "reason": "duplicate",
+      "reason": "needs_review",
       "status": "pending_review",
       "source": "Gonzo's Fatsoma",
       "title": "Photek",
       "fingerprint": "photek|2026-08-21|gonzo's tea room"
     },
     {
-      "reason": "duplicate",
+      "reason": "needs_review",
       "status": "pending_review",
       "source": "Gonzo's Fatsoma",
       "title": "Bean b2b Tadi + Special Guest MCs",
       "fingerprint": "bean b2b tadi + special guest mcs|2026-08-22|gonzo's tea room"
     },
     {
-      "reason": "duplicate",
+      "reason": "needs_review",
       "status": "pending_review",
       "source": "Gonzo's Fatsoma",
       "title": "Rooftop Sunday Sessions w HEIDI",
@@ -542,39 +458,144 @@
       "fingerprint": "kepler (fuse) - bank holiday special|2026-08-28|gonzo's tea room"
     },
     {
-      "reason": "duplicate",
+      "reason": "needs_review",
       "status": "pending_review",
       "source": "Gonzo's Fatsoma",
       "title": "Sounds of Summer",
       "fingerprint": "sounds of summer|2026-08-29|gonzo's tea room"
     },
     {
-      "reason": "duplicate",
+      "reason": "needs_review",
       "status": "pending_review",
       "source": "Gonzo's Fatsoma",
       "title": "Rooftop Sunday Sessions w Joshua Roberts & Friends",
       "fingerprint": "rooftop sunday sessions w joshua roberts & friends|2026-08-30|gonzo's tea room"
     },
     {
-      "reason": "duplicate",
+      "reason": "needs_review",
       "status": "pending_review",
       "source": "Gonzo's Fatsoma",
       "title": "Rooftop Sunday Sessions w Somewhere Soul",
       "fingerprint": "rooftop sunday sessions w somewhere soul|2026-09-06|gonzo's tea room"
     },
     {
-      "reason": "duplicate",
+      "reason": "needs_review",
       "status": "pending_review",
       "source": "Gonzo's Fatsoma",
       "title": "Rooftop Sunday Session w Dunmore Brothers (Summer Closing)",
       "fingerprint": "rooftop sunday session w dunmore brothers (summer closing)|2026-09-13|gonzo's tea room"
     },
     {
-      "reason": "duplicate",
+      "reason": "needs_review",
       "status": "pending_review",
       "source": "Gonzo's Fatsoma",
       "title": "Mozey",
       "fingerprint": "mozey|2026-10-02|gonzo's tea room"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Sainsbury Centre",
+      "title": "Free Daily Guided Tour of the Living Area (11am)",
+      "fingerprint": "free daily guided tour of the living area (11am)|2026-08-15|sainsbury centre"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Sainsbury Centre",
+      "title": "Free Daily Guided Tour of the Living Area (2pm)",
+      "fingerprint": "free daily guided tour of the living area (2pm)|2026-08-15|sainsbury centre"
+    },
+    {
+      "reason": "duplicate",
+      "status": "approved",
+      "source": "Gonzo's Two Room",
+      "title": "Resident Rave",
+      "fingerprint": "resident rave|2026-08-15|gonzo's tea room"
+    },
+    {
+      "reason": "duplicate",
+      "status": "pending_review",
+      "source": "Gonzo's Two Room",
+      "title": "Rooftop Sunday Sessions w MiNNA",
+      "fingerprint": "rooftop sunday sessions w minna|2026-08-16|gonzo's tea room"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Gonzo's Two Room",
+      "title": "Metalheadz Blue Note Sessions – Sunday Day Party – Goldie + More",
+      "fingerprint": "metalheadz blue note sessions – sunday day party – goldie + more|2026-08-16|gonzo's tea room"
+    },
+    {
+      "reason": "duplicate",
+      "status": "pending_review",
+      "source": "Gonzo's Two Room",
+      "title": "Photek",
+      "fingerprint": "photek|2026-08-21|gonzo's tea room"
+    },
+    {
+      "reason": "duplicate",
+      "status": "pending_review",
+      "source": "Gonzo's Two Room",
+      "title": "Bean b2b Tadi + Special Guest MCs",
+      "fingerprint": "bean b2b tadi + special guest mcs|2026-08-22|gonzo's tea room"
+    },
+    {
+      "reason": "duplicate",
+      "status": "pending_review",
+      "source": "Gonzo's Two Room",
+      "title": "Rooftop Sunday Sessions w HEIDI",
+      "fingerprint": "rooftop sunday sessions w heidi|2026-08-23|gonzo's tea room"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Gonzo's Two Room",
+      "title": "Kepler (Fuse) – Bank Holiday Special",
+      "fingerprint": "kepler (fuse) – bank holiday special|2026-08-28|gonzo's tea room"
+    },
+    {
+      "reason": "duplicate",
+      "status": "pending_review",
+      "source": "Gonzo's Two Room",
+      "title": "Sounds of Summer",
+      "fingerprint": "sounds of summer|2026-08-29|gonzo's tea room"
+    },
+    {
+      "reason": "duplicate",
+      "status": "pending_review",
+      "source": "Gonzo's Two Room",
+      "title": "Rooftop Sunday Sessions w Joshua Roberts & Friends",
+      "fingerprint": "rooftop sunday sessions w joshua roberts & friends|2026-08-30|gonzo's tea room"
+    },
+    {
+      "reason": "duplicate",
+      "status": "pending_review",
+      "source": "Gonzo's Two Room",
+      "title": "Rooftop Sunday Sessions w Somewhere Soul",
+      "fingerprint": "rooftop sunday sessions w somewhere soul|2026-09-06|gonzo's tea room"
+    },
+    {
+      "reason": "duplicate",
+      "status": "pending_review",
+      "source": "Gonzo's Two Room",
+      "title": "Rooftop Sunday Session w Dunmore Brothers (Summer Closing)",
+      "fingerprint": "rooftop sunday session w dunmore brothers (summer closing)|2026-09-13|gonzo's tea room"
+    },
+    {
+      "reason": "duplicate",
+      "status": "pending_review",
+      "source": "Gonzo's Two Room",
+      "title": "Mozey",
+      "fingerprint": "mozey|2026-10-02|gonzo's tea room"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Gonzo's Two Room",
+      "title": "A.M.C Grassroots Energy: Norwich",
+      "fingerprint": "a.m.c grassroots energy: norwich|2026-12-11|gonzo's tea room"
     }
   ]
 }

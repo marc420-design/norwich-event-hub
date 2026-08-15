@@ -1,41 +1,40 @@
 {
   "events": [
     {
-      "id": "scraper-suffield-summer-fiesta-2026-08-14-suffield-arms",
-      "slug": "suffield-summer-fiesta-2026-08-14",
-      "fingerprint": "suffield summer fiesta|2026-08-14|suffield arms",
-      "name": "Suffield Summer Fiesta",
-      "eventname": "Suffield Summer Fiesta",
-      "date": "2026-08-14",
-      "time": "Time TBC",
-      "endDate": null,
-      "endTime": null,
-      "venue": "Suffield Arms",
-      "location": "Suffield Arms",
+      "id": "scraper-abseil-for-finnbar's-force-2026-08-15-the-forum",
+      "slug": "abseil-for-finnbar-s-force-2026-08-15",
+      "fingerprint": "abseil for finnbar's force|2026-08-15|the forum",
+      "name": "Abseil for Finnbar's Force",
+      "eventname": "Abseil for Finnbar's Force",
+      "date": "2026-08-15",
+      "time": "10:00",
+      "endDate": "2026-08-15",
+      "endTime": "16:30",
+      "venue": "The Forum",
+      "location": "The Forum",
       "address": null,
-      "category": "festivals",
-      "description": "",
-      "ticketLink": "https://www.ueaticketbookings.co.uk/whats-on/",
+      "category": "community",
+      "description": "Step off the edge of one of Norwich's most iconic buildings to help support families going through the toughest times.",
+      "ticketLink": "https://www.theforumnorwich.co.uk/whats-on",
       "officialUrl": "",
-      "sourceUrl": "https://www.ueaticketbookings.co.uk/whats-on/",
-      "primaryUrl": "https://www.ueaticketbookings.co.uk/whats-on/",
+      "sourceUrl": "https://www.theforumnorwich.co.uk/whats-on",
+      "primaryUrl": "https://www.theforumnorwich.co.uk/whats-on",
       "price": "See website",
-      "image": "assets/fallback-general.svg",
+      "image": "assets/fallback-markets.svg",
       "hasFlyer": true,
       "imageStatus": "fallback_assigned",
       "linkStatus": "verified",
       "ticketStatus": "missing",
       "needsFlyer": true,
       "tags": [
-        "festival",
-        "summer"
+        "charity"
       ],
       "featured": false,
       "editorsChoice": false,
       "isFree": false,
       "ageRestriction": null,
       "status": "approved",
-      "source": "UEA Waterfront"
+      "source": "The Forum Norwich"
     },
     {
       "id": "scraper-resident-rave-2026-08-15-gonzo's-tea-room",
@@ -415,6 +414,44 @@
       "source": "The Forum Norwich"
     },
     {
+      "id": "scraper-over-30s'-club-presents-daytime-disco----2026-09-12-kudos-bar-and-nightclub",
+      "slug": "over-30s-club-presents-daytime-disco-norwich-rnb-ed-2026-09-12",
+      "fingerprint": "over 30s' club presents daytime disco - norwich [rnb ed]|2026-09-12|kudos bar and nightclub",
+      "name": "Over 30s' Club Presents Daytime Disco - Norwich [RNB Ed]",
+      "eventname": "Over 30s' Club Presents Daytime Disco - Norwich [RNB Ed]",
+      "date": "2026-09-12",
+      "time": "Time TBC",
+      "endDate": null,
+      "endTime": null,
+      "venue": "KUDOS BAR AND NIGHTCLUB",
+      "location": "KUDOS BAR AND NIGHTCLUB",
+      "address": null,
+      "category": "nightlife",
+      "description": "Over 30s' Club Presents Daytime Disco - Norwich [RNB Ed]",
+      "ticketLink": "https://fixr.co/venue/kudos-bar-and-nightclub-norwich-21386",
+      "officialUrl": "",
+      "sourceUrl": "https://fixr.co/venue/kudos-bar-and-nightclub-norwich-21386",
+      "primaryUrl": "https://fixr.co/venue/kudos-bar-and-nightclub-norwich-21386",
+      "price": "See website",
+      "image": "assets/fallback-nightlife.svg",
+      "hasFlyer": true,
+      "imageStatus": "fallback_assigned",
+      "linkStatus": "verified",
+      "ticketStatus": "missing",
+      "needsFlyer": true,
+      "tags": [
+        "disco",
+        "RNB",
+        "over 30s"
+      ],
+      "featured": false,
+      "editorsChoice": false,
+      "isFree": false,
+      "ageRestriction": null,
+      "status": "approved",
+      "source": "Kudos FIXR"
+    },
+    {
       "id": "scraper-norfolk-heritage-open-days---tours-2026-09-13-the-halls",
       "slug": "norfolk-heritage-open-days-tours-2026-09-13",
       "fingerprint": "norfolk heritage open days - tours|2026-09-13|the halls",
@@ -737,6 +774,6 @@
       "source": "Norfolk Showground"
     }
   ],
-  "generated_at": "2026-08-14T08:27:12.404007",
-  "count": 20
+  "generated_at": "2026-08-15T07:44:04.500080",
+  "count": 21
 }

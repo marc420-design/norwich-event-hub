@@ -264,6 +264,43 @@
       "source": "Norfolk Showground"
     },
     {
+      "id": "scraper-norwich-games-con-2026-08-22-norfolk-showground-event",
+      "slug": "norwich-games-con-2026-08-22",
+      "fingerprint": "norwich games con|2026-08-22|norfolk showground events centre",
+      "name": "Norwich Games Con",
+      "eventname": "Norwich Games Con",
+      "date": "2026-08-22",
+      "time": "Time TBC",
+      "endDate": null,
+      "endTime": null,
+      "venue": "Norfolk Showground Events Centre",
+      "location": "Norfolk Showground Events Centre",
+      "address": null,
+      "category": "general",
+      "description": "A convention dedicated to games.",
+      "ticketLink": "https://www.norfolkshowground.co.uk/events",
+      "officialUrl": "",
+      "sourceUrl": "https://www.norfolkshowground.co.uk/events",
+      "primaryUrl": "https://www.norfolkshowground.co.uk/events",
+      "price": "See website",
+      "image": "assets/fallback-general.svg",
+      "hasFlyer": true,
+      "imageStatus": "fallback_assigned",
+      "linkStatus": "verified",
+      "ticketStatus": "missing",
+      "needsFlyer": true,
+      "tags": [
+        "games",
+        "convention"
+      ],
+      "featured": false,
+      "editorsChoice": false,
+      "isFree": false,
+      "ageRestriction": null,
+      "status": "approved",
+      "source": "Norfolk Showground"
+    },
+    {
       "id": "scraper-heritage-open-days-2026-09-11-across-norfolk",
       "slug": "heritage-open-days-2026-09-11",
       "fingerprint": "heritage open days|2026-09-11|across norfolk",
@@ -659,6 +696,6 @@
       "source": "Norfolk Showground"
     }
   ],
-  "generated_at": "2026-08-18T07:50:28.459362",
-  "count": 18
+  "generated_at": "2026-08-19T07:50:57.597497",
+  "count": 19
 }

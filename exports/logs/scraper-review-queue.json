@@ -1,10 +1,17 @@
 {
-  "generated_at": "2026-08-18T07:50:28.460096",
-  "count": 80,
+  "generated_at": "2026-08-19T07:50:57.598202",
+  "count": 89,
   "events": [
     {
       "reason": "duplicate",
       "status": "approved",
+      "source": "Norwich Cathedral",
+      "title": "Immersive Sound and Light Experience",
+      "fingerprint": "immersive sound and light experience|2026-10-27|norwich cathedral"
+    },
+    {
+      "reason": "duplicate",
+      "status": "pending_review",
       "source": "Norwich Cathedral",
       "title": "Summer Organ Concert: Stephen Farr",
       "fingerprint": "summer organ concert: stephen farr|2026-08-19|norwich cathedral"
@@ -18,10 +25,10 @@
     },
     {
       "reason": "duplicate",
-      "status": "pending_review",
-      "source": "Norwich Cathedral",
-      "title": "Immersive Sound and Light Experience",
-      "fingerprint": "immersive sound and light experience|2026-10-27|norwich cathedral"
+      "status": "approved",
+      "source": "UEA Waterfront",
+      "title": "Rock N Roll Circus – James",
+      "fingerprint": "rock n roll circus – james|2026-08-20|earlham park"
     },
     {
       "reason": "needs_review",
@@ -111,8 +118,8 @@
       "reason": "needs_review",
       "status": "pending_review",
       "source": "UEA Waterfront",
-      "title": "Altered Images Clare Grogan and Her Band Perform 'Happy Birthday' In Full Plus All The Hits!",
-      "fingerprint": "altered images clare grogan and her band perform 'happy birthday' in full plus all the hits!|2026-09-03|the adrian flux waterfront"
+      "title": "Altered Images",
+      "fingerprint": "altered images|2026-09-03|the adrian flux waterfront"
     },
     {
       "reason": "needs_review",
@@ -133,7 +140,7 @@
       "status": "pending_review",
       "source": "UEA Waterfront",
       "title": "Fomo Fest 2026",
-      "fingerprint": "fomo fest 2026|2026-09-05|food museum, stowmarket"
+      "fingerprint": "fomo fest 2026|2026-09-05|food museum"
     },
     {
       "reason": "needs_review",
@@ -145,30 +152,23 @@
     {
       "reason": "needs_review",
       "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Freemen’s Fortnight: Free Entry to the Museum of Norwich",
-      "fingerprint": "freemen’s fortnight: free entry to the museum of norwich|2026-08-18|museum of norwich at the bridewell"
-    },
-    {
-      "reason": "needs_review",
-      "status": "pending_review",
-      "source": "Visit Norwich",
-      "title": "Family Imagination Day",
-      "fingerprint": "family imagination day|2026-08-18|dragon hall"
+      "source": "UEA Waterfront",
+      "title": "Sharp Class",
+      "fingerprint": "sharp class|2026-09-05|the adrian flux waterfront studio"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Visit Norwich",
       "title": "Art Exhibition at Pavilion Theatre",
-      "fingerprint": "art exhibition at pavilion theatre|2026-08-19|pavilion theatre, gorleston"
+      "fingerprint": "art exhibition at pavilion theatre|2026-08-19|pavilion theatre"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Visit Norwich",
       "title": "Norwich Over the Water – walking tour",
-      "fingerprint": "norwich over the water – walking tour|2026-08-19|venue tba"
+      "fingerprint": "norwich over the water – walking tour|2026-08-19|norwich"
     },
     {
       "reason": "needs_review",
@@ -229,6 +229,27 @@
     {
       "reason": "needs_review",
       "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Norwich Summer Sessions – Not Your Average Choir, Bel Sonus Choir, Norwich Contemporary Choir",
+      "fingerprint": "norwich summer sessions – not your average choir, bel sonus choir, norwich contemporary choir|2026-08-23|venue tba"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Visit Norwich",
+      "title": "Norwich Summer Sessions – Access Creative Showcasing the best of Access’ budding talent",
+      "fingerprint": "norwich summer sessions – access creative showcasing the best of access’ budding talent|2026-08-23|venue tba"
+    },
+    {
+      "reason": "duplicate",
+      "status": "approved",
+      "source": "The Forum Norwich",
+      "title": "Norfolk RecoveryFest",
+      "fingerprint": "norfolk recoveryfest|2026-08-22|the forum"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
       "source": "The Forum Norwich",
       "title": "A Fine City Summer Fête",
       "fingerprint": "a fine city summer fête|2026-08-28|the forum"
@@ -245,7 +266,7 @@
       "status": "pending_review",
       "source": "The Forum Norwich",
       "title": "Norwich Forum Writers",
-      "fingerprint": "norwich forum writers|2026-09-04|the gallery, the forum"
+      "fingerprint": "norwich forum writers|2026-09-04|the gallery"
     },
     {
       "reason": "needs_review",
@@ -273,7 +294,7 @@
       "status": "pending_review",
       "source": "The Forum Norwich",
       "title": "The Forum Film Club",
-      "fingerprint": "the forum film club|2026-09-10|the auditorium, the forum"
+      "fingerprint": "the forum film club|2026-09-10|the auditorium"
     },
     {
       "reason": "duplicate",
@@ -315,77 +336,77 @@
       "status": "approved",
       "source": "The Halls Norwich",
       "title": "Norfolk Heritage Open Days - Tours",
-      "fingerprint": "norfolk heritage open days - tours|2026-09-13|the halls, norwich"
+      "fingerprint": "norfolk heritage open days - tours|2026-09-13|the halls"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "The Halls Norwich",
       "title": "An Evening of Dickens — a free dramatic reading",
-      "fingerprint": "an evening of dickens — a free dramatic reading|2026-09-16|the halls, norwich"
+      "fingerprint": "an evening of dickens — a free dramatic reading|2026-09-16|the halls"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "The Halls Norwich",
       "title": "The Ultimate Bubble Show",
-      "fingerprint": "the ultimate bubble show|2026-10-10|the halls, norwich"
+      "fingerprint": "the ultimate bubble show|2026-10-10|the halls"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "The Halls Norwich",
       "title": "3 Acres + A Cow",
-      "fingerprint": "3 acres + a cow|2026-10-21|the halls, norwich"
+      "fingerprint": "3 acres + a cow|2026-10-21|the halls"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "The Halls Norwich",
       "title": "James B Partridge - The Big Christmas Assembly 2026",
-      "fingerprint": "james b partridge - the big christmas assembly 2026|2026-11-27|the halls, norwich"
+      "fingerprint": "james b partridge - the big christmas assembly 2026|2026-11-27|the halls"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "The Halls Norwich",
       "title": "Professor David Olusoga - A Global History Of The British Cup Of Tea",
-      "fingerprint": "professor david olusoga - a global history of the british cup of tea|2027-03-05|the halls, norwich"
+      "fingerprint": "professor david olusoga - a global history of the british cup of tea|2027-03-05|the halls"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "Family Action Arena",
-      "fingerprint": "family action arena|2026-08-29|action arena, outdoor spaces, norfolk showground"
+      "fingerprint": "family action arena|2026-08-29|norfolk showground outdoor spaces"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
-      "title": "Family All About Dogs",
-      "fingerprint": "family all about dogs|2026-08-30|outdoor spaces, norfolk showground"
+      "title": "All About Dogs",
+      "fingerprint": "all about dogs|2026-08-30|norfolk showground outdoor spaces"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "BLAKELY Apex Games",
-      "fingerprint": "blakely apex games|2026-09-12|events centre, norfolk showground"
+      "fingerprint": "blakely apex games|2026-09-12|norfolk showground events centre"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
       "title": "Stroke Information Live - Norfolk and Suffolk",
-      "fingerprint": "stroke information live - norfolk and suffolk|2026-09-22|norfolk events centre, norfolk showground"
+      "fingerprint": "stroke information live - norfolk and suffolk|2026-09-22|norfolk showground events centre"
     },
     {
       "reason": "needs_review",
       "status": "pending_review",
       "source": "Norfolk Showground",
-      "title": "Family NORCON",
-      "fingerprint": "family norcon|2026-09-26|outdoor spaces, norfolk showground"
+      "title": "NORCON",
+      "fingerprint": "norcon|2026-09-26|norfolk showground outdoor spaces"
     },
     {
       "reason": "duplicate",
@@ -396,6 +417,13 @@
     },
     {
       "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Gonzo's Two Room",
+      "title": "Bean b2b Tadi + Special Guest MCs",
+      "fingerprint": "bean b2b tadi + special guest mcs|2026-08-22|gonzo's tea room"
+    },
+    {
+      "reason": "duplicate",
       "status": "pending_review",
       "source": "Gonzo's Two Room",
       "title": "Bean b2b Tadi + Special Guest MCs",
@@ -456,6 +484,13 @@
       "source": "Gonzo's Two Room",
       "title": "Captain Wallop",
       "fingerprint": "captain wallop|2026-09-19|gonzo's tea room"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Gonzo's Two Room",
+      "title": "Richy Ahmed",
+      "fingerprint": "richy ahmed|2026-09-25|gonzo's tea room"
     },
     {
       "reason": "needs_review",
@@ -545,15 +580,43 @@
       "reason": "duplicate",
       "status": "pending_review",
       "source": "Gonzo's Fatsoma",
-      "title": "Mozey",
-      "fingerprint": "mozey|2026-10-02|gonzo's tea room"
+      "title": "Richy Ahmed",
+      "fingerprint": "richy ahmed|2026-09-25|gonzo's tea room"
     },
     {
       "reason": "duplicate",
       "status": "pending_review",
       "source": "Gonzo's Fatsoma",
-      "title": "A.M.C Grassroots Energy: Norwich",
-      "fingerprint": "a.m.c grassroots energy: norwich|2026-12-11|gonzo's tea room"
+      "title": "Mozey",
+      "fingerprint": "mozey|2026-10-02|gonzo's tea room"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Sainsbury Centre",
+      "title": "Living Art Ryan Gander",
+      "fingerprint": "living art ryan gander|2026-08-19|sainsbury centre"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Sainsbury Centre",
+      "title": "Sculpture Park",
+      "fingerprint": "sculpture park|2026-08-19|sainsbury centre"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Sainsbury Centre",
+      "title": "The Living Area (Robert and Lisa Sainsbury Collection)",
+      "fingerprint": "the living area (robert and lisa sainsbury collection)|2026-08-19|sainsbury centre"
+    },
+    {
+      "reason": "needs_review",
+      "status": "pending_review",
+      "source": "Sainsbury Centre",
+      "title": "Free Daily Tours of the Living Area",
+      "fingerprint": "free daily tours of the living area|2026-08-19|sainsbury centre"
     },
     {
       "reason": "duplicate",

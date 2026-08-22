@@ -1,80 +1,6 @@
 {
   "events": [
     {
-      "id": "scraper-photek-2026-08-21-gonzo's-tea-room",
-      "slug": "photek-2026-08-21",
-      "fingerprint": "photek|2026-08-21|gonzo's tea room",
-      "name": "Photek",
-      "eventname": "Photek",
-      "date": "2026-08-21",
-      "time": "23:00",
-      "endDate": "2026-08-21",
-      "endTime": "03:00",
-      "venue": "Gonzo's Tea Room",
-      "location": "Gonzo's Tea Room",
-      "address": null,
-      "category": "nightlife",
-      "description": "",
-      "ticketLink": "https://www.fatsoma.com/p/gonzostworoom",
-      "officialUrl": "",
-      "sourceUrl": "https://www.fatsoma.com/p/gonzostworoom",
-      "primaryUrl": "https://www.fatsoma.com/p/gonzostworoom",
-      "price": "£8-£14",
-      "image": "assets/fallback-nightlife.svg",
-      "hasFlyer": true,
-      "imageStatus": "fallback_assigned",
-      "linkStatus": "verified",
-      "ticketStatus": "verified",
-      "needsFlyer": true,
-      "tags": [
-        "dj"
-      ],
-      "featured": false,
-      "editorsChoice": false,
-      "isFree": false,
-      "ageRestriction": null,
-      "status": "approved",
-      "source": "Gonzo's Fatsoma"
-    },
-    {
-      "id": "scraper-rock-n-roll-circus-–-weekend-ticket-2026-08-21-earlham-park",
-      "slug": "rock-n-roll-circus-weekend-ticket-2026-08-21",
-      "fingerprint": "rock n roll circus – weekend ticket|2026-08-21|earlham park",
-      "name": "Rock N Roll Circus – Weekend Ticket",
-      "eventname": "Rock N Roll Circus – Weekend Ticket",
-      "date": "2026-08-21",
-      "time": "Time TBC",
-      "endDate": null,
-      "endTime": null,
-      "venue": "Earlham Park",
-      "location": "Earlham Park",
-      "address": null,
-      "category": "festivals",
-      "description": "",
-      "ticketLink": "https://www.ueaticketbookings.co.uk/whats-on/",
-      "officialUrl": "",
-      "sourceUrl": "https://www.ueaticketbookings.co.uk/whats-on/",
-      "primaryUrl": "https://www.ueaticketbookings.co.uk/whats-on/",
-      "price": "See website",
-      "image": "assets/fallback-general.svg",
-      "hasFlyer": true,
-      "imageStatus": "fallback_assigned",
-      "linkStatus": "verified",
-      "ticketStatus": "missing",
-      "needsFlyer": true,
-      "tags": [
-        "rock",
-        "circus",
-        "festival"
-      ],
-      "featured": false,
-      "editorsChoice": false,
-      "isFree": false,
-      "ageRestriction": null,
-      "status": "approved",
-      "source": "UEA Waterfront"
-    },
-    {
       "id": "scraper-norwich-games-con-2026-08-22-norfolk-events-centre",
       "slug": "norwich-games-con-2026-08-22",
       "fingerprint": "norwich games con|2026-08-22|norfolk events centre",
@@ -728,6 +654,6 @@
       "source": "Norfolk Showground"
     }
   ],
-  "generated_at": "2026-08-21T07:54:41.858225",
-  "count": 20
+  "generated_at": "2026-08-22T07:38:02.904933",
+  "count": 18
 }

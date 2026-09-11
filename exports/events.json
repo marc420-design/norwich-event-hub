@@ -1,40 +1,6 @@
 {
   "events": [
     {
-      "id": "scraper-the-forum-film-club-2026-09-10-the-auditorium",
-      "slug": "the-forum-film-club-2026-09-10",
-      "fingerprint": "the forum film club|2026-09-10|the auditorium",
-      "name": "The Forum Film Club",
-      "eventname": "The Forum Film Club",
-      "date": "2026-09-10",
-      "time": "19:00",
-      "endDate": null,
-      "endTime": null,
-      "venue": "The Auditorium",
-      "location": "The Auditorium",
-      "address": null,
-      "category": "culture",
-      "description": "Monthly film screenings in our film club with a difference!",
-      "ticketLink": "",
-      "officialUrl": "",
-      "sourceUrl": "https://www.theforumnorwich.co.uk/whats-on",
-      "primaryUrl": "https://www.theforumnorwich.co.uk/whats-on",
-      "price": "See website",
-      "image": "assets/fallback-culture.svg",
-      "hasFlyer": true,
-      "imageStatus": "fallback_assigned",
-      "linkStatus": "verified",
-      "ticketStatus": "missing",
-      "needsFlyer": true,
-      "tags": [],
-      "featured": false,
-      "editorsChoice": false,
-      "isFree": false,
-      "ageRestriction": null,
-      "status": "approved",
-      "source": "The Forum Norwich"
-    },
-    {
       "id": "scraper-heritage-open-days-2026-09-11-across-norfolk",
       "slug": "heritage-open-days-2026-09-11",
       "fingerprint": "heritage open days|2026-09-11|across norfolk",
@@ -430,6 +396,6 @@
       "source": "Norfolk Showground"
     }
   ],
-  "generated_at": "2026-09-10T12:11:23.394954",
-  "count": 12
+  "generated_at": "2026-09-11T12:09:24.504986",
+  "count": 11
 }

@@ -1,41 +1,6 @@
 {
   "events": [
     {
-      "id": "scraper-heritage-open-days-2026-09-11-across-norfolk",
-      "slug": "heritage-open-days-2026-09-11",
-      "fingerprint": "heritage open days|2026-09-11|across norfolk",
-      "name": "Heritage Open Days",
-      "eventname": "Heritage Open Days",
-      "date": "2026-09-11",
-      "time": "09:00",
-      "endDate": "2026-09-11",
-      "endTime": "17:00",
-      "venue": "Across Norfolk",
-      "location": "Across Norfolk",
-      "address": null,
-      "category": "culture",
-      "description": "Explore heritage sites across Norfolk.",
-      "ticketLink": "",
-      "officialUrl": "",
-      "sourceUrl": "https://www.theforumnorwich.co.uk/whats-on",
-      "primaryUrl": "https://www.theforumnorwich.co.uk/whats-on",
-      "price": "See website",
-      "image": "",
-      "hasFlyer": false,
-      "imageStatus": "fallback",
-      "linkStatus": "verified",
-      "tags": [
-        "heritage",
-        "open days"
-      ],
-      "featured": false,
-      "editorsChoice": false,
-      "isFree": false,
-      "ageRestriction": null,
-      "status": "approved",
-      "source": "The Forum Norwich"
-    },
-    {
       "id": "scraper-over-30s'-club-presents-daytime-disco----2026-09-12-kudos-bar-and-nightclub",
       "slug": "over-30s-club-presents-daytime-disco-norwich-rnb-ed-2026-09-12",
       "fingerprint": "over 30s' club presents daytime disco - norwich [rnb ed]|2026-09-12|kudos bar and nightclub",
@@ -396,6 +361,6 @@
       "source": "Norfolk Showground"
     }
   ],
-  "generated_at": "2026-09-11T12:09:24.504986",
-  "count": 11
+  "generated_at": "2026-09-12T11:34:31.701012",
+  "count": 10
 }

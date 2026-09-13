@@ -1,44 +1,6 @@
 {
   "events": [
     {
-      "id": "scraper-over-30s'-club-presents-daytime-disco----2026-09-12-kudos-bar-and-nightclub",
-      "slug": "over-30s-club-presents-daytime-disco-norwich-rnb-ed-2026-09-12",
-      "fingerprint": "over 30s' club presents daytime disco - norwich [rnb ed]|2026-09-12|kudos bar and nightclub",
-      "name": "Over 30s' Club Presents Daytime Disco - Norwich [RNB Ed]",
-      "eventname": "Over 30s' Club Presents Daytime Disco - Norwich [RNB Ed]",
-      "date": "2026-09-12",
-      "time": "Time TBC",
-      "endDate": null,
-      "endTime": null,
-      "venue": "KUDOS BAR AND NIGHTCLUB",
-      "location": "KUDOS BAR AND NIGHTCLUB",
-      "address": null,
-      "category": "nightlife",
-      "description": "Over 30s' Club Presents Daytime Disco - Norwich [RNB Ed]",
-      "ticketLink": "https://fixr.co/venue/kudos-bar-and-nightclub-norwich-21386",
-      "officialUrl": "",
-      "sourceUrl": "https://fixr.co/venue/kudos-bar-and-nightclub-norwich-21386",
-      "primaryUrl": "https://fixr.co/venue/kudos-bar-and-nightclub-norwich-21386",
-      "price": "See website",
-      "image": "assets/fallback-nightlife.svg",
-      "hasFlyer": true,
-      "imageStatus": "fallback_assigned",
-      "linkStatus": "verified",
-      "ticketStatus": "missing",
-      "needsFlyer": true,
-      "tags": [
-        "disco",
-        "RNB",
-        "over 30s"
-      ],
-      "featured": false,
-      "editorsChoice": false,
-      "isFree": false,
-      "ageRestriction": null,
-      "status": "approved",
-      "source": "Kudos FIXR"
-    },
-    {
       "id": "scraper-norfolk-heritage-open-days---tours-2026-09-13-the-halls",
       "slug": "norfolk-heritage-open-days-tours-2026-09-13",
       "fingerprint": "norfolk heritage open days - tours|2026-09-13|the halls",
@@ -361,6 +323,6 @@
       "source": "Norfolk Showground"
     }
   ],
-  "generated_at": "2026-09-12T11:34:31.701012",
-  "count": 10
+  "generated_at": "2026-09-13T12:40:37.698502",
+  "count": 9
 }

@@ -1,81 +1,6 @@
 {
   "events": [
     {
-      "id": "scraper-norfolk-heritage-open-days---tours-2026-09-13-the-halls",
-      "slug": "norfolk-heritage-open-days-tours-2026-09-13",
-      "fingerprint": "norfolk heritage open days - tours|2026-09-13|the halls",
-      "name": "Norfolk Heritage Open Days - Tours",
-      "eventname": "Norfolk Heritage Open Days - Tours",
-      "date": "2026-09-13",
-      "time": "Time TBC",
-      "endDate": null,
-      "endTime": null,
-      "venue": "The Halls",
-      "location": "The Halls",
-      "address": null,
-      "category": "culture",
-      "description": "Explore The Halls, Norwich as part of the Norfolk Heritage Open Days. This event runs over multiple days with various tour times.",
-      "ticketLink": "https://www.thehallsnorwich.co.uk/events",
-      "officialUrl": "",
-      "sourceUrl": "https://www.thehallsnorwich.co.uk/events",
-      "primaryUrl": "https://www.thehallsnorwich.co.uk/events",
-      "price": "See website",
-      "image": "assets/fallback-culture.svg",
-      "hasFlyer": true,
-      "imageStatus": "fallback_assigned",
-      "linkStatus": "verified",
-      "ticketStatus": "missing",
-      "needsFlyer": true,
-      "tags": [
-        "tours",
-        "heritage"
-      ],
-      "featured": false,
-      "editorsChoice": false,
-      "isFree": false,
-      "ageRestriction": null,
-      "status": "approved",
-      "source": "The Halls Norwich"
-    },
-    {
-      "id": "scraper-norfolk-heritage-open-days---tours-2026-09-13-the-halls,-norwich",
-      "slug": "norfolk-heritage-open-days-tours-2026-09-13",
-      "fingerprint": "norfolk heritage open days - tours|2026-09-13|the halls, norwich",
-      "name": "Norfolk Heritage Open Days - Tours",
-      "eventname": "Norfolk Heritage Open Days - Tours",
-      "date": "2026-09-13",
-      "time": "Time TBC",
-      "endDate": null,
-      "endTime": null,
-      "venue": "The Halls, Norwich",
-      "location": "The Halls, Norwich",
-      "address": null,
-      "category": "culture",
-      "description": "Tours as part of the Norfolk Heritage Open Days.",
-      "ticketLink": "https://www.thehallsnorwich.co.uk/events",
-      "officialUrl": "",
-      "sourceUrl": "https://www.thehallsnorwich.co.uk/events",
-      "primaryUrl": "https://www.thehallsnorwich.co.uk/events",
-      "price": "See website",
-      "image": "assets/fallback-culture.svg",
-      "hasFlyer": true,
-      "imageStatus": "fallback_assigned",
-      "linkStatus": "verified",
-      "ticketStatus": "missing",
-      "needsFlyer": true,
-      "tags": [
-        "heritage",
-        "tours",
-        "open days"
-      ],
-      "featured": false,
-      "editorsChoice": false,
-      "isFree": false,
-      "ageRestriction": null,
-      "status": "approved",
-      "source": "The Halls Norwich"
-    },
-    {
       "id": "scraper-emilio-santoro-as-elvis-2026-09-26-the-halls",
       "slug": "emilio-santoro-as-elvis-2026-09-26",
       "fingerprint": "emilio santoro as elvis|2026-09-26|the halls",
@@ -323,6 +248,6 @@
       "source": "Norfolk Showground"
     }
   ],
-  "generated_at": "2026-09-13T12:40:37.698502",
-  "count": 9
+  "generated_at": "2026-09-14T13:51:36.166415",
+  "count": 7
 }
